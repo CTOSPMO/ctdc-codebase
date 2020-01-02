@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc;
+package gov.nih.nci.ctdc;
 
 import java.util.concurrent.TimeUnit;
 
@@ -12,10 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-//
-//public class MvcWebConfig{
-//	
-//}
 
 @Configuration
 @EnableWebMvc

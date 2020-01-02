@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.error;
+package gov.nih.nci.ctdc.error;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -31,8 +31,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import gov.nih.nci.icdc.model.ConfigurationDAO;
-import gov.nih.nci.icdc.model.VersionDao;
+import gov.nih.nci.ctdc.model.ConfigurationDAO;
+import gov.nih.nci.ctdc.model.VersionDao;
 import lombok.extern.slf4j.Slf4j;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)

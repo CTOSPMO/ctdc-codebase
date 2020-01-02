@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.service;
+package gov.nih.nci.ctdc.service;
 
 
 
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import gov.nih.nci.icdc.model.ConfigurationDAO;
+import gov.nih.nci.ctdc.model.ConfigurationDAO;
 import graphql.GraphQL;
 import graphql.language.Document;
 import graphql.schema.GraphQLSchema;

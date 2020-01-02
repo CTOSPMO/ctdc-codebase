@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.error;
+package gov.nih.nci.ctdc.error;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase;

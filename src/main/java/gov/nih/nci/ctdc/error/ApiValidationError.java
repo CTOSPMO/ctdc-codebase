@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.error;
+package gov.nih.nci.ctdc.error;
 
 
 import lombok.Data;
