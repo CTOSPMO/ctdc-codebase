@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.controller;
+package gov.nih.nci.ctdc.controller;
 
 import java.io.IOException;
 
@@ -19,8 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import gov.nih.nci.icdc.model.ConfigurationDAO;
-import gov.nih.nci.icdc.service.Neo4JGraphQLService;
+import gov.nih.nci.ctdc.model.ConfigurationDAO;
+import gov.nih.nci.ctdc.service.Neo4JGraphQLService;
 import graphql.language.Document;
 import graphql.language.OperationDefinition;
 import graphql.parser.Parser;
@@ -43,7 +43,7 @@ public class GraphQLController {
 	public void getGraphQLResponseByGET(HttpEntity<String> httpEntity, HttpServletResponse response)
 			throws IOException, UnirestException {
 
-		throw new UnirestException("Could not find the GET method for URL /ICDC/v1/graphql/");
+		throw new UnirestException("Could not find the GET method for URL /CTDC/v1/graphql/");
 	}
 
 	@CrossOrigin

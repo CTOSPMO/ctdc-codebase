@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.service;
+package gov.nih.nci.ctdc.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,8 +40,8 @@ public class ValidationAspect {
 //
 //	}
 
-	@Pointcut("execution (* gov.nih.nci.icdc.controller.RESTController.TestToken(..))"
-			+ "||execution (* gov.nih.nci.icdc.controller.RESTController.authorizeCallBack(..))")
+	@Pointcut("execution (* gov.nih.nci.ctdc.controller.RESTController.TestToken(..))"
+			+ "||execution (* gov.nih.nci.ctdc.controller.RESTController.authorizeCallBack(..))")
 	public void advisedMethods() {
 		// nothing here
 	}

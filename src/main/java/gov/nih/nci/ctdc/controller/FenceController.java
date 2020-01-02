@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.controller;
+package gov.nih.nci.ctdc.controller;
 
 import java.util.Base64;
 import java.util.HashMap;
@@ -24,12 +24,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import gov.nih.nci.icdc.error.ResourceNotFoundException;
-import gov.nih.nci.icdc.model.ConfigurationDAO;
-import gov.nih.nci.icdc.service.FenceService;
+import gov.nih.nci.ctdc.error.ResourceNotFoundException;
+import gov.nih.nci.ctdc.model.ConfigurationDAO;
+import gov.nih.nci.ctdc.service.FenceService;
 import io.swagger.annotations.Api;
 
-@Api(value = "ICDC REST APIs")
+@Api(value = "CTDC REST APIs")
 @Component
 @RestController
 public class FenceController {

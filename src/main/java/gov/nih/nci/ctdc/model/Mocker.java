@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.model;
+package gov.nih.nci.ctdc.model;
 
 import java.io.IOException;
 import java.net.URL;

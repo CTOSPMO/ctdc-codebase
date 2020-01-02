@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.service;
+package gov.nih.nci.ctdc.service;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,8 +13,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import gov.nih.nci.icdc.error.ResourceNotFoundException;
-import gov.nih.nci.icdc.model.ConfigurationDAO;
+import gov.nih.nci.ctdc.error.ResourceNotFoundException;
+import gov.nih.nci.ctdc.model.ConfigurationDAO;
 
 @Service
 public class Neo4JGraphQLService {

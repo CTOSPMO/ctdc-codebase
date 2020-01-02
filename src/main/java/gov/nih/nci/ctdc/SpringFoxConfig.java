@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc;
+package gov.nih.nci.ctdc;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,8 +26,8 @@ public class SpringFoxConfig {
 	
 	@SuppressWarnings("unused")
 	private ApiInfo apiEndPointsInfo() {
-	        return new ApiInfoBuilder().title("ICDC REST API")
-	            .description("ICDC REST API")
+	        return new ApiInfoBuilder().title("CTDC REST API")
+	            .description("CTDC REST API")
 	            .contact(new Contact("FirstName LastName", "google", "someone@gmail.com"))
 	            .license("Apache 2.0")
 	            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")

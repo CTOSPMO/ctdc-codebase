@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.model;
+package gov.nih.nci.ctdc.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,7 +10,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import gov.nih.nci.icdc.service.Neo4JGraphQLService;
+import gov.nih.nci.ctdc.service.Neo4JGraphQLService;
 
 @Configuration
 @PropertySource("classpath:application.properties")

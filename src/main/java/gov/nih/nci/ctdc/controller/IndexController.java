@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.controller;
+package gov.nih.nci.ctdc.controller;
 
 import java.util.HashMap;
 
@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import gov.nih.nci.icdc.model.VersionDao;
+import gov.nih.nci.ctdc.model.VersionDao;
 import io.swagger.annotations.ApiOperation;
 
 @Controller

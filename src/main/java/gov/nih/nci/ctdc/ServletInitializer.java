@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc;
+package gov.nih.nci.ctdc;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(IcdcApplication.class);
+		return application.sources(CtdcApplication.class);
 	}
 
 }

@@ -1,4 +1,4 @@
-package gov.nih.nci.icdc.controller;
+package gov.nih.nci.ctdc.controller;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
