@@ -7,9 +7,7 @@ import {
 import { Typography } from '../Wrappers/Wrappers';
 import StudyIcon from '../../assets/icons/Icon-studies-stats.svg';
 import CasesIcon from '../../assets/icons/Icon-cases-stats.svg';
-import SamplesIcon from '../../assets/icons/Icon-samples-stats.svg';
 import FilesIcon from '../../assets/icons/Icon-files-stats.svg';
-import AliquotsIcon from '../../assets/icons/Icon-aliquots-stats.svg';
 
 
 const StatsView = ({ classes, data }) => (
@@ -34,7 +32,7 @@ const StatsView = ({ classes, data }) => (
                 </Typography>
                 <div className={classes.marginTop1}>
                   <Typography color="primary" weight="bold">
-                                              Studies
+                                              Trials
                   </Typography>
                 </div>
               </div>
@@ -62,27 +60,6 @@ const StatsView = ({ classes, data }) => (
             </div>
           </Grid>
           <Grid item xs={12} sm={4} md={2} lg={2}>
-            <div className={classes.statsGroup}>
-              <div className={classes.statsIcon}>
-                <img
-                  src={SamplesIcon}
-                  alt="Cases Samples Bar Icon"
-                />
-
-              </div>
-              <div className={classes.statsText}>
-                <Typography weight="bold" size="md">
-                  {data.numberOfSamples ? data.numberOfSamples : 0}
-                </Typography>
-                <div className={classes.marginTop1}>
-                  <Typography color="primary" weight="bold">
-                                            Samples
-                  </Typography>
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={4} md={2} lg={2}>
 
             <div className={classes.statsGroup}>
               <div className={classes.statsIcon}>
@@ -99,28 +76,6 @@ const StatsView = ({ classes, data }) => (
                 <div className={classes.marginTop1}>
                   <Typography color="primary" weight="bold">
                                             Files
-                  </Typography>
-                </div>
-              </div>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={4} md={2} lg={2}>
-
-            <div className={classes.statsGroup}>
-              <div className={classes.statsIcon}>
-                <img
-                  src={AliquotsIcon}
-                  alt="Aliquots Stats Bar Icon"
-                />
-
-              </div>
-              <div className={classes.statsText}>
-                <Typography weight="bold" size="md">
-                  {data.numberOfBiospecimenAliquots ? data.numberOfBiospecimenAliquots : 0}
-                </Typography>
-                <div className={classes.marginTop1}>
-                  <Typography color="primary" weight="bold">
-                                            Aliquots
                   </Typography>
                 </div>
               </div>
