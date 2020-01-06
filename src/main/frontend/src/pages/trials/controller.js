@@ -1,7 +1,7 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Studies from './studiesView';
+import Studies from './view';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import { GET_STUDYTABLE_DATA_QUERY } from '../../utils/graphqlQueries';
 

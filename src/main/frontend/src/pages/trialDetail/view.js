@@ -9,13 +9,13 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import StatsView from '../../../components/Stats/StatsView';
-import { Typography } from '../../../components/Wrappers/Wrappers';
-import { customSorting } from '../../../utils/dashboardUtilFunctions';
-import cn from '../../../utils/classNameConcat';
-import icon from '../../../assets/icons/Icon-StudiesDetail.svg';
-import { singleCheckBox, fetchDataForDashboardDataTable } from '../../dashboard/dashboardState';
-import CustomBreadcrumb from '../../../components/Breadcrumb/BreadcrumbView';
+import StatsView from '../../components/Stats/StatsView';
+import { Typography } from '../../components/Wrappers/Wrappers';
+import { customSorting } from '../../utils/dashboardUtilFunctions';
+import cn from '../../utils/classNameConcat';
+import icon from '../../assets/icons/Icon-StudiesDetail.svg';
+import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
+import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
 function studyDetailSorting(a, b) {
   if (b && !a) {
