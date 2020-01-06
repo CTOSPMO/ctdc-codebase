@@ -1,14 +1,5 @@
 import gql from 'graphql-tag';
 
-export const STATS_QUERY = gql`{
-  numberOfStudies
-  numberOfCases
-  numberOfSamples
-  numberOfFiles
-  numberOfAliquots
-  }
-  `;
-
 export const DASHBOARD_QUERY = gql`{
     numberOfStudies
     numberOfCases
@@ -327,3 +318,44 @@ query casesInList($caseIds: [String!]!) {
 }
 
 }`;
+
+
+export const TRIALS_QUERY = gql`{
+  ClinicalTrial{
+  clinical_trial_id
+  clinical_trial_short_name
+  clinical_trial_description
+  clinical_trial_designation
+  clinical_trial_long_name
+  clinical_trial_type
+  lead_organization
+  principal_investigators
+  number_Of_cases
+  number_Of_arms
+    }
+}
+  `;
+
+
+export const TRIAL_BY_ID_QUERY = gql`
+query clinicalTrialByTrialId($id: String!) {
+  clinicalTrialByTrialId(trial_id: $id) {
+  clinical_trial_id
+  clinical_trial_short_name
+  clinical_trial_description
+  clinical_trial_designation
+  clinical_trial_long_name
+  clinical_trial_type
+  lead_organization
+  principal_investigators
+  number_Of_cases
+  number_Of_arms
+}
+}`;
+
+export const STATS_QUERY = gql`{
+  numberOfTrials
+  numberOfCases
+  numberOfFiles
+  }
+  `;

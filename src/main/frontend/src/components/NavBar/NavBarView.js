@@ -133,30 +133,20 @@ const NavBar = ({
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
+                to="/trials"
+              >
+              Trials
+              </NavLink>
+
+            </Button>
+
+            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+              <NavLink
+                className={classes.link}
+                activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
                 to="/cases"
               >
               Cases
-              </NavLink>
-
-            </Button>
-
-            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
-              <NavLink
-                className={classes.link}
-                activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
-                to="/programs"
-              >
-                Programs
-              </NavLink>
-            </Button>
-
-            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
-              <NavLink
-                className={classes.link}
-                activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
-                to="/studies"
-              >
-               Studies
               </NavLink>
             </Button>
             <AboutMenu />

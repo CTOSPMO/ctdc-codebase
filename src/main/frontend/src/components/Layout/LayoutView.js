@@ -13,12 +13,8 @@ import Error from '../../pages/error/Error';
 import Dashboard from '../../pages/dashboard/dashboardController';
 import CaseDetail from '../../pages/caseDetail/caseDetailController';
 import Cases from '../../pages/cases/casesController';
-import Studies from '../../pages/studies/studiesController';
-import Programs from '../../pages/programs/programController';
 import modelPage from '../../pages/modelPage/modelPageView';
 import table from '../../pages/table/tableView';
-import StudyDetail from '../../pages/studyDetail/studyDetailController';
-import ProgramDetail from '../../pages/programDetail/programDetailController';
 import SelectedCases from '../../pages/selectedCases/selectedCasesController';
 import SelectedFiles from '../../pages/selectedFiles/selectedFilesController';
 import Home from '../../pages/landing/landingController';
@@ -29,7 +25,8 @@ import purposeView from '../../pages/about/purposeView';
 import steeringCommiteeView from '../../pages/about/steeringCommitteeView';
 import supportView from '../../pages/about/supportView';
 import submitingData from '../../pages/about/submitDataView';
-
+import Trials from '../../pages/trials/controller';
+import TrialDetail from '../../pages/trialDetail/controller';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -54,17 +51,14 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route path="/cases" component={Dashboard} />
-            <Route path="/programs" component={Programs} />
-            <Route path="/studies" component={Studies} />
+            <Route path="/trials" component={Trials} />
             <Route path="/model" component={modelPage} />
             <Route path="/table" component={table} />
             <Route path="/myCases" component={SelectedCases} />
             <Route path="/myCasesFiles" component={SelectedFiles} />
 
-            <Route path="/program/:id" component={ProgramDetail} />
-            <Route path="/study/:id" component={StudyDetail} />
+            <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
-            <Route path="/study_cases/:id" component={Cases} />
             <Route path="/purpose" component={purposeView} />
             <Route path="/steeringCommittee" component={steeringCommiteeView} />
             <Route path="/crdc" component={CRDCView} />
