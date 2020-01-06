@@ -12,7 +12,6 @@ import Error from '../../pages/error/Error';
 
 import Dashboard from '../../pages/dashboard/dashboardController';
 import CaseDetail from '../../pages/caseDetail/caseDetailController';
-import Cases from '../../pages/cases/casesController';
 import modelPage from '../../pages/modelPage/modelPageView';
 import table from '../../pages/table/tableView';
 import SelectedCases from '../../pages/selectedCases/selectedCasesController';
