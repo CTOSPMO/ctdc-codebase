@@ -227,7 +227,7 @@ const StudyDetailView = ({ classes, data }) => {
               <span>
                 {' '}
                 <span>
-                    Study :
+                    Trial :
                   {' '}
                   {' '}
                   {studyData.clinical_study_designation}
