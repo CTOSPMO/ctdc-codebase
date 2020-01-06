@@ -16,7 +16,7 @@ import icon from '../../assets/icons/Icon-StudiesDetail.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 
 
-const Studies = ({ classes, data }) => {
+const Trials = ({ classes, data }) => {
   const initDashboardStatus = () => (dispatch) => Promise.resolve(
     dispatch(fetchDataForDashboardDataTable()),
   );
@@ -101,7 +101,7 @@ const Studies = ({ classes, data }) => {
             <div className={classes.logo}>
               <img
                 src={icon}
-                alt="ICDC case detail header logo"
+                alt="CTDC header logo"
               />
 
             </div>
@@ -109,7 +109,7 @@ const Studies = ({ classes, data }) => {
               <div className={classes.headerMainTitle}>
                 <span>
                   <Typography>
-                    <span className={classes.headerMainTitle}>Studies</span>
+                    <span className={classes.headerMainTitle}>Trials</span>
                   </Typography>
                 </span>
               </div>
@@ -210,4 +210,4 @@ const styles = (theme) => ({
   },
 });
 
-export default withStyles(styles, { withTheme: true })(Studies);
+export default withStyles(styles, { withTheme: true })(Trials);
