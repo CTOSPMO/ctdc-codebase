@@ -23,8 +23,6 @@ const AboutMenu = ({ classes }) => {
         weight="medium"
         aria-controls="simple-menu"
         aria-haspopup="true"
-        // onMouseEnter={handleClick}
-        // onMouseLeave={handleClose}
         onMouseOver={handleClick}
         onFocus={handleClick}
         className={classes.logotype}
