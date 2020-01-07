@@ -16,7 +16,7 @@ import icon from '../../assets/icons/Icon-StudiesDetail.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 
 
-const Studies = ({ classes, data }) => {
+const Trials = ({ classes, data }) => {
   const initDashboardStatus = () => (dispatch) => Promise.resolve(
     dispatch(fetchDataForDashboardDataTable()),
   );
@@ -36,19 +36,19 @@ const Studies = ({ classes, data }) => {
   const columns = [
     {
       name: 'clinical_study_designation',
-      label: 'Study Code',
+      label: 'Trial Code',
       options: {
         filter: false,
         customBodyRender: (value) => (
           <div className="mui_td" style={{ width: '100px' }}>
-            <Link className={classes.link} to={`/study/${value}`}>{value}</Link>
+            <Link className={classes.link} to={`/trial/${value}`}>{value}</Link>
           </div>
         ),
       },
     },
-    { name: 'program_id', label: 'Program' },
-    { name: 'clinical_study_name', label: 'Study Name' },
-    { name: 'clinical_study_type', label: 'Study Type' },
+    { name: 'program_id', label: 'Trial ID' },
+    { name: 'clinical_study_name', label: 'Trial Name' },
+    { name: 'numberOfCases', label: 'Arms' },
     {
       name: 'numberOfCases',
       label: 'Cases',
@@ -101,7 +101,7 @@ const Studies = ({ classes, data }) => {
             <div className={classes.logo}>
               <img
                 src={icon}
-                alt="ICDC case detail header logo"
+                alt="CTDC header logo"
               />
 
             </div>
@@ -109,7 +109,7 @@ const Studies = ({ classes, data }) => {
               <div className={classes.headerMainTitle}>
                 <span>
                   <Typography>
-                    <span className={classes.headerMainTitle}>Studies</span>
+                    <span className={classes.headerMainTitle}>Trials</span>
                   </Typography>
                 </span>
               </div>
@@ -210,4 +210,4 @@ const styles = (theme) => ({
   },
 });
 
-export default withStyles(styles, { withTheme: true })(Studies);
+export default withStyles(styles, { withTheme: true })(Trials);

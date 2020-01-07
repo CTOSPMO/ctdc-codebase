@@ -9,15 +9,15 @@ import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import StatsView from '../../../components/Stats/StatsView';
-import { Typography } from '../../../components/Wrappers/Wrappers';
-import { customSorting } from '../../../utils/dashboardUtilFunctions';
-import cn from '../../../utils/classNameConcat';
-import icon from '../../../assets/icons/Icon-StudiesDetail.svg';
-import { singleCheckBox, fetchDataForDashboardDataTable } from '../../dashboard/dashboardState';
-import CustomBreadcrumb from '../../../components/Breadcrumb/BreadcrumbView';
+import StatsView from '../../components/Stats/StatsView';
+import { Typography } from '../../components/Wrappers/Wrappers';
+import { customSorting } from '../../utils/dashboardUtilFunctions';
+import cn from '../../utils/classNameConcat';
+import icon from '../../assets/icons/Icon-StudiesDetail.svg';
+import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
+import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
-function studyDetailSorting(a, b) {
+function detailSorting(a, b) {
   if (b && !a) {
     return -1;
   }
@@ -140,10 +140,10 @@ const StudyDetailView = ({ classes, data }) => {
       } else {
         // replace cohort does with cohort desc
         arrayDoes = arrayCohortDes;
-        cohortAndDosing.does = arrayDoes.sort((a, b) => studyDetailSorting(a, b)).join('#');
+        cohortAndDosing.does = arrayDoes.sort((a, b) => detailSorting(a, b)).join('#');
       }
     } else {
-      cohortAndDosing.does = arrayDoes.sort((a, b) => studyDetailSorting(a, b)).join('#');
+      cohortAndDosing.does = arrayDoes.sort((a, b) => detailSorting(a, b)).join('#');
     }
     return cohortAndDosing;
   }
@@ -227,7 +227,7 @@ const StudyDetailView = ({ classes, data }) => {
               <span>
                 {' '}
                 <span>
-                    Study :
+                    Trial :
                   {' '}
                   {' '}
                   {studyData.clinical_study_designation}
@@ -366,7 +366,7 @@ const StudyDetailView = ({ classes, data }) => {
                 <Typography>
                   <MUIDataTable
                     data={cohortAndDosingTableData.sort(
-                      (a, b) => studyDetailSorting(a.arm, b.arm),
+                      (a, b) => detailSorting(a.arm, b.arm),
                     )}
                     columns={columns}
                     options={options(classes)}
