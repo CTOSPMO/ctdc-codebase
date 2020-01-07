@@ -23,7 +23,8 @@ const AboutMenu = ({ classes }) => {
         weight="medium"
         aria-controls="simple-menu"
         aria-haspopup="true"
-        onClick={handleClick}
+        onMouseOver={handleClick}
+        onFocus={handleClick}
         className={classes.logotype}
         classes={{ root: classes.buttonRoot }}
         disableRipple
@@ -64,7 +65,7 @@ const AboutMenu = ({ classes }) => {
         }}
       >
         <Paper className={classes.paper}>
-          <div className={classes.aboutItemsWrapper}>
+          <div className={classes.aboutItemsWrapper} onMouseLeave={handleClose}>
             <NavLink
               className={classes.link}
               activeStyle={{ color: 'white' }}
