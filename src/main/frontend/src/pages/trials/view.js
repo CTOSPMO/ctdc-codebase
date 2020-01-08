@@ -37,6 +37,10 @@ const Trials = ({ classes, data }) => {
     {
       name: 'clinical_trial_designation',
       label: 'Trial Code',
+    },
+    {
+      name: 'clinical_trial_id',
+      label: 'Trial ID',
       options: {
         filter: false,
         customBodyRender: (value) => (
@@ -46,7 +50,6 @@ const Trials = ({ classes, data }) => {
         ),
       },
     },
-    { name: 'clinical_trial_id', label: 'Trial ID' },
     { name: 'clinical_trial_short_name', label: 'Trial Name' },
     { name: 'number_of_arms', label: 'Arms' },
     {
