@@ -321,8 +321,8 @@ query casesInList($caseIds: [String!]!) {
 
 
 export const TRIALS_QUERY = gql`{
-  ClinicalTrial{
-  clinical_trial_id
+   clinicalTrials{
+    clinical_trial_id
   clinical_trial_short_name
   clinical_trial_description
   clinical_trial_designation
@@ -330,8 +330,8 @@ export const TRIALS_QUERY = gql`{
   clinical_trial_type
   lead_organization
   principal_investigators
-  number_of_cases
   number_of_arms
+  number_of_cases
     }
 }
   `;
