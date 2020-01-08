@@ -330,8 +330,8 @@ export const TRIALS_QUERY = gql`{
   clinical_trial_type
   lead_organization
   principal_investigators
-  number_Of_cases
-  number_Of_arms
+  number_of_cases
+  number_of_arms
     }
 }
   `;
@@ -348,8 +348,8 @@ query clinicalTrialByTrialId($id: String!) {
   clinical_trial_type
   lead_organization
   principal_investigators
-  number_Of_cases
-  number_Of_arms
+  number_of_cases
+  number_of_arms
 }
 }`;
 
