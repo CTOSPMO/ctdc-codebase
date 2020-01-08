@@ -166,7 +166,7 @@ The tool used to generate this visual may be sourced on Github at:
           </div>
           <div className={classes.imgSection}>
             <TransformComponent>
-              <img src="https://cbiit.github.io/icdc-model-tool/model-desc/icdc-model.svg" alt="ICDC schema" className={classes.img} />
+              <img src="https://cbiit.github.io/ctdc-model/model-desc/ctdc-model.svg" alt="ICDC schema" className={classes.img} />
             </TransformComponent>
           </div>
         </div>
