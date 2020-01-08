@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Grid,
@@ -17,46 +18,24 @@ import icon from '../../assets/icons/Icon-StudiesDetail.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
-function detailSorting(a, b) {
-  if (b && !a) {
-    return -1;
-  }
-  if (!b && a) {
-    return 1;
-  }
-  const aNumber = a.match(/(\d+)/) ? a.match(/(\d+)/)[0] : undefined;
-  const bNumber = b.match(/(\d+)/) ? b.match(/(\d+)/)[0] : undefined;
-  if (aNumber && bNumber) {
-    if (parseInt(bNumber, 10) > parseInt(aNumber, 10)) {
-      return -1;
-    }
-    if (parseInt(bNumber, 10) < parseInt(aNumber, 10)) {
-      return 1;
-    }
-  }
-
-  return customSorting(a, b, 'alphabetical', 0);
-}
 
 const columns = [
-  { name: 'arm', label: 'Arms' },
+  { name: 'arm_id', label: 'Arms' },
   {
-    name: 'description',
-    label: 'Description',
-    options: {
-      customBodyRender: (value) => (
-        value.split('#').map((desc) => (desc === '' ? '' : <li style={{ listStyleType: 'none' }}>{desc}</li>))
-      ),
-    },
+    name: 'arm_drug',
+    label: 'Arm Treatment',
   },
   {
-    name: 'does',
-    label: 'Cohorts',
-    options: {
-      customBodyRender: (value) => (
-        value.split('#').map((desc) => (desc === '' ? '' : <li style={{ listStyleType: 'none' }}>{desc}</li>))
-      ),
-    },
+    name: 'arm_target',
+    label: 'Arm Target',
+  },
+  {
+    name: 'pubmed_id',
+    label: 'PubMed ID',
+  },
+  {
+    name: 'number_of_cases',
+    label: 'Cases',
   },
 ];
 
@@ -87,124 +66,17 @@ const options = (classes) => ({
 });
 
 
-const StudyDetailView = ({ classes, data }) => {
-  const studyData = data.study[0];
-  const diagnoses = [...new Set(studyData.cases.reduce((output, caseData) => output.concat(caseData.diagnoses ? caseData.diagnoses.map((diagnosis) => (diagnosis.disease_term ? diagnosis.disease_term : '')) : []), []))];
-  const fileTypes = [...new Set(data.filesOfStudy.map((fileOfStudy) => (fileOfStudy.file_type)))];
+const TrialView = ({ classes, data }) => {
+  const trialData = data.clinicalTrialByTrialId[0];
   const stat = {
-    numberOfStudies: 1,
-    numberOfCases: data.caseCountOfStudy,
-    numberOfSamples: data.sampleCountOfStudy,
-    numberOfFiles: data.fileCountOfStudy,
-    numberOfBiospecimenAliquots: data.aliguotCountOfStudy,
+    numberOfCases: data.caseCountByTrialId,
+    numberOfTrials: 1,
+    numberOfFiles: data.fileCountByTrialId,
   };
 
-  const initDashboardStatus = () => (dispatch) => Promise.resolve(
-    dispatch(fetchDataForDashboardDataTable()),
-  );
-
-  const dispatch = useDispatch();
-  const redirectTo = () => {
-    dispatch(initDashboardStatus()).then(() => {
-      dispatch(singleCheckBox([{
-        groupName: 'Study',
-        name: studyData.clinical_study_designation,
-        datafield: 'study_code',
-        isChecked: true,
-      }]));
-    });
-  };
-
-  function fromArmTOCohorDoes(cohorts, cohortDosing) {
-    const cohortAndDosing = cohortDosing;
-    let arrayDoes = [];
-    const arrayCohortDes = [];
-    // get cohort_does and cohort_description
-    cohorts.forEach((cohort) => {
-      // get cohort_does
-      if (cohort.cohort_dose
-              && cohort.cohort_dose !== ''
-              && cohort.cohort_dose !== null) {
-        arrayDoes.push(cohort.cohort_dose);
-      }
-      // get cohort_description
-      if (cohort.cohort_description
-              && cohort.cohort_description !== ''
-                && cohort.cohort_description !== null) {
-        arrayCohortDes.push(cohort.cohort_description);
-      }
-    });
-    if (arrayDoes.length === 0) {
-      if (arrayCohortDes.length === 0) {
-        cohortAndDosing.does = '';
-      } else {
-        // replace cohort does with cohort desc
-        arrayDoes = arrayCohortDes;
-        cohortAndDosing.does = arrayDoes.sort((a, b) => detailSorting(a, b)).join('#');
-      }
-    } else {
-      cohortAndDosing.does = arrayDoes.sort((a, b) => detailSorting(a, b)).join('#');
-    }
-    return cohortAndDosing;
-  }
-
-
-  const cohortAndDosingTableData = [];
-  const noArmMessage = 'This study is not divided into arms';
-  const noCohortMessage = 'This study is not divided into cohorts';
-  if (!studyData.cohorts || studyData.cohorts.length === 0) {
-  // no cohort under studyData
-    if (studyData.study_arms && studyData.study_arms.length !== 0) {
-    // no cohort under studyData , has arms
-      studyData.study_arms.forEach((arm) => {
-      // decide arm
-        let cohortAndDosing = {
-          arm: arm.arm || arm.arm === '' ? arm.arm : '',
-          description: arm.description ? arm.description : '',
-          does: '',
-          cohortDescription: '',
-        };
-        cohortAndDosing = fromArmTOCohorDoes(arm.cohorts, cohortAndDosing);
-        cohortAndDosingTableData.push(cohortAndDosing);
-      });
-    } else { // no cohort under studyData no arms
-      cohortAndDosingTableData.push({
-        arm: noArmMessage,
-        description: '',
-        does: noCohortMessage,
-        cohortDescription: '',
-      });
-    }
-  } else if (studyData.study_arms && studyData.study_arms.length !== 0) {
-    // has cohort under studyData and arms
-    studyData.study_arms.forEach((arm) => {
-      // decide arm
-      let cohortAndDosing = {
-        arm: arm.arm || arm.arm === '' ? arm.arm : '',
-        description: arm.description ? arm.description : '',
-        does: '',
-        cohortDescription: '',
-      };
-      cohortAndDosing = fromArmTOCohorDoes(arm.cohorts, cohortAndDosing);
-      cohortAndDosingTableData.push(cohortAndDosing);
-    });
-  } else { // has cohort under studyData , no arms
-    let cohortAndDosing = {
-      arm: noArmMessage,
-      description: '',
-      does: '',
-      cohortDescription: '',
-    };
-    cohortAndDosing = fromArmTOCohorDoes(studyData.cohorts, cohortAndDosing);
-    cohortAndDosingTableData.push(cohortAndDosing);
-  }
 
   const breadCrumbJson = [{
-    name: 'ALL PROGRAMS',
-    to: '/programs',
-    isALink: true,
-  }, {
-    name: studyData.program.program_acronym,
+    name: 'Trials',
     to: '',
     isALink: false,
   }];
@@ -230,14 +102,14 @@ const StudyDetailView = ({ classes, data }) => {
                     Trial :
                   {' '}
                   {' '}
-                  {studyData.clinical_study_designation}
+                  {trialData.clinical_trial_designaion}
                 </span>
               </span>
             </div>
             <div className={cn(classes.headerMSubTitle, classes.headerSubTitleCate)}>
               <span>
                 {' '}
-                {studyData.clinical_study_name}
+                {trialData.clinical_trial_short_name}
               </span>
 
             </div>
@@ -255,7 +127,7 @@ const StudyDetailView = ({ classes, data }) => {
                 <span className={classes.headerButtonLinkNumber}>
                   {' '}
                   {' '}
-                  {data.caseCountOfStudy}
+                  {trialData.number_of_cases}
                   {' '}
                   {' '}
                 </span>
@@ -280,7 +152,7 @@ const StudyDetailView = ({ classes, data }) => {
                   <div>
                     <span className={classes.content}>
                       {' '}
-                      {studyData.clinical_study_description}
+                      {trialData.clinical_trial_description}
                       {' '}
                     </span>
                   </div>
@@ -289,29 +161,30 @@ const StudyDetailView = ({ classes, data }) => {
 
                 <Grid container spacing={8} className={classes.detailContainerItems}>
                   <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}> Study Type:</span>
+                    <span className={classes.title}> Trial ID:</span>
                   </Grid>
                   <Grid item xs={12} spacing={0} className={classes.content}>
-                    {studyData.clinical_study_type}
+                    {trialData.clinical_trial_id}
+                  </Grid>
+                   <Grid item xs={12} className={classes.detailContainerItem}>
+                    <span className={classes.title}> Trial Type:</span>
+                  </Grid>
+                  <Grid item xs={12} spacing={0} className={classes.content}>
+                    {trialData.clinical_trial_type}
+                  </Grid>
+                  <Grid item xs={12} className={classes.detailContainerItem}>
+                    <span className={classes.title}>  Lead Organization:</span>
+                  </Grid>
+                  <Grid item xs={12} spacing={0} className={classes.content}>
+                    {trialData.lead_organization}
                   </Grid>
                   <Grid item xs={12} className={classes.detailContainerItem}>
                     <span className={classes.title}>Principal Investigators:</span>
                   </Grid>
                   <Grid item xs={12} className={classes.content}>
-                    {studyData.principal_investigators ? studyData.principal_investigators.map((principalInvestigator) => (`${principalInvestigator.pi_first_name} ${principalInvestigator.pi_middle_initial} ${principalInvestigator.pi_last_name},  `)) : ''}
+                    {trialData.principalInvestigator}
                   </Grid>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}>Date of IACUC Approval:</span>
-                  </Grid>
-                  <Grid item xs={12} className={classes.content}>
-                    {studyData.date_of_iacuc_approval}
-                  </Grid>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}>Conducted:</span>
-                  </Grid>
-                  <Grid item xs={12} className={classes.content}>
-                    {studyData.dates_of_conduct}
-                  </Grid>
+                 
                 </Grid>
               </Grid>
             </Grid>
@@ -324,14 +197,7 @@ const StudyDetailView = ({ classes, data }) => {
                     </Grid>
                   </Grid>
                   <Grid container spacing={8} className={classes.paddingTop12}>
-                    {diagnoses.sort((a, b) => customSorting(a, b, 'alphabetical')).map((diagnosis) => (
-                      <Grid item xs={12}>
-                        <span className={classes.content}>
-                          {' '}
-                          {diagnosis}
-                        </span>
-                      </Grid>
-                    ))}
+                    
                   </Grid>
                 </Grid>
 
@@ -342,11 +208,7 @@ const StudyDetailView = ({ classes, data }) => {
                     </Grid>
                   </Grid>
                   <Grid container spacing={8} className={classes.paddingTop12}>
-                    {fileTypes.sort((a, b) => customSorting(a, b, 'alphabetical')).map((fileType) => (
-                      <Grid item xs={12}>
-                        <span className={classes.content}>{fileType}</span>
-                      </Grid>
-                    ))}
+                    
                   </Grid>
                 </Grid>
               </Grid>
@@ -358,19 +220,17 @@ const StudyDetailView = ({ classes, data }) => {
 
         <div className={classes.tableDiv}>
           <div className={classes.tableTitle}>
-            <span className={classes.tableHeader}>COHORT AND DOSING</span>
+            <span className={classes.tableHeader}>Trial Arms</span>
           </div>
           <Grid item xs={12}>
             <Grid container spacing={8}>
               <Grid item xs={12}>
                 <Typography>
                   <MUIDataTable
-                    data={cohortAndDosingTableData.sort(
-                      (a, b) => detailSorting(a.arm, b.arm),
-                    )}
-                    columns={columns}
-                    options={options(classes)}
-                  />
+                  data={data.clinicalTrialArmByTrialId}
+                  columns={columns}
+                  options={options(classes)}
+                />
                 </Typography>
               </Grid>
               <Grid item xs={8}>
@@ -629,4 +489,4 @@ const styles = (theme) => ({
 
 });
 
-export default withStyles(styles, { withTheme: true })(StudyDetailView);
+export default withStyles(styles, { withTheme: true })(TrialView);

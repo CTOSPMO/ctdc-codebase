@@ -339,6 +339,10 @@ export const TRIALS_QUERY = gql`{
 
 export const TRIAL_BY_ID_QUERY = gql`
 query clinicalTrialByTrialId($id: String!) {
+
+   caseCountByTrialId(trial_id:$id)
+   fileCountByTrialId(trial_id:$id)
+
   clinicalTrialByTrialId(trial_id: $id) {
   clinical_trial_id
   clinical_trial_short_name
@@ -351,6 +355,14 @@ query clinicalTrialByTrialId($id: String!) {
   number_of_cases
   number_of_arms
 }
+
+clinicalTrialArmByTrialId(trial_id:$id){
+                  arm_id
+                  arm_target
+                  arm_drug
+                  pubmed_id
+                  number_of_cases
+                }
 }`;
 
 export const STATS_QUERY = gql`{

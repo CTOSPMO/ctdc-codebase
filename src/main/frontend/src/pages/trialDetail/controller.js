@@ -1,17 +1,17 @@
 import React from 'react';
 import { Query } from 'react-apollo';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import StudyDetailView from './view';
+import TrialView from './view';
 import { Typography } from '../../components/Wrappers/Wrappers';
-import { GET_STUDY_DETAIL_DATA_QUERY } from '../../utils/graphqlQueries';
+import { TRIAL_BY_ID_QUERY } from '../../utils/graphqlQueries';
 
 const StudyDetailContainer = ({ match }) => (
-  <Query query={GET_STUDY_DETAIL_DATA_QUERY} variables={{ csd: match.params.id }}>
+  <Query query={TRIAL_BY_ID_QUERY} variables={{ id: match.params.id }}>
     {({ data, loading, error }) => (
       loading ? <CircularProgress />
         : (
-          error || !data || !data.study[0] ? <Typography variant="headline" color="warning" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
-            : <StudyDetailView data={data} />
+          error || !data || !data.clinicalTrialByTrialId[0] ? <Typography variant="headline" color="warning" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
+            : <TrialView data={data} />
         )
     )}
   </Query>
