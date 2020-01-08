@@ -35,7 +35,7 @@ const Trials = ({ classes, data }) => {
 
   const columns = [
     {
-      name: 'clinical_study_designation',
+      name: 'clinical_trial_designation',
       label: 'Trial Code',
       options: {
         filter: false,
@@ -46,11 +46,11 @@ const Trials = ({ classes, data }) => {
         ),
       },
     },
-    { name: 'program_id', label: 'Trial ID' },
-    { name: 'clinical_study_name', label: 'Trial Name' },
-    { name: 'numberOfCases', label: 'Arms' },
+    { name: 'clinical_trial_id', label: 'Trial ID' },
+    { name: 'clinical_trial_short_name', label: 'Trial Name' },
+    { name: 'number_of_arms', label: 'Arms' },
     {
-      name: 'numberOfCases',
+      name: 'number_of_cases',
       label: 'Cases',
       options: {
         customBodyRender: (value, tableMeta) => (
@@ -121,7 +121,7 @@ const Trials = ({ classes, data }) => {
             <Grid container>
               <Grid item xs={12}>
                 <MUIDataTable
-                  data={data.studiesByProgram}
+                  data={data.clinicalTrials}
                   columns={columns}
                   options={options(classes)}
                 />

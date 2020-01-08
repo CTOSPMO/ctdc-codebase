@@ -28,7 +28,7 @@ const StatsView = ({ classes, data }) => (
               <div className={classes.statsText}>
                 <Typography weight="bold" size="md">
                   {' '}
-                  {data.numberOfStudies ? data.numberOfStudies : 0}
+                  {data.numberOfTrials ? data.numberOfTrials : 0}
                 </Typography>
                 <div className={classes.marginTop1}>
                   <Typography color="primary" weight="bold">
