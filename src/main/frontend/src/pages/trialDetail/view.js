@@ -90,7 +90,7 @@ const TrialView = ({ classes, data }) => {
           <div className={classes.logo}>
             <img
               src={icon}
-              alt="ICDC case detail header logo"
+              alt="CTDC case detail header logo"
             />
 
           </div>
@@ -102,7 +102,7 @@ const TrialView = ({ classes, data }) => {
                     Trial :
                   {' '}
                   {' '}
-                  {trialData.clinical_trial_designaion}
+                  {trialData.clinical_trial_designation}
                 </span>
               </span>
             </div>
@@ -141,8 +141,22 @@ const TrialView = ({ classes, data }) => {
         <div className={classes.detailContainer}>
 
           <Grid container spacing={8}>
-            <Grid item lg={6} md={6} sm={6} xs={12} className={classes.borderRight}>
+            <Grid item lg={12} md={12} sm={12} xs={12} >
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
+               <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Trial Name</span>
+
+                </Grid>
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.content}>
+                      {' '}
+                      {trialData.clinical_trial_long_name}
+                      {' '}
+                    </span>
+                  </div>
+  
+                </Grid>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Description</span>
 
@@ -182,37 +196,13 @@ const TrialView = ({ classes, data }) => {
                     <span className={classes.title}>Principal Investigators:</span>
                   </Grid>
                   <Grid item xs={12} className={classes.content}>
-                    {trialData.principalInvestigator}
+                    {trialData.principal_investigators}
                   </Grid>
                  
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item lg={6} md={6} sm={6} xs={12} className={classes.borderRight}>
-              <Grid container spacing={16} direction="row" className={classes.detailContainerRight}>
-                <Grid item lg={6} md={6} sm={6} xs={12}>
-                  <Grid container spacing={16}>
-                    <Grid item xs={12}>
-                      <span className={classes.detailContainerHeader}>DIAGNOSES</span>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={8} className={classes.paddingTop12}>
-                    
-                  </Grid>
-                </Grid>
 
-                <Grid item lg={6} md={6} sm={6} xs={12}>
-                  <Grid container spacing={16}>
-                    <Grid item xs={12}>
-                      <span className={classes.detailContainerHeader}>FILE TYPE</span>
-                    </Grid>
-                  </Grid>
-                  <Grid container spacing={8} className={classes.paddingTop12}>
-                    
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
           </Grid>
         </div>
       </div>
