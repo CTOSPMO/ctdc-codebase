@@ -1,0 +1,322 @@
+page: "Home Page"
+refers : "Landing Page"
+tickets: 
+    - 
+      number: "CTDC-61"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-61"
+      type: "User story"
+compents:
+    items:
+      -
+        name : "summarizes"
+        type : "static"
+        api : ""
+        graphql : ""
+        test:
+          - *test1
+          - *test2
+
+
+
+page: "Dashboard Page"
+refers : "Dashboard Page"
+tickets: 
+    - 
+      number: "CTDC-33"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-33"
+      type: "User story"
+    - 
+      number: "CTDC-37"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-37"
+      type: "User story"
+    - 
+      number: "CTDC-35"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-35"
+      type: "User story"
+    - 
+      number: "CTDC-38"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-38"
+      type: "User story"
+
+
+compents:
+    items:
+      -
+        name : "statistics bar: Trials"
+        type : "cypher"
+        cypher: "MATCH (n:clinical_trial) RETURN  count (n)"
+        graphql : "{ numberOfTrials }"
+        test:
+          - "CTDC 89"
+      -
+        name : "statistics bar: Cases"
+        type : "cypher"
+        cypher: "MATCH (n:case) RETURN  count (n)"
+        graphql : "{ numberOfCases }"
+        test:
+          - "CTDC 88"
+      -
+        name : "statistics bar: Files"
+        type : "cypher"
+        cypher: "MATCH (n:file) RETURN  count (n)"
+        graphql : "{ numberOfFiles }"
+        test:
+          - "CTDC 90"
+      -
+        name : "Widgets: Trails and Arms"
+        type : "based on the case grid"
+        test:
+          - "CTDC 91"
+      -
+        name : "Widgets: Diagnosis"
+        type : "based on the case grid"
+        test:
+          - "CTDC 92"
+      -
+        name : "Widgets: Gender"
+        type : "based on the case grid"
+        graphql : ""
+        test:
+          - "CTDC 93"
+      -
+        name : "Widgets: Race"
+        type : "based on the case grid"
+        test:
+          - "CTDC 94"
+      -
+        name : "Widgets: Ethnicity"
+        type : "based on the case grid"
+        test:
+          - "CTDC 95"
+      -
+        name : "Widgets: Format"
+        type : "based on the case grid"
+        test:
+          - "CTDC 96"
+      -
+        name : "Case grid"
+        type : "cypher"
+        refers: "caseOverview"
+        api : ""
+        graphql : ""
+        test:
+          - "CTDC 96"
+         
+
+
+page: "Trials"
+refers : "Studies Page"
+tickets: 
+    - 
+      number: "CTDC-35"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-35"
+      type: "User story"
+ 
+graphql : ""
+compents:
+    
+    items:
+     -
+        name : "statistics bar: Trials"
+        type : "static"
+         
+      -
+        name : "statistics bar: Cases"
+        type : "cypher"
+        api : ""
+        graphql : ""
+        test:
+         
+      -
+        name : "statistics bar: Files"
+        type : "cypher"
+        api : ""
+        graphql : ""
+        test:
+       -
+        name : "Trials Grid"
+        type : "cypher"
+        cypher : "MATCH (t:clinical_trial)-[*5]-(c:case) MATCH (t:clinical_trial)<-[]-(a:arm)  RETURN t.clinical_trial_id as clinical_trial_id,t.clinical_trial_long_name as clinical_trial_long_name,t.clinical_trial_description as clinical_trial_description,t.lead_organization as lead_organization,t.principal_investigators as principal_investigators,t.clinical_trial_type as clinical_trial_type,t.clinical_trial_short_name as clinical_trial_short_name, COUNT(DISTINCT(c)) as number_of_cases,COUNT(DISTINCT(a)) as number_of_arms "
+        graphql : 
+        " clinicalTrials{
+            clinical_trial_id
+          clinical_trial_short_name
+          clinical_trial_description
+          clinical_trial_designation
+          clinical_trial_long_name
+          clinical_trial_type
+          lead_organization
+          principal_investigators
+          number_of_arms
+          number_of_cases
+            }
+        "
+        test:
+        
+        
+
+
+
+page: "Trial Detail"
+refers : "Study Detail"
+tickets: 
+    - 
+      number: "CTDC-77"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-77"
+      type: "User story"
+    - 
+      number: "CTDC-36"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-36"
+      type: "User story"
+
+
+compents:
+    api : ""
+    graphql : ""
+    items:
+      -
+        name : "statistics bar: Trials"
+        type : "static"
+      -
+        name : "statistics bar: Cases"
+        type : "cypher"
+        cypher: "MATCH (n:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  COUNT(DISTINCT(c))"
+        graphql :
+         "query caseCountByTrialId($trial_id: String!){
+              caseCountByTrialId(trial_id:$trial_id)
+          }"
+        test:
+         
+      -
+        name : "statistics bar: Files --------------"
+        type : "cypher"
+        cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(assignment_report)-[*]->(s:specimen)<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
+        graphql : 
+          "query fileCountByTrialId($trial_id: String!){
+              fileCountByTrialId(trial_id:$trial_id)
+          }"
+        test:
+      -
+        name : "Page Details"
+        type : "cypher"
+        cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<--(a:arm)<--(:assignment_report)-[*]->(c:case)  RETURN t.clinical_trial_id as clinical_trial_id,t.clinical_trial_long_name as clinical_trial_long_name,t.clinical_trial_description as clinical_trial_description,t.lead_organization as lead_organization,t.principal_investigators as principal_investigators,t.clinical_trial_type as clinical_trial_type,t.clinical_trial_short_name as clinical_trial_short_name, t.clinical_trial_designation as clinical_trial_designation, COUNT(DISTINCT(c)) as number_of_cases,COUNT(DISTINCT(a)) as number_of_arms"
+        graphql : 
+        "query clinicalTrialByTrialId($trial_id: String!){
+              clinicalTrialByTrialId(trial_id:$trial_id){
+             clinical_trial_id
+            clinical_trial_short_name
+            clinical_trial_description
+            clinical_trial_designation
+            clinical_trial_long_name
+            clinical_trial_type
+            lead_organization
+            principal_investigators
+            number_of_cases
+            number_of_arms
+              }
+          }
+        "
+        test:
+       -
+        name : "Trials and Arms  "
+        type : "cypher"
+        cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<--(a:arm) Optional MATCH(a)<-[*]-(:assignment_report)-[*]->(c:case) Return a.arm_id As arm_id,a.arm_target As arm_target, a.arm_drug As arm_drug , a.pubmed_id As pubmed_id,COUNT(DISTINCT(c)) as number_of_cases"
+        graphql : 
+            "query clinicalTrialArmByTrialId($trial_id: String!){
+                clinicalTrialArmByTrialId(trial_id:$trial_id){
+                  arm_id
+                  arm_target
+                  arm_drug
+                  pubmed_id
+                  number_of_cases
+                }
+            }"
+        test:
+
+
+
+page: "Case Detail"
+refers : "Case Detail"
+tickets: 
+    - 
+      number: "CTDC-39"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-39"
+      type: "User story"
+    - 
+      number: "CTDC-38"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-38"
+      type: "User story"
+    - 
+      number: "CTDC-40"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-40"
+      type: "User story"
+
+
+compents:
+
+    items:
+      -
+        name : "statistics bar: Trials"
+        type : "static"
+      -
+        name : "statistics bar: Cases"
+        type : "static"
+      -
+        name : "statistics bar: Files --------------"
+        type : "cypher"
+        cypher: "MATCH (c:case {case_id:$case_id})<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
+        graphql : 
+          "query fileCountByCaseId($case_id: String!){
+            fileCountByCaseId(case_id:$case_id)
+          }"
+        test:
+      -
+        name : "Page Details"
+        type : "cypher"
+        api : ""
+        graphql : ""
+        test:
+      -
+        name : "Page Details"
+        type : "cypher"
+        api : ""
+        graphql : ""
+        test:
+       -
+        name : "file table"
+        type : "cypher"
+        api : ""
+        graphql : ""
+        test:
+
+
+
+
+page: "My Cases"
+refers : "My Cases"
+tickets: 
+    - 
+      number: "CTDC-41"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-41"
+      type: "User story"
+    - 
+      number: "CTDC-42"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-42"
+      type: "User story"
+    - 
+      number: "CTDC-43"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-43"
+      type: "User story"
+compents:
+    items:
+      -
+        name : "my cases table"
+        type : "dynamic"
+        test:
+      -
+        name : "my file table "
+        type : "dynamic"
+        test:
+
+
+
