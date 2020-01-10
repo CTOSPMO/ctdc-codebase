@@ -1,11 +1,29 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState, useEffect }  from 'react';
 import { withStyles, Link } from '@material-ui/core';
 import Stats from '../../components/Stats/AllStatsController';
 import Header from '../../components/About/HeaderView';
 import l9dg from '../../assets/about/About_Support.jpg';
 import Body from '../../components/About/BodyView';
+import axios from 'axios';
+import yaml from 'js-yaml';
 
-const SupportView = ({ classes }) => (
+const SupportView = ({ classes }) => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(async () => {
+    const result = await axios(
+      'https://raw.githubusercontent.com/CBIIT/bento-static-content/master/CTDC/tmp.yaml',
+    );
+    
+    const yamlData = yaml.safeLoad(result.data);
+    setData(yamlData.section);
+  }, []);
+
+
+  return (
+
   <>
     <Stats />
     <Header title="Support" />
@@ -13,20 +31,18 @@ const SupportView = ({ classes }) => (
       img: l9dg,
       body: (
         <div>
-          {' '}
-If you have any questions,
-        please contact us at
-          <Link href="mailto: ICDCHelpDesk@mail.nih.gov" color="inherit" className={classes.link}>
-            {' '}
-            ICDCHelpDesk@mail.nih.gov
-            {' '}
-          </Link>
-          .
+        {
+          data.map(item => (
+          <p dangerouslySetInnerHTML={{__html: item }} />
+          ))
+        }
         </div>),
     }}
     />
   </>
-);
+   
+  );
+};
 
 const styles = () => ({
   linkIcon: {
