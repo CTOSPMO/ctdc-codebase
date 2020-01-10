@@ -287,14 +287,26 @@ compents:
       -
         name : "Page Details"
         type : "cypher"
-        api : ""
-        graphql : ""
-        test:
-      -
-        name : "Page Details"
-        type : "cypher"
-        api : ""
-        graphql : ""
+        cypher : "MATCH (t:clinical_trial)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case  {case_id:$case_id}) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity,t.clinical_trial_designation as clinical_trial_code,COLLECT(DISTINCT(a)) AS arms"
+        graphql : 
+          "query caseDetailByCaseId($case_id: String!){
+          caseDetailByCaseId(case_id:$case_id){
+            case_id
+            clinical_trial_code
+            arm_id
+            arm_drug
+            disease
+            gender
+            race
+            arm_target
+            arms{
+                arm_id
+                arm_target
+                arm_drug
+            }
+            ethnicity
+          }
+      }"
         test:
        -
         name : "file table"
