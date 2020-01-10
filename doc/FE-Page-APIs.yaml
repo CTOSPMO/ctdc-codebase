@@ -97,8 +97,19 @@ compents:
         name : "Case grid"
         type : "cypher"
         refers: "caseOverview"
-        api : ""
-        graphql : ""
+        cypher : "MATCH (t:clinical_trial)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,t.clinical_trial_designation as clinical_trial_code,a.arm_id As arm_id, a.arm_drug As arm_drug, c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity"
+        graphql : "{
+        caseOverview{
+          case_id
+          clinical_trial_code
+          arm_id
+          arm_drug
+          disease
+          gender
+          race
+          ethnicity
+        }
+        }"
         test:
           - "CTDC 96"
          
@@ -116,22 +127,27 @@ graphql : ""
 compents:
     
     items:
-     -
+      -
         name : "statistics bar: Trials"
         type : "static"
-         
       -
         name : "statistics bar: Cases"
         type : "cypher"
-        api : ""
-        graphql : ""
+        cypher: "MATCH (n:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  COUNT(DISTINCT(c))"
+        graphql :
+         "query caseCountByTrialId($trial_id: String!){
+              caseCountByTrialId(trial_id:$trial_id)
+          }"
         test:
          
       -
         name : "statistics bar: Files"
         type : "cypher"
-        api : ""
-        graphql : ""
+        cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(assignment_report)-[*]->(s:specimen)<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
+        graphql : 
+          "query fileCountByTrialId($trial_id: String!){
+              fileCountByTrialId(trial_id:$trial_id)
+          }"
         test:
        -
         name : "Trials Grid"
@@ -171,8 +187,6 @@ tickets:
 
 
 compents:
-    api : ""
-    graphql : ""
     items:
       -
         name : "statistics bar: Trials"
