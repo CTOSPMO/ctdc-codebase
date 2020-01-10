@@ -41,6 +41,67 @@ tickets:
 
 compents:
     items:
+      - 
+         name : "filter cate : Trial Code"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Trial ID "
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : PubMed ID"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Trial Arm"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Diagnosis"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Gender"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Race"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Ethnicity"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Associated File Type"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+      -
+         name : "filter cate : Associated File Format"
+         type: "cypher"
+         cypher:
+         graphql:
+         test:
+
       -
         name : "statistics bar: Trials"
         type : "cypher"
@@ -255,10 +316,6 @@ tickets:
     - 
       number: "CTDC-39"
       link: "https://tracker.nci.nih.gov/browse/CTDC-39"
-      type: "User story"
-    - 
-      number: "CTDC-38"
-      link: "https://tracker.nci.nih.gov/browse/CTDC-38"
       type: "User story"
     - 
       number: "CTDC-40"
