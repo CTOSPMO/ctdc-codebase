@@ -44,35 +44,41 @@ compents:
       - 
          name : "filter cate : Trial Code"
          type: "cypher"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-212"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Trial ID "
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-213"
          type: "cypher"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : PubMed ID"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-214"
          type: "cypher"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Trial Arm"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-215"
          type: "cypher"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Diagnosis"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-217"
          type: "cypher"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Gender"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-218"
          type: "cypher"
          cypher:
          graphql:
@@ -80,11 +86,13 @@ compents:
       -
          name : "filter cate : Race"
          type: "cypher"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-219"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Ethnicity"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-220"
          type: "cypher"
          cypher:
          graphql:
@@ -92,11 +100,13 @@ compents:
       -
          name : "filter cate : Associated File Type"
          type: "cypher"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-221"
          cypher:
          graphql:
          test:
       -
          name : "filter cate : Associated File Format"
+         implements: "https://tracker.nci.nih.gov/browse/CTDC-222"
          type: "cypher"
          cypher:
          graphql:
@@ -105,6 +115,7 @@ compents:
       -
         name : "statistics bar: Trials"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-153"
         cypher: "MATCH (n:clinical_trial) RETURN  count (n)"
         graphql : "{ numberOfTrials }"
         test:
@@ -112,6 +123,7 @@ compents:
       -
         name : "statistics bar: Cases"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-154"
         cypher: "MATCH (n:case) RETURN  count (n)"
         graphql : "{ numberOfCases }"
         test:
@@ -119,6 +131,7 @@ compents:
       -
         name : "statistics bar: Files"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-155"
         cypher: "MATCH (n:file) RETURN  count (n)"
         graphql : "{ numberOfFiles }"
         test:
@@ -194,6 +207,7 @@ compents:
       -
         name : "statistics bar: Cases"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-165"
         cypher: "MATCH (n:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  COUNT(DISTINCT(c))"
         graphql :
          "query caseCountByTrialId($trial_id: String!){
@@ -204,6 +218,7 @@ compents:
       -
         name : "statistics bar: Files"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-166"
         cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(assignment_report)-[*]->(s:specimen)<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
         graphql : 
           "query fileCountByTrialId($trial_id: String!){
@@ -213,6 +228,7 @@ compents:
        -
         name : "Trials Grid"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-167"
         cypher : "MATCH (t:clinical_trial)-[*5]-(c:case) MATCH (t:clinical_trial)<-[]-(a:arm)  RETURN t.clinical_trial_id as clinical_trial_id,t.clinical_trial_long_name as clinical_trial_long_name,t.clinical_trial_description as clinical_trial_description,t.lead_organization as lead_organization,t.principal_investigators as principal_investigators,t.clinical_trial_type as clinical_trial_type,t.clinical_trial_short_name as clinical_trial_short_name, COUNT(DISTINCT(c)) as number_of_cases,COUNT(DISTINCT(a)) as number_of_arms "
         graphql : 
         " clinicalTrials{
@@ -250,30 +266,9 @@ tickets:
 compents:
     items:
       -
-        name : "statistics bar: Trials"
-        type : "static"
-      -
-        name : "statistics bar: Cases"
-        type : "cypher"
-        cypher: "MATCH (n:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  COUNT(DISTINCT(c))"
-        graphql :
-         "query caseCountByTrialId($trial_id: String!){
-              caseCountByTrialId(trial_id:$trial_id)
-          }"
-        test:
-         
-      -
-        name : "statistics bar: Files --------------"
-        type : "cypher"
-        cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(assignment_report)-[*]->(s:specimen)<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
-        graphql : 
-          "query fileCountByTrialId($trial_id: String!){
-              fileCountByTrialId(trial_id:$trial_id)
-          }"
-        test:
-      -
         name : "Page Details"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-180"
         cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<--(a:arm)<--(:assignment_report)-[*]->(c:case)  RETURN t.clinical_trial_id as clinical_trial_id,t.clinical_trial_long_name as clinical_trial_long_name,t.clinical_trial_description as clinical_trial_description,t.lead_organization as lead_organization,t.principal_investigators as principal_investigators,t.clinical_trial_type as clinical_trial_type,t.clinical_trial_short_name as clinical_trial_short_name, t.clinical_trial_designation as clinical_trial_designation, COUNT(DISTINCT(c)) as number_of_cases,COUNT(DISTINCT(a)) as number_of_arms"
         graphql : 
         "query clinicalTrialByTrialId($trial_id: String!){
@@ -295,6 +290,7 @@ compents:
        -
         name : "Trials and Arms  "
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-172"
         cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<--(a:arm) Optional MATCH(a)<-[*]-(:assignment_report)-[*]->(c:case) Return a.arm_id As arm_id,a.arm_target As arm_target, a.arm_drug As arm_drug , a.pubmed_id As pubmed_id,COUNT(DISTINCT(c)) as number_of_cases"
         graphql : 
             "query clinicalTrialArmByTrialId($trial_id: String!){
@@ -333,8 +329,9 @@ compents:
         name : "statistics bar: Cases"
         type : "static"
       -
-        name : "statistics bar: Files --------------"
+        name : "statistics bar: Files"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-169"
         cypher: "MATCH (c:case {case_id:$case_id})<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
         graphql : 
           "query fileCountByCaseId($case_id: String!){
@@ -344,6 +341,7 @@ compents:
       -
         name : "Page Details"
         type : "cypher"
+        implements: "https://tracker.nci.nih.gov/browse/CTDC-211"
         cypher : "MATCH (t:clinical_trial)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case  {case_id:$case_id}) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity,t.clinical_trial_designation as clinical_trial_code,COLLECT(DISTINCT(a)) AS arms"
         graphql : 
           "query caseDetailByCaseId($case_id: String!){
