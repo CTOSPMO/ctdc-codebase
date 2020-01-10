@@ -97,8 +97,19 @@ compents:
         name : "Case grid"
         type : "cypher"
         refers: "caseOverview"
-        api : ""
-        graphql : ""
+        cypher : "MATCH (t:clinical_trial)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,t.clinical_trial_designation as clinical_trial_code,a.arm_id As arm_id, a.arm_drug As arm_drug, c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity"
+        graphql : "{
+        caseOverview{
+          case_id
+          clinical_trial_code
+          arm_id
+          arm_drug
+          disease
+          gender
+          race
+          ethnicity
+        }
+        }"
         test:
           - "CTDC 96"
          
@@ -130,7 +141,7 @@ compents:
         test:
          
       -
-        name : "statistics bar: Files --------------"
+        name : "statistics bar: Files"
         type : "cypher"
         cypher : "MATCH (t:clinical_trial {clinical_trial_id:$trial_id})<-[*]-(assignment_report)-[*]->(s:specimen)<-[*]-(f:file) RETURN  COUNT(DISTINCT(f))"
         graphql : 
