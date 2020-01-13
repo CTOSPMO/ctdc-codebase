@@ -1,82 +1,18 @@
 import gql from 'graphql-tag';
 
 export const DASHBOARD_QUERY = gql`{
-    numberOfStudies
+    numberOfTrials
     numberOfCases
-    numberOfSamples
     numberOfFiles
-    numberOfAliquots
-
-    
-    caseCountByFileFormat{
-      file_format
-       cases
-    }
-    caseCountByBreed {
-      cases
-      breed
-    }
-    caseCountByGender {
-      cases
-      gender
-    }
-    caseCountByDiagnosis {
-      cases
-      diagnosis
-    }
-    caseCountByDiseaseSite { 
-      cases
-      disease_site 
-    }
-    caseCountByStageOfDisease { 
-      cases
-      stage_of_disease 
-    }
-
-    caseCountByStudyCode{
-      study_code
-     cases
-    }
-
-   caseCountByStudyType {
-     study_type
-     cases
-    }
-
-    caseCountByAge {
-     age
-     cases
-    }
-
-    caseCountByDataType {
-     data_type
-     cases
-    }
-    caseCountByProgram {
-     program
-     cases
-    }
-
    caseOverview{   
-        case_id  
-        program
-        study_code   
-        study_type   
-        breed   
-        diagnosis   
-        stage_of_disease   
-        age   
-        sex   
-        neutered_status
-        data_types
-        disease_site
-        samples
-        files{
-          uuid
-          file_format
-          file_type
-        }
-        file_formats
+        case_id
+        clinical_trial_code
+        arm_id
+        arm_drug
+        disease
+        gender
+        race
+        ethnicity
      }
   }`;
 

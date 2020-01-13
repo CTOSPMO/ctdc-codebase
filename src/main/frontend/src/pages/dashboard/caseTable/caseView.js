@@ -39,22 +39,22 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'study_code',
-    label: 'Study Code',
+    name: 'clinical_trial_code',
+    label: 'Trial Code',
     options: {
       filter: false,
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(0.6)}>
 
-          <Link to={`/study/${value}`} className={classes.link}>{value}</Link>
+          <Link to={`/trials/${value}`} className={classes.link}>{value}</Link>
 
         </div>
       ),
     },
   },
   {
-    name: 'study_type',
-    label: 'Study Type',
+    name: 'arm_id',
+    label: 'Arm',
     options: {
       filter: false,
       sortDirection: 'asc',
@@ -68,8 +68,8 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'breed',
-    label: 'Breed',
+    name: 'arm_drug',
+    label: 'Arm Treatment',
     options: {
       filter: false,
       sortDirection: 'asc',
@@ -83,7 +83,7 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'diagnosis',
+    name: 'disease',
     label: 'Diagnosis',
     options: {
       filter: false,
@@ -98,8 +98,8 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'stage_of_disease',
-    label: 'Stage of Disease',
+    name: 'gender',
+    label: 'Gender',
     options: {
       filter: false,
       sortDirection: 'asc',
@@ -113,8 +113,8 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'age',
-    label: 'Age',
+    name: 'race',
+    label: 'Race',
     options: {
       filter: false,
       sortDirection: 'asc',
@@ -128,28 +128,13 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'sex',
-    label: 'Sex',
+    name: 'ethnicity',
+    label: 'Ethnicity',
     options: {
       filter: false,
       sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(0.5)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'neutered_status',
-    label: 'Neutered Status',
-    options: {
-      filter: false,
-      sortDirection: 'asc',
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(0.8)}>
           {' '}
           {value}
           {' '}

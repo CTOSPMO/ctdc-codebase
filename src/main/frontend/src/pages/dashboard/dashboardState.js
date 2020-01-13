@@ -7,7 +7,7 @@ import {
   filterData,
   getFilters,
   getCheckBoxData,
-  customCheckBox,
+  // customCheckBox, This need to un commented while adding filters
 } from '../../utils/dashboardUtilFunctions';
 
 
@@ -148,12 +148,12 @@ export default function dashboardReducer(state = initialState, action) {
           filters: dataTableFilters,
         },
         widgets: {
-          studiesByProgram: getSunburstDataFromDashboardData(tableData),
-          caseCountByBreed: getDonutDataFromDashboardData(tableData, 'breed'),
-          caseCountByDiagnosis: getDonutDataFromDashboardData(tableData, 'diagnosis'),
-          caseCountByDiseaseSite: getDonutDataFromDashboardData(tableData, 'disease_site'),
-          caseCountByGender: getDonutDataFromDashboardData(tableData, 'sex'),
-          caseCountByStageOfDisease: getDonutDataFromDashboardData(tableData, 'stage_of_disease'),
+          armsByTrial: getSunburstDataFromDashboardData(tableData),
+          caseCountByDisease: getDonutDataFromDashboardData(tableData, 'disease'),
+          caseCountByGender: getDonutDataFromDashboardData(tableData, 'gender'),
+          caseCountByRace: getDonutDataFromDashboardData(tableData, 'race'),
+          caseCountByEthnicity: getDonutDataFromDashboardData(tableData, 'ethnicity'),
+          caseCountByFileFormat: getDonutDataFromDashboardData(tableData, 'file_format'),
         },
       };
     }
@@ -187,18 +187,20 @@ export default function dashboardReducer(state = initialState, action) {
           filters: dataTableFilters,
         },
         widgets: {
-          studiesByProgram: getSunburstDataFromDashboardData(tableData),
-          caseCountByBreed: getDonutDataFromDashboardData(tableData, 'breed'),
-          caseCountByDiagnosis: getDonutDataFromDashboardData(tableData, 'diagnosis'),
-          caseCountByDiseaseSite: getDonutDataFromDashboardData(tableData, 'disease_site'),
-          caseCountByGender: getDonutDataFromDashboardData(tableData, 'sex'),
-          caseCountByStageOfDisease: getDonutDataFromDashboardData(tableData, 'stage_of_disease'),
+          armsByTrial: getSunburstDataFromDashboardData(tableData),
+          caseCountByDisease: getDonutDataFromDashboardData(tableData, 'disease'),
+          caseCountByGender: getDonutDataFromDashboardData(tableData, 'gender'),
+          caseCountByRace: getDonutDataFromDashboardData(tableData, 'race'),
+          caseCountByEthnicity: getDonutDataFromDashboardData(tableData, 'ethnicity'),
+          caseCountByFileFormat: getDonutDataFromDashboardData(tableData, 'file_format'),
         },
       };
     }
     case RECEIVE_DASHBOARD: {
       // get action data
-      const checkboxData = customCheckBox(action.payload.data);
+      // Below line need to un commented while adding filters
+      // const checkboxData = customCheckBox(action.payload.data);
+      const checkboxData = [];
       return action.payload.data
         ? {
           ...state.dashboard,
@@ -227,12 +229,12 @@ export default function dashboardReducer(state = initialState, action) {
             filters: [],
           },
           widgets: {
-            studiesByProgram: getSunburstDataFromDashboardData(action.payload.data.caseOverview),
-            caseCountByBreed: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'breed'),
-            caseCountByDiagnosis: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'diagnosis'),
-            caseCountByDiseaseSite: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'disease_site'),
-            caseCountByGender: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'sex'),
-            caseCountByStageOfDisease: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'stage_of_disease'),
+            armsByTrial: getSunburstDataFromDashboardData(action.payload.data.caseOverview),
+            caseCountByDisease: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'disease'),
+            caseCountByGender: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'gender'),
+            caseCountByRace: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'race'),
+            caseCountByEthnicity: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'ethnicity'),
+            caseCountByFileFormat: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'file_format'),
           },
 
         } : { ...state };
