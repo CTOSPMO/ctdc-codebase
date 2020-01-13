@@ -58,7 +58,7 @@ const Dashboard = ({
             <Grid container spacing={8}>
               <Grid item lg={4} md={6} sm={12} xs={12}>
                 <Widget
-                  title="Programs and Studies"
+                  title="Trials and Arms"
                   upperTitle
                   bodyClass={classes.fullHeightBody}
                   className={classes.card}
@@ -67,7 +67,7 @@ const Dashboard = ({
                 >
                   <div className={classes.marginTop18}>
                     <ProgramSunburst
-                      data={data.studiesByProgram}
+                      data={data.armsByTrial}
                       width={250}
                       height={180}
                       innerRadius={40}
@@ -81,27 +81,6 @@ const Dashboard = ({
               </Grid>
               <Grid item lg={4} md={6} sm={12} xs={12}>
                 <Widget
-                  title="Breed"
-                  upperTitle
-                  bodyClass={classes.fullHeightBody}
-                  className={classes.card}
-                  color="textWithBackground"
-                  customBackGround
-                >
-                  <CustomActiveDonut
-                    data={data.caseCountByBreed}
-                    width={400}
-                    height={225}
-                    innerRadius={50}
-                    outerRadius={75}
-                    cx="50%"
-                    cy="50%"
-                    textColor={theme.palette.widgetBackground.contrastText}
-                  />
-                </Widget>
-              </Grid>
-              <Grid item lg={4} md={6} sm={12} xs={12}>
-                <Widget
                   title="Diagnosis"
                   upperTitle
                   bodyClass={classes.fullHeightBody}
@@ -110,31 +89,7 @@ const Dashboard = ({
                   customBackGround
                 >
                   <CustomActiveDonut
-                    data={data.caseCountByDiagnosis}
-                    width={400}
-                    height={225}
-                    innerRadius={50}
-                    outerRadius={75}
-                    cx="50%"
-                    cy="50%"
-                    textColor={theme.palette.widgetBackground.contrastText}
-                  />
-                </Widget>
-              </Grid>
-              {/* </Grid> */}
-              {/* second row Grids */}
-              {/* <Grid container spacing={32}> */}
-              <Grid item lg={4} md={6} sm={12} xs={12}>
-                <Widget
-                  title="Disease Site"
-                  upperTitle
-                  bodyClass={classes.fullHeightBody}
-                  className={classes.card}
-                  color="textWithBackground"
-                  customBackGround
-                >
-                  <CustomActiveDonut
-                    data={data.caseCountByDiseaseSite}
+                    data={data.caseCountByDisease}
                     width={400}
                     height={225}
                     innerRadius={50}
@@ -166,9 +121,12 @@ const Dashboard = ({
                   />
                 </Widget>
               </Grid>
+              {/* </Grid> */}
+              {/* second row Grids */}
+              {/* <Grid container spacing={32}> */}
               <Grid item lg={4} md={6} sm={12} xs={12}>
                 <Widget
-                  title="Stage of Disease"
+                  title="Race"
                   upperTitle
                   bodyClass={classes.fullHeightBody}
                   className={classes.card}
@@ -176,7 +134,49 @@ const Dashboard = ({
                   customBackGround
                 >
                   <CustomActiveDonut
-                    data={data.caseCountByStageOfDisease}
+                    data={data.caseCountByRace}
+                    width={400}
+                    height={225}
+                    innerRadius={50}
+                    outerRadius={75}
+                    cx="50%"
+                    cy="50%"
+                    textColor={theme.palette.widgetBackground.contrastText}
+                  />
+                </Widget>
+              </Grid>
+              <Grid item lg={4} md={6} sm={12} xs={12}>
+                <Widget
+                  title="Ethnicity"
+                  upperTitle
+                  bodyClass={classes.fullHeightBody}
+                  className={classes.card}
+                  color="textWithBackground"
+                  customBackGround
+                >
+                  <CustomActiveDonut
+                    data={data.caseCountByEthnicity}
+                    width={400}
+                    height={225}
+                    innerRadius={50}
+                    outerRadius={75}
+                    cx="50%"
+                    cy="50%"
+                    textColor={theme.palette.widgetBackground.contrastText}
+                  />
+                </Widget>
+              </Grid>
+              <Grid item lg={4} md={6} sm={12} xs={12}>
+                <Widget
+                  title="File Format"
+                  upperTitle
+                  bodyClass={classes.fullHeightBody}
+                  className={classes.card}
+                  color="textWithBackground"
+                  customBackGround
+                >
+                  <CustomActiveDonut
+                    data={data.caseCountByFileFormat}
                     width={400}
                     height={225}
                     innerRadius={50}
