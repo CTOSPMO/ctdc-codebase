@@ -8,6 +8,13 @@ export const COLORS = [
   '#287d6d',
   '#af66ff',
 ];
+export const COLORS_LEVEL_2 = [
+  '#194563',
+  '#fc4b5b',
+  '#2b69a3',
+  '#287d6d',
+  '#af66ff',
+];
 
 
 const NOT_PROVIDED = 'Not Specified';
@@ -81,36 +88,36 @@ export function getSunburstDataFromDashboardData(data) {
   const widgetData = [];
   let colorIndex = 0;
   data.forEach((d) => {
-    let existProgram = false;
-    let existStudy = false;
-    widgetData.map((p) => {
-      if (p.title === d.program) { // program exist
-        existProgram = true;
-        p.children.map((study) => {
-          const s = study;
-          if (s.title === d.study_code) { // study exist
-            existStudy = true;
-            s.size += 1;
+    let existTrial = false;
+    let existArm = false;
+    widgetData.map((trial) => {
+      if (trial.title === d.clinical_trial_code) { // program exist
+        existTrial = true;
+        trial.children.map((arm) => {
+          const armID = arm;
+          if (armID.title === d.arm_id) { // arm exist
+            existArm = true;
+            armID.size += 1;
           }
-          return s;
-        }); // end find study
-        if (!existStudy) { // new study
-          p.children.push({
-            title: d.study_code,
-            color: p.color,
+          return armID;
+        }); // end find arm
+        if (!existArm) { // new arm
+          trial.children.push({
+            title: d.arm_id,
+            color: COLORS_LEVEL_2[trial.children.length % COLORS_LEVEL_2.length],
             size: 1,
           });
         }
       }
-      return p;
-    }); // end find program
+      return trial;
+    }); // end find Trial
 
-    if (!existProgram && !existStudy) {
+    if (!existTrial && !existArm) {
       widgetData.push({
-        title: d.program,
+        title: d.clinical_trial_code,
         color: COLORS[parseInt(colorIndex, 10)],
         children: [{
-          title: d.study_code,
+          title: d.arm_id,
           color: COLORS[parseInt(colorIndex, 10)],
           size: 1,
         }],
