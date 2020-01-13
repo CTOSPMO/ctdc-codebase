@@ -95,7 +95,14 @@ compents:
          implements: "https://tracker.nci.nih.gov/browse/CTDC-217"
          type: "cypher"
          cypher:
+          "MATCH (c:case) RETURN  c.disease AS disease ,count(DISTINCT(c)) AS cases ORDER BY c.disease"
          graphql:
+          "      { 
+              casesCountBaseOnDiagnosis {
+                  disease
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Gender"
@@ -145,13 +152,26 @@ compents:
          implements: "https://tracker.nci.nih.gov/browse/CTDC-221"
          cypher:
          graphql:
+          "{ 
+              casesCountBaseOnFileType {
+                  file_type
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Associated File Format"
          implements: "https://tracker.nci.nih.gov/browse/CTDC-222"
          type: "cypher"
          cypher:
+         "MATCH (f:file)  OPTIONAL MATCH (c:case)<-[*]-(f:file) RETURN f.file_format As file_format  ,count(DISTINCT(c)) AS cases ORDER BY f.file_format"
          graphql:
+          "{ 
+            casesCountBaseOnFileFormat {
+                file_format
+                cases
+            }
+        }"
          test:
 
       -
