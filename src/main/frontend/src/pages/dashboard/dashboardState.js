@@ -7,7 +7,7 @@ import {
   filterData,
   getFilters,
   getCheckBoxData,
-  // customCheckBox, This need to un commented while adding filters
+  customCheckBox,
 } from '../../utils/dashboardUtilFunctions';
 
 
@@ -198,9 +198,7 @@ export default function dashboardReducer(state = initialState, action) {
     }
     case RECEIVE_DASHBOARD: {
       // get action data
-      // Below line need to un commented while adding filters
-      // const checkboxData = customCheckBox(action.payload.data);
-      const checkboxData = [];
+      const checkboxData = customCheckBox(action.payload.data);
       return action.payload.data
         ? {
           ...state.dashboard,
