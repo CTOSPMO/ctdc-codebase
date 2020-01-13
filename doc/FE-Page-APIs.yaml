@@ -42,25 +42,46 @@ tickets:
 compents:
     items:
       - 
-         name : "filter cate : Trial Code"
+         name : "filter cate : Trial Id"
          type: "cypher"
          implements: "https://tracker.nci.nih.gov/browse/CTDC-212"
          cypher:
+          "MATCH (t:clinical_trial) OPTIONAL MATCH (t)<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  t.clinical_trial_id AS clinical_trial_id ,count(DISTINCT(c)) AS cases ORDER BY t.clinical_trial_id"
          graphql:
+          "{ 
+              TrialIdCaseCount {
+                  clinical_trial_id
+                  cases
+              }
+          }"
          test:
       -
-         name : "filter cate : Trial ID "
+         name : "filter cate : Trial Code "
          implements: "https://tracker.nci.nih.gov/browse/CTDC-213"
          type: "cypher"
          cypher:
+          "MATCH (t:clinical_trial) OPTIONAL MATCH (t)<-[*]-(:assignment_report)-[*]->(c:case)  RETURN  t.clinical_trial_id AS clinical_trial_id ,count(DISTINCT(c)) AS cases ORDER BY t.clinical_trial_id"
          graphql:
+          "{ 
+              casesCountBaseOnTrialCode {
+                  clinical_trial_designation
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : PubMed ID"
          implements: "https://tracker.nci.nih.gov/browse/CTDC-214"
          type: "cypher"
          cypher:
+          "MATCH (a:arm) OPTIONAL MATCH (t)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case) RETURN  a.pubmed_id AS pubmed_id,count(DISTINCT(c)) AS cases ORDER BY a.pubmed_id"
          graphql:
+          "{ 
+              casesCountBaseOnPubMedID {
+                  pubmed_id
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Trial Arm"
@@ -81,21 +102,42 @@ compents:
          implements: "https://tracker.nci.nih.gov/browse/CTDC-218"
          type: "cypher"
          cypher:
+          "MATCH (c:case) RETURN  c.gender AS gender ,count(DISTINCT(c)) AS cases ORDER BY c.gender"
          graphql:
+          "{ 
+              casesCountBaseOnGender {
+                  gender
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Race"
          type: "cypher"
          implements: "https://tracker.nci.nih.gov/browse/CTDC-219"
          cypher:
+          "MATCH (c:case) RETURN  c.race AS race,count(DISTINCT(c)) AS cases ORDER BY c.race"
          graphql:
+          "{ 
+              casesCountBaseOnRace {
+                  race
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Ethnicity"
          implements: "https://tracker.nci.nih.gov/browse/CTDC-220"
          type: "cypher"
          cypher:
+          "MATCH (c:case)  RETURN  c.ethnicity AS ethnicity ,count(DISTINCT(c)) AS cases ORDER BY c.ethnicity"
          graphql:
+          "{ 
+              casesCountBaseOnEthnicity {
+                  ethnicity
+                  cases
+              }
+          }"
          test:
       -
          name : "filter cate : Associated File Type"
