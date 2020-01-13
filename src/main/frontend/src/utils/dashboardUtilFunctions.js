@@ -21,34 +21,34 @@ const NOT_PROVIDED = 'Not Specified';
 
 export const mappingCheckBoxToDataTable = [
   {
-    group: 'Trial Code', field: 'clinical_trial', api: 'caseCountByStudyCode', datafield: 'clinical_trial_designation', show: true,
+    group: 'Trial Code', field: 'clinical_trial_designation', api: 'casesCountBaseOnTrialCode', datafield: 'clinical_trial_designation', show: true,
   },
   {
-    group: 'Trial ID', field: 'clinical_trial', api: 'caseCountByStudyType', datafield: 'clinical_trial_id', show: true,
+    group: 'Trial ID', field: 'clinical_trial_id', api: 'casesCountBaseOnTrialId', datafield: 'clinical_trial_id', show: true,
   },
   {
-    group: 'PubMed ID', field: 'arm', api: 'caseCountByBreed', datafield: 'pubmed_id', show: true,
+    group: 'PubMed ID', field: 'pubmed_id', api: 'casesCountBaseOnPubMedID', datafield: 'pubmed_id', show: true,
   },
   {
-    group: 'Trial Arm', field: 'arm', api: 'caseCountByBreed', datafield: 'arm_id', show: true,
+    group: 'Trial Arm', field: 'pubmed_id', api: 'casesCountBaseOnPubMedID', datafield: 'pubmed_id', show: true,
   },
   {
-    group: 'Diagnosis', field: 'disease', api: 'caseCountByDiagnosis', datafield: 'disease', show: true,
+    group: 'Diagnosis', field: 'disease', api: 'casesCountBaseOnDiagnosis', datafield: 'disease', show: true,
   },
   {
-    group: 'Gender', field: 'gender', api: 'caseCountByGender', datafield: 'gender', show: true,
+    group: 'Gender', field: 'gender', api: 'casesCountBaseOnGender', datafield: 'gender', show: true,
   },
   {
-    group: 'Race', field: 'race', api: 'caseCountByDiseaseSite', datafield: 'race', show: true,
+    group: 'Race', field: 'race', api: 'casesCountBaseOnRace', datafield: 'race', show: true,
   },
   {
-    group: 'Ethnicity', field: 'ethnicity', api: 'caseCountByStageOfDisease', datafield: 'ethnicity', show: true,
+    group: 'Ethnicity', field: 'ethnicity', api: 'casesCountBaseOnEthnicity', datafield: 'ethnicity', show: true,
   },
   {
-    group: 'Associated File Type', field: 'file_type', api: 'caseCountByDataType', datafield: 'file_type', show: true,
+    group: 'Associated File Type', field: 'file_type', api: 'casesCountBaseOnFileType', datafield: 'file_type', show: true,
   },
   {
-    group: 'Associated File Format', field: 'file_format', api: 'caseCountByFileFormat', datafield: 'file_formats', show: true,
+    group: 'Associated File Format', field: 'file_format', api: 'casesCountBaseOnFileFormat', datafield: 'file_formats', show: true,
   },
 
 

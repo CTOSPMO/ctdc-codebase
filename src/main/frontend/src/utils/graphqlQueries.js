@@ -4,6 +4,45 @@ export const DASHBOARD_QUERY = gql`{
     numberOfTrials
     numberOfCases
     numberOfFiles
+
+     casesCountBaseOnTrialId {
+        clinical_trial_id
+        cases
+    }
+     casesCountBaseOnTrialCode {
+        clinical_trial_designation
+        cases
+    }
+     casesCountBaseOnPubMedID {
+        pubmed_id
+        cases
+    }
+     casesCountBaseOnGender {
+        gender
+        cases
+    }
+     casesCountBaseOnRace {
+        race
+        cases
+    }
+    casesCountBaseOnEthnicity {
+        ethnicity
+        cases
+    }
+
+    casesCountBaseOnDiagnosis {
+        disease
+        cases
+    }
+     casesCountBaseOnFileType {
+        file_type
+        cases
+    }
+    casesCountBaseOnFileFormat {
+        file_format
+        cases
+    }
+    
    caseOverview{   
         case_id
         clinical_trial_code
@@ -14,7 +53,7 @@ export const DASHBOARD_QUERY = gql`{
         race
         ethnicity
      }
-  }`;
+}`;
 
 export const GET_STUDYTABLE_DATA_QUERY = gql`{
     studiesByProgram {
