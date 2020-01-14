@@ -64,16 +64,8 @@ export const unselectFilters = (filtersObj) => filtersObj.map((filterElement) =>
 export function getStatDataFromDashboardData(data, statName) {
   switch (statName) {
     case 'case':
-      return data.length;
-    case 'study':
-      return [...new Set(data.map((d) => d.study_code))].length;
-    case 'aliquot':
-      return 0;
-    case 'sample':
-      return [...new Set(data.reduce((output, d) => output.concat(d.samples
-        ? d.samples : []), []))].length;
+      return [...new Set(data.map((d) => d.case_id))].length;
     case 'file':
-
       return [...new Set(data.reduce((output, d) => output.concat(d.files
         ? d.files : []), []).map((f) => f.uuid))].length;
     default:
