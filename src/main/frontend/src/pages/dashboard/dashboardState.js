@@ -133,11 +133,9 @@ export default function dashboardReducer(state = initialState, action) {
       return {
         ...state,
         stats: {
-          numberOfStudies: getStatDataFromDashboardData(tableData, 'study', dataTableFilters),
           numberOfCases: getStatDataFromDashboardData(tableData, 'case', dataTableFilters),
-          numberOfSamples: getStatDataFromDashboardData(tableData, 'sample', dataTableFilters),
           numberOfFiles: getStatDataFromDashboardData(tableData, 'file', dataTableFilters),
-          numberOfAliquots: getStatDataFromDashboardData(tableData, 'aliquot', dataTableFilters),
+          numberOfTrials: getStatDataFromDashboardData(tableData, 'clinical_trial_code', dataTableFilters),
         },
         checkbox: {
           data: updatedCheckboxData,
@@ -172,11 +170,9 @@ export default function dashboardReducer(state = initialState, action) {
       return {
         ...state,
         stats: {
-          numberOfStudies: getStatDataFromDashboardData(tableData, 'study', dataTableFilters),
           numberOfCases: getStatDataFromDashboardData(tableData, 'case', dataTableFilters),
-          numberOfSamples: getStatDataFromDashboardData(tableData, 'sample', dataTableFilters),
           numberOfFiles: getStatDataFromDashboardData(tableData, 'file', dataTableFilters),
-          numberOfAliquots: getStatDataFromDashboardData(tableData, 'aliquot', dataTableFilters),
+          numberOfTrials: getStatDataFromDashboardData(tableData, 'clinical_trial_code', dataTableFilters),
         },
         checkbox: {
           data: updatedCheckboxData,
@@ -207,11 +203,9 @@ export default function dashboardReducer(state = initialState, action) {
           hasError: false,
           error: '',
           stats: {
-            numberOfStudies: action.payload.data.numberOfStudies,
             numberOfCases: action.payload.data.numberOfCases,
-            numberOfSamples: action.payload.data.numberOfSamples,
             numberOfFiles: action.payload.data.numberOfFiles,
-            numberOfAliquots: action.payload.data.numberOfAliquots,
+            numberOfTrials: action.payload.data.numberOfTrials,
           },
           caseOverview: {
             data: action.payload.data.caseOverview,
