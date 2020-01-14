@@ -74,7 +74,7 @@ compents:
          implements: "https://tracker.nci.nih.gov/browse/CTDC-214"
          type: "cypher"
          cypher:
-          "MATCH (a:arm) OPTIONAL MATCH (t)<-[*]-(a:arm)<-[*]-(assignment_report)-[*]->(c:case) RETURN  a.pubmed_id AS pubmed_id,count(DISTINCT(c)) AS cases ORDER BY a.pubmed_id"
+          "MATCH (a:arm) OPTIONAL MATCH (t)<--(:assignment_report)-[*]->(c:case) RETURN  a.pubmed_id AS pubmed_id,count(DISTINCT(c)) AS cases ORDER BY a.pubmed_id"
          graphql:
           "{ 
               casesCountBaseOnPubMedID {
