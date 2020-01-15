@@ -67,6 +67,25 @@ const options = (classes) => ({
 
 
 const TrialView = ({ classes, data }) => {
+
+  const initDashboardStatus = () => (dispatch) => Promise.resolve(
+    dispatch(fetchDataForDashboardDataTable()),
+  );
+
+  const dispatch = useDispatch();
+  const redirectTo = (trial) => {
+    dispatch(initDashboardStatus()).then(() => {
+      dispatch(singleCheckBox([{
+        groupName: 'Trial ID',
+        name: trialData.clinical_trial_id,
+        datafield: 'clinical_trial_id',
+        isChecked: true,
+      }]));
+    });
+  };
+
+
+
   const trialData = data.clinicalTrialByTrialId[0];
   const stat = {
     numberOfCases: data.caseCountByTrialId,
