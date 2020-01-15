@@ -18,7 +18,19 @@ export const COLORS_LEVEL_2 = [
 
 
 const NOT_PROVIDED = 'Not Specified';
-
+/*
+ Group : GroupName that will show on the page as category
+ field: API return field name 
+    eg: {
+          gender : male
+          cases: 123
+        }
+        gender is the field
+  api : API that we are using to get data. 
+  dtatfield: datatable field that related 
+  show: control show this category on the page or not
+ 
+*/
 export const mappingCheckBoxToDataTable = [
   {
     group: 'Trial Code', field: 'clinical_trial_designation', api: 'casesCountBaseOnTrialCode', datafield: 'clinical_trial_designation', show: true,
@@ -147,7 +159,7 @@ export function getDonutDataFromDashboardData(data, widgetName) {
 /* filterData function evaluates a row of data with filters,
       to check if this row will be showed in the data table.
 
-     If no filter, then display this row.
+     If there is no filter, then display this row.
      If has filters and for each group of filters, at least has one filter option
      is related to the data.
      Otherwise:  Hide this row.
@@ -231,16 +243,19 @@ export function customSorting(a, b, flag, i = 0) {
 
 
 
-// Everytime the checkbox has been clicked, will call this function
+// Everytime the checkbox has been clicked, will call this function to update the data of checkbox
 export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) => (
-  // deep copy array
+  // deepc copy data of orignal checkbox
   JSON.parse(JSON.stringify(allCheckBoxs)).map((ck) => {
     const checkbox = ck;
+    //For current working category, we only update the checkbox data check status. 
+    // number of cases and sorting order will remain the same.
     if (checkbox.groupName === activeCheckBoxs.groupName) {
-      // overwrite with old checkbox
+      // deep copy current working cate's checkboxs. 
       checkbox.checkboxItems = JSON.parse(JSON.stringify(activeCheckBoxs.checkboxItems));
       // update the checkbox items' status
       checkbox.checkboxItems = checkbox.checkboxItems.map((el) => {
+      // for each item , update check status.
         const item = el;
         item.isChecked = false;
         filters.forEach((filter) => {
@@ -251,28 +266,40 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
         return item;
       });
     } else {
+      // For category that are hidden, 
+      // number of cases and sorting order will change.
       checkbox.checkboxItems = checkbox.checkboxItems.map((el) => {
         const item = el;
+
+        // init item's value of number of cases to zero
         item.cases = 0;
-        const filterWithOutCurrentCate = filters.filter(
+        // get filters that are not in this checkbox group
+        const filtersNotInThisCheckboxGroup = filters.filter(
           (f) => (f.groupName !== checkbox.groupName),
         );
-        const subData = data.filter((d) => (filterData(d, filterWithOutCurrentCate)));
+        //filter the data
+        const subData = data.filter((d) => (filterData(d, filtersInThisCheckboxGroup)));
+
+        //Calcuate number of cases 
         subData.forEach((d) => {
           const fName = (item.name === NOT_PROVIDED ? '' : item.name);
           if (d[checkbox.datafield]) {
-            if (Array.isArray(d[checkbox.datafield])) { // value in the array
+            // value in the array
+            if (Array.isArray(d[checkbox.datafield])) { 
               if (d[checkbox.datafield].includes(fName)) {
                 item.cases += 1;
               }
             }
-            if (d[checkbox.datafield] === fName) { // Str compare
+            // Str compare
+            if (d[checkbox.datafield] === fName) { 
               item.cases += 1;
             }
           } else if (item.name === NOT_PROVIDED) { // No such attribute
             item.cases += 1;
           }
         });
+
+        // update check status
         item.isChecked = false;
         filters.forEach((filter) => {
           if (checkbox.groupName === filter.groupName && item.name === filter.name) {
