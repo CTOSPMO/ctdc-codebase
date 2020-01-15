@@ -22,12 +22,12 @@ const Trials = ({ classes, data }) => {
   );
 
   const dispatch = useDispatch();
-  const redirectTo = (study) => {
+  const redirectTo = (trial) => {
     dispatch(initDashboardStatus()).then(() => {
       dispatch(singleCheckBox([{
-        groupName: 'Study',
-        name: study,
-        datafield: 'study_code',
+        groupName: 'Trial ID',
+        name: trial,
+        datafield: 'clinical_trial_id',
         isChecked: true,
       }]));
     });
@@ -59,7 +59,7 @@ const Trials = ({ classes, data }) => {
         customBodyRender: (value, tableMeta) => (
           <div className="mui_td">
             {' '}
-            <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectTo(tableMeta.rowData[0])}>{value}</Link>
+            <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectTo(tableMeta.rowData[1])}>{value}</Link>
             {' '}
           </div>
         ),
