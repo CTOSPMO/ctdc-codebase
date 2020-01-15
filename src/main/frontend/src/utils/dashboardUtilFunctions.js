@@ -229,34 +229,9 @@ export function customSorting(a, b, flag, i = 0) {
 }
 
 
-export function updateCheckBoxData(data, field) {
-  const result = [];
-  let preElementIndex = 0;
-  data.map((el) => ({
-    name: el[field.toString()] === '' || !el[field.toString()]
-      ? NOT_PROVIDED : el[field.toString()],
-    isChecked: false,
-    cases: el.cases,
-  }))
-    .sort((a, b) => customSorting(a.name, b.name, 'alphabetical'))
-    .forEach((el) => {
-      // reduce the duplication
-      if (result[parseInt(preElementIndex, 10)] && result[parseInt(preElementIndex, 10)].name) {
-        if (result[parseInt(preElementIndex, 10)].name === el.name) {
-          result[parseInt(preElementIndex, 10)].cases += el.cases;
-        } else {
-          preElementIndex += 1;
-          result.push(el);
-        }
-      } else {
-        result.push(el);
-      }
-    });
-
-  return result;
-}
 
 
+// Everytime the checkbox has been clicked, will call this function
 export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) => (
   // deep copy array
   JSON.parse(JSON.stringify(allCheckBoxs)).map((ck) => {
@@ -313,11 +288,48 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
 );
 
 
+
+
+
+
+export function transformAPIDataIntoCheckBoxData(data, field) {
+  const result = [];
+  let preElementIndex = 0;
+  data.map((el) => ({
+    name: el[field.toString()] === '' || !el[field.toString()]
+      ? NOT_PROVIDED : el[field.toString()],
+    isChecked: false,
+    cases: el.cases,
+  }))
+    .sort((a, b) => customSorting(a.name, b.name, 'alphabetical'))
+    .forEach((el) => {
+      // reduce the duplication
+      if (result[parseInt(preElementIndex, 10)] && result[parseInt(preElementIndex, 10)].name) {
+        if (result[parseInt(preElementIndex, 10)].name === el.name) {
+          result[parseInt(preElementIndex, 10)].cases += el.cases;
+        } else {
+          preElementIndex += 1;
+          result.push(el);
+        }
+      } else {
+        result.push(el);
+      }
+    });
+
+  return result;
+}
+
+
+
+
+// CustomCheckBox works for first time init Checkbox, 
+// that function transforms the data which returns from API into a another format
+// so it contains more information and easy for front-end to show it correctly. 
 export function customCheckBox(data) {
   return (
     mappingCheckBoxToDataTable.map((mapping) => ({
       groupName: mapping.group,
-      checkboxItems: updateCheckBoxData(data[mapping.api], mapping.field),
+      checkboxItems: transformAPIDataIntoCheckBoxData(data[mapping.api], mapping.field),
       datafield: mapping.datafield,
       show: mapping.show,
     }))
