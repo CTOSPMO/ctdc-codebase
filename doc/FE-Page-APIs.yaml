@@ -88,7 +88,13 @@ compents:
          implements: "https://tracker.nci.nih.gov/browse/CTDC-215"
          type: "cypher"
          cypher:
+          "MATCH (a:arm) OPTIONAL MATCH (a)<--(:assignment_report)-[*]->(c:case)  RETURN  a.arm_id +'_'+a.arm_drug  AS trial_arm, count(DISTINCT(c)) AS cases ORDER BY a.arm_id +'_'+a.arm_drug"
          graphql:
+          "
+          casesCountBaseOnTrialArm{
+            trial_arm
+            cases
+          }"
          test:
       -
          name : "filter cate : Diagnosis"
