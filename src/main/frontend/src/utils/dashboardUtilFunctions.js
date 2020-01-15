@@ -20,20 +20,20 @@ export const COLORS_LEVEL_2 = [
 const NOT_PROVIDED = 'Not Specified';
 /*
  Group : GroupName that will show on the page as category
- field: API return field name 
+ field: API return field name
     eg: {
           gender : male
           cases: 123
         }
         gender is the field
-  api : API that we are using to get data. 
-  dtatfield: datatable field that related 
+  api : API that we are using to get data.
+  dtatfield: datatable field that related
   show: control show this category on the page or not
- 
+
 */
 export const mappingCheckBoxToDataTable = [
   {
-    group: 'Trial Code', field: 'clinical_trial_designation', api: 'casesCountBaseOnTrialCode', datafield: 'clinical_trial_designation', show: true,
+    group: 'Trial Code', field: 'clinical_trial_designation', api: 'casesCountBaseOnTrialCode', datafield: 'clinical_trial_code', show: true,
   },
   {
     group: 'Trial ID', field: 'clinical_trial_id', api: 'casesCountBaseOnTrialId', datafield: 'clinical_trial_id', show: true,
@@ -42,7 +42,7 @@ export const mappingCheckBoxToDataTable = [
     group: 'PubMed ID', field: 'pubmed_id', api: 'casesCountBaseOnPubMedID', datafield: 'pubmed_id', show: true,
   },
   {
-    group: 'Trial Arm', field: 'pubmed_id', api: 'casesCountBaseOnPubMedID', datafield: 'pubmed_id', show: true,
+    group: 'Trial Arm', field: 'trial_arm', api: 'casesCountBaseOnTrialArm', datafield: 'trial_arm', show: true,
   },
   {
     group: 'Diagnosis', field: 'disease', api: 'casesCountBaseOnDiagnosis', datafield: 'disease', show: true,
@@ -57,10 +57,10 @@ export const mappingCheckBoxToDataTable = [
     group: 'Ethnicity', field: 'ethnicity', api: 'casesCountBaseOnEthnicity', datafield: 'ethnicity', show: true,
   },
   {
-    group: 'Associated File Type', field: 'file_type', api: 'casesCountBaseOnFileType', datafield: 'file_type', show: true,
+    group: 'Associated File Type', field: 'file_types', api: 'casesCountBaseOnFileType', datafield: 'file_types', show: true,
   },
   {
-    group: 'Associated File Format', field: 'file_format', api: 'casesCountBaseOnFileFormat', datafield: 'file_formats', show: true,
+    group: 'Associated File Format', field: 'file_formats', api: 'casesCountBaseOnFileFormat', datafield: 'file_formats', show: true,
   },
 
 
@@ -241,17 +241,15 @@ export function customSorting(a, b, flag, i = 0) {
 }
 
 
-
-
 // Everytime the checkbox has been clicked, will call this function to update the data of checkbox
 export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) => (
   // deepc copy data of orignal checkbox
   JSON.parse(JSON.stringify(allCheckBoxs)).map((ck) => {
     const checkbox = ck;
-    //For current working category, we only update the checkbox data check status. 
+    // For current working category, we only update the checkbox data check status.
     // number of cases and sorting order will remain the same.
     if (checkbox.groupName === activeCheckBoxs.groupName) {
-      // deep copy current working cate's checkboxs. 
+      // deep copy current working cate's checkboxs.
       checkbox.checkboxItems = JSON.parse(JSON.stringify(activeCheckBoxs.checkboxItems));
       // update the checkbox items' status
       checkbox.checkboxItems = checkbox.checkboxItems.map((el) => {
@@ -266,7 +264,7 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
         return item;
       });
     } else {
-      // For category that are hidden, 
+      // For category that are hidden,
       // number of cases and sorting order will change.
       checkbox.checkboxItems = checkbox.checkboxItems.map((el) => {
         const item = el;
@@ -277,21 +275,21 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
         const filtersNotInThisCheckboxGroup = filters.filter(
           (f) => (f.groupName !== checkbox.groupName),
         );
-        //filter the data
-        const subData = data.filter((d) => (filterData(d, filtersInThisCheckboxGroup)));
+        // filter the data
+        const subData = data.filter((d) => (filterData(d, filtersNotInThisCheckboxGroup)));
 
-        //Calcuate number of cases 
+        // Calcuate number of cases
         subData.forEach((d) => {
           const fName = (item.name === NOT_PROVIDED ? '' : item.name);
           if (d[checkbox.datafield]) {
             // value in the array
-            if (Array.isArray(d[checkbox.datafield])) { 
+            if (Array.isArray(d[checkbox.datafield])) {
               if (d[checkbox.datafield].includes(fName)) {
                 item.cases += 1;
               }
             }
             // Str compare
-            if (d[checkbox.datafield] === fName) { 
+            if (d[checkbox.datafield] === fName) {
               item.cases += 1;
             }
           } else if (item.name === NOT_PROVIDED) { // No such attribute
@@ -313,10 +311,6 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
     return checkbox;
   })
 );
-
-
-
-
 
 
 export function transformAPIDataIntoCheckBoxData(data, field) {
@@ -347,11 +341,9 @@ export function transformAPIDataIntoCheckBoxData(data, field) {
 }
 
 
-
-
-// CustomCheckBox works for first time init Checkbox, 
+// CustomCheckBox works for first time init Checkbox,
 // that function transforms the data which returns from API into a another format
-// so it contains more information and easy for front-end to show it correctly. 
+// so it contains more information and easy for front-end to show it correctly.
 export function customCheckBox(data) {
   return (
     mappingCheckBoxToDataTable.map((mapping) => ({

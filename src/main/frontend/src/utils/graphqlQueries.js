@@ -42,6 +42,11 @@ export const DASHBOARD_QUERY = gql`{
         file_format
         cases
     }
+
+    casesCountBaseOnTrialArm {
+        trial_arm
+        cases
+    }
     
    caseOverview{   
         case_id
@@ -51,7 +56,19 @@ export const DASHBOARD_QUERY = gql`{
         disease
         gender
         race
+        arm_target
+        arms{
+            arm_id
+        }
         ethnicity
+        clinical_trial_id
+        pubmed_id
+        trial_arm
+        file_types
+        file_formats
+        files{
+           uuid
+        }
      }
 }`;
 
