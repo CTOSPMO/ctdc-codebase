@@ -80,6 +80,8 @@ export function getStatDataFromDashboardData(data, statName) {
     case 'file':
       return [...new Set(data.reduce((output, d) => output.concat(d.files
         ? d.files : []), []).map((f) => f.uuid))].length;
+    case 'clinical_trial_code':
+      return [...new Set(data.map((d) => d.clinical_trial_code))].length;
     default:
       return 0;
   }
