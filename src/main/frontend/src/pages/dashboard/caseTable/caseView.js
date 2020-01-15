@@ -24,6 +24,13 @@ const tableStyle = (ratio = 1) => ({
 
 const columns = (classes) => [
   {
+    name: 'clinical_trial_id',
+    label: 'Trial ID',
+    options: {
+      display: false,
+    },
+  },
+  {
     name: 'case_id',
     label: 'Case ID',
     options: {
@@ -43,10 +50,10 @@ const columns = (classes) => [
     label: 'Trial Code',
     options: {
       filter: false,
-      customBodyRender: (value) => (
+      customBodyRender: (value, tableMeta) => (
         <div className="mui_td" style={tableStyle(0.6)}>
 
-          <Link to={`/trials/${value}`} className={classes.link}>{value}</Link>
+          <Link to={`/trial/${tableMeta.rowData[0]}`} className={classes.link}>{value}</Link>
 
         </div>
       ),
