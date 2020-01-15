@@ -68,6 +68,9 @@ const options = (classes) => ({
 
 const TrialView = ({ classes, data }) => {
 
+
+  // initDashboardStatus will be used in dispatch to 
+  // make sure dashboard data has be loaded first. 
   const initDashboardStatus = () => (dispatch) => Promise.resolve(
     dispatch(fetchDataForDashboardDataTable()),
   );
