@@ -1,0 +1,199 @@
+page: "Dashboard Page"
+refers : "Dashboard Page"
+items: 
+    - 
+      ticket_number: "CTDC-33"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-33"
+      component_name: widgets
+      fields: {
+        Trials (NUmber of Trials )
+        Cases (Number of cases )
+        Files (Number of files)
+        }
+    -
+        ticket_number: "CTDC-33"
+        link: "https://tracker.nci.nih.gov/browse/CTDC-33"
+        component_name: widgets
+        fields: {
+            Trials and Arms (Arms associates with Trials) 
+            Arm (arm_id)
+            Diagnosis(disease)
+            Gender(gender)
+            Race(race)
+            Ethnicity(ethnicity)
+        }
+        -
+            ticket_number: "CTDC-38"
+            link: "https://tracker.nci.nih.gov/browse/CTDC-38"
+            component_name: DashboardCaseTable
+            fields: {
+                Case ID (case_id) 
+                Trial Code(clinical_trial_designation)
+                Arm (arm_id)
+                Arm Treatment (arm_drug)
+                Diagnosis(disease)
+                Gender(gender)
+                Race(race)
+                Ethnicity(ethnicity)
+                clinical_trial_id (For routing to Trail detail page)
+            }
+        -
+            ticket_number: "CTDC-37"
+            link: "https://tracker.nci.nih.gov/browse/CTDC-37"
+            component_name: facetSearch
+            fields: {
+                Trial Code (clinical_trial_designation)
+                Trial ID (clinical_trial_id)
+                PubMed ID (pubmed_id)
+                Trial Arm (arm_id-arm_drug)
+                Diagnosis(disease)
+                Gender(gender)
+                Race(race)
+                Ethnicity(ethnicity)
+                Associated File Type(file_type)
+                Associated File Format(file_format)
+             }
+page: "My Case Page"
+refers : "My Case Page"
+items: 
+    - 
+      ticket_number: "CTDC-43"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-43"
+      component_name: manifestFeilds
+      fields: {
+        Case ID (case_id)
+        File Name (file_name)
+        File ID (UUID)
+        md5sum (md5sum)
+        }
+    -
+        ticket_number: "CTDC-42"
+        link: "https://tracker.nci.nih.gov/browse/CTDC-42"
+        component_name: filesView
+        fields: {
+            Case ID (case_id)
+            File Name (file_name)
+            File Type (file_type)
+            Association (node_type)
+            Description (file_description)
+            Format (file_format)
+            Size (file_size)
+            }
+        -
+            ticket_number: "CTDC-41"
+            link: "https://tracker.nci.nih.gov/browse/CTDC-41"
+            component_name: myCasesCaseView
+            fields: {
+                Case ID (case_id)
+                Trial Code (clinical_trial_code)
+                Arm(arm_id)
+                Arm Treatment(arm_drug)
+                Diagnosis(disease)
+                Gender(gender)
+                Race(race)
+                Ethnicity(ethnicity)
+                } 
+page: "My Case Page"
+refers : "My Case Page"
+items: 
+    - 
+      ticket_number: "CTDC-43"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-43"
+      component_name: manifestFeilds
+      fields: {
+        Case ID (case_id)
+        File Name (file_name)
+        File ID (UUID)
+        md5sum (md5sum)
+        }
+    -
+        ticket_number: "CTDC-42"
+        link: "https://tracker.nci.nih.gov/browse/CTDC-42"
+        component_name: filesView
+        fields: {
+            Case ID (case_id)
+            File Name (file_name)
+            File Type (file_type)
+            Association (node_type)
+            Description (file_description)
+            Format (file_format)
+            Size (file_size)
+            }
+        -
+            ticket_number: "CTDC-41"
+            link: "https://tracker.nci.nih.gov/browse/CTDC-41"
+            component_name: myCasesCaseView
+            fields: {
+                Case ID (case_id)
+                Trial Code (clinical_trial_code)
+                Arm(arm_id)
+                Arm Treatment(arm_drug)
+                Diagnosis(disease)
+                Gender(gender)
+                Race(race)
+                Ethnicity(ethnicity)
+                }
+page: "Case Detail Page "
+refers : "Case Detail Page "
+items: 
+    - 
+      ticket_number: "CTDC-39"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-39"
+      component_name: caseDetailField
+      fields: {
+        Case ID (case_id) 
+        Gender(gender)
+        Race(race)
+        Ethnicity(ethnicity)
+        Diagnosis(disease)
+        Trial(clinical_trial_designation)
+        Arm (arm_id)
+        Arm Treatment (arm_drug)
+        Arm Target (arm_target)
+        
+        }
+    -
+        ticket_number: "CTDC-40"
+        link: "https://tracker.nci.nih.gov/browse/CTDC-40"
+        component_name: caseDetailFilesView
+        fields: {
+            File Name (file_name)
+            File Type (file_type)
+            Association (node_type)
+            Description (file_description)
+            Format (file_format)
+            Size (file_size)
+            }
+page: "Trial Detail Page"
+refers : "Trial Detail Page"
+items: 
+    - 
+      ticket_number: "CTDC-36"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-36"
+      component_name: TrialDetail
+      fields: {
+        Trial(clinical_trial_designation)
+        Official Trial Name (clinical_trial_short_name)
+        Trial Name(clinical_trial_long_name)
+        Trial ID(clinical_trial_id)
+        Trial Description(clinical_trial_description)
+        Trial Type(clinical_trial_type)
+        Lead Organization(s) (lead_organization)
+        Principal Investigator(s) (principal_investigators)
+        View # Cases
+        }
+page: "Trial Page"
+refers : "Trial Page"
+items: 
+    - 
+      ticket_number: "CTDC-35"
+      link: "https://tracker.nci.nih.gov/browse/CTDC-36"
+      component_name: TrialPage
+      fields: {
+        Trial Code (clinical_trial_designation)
+        Trial ID (clinical_trial_id)
+        Trial Name (clinical_trial_short_name)
+        Arms (Number of Arms associated with Trial)
+        Cases (Number of Arms associated with Trail)
+        }
+            

@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 import nihLogo from '../../assets/header/icdc_nih_logo.svg';
 // import icdcLogo from '../../assets/header/icdc_logo_white.svg';
-import cancergraphic400 from '../../assets/header/Canine400.png';
-import cancergraphic800 from '../../assets/header/Canine800.png';
-import cancergraphic1400 from '../../assets/header/Canine1400.png';
-import cancergraphic1600 from '../../assets/header/Canine1600.png';
-import cancergraphic1800 from '../../assets/header/Canine1800.png';
-import cancergraphic2000 from '../../assets/header/Canine2000.png';
+// import cancergraphic400 from '../../assets/header/Canine400.png';
+import cancergraphic800 from '../../assets/header/easter800.png';
+import cancergraphic1400 from '../../assets/header/easter1400.png';
+import cancergraphic1600 from '../../assets/header/easter1600.png';
+import cancergraphic1800 from '../../assets/header/easter1800.png';
+import cancergraphic2000 from '../../assets/header/easter2000.png';
 
 
 // import classes from '*.module.sass';
@@ -71,7 +71,7 @@ const styles = () => ({
     '@media (min-width: 900px)': {
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100% 100%',
-      background: `url(${cancergraphic400})`,
+      background: `url(${cancergraphic800})`,
     },
     '@media (min-width: 1200px)': {
       backgroundRepeat: 'no-repeat',
