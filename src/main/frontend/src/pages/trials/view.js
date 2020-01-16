@@ -37,18 +37,18 @@ const Trials = ({ classes, data }) => {
     {
       name: 'clinical_trial_designation',
       label: 'Trial Code',
+      options: {
+        filter: false,
+        customBodyRender: (value, tableMeta) => (
+          <div className="mui_td" style={{ width: '100px' }}>
+            <Link className={classes.link} to={`/trial/${tableMeta.rowData[1]}`}>{value}</Link>
+          </div>
+        ),
+      },
     },
     {
       name: 'clinical_trial_id',
       label: 'Trial ID',
-      options: {
-        filter: false,
-        customBodyRender: (value) => (
-          <div className="mui_td" style={{ width: '100px' }}>
-            <Link className={classes.link} to={`/trial/${value}`}>{value}</Link>
-          </div>
-        ),
-      },
     },
     { name: 'clinical_trial_short_name', label: 'Trial Name' },
     { name: 'number_of_arms', label: 'Arms' },

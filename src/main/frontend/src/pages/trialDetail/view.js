@@ -20,7 +20,7 @@ import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
 
 const columns = [
-  { name: 'arm_id', label: 'Arms' },
+  { name: 'arm_id', label: 'Arm' },
   {
     name: 'arm_drug',
     label: 'Arm Treatment',
