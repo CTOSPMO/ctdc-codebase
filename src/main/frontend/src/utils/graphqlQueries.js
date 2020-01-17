@@ -84,63 +84,24 @@ export const GET_STUDYTABLE_DATA_QUERY = gql`{
   `;
 
 export const GET_CASE_DETAIL_DATA_QUERY = gql`
-  query Case($case_id: String!) {
-    sampleCountOfCase(case_id:$case_id)
-    fileCountOfCase(case_id: $case_id)
-    aliquotCountOfCase(case_id: $case_id)
-    fileCountOfCase(case_id: $case_id)
-    case(case_id:$case_id){
-        case_id
-        patient_id
-        patient_first_name
-        study{
-            clinical_study_name
-            clinical_study_designation
-            program{
-            program_acronym
-          }
-        }
-        demographic{
-            breed
-            sex
-            patient_age_at_enrollment
-            neutered_indicator
-        }
-        cohort{
-            cohort_description
-            study_arm{
-                arm
-                ctep_treatment_assignment_code
+  query caseDetailByCaseId($case_id: String!){
+          caseDetailByCaseId(case_id:$case_id){
+            case_id
+            clinical_trial_code
+            arm_id
+            arm_drug
+            disease
+            gender
+            race
+            arm_target
+            arms{
+                arm_id
+                arm_target
+                arm_drug
             }
-        }
-        enrollment{
-            site_short_name
-            date_of_registration
-            patient_subgroup
-            date_of_informed_consent
-            initials
-        }
-        diagnoses{
-            disease_term
-            stage_of_disease
-            date_of_diagnosis
-            primary_disease_site
-            histological_grade
-            histology_cytopathology
-        }
-    }
-    filesOfCase(case_id:$case_id)
-    {   
-        parent 
-        file_name 
-        file_type 
-        file_description 
-        file_format 
-        file_size 
-        md5sum 
-
-    }
- }`;
+            ethnicity
+          }
+      }`;
 
 
 export const GET_CASES_QUERY = gql`

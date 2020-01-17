@@ -95,7 +95,7 @@ const CaseDetail = ({ classes, data }) => {
     numberOfFiles: data.fileCountOfCase,
     numberOfBiospecimenAliquots: data.aliquotCountOfCase,
   };
-  const caseDetail = data.case[0];
+  const caseDetail = data.caseDetailByCaseId[0];
 
   const notProvided = '';
 
@@ -104,13 +104,13 @@ const CaseDetail = ({ classes, data }) => {
     to: '/programs',
     isALink: true,
   }, {
-    name: `${caseDetail.study.clinical_study_designation} Detail`,
-    to: `/study/${caseDetail.study.clinical_study_designation}`,
+    name: `${caseDetail.case_id} Detail`,
+    to: `/study/${caseDetail.case_id}`,
     isALink: true,
   }, {
-    name: `${caseDetail.study.clinical_study_designation} CASES`,
+    name: `${caseDetail.case_id} CASES`,
     to: '/cases',
-    onClick: () => redirectTo(caseDetail.study.clinical_study_designation),
+    onClick: () => redirectTo(caseDetail.case_id),
     isALink: true,
   }, {
     name: caseDetail.case_id,
@@ -163,41 +163,6 @@ Case :
                     </span>
                   </span>
                 </div>
-                <div className={cn(classes.headerMSubTitle, classes.headerSubTitleCate)}>
-                  {caseDetail.patient_first_name === '' || caseDetail.patient_first_name === null
-                    ? '' : (
-                      <span>
-                        <span className={classes.headerSubTitleCate}>
-                    CASE NAME
-                          {' '}
-                          {' '}
-                          {' '}
--
-                          {' '}
-                        </span>
-                        <span className={classes.headerSubTitleContent}>
-                          {caseDetail.patient_first_name}
-                        </span>
-                      </span>
-                    )}
-                  {caseDetail.enrollment && caseDetail.enrollment.initials !== '' && caseDetail.enrollment.initials !== null
-                    ? (
-                      <span>
-                        <span className={cn(
-                          classes.headerSubTitleCate, classes.paddingLeft8, classes.paddingBottm17,
-                        )}
-                        >
-                      INITIALS
-                          {' '}
-                        </span>
-                        <span className={classes.headerSubTitleContent}>
-                          {caseDetail.enrollment.initials}
-                        </span>
-                      </span>
-                    ) : ''}
-
-                </div>
-
                 <CustomBreadcrumb data={breadCrumbJson} />
               </div>
             )}
@@ -220,10 +185,10 @@ Case :
                   <Grid item xs={12}>
                     <Grid container spacing={4}>
                       <Grid item xs={4}>
-                        <span className={classes.title}>BREED</span>
+                        <span className={classes.title}>GENDER</span>
                       </Grid>
                       <Grid item xs={8} className={classes.content}>
-                        {caseDetail.demographic ? caseDetail.demographic.breed : notProvided}
+                        {caseDetail.gender ? caseDetail.gender : notProvided}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -231,10 +196,10 @@ Case :
                   <Grid item xs={12}>
                     <Grid container spacing={4}>
                       <Grid item xs={4}>
-                        <span className={classes.title}>Sex</span>
+                        <span className={classes.title}>RACE</span>
                       </Grid>
                       <Grid item xs={8} className={classes.content}>
-                        {caseDetail.demographic ? caseDetail.demographic.sex : notProvided}
+                        {caseDetail.race ? caseDetail.race : notProvided}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -242,24 +207,11 @@ Case :
                   <Grid item xs={12}>
                     <Grid container spacing={4}>
                       <Grid item xs={4}>
-                        <span className={classes.title}>Neutered Status</span>
+                        <span className={classes.title}>Ethnicity</span>
                       </Grid>
                       <Grid item xs={8} className={classes.content}>
-                        {caseDetail.demographic
-                          ? caseDetail.demographic.neutered_indicator : notProvided}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-
-
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={4}>
-                        <span className={classes.title}>Age at Enrollment</span>
-                      </Grid>
-                      <Grid item xs={8} className={classes.content}>
-                        {caseDetail.demographic
-                          ? caseDetail.demographic.patient_age_at_enrollment : notProvided}
+                        {caseDetail.ethnicity
+                          ? caseDetail.ethnicity : notProvided}
                       </Grid>
                     </Grid>
                   </Grid>
@@ -274,78 +226,20 @@ Case :
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>DIAGNOSIS</span>
                 </Grid>
-
-                { caseDetail.diagnoses.map((diagnosis) => (
-                  <Grid container spacing={4} className={classes.detailContainerItems}>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Disease</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.disease_term
-                            ? diagnosis.disease_term : notProvided}
-                          {' '}
-                        </Grid>
+                <Grid container spacing={4} className={classes.detailContainerItems}>
+                  <Grid item xs={12}>
+                    <Grid container spacing={4}>
+                      <Grid item xs={6}>
+                        <span className={classes.title}>Diagnosis</span>
                       </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Stage of Disease</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.stage_of_disease
-                            ? diagnosis.stage_of_disease : notProvided}
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Date of Diagnosis</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.date_of_diagnosis
-                            ? diagnosis.date_of_diagnosis : notProvided}
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Primary Site</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.primary_disease_site
-                            ? diagnosis.primary_disease_site : notProvided}
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Histology/Cytology</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.histology_cytopathology
-                            ? diagnosis.histology_cytopathology : notProvided}
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid container spacing={4}>
-                        <Grid item xs={6}>
-                          <span className={classes.title}>Histological Grade</span>
-                        </Grid>
-                        <Grid item xs={6} className={classes.content}>
-                          {diagnosis.histological_grade === '' || diagnosis.histological_grade === null
-                            ? '' : diagnosis.histological_grade}
-                        </Grid>
+                      <Grid item xs={6} className={classes.content}>
+                        {caseDetail.disease
+                          ? caseDetail.disease : notProvided}
+                        {' '}
                       </Grid>
                     </Grid>
                   </Grid>
-                ))}
+                </Grid>
 
               </Grid>
             </Grid>
@@ -361,86 +255,54 @@ Case :
                   <Grid item xs={12}>
                     <Grid container spacing={4}>
                       <Grid item xs={6}>
-                        <span className={classes.title}>Assigned to Study</span>
+                        <span className={classes.title}>Assigned to Trial</span>
                       </Grid>
                       <Grid item xs={6} className={classes.content}>
-                        {caseDetail.study
-                          ? caseDetail.study.clinical_study_designation : notProvided}
+                        {caseDetail.clinical_trial_code
+                          ? caseDetail.clinical_trial_code : notProvided}
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Assigned to Arm</span>
-                      </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {caseDetail.cohort
-                          ? (caseDetail.cohort.study_arm
-                            ? caseDetail.cohort.study_arm.arm : notProvided) : notProvided}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Assigned to Cohort</span>
-                      </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {' '}
-                        {caseDetail.cohort
-                          ? caseDetail.cohort.cohort_description : notProvided}
-                        {' '}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Patient Subgroup</span>
-                      </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {caseDetail.enrollment
-                          ? caseDetail.enrollment.patient_subgroup : notProvided}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Date of Informed Consent</span>
-                      </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {caseDetail.enrollment
-                          ? caseDetail.enrollment.date_of_informed_consent : notProvided}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Date of registration</span>
-                      </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {caseDetail.enrollment
-                          ? caseDetail.enrollment.date_of_registration : notProvided}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Grid container spacing={4}>
 
-                      <Grid item xs={6}>
-                        <span className={classes.title}>Study Site</span>
+                  { caseDetail.arms.map((arms) => (
+                    <Grid container spacing={4} className={classes.detailContainerItems}>
+                      <Grid item xs={12}>
+                        <Grid container spacing={4}>
+                          <Grid item xs={6}>
+                            <span className={classes.title}>Arm</span>
+                          </Grid>
+                          <Grid item xs={6} className={classes.content}>
+                            {arms.arm_id
+                              ? arms.arm_id : notProvided}
+                          </Grid>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={6} className={classes.content}>
-                        {caseDetail.enrollment
-                            && caseDetail.enrollment.site_short_name
-                              && caseDetail.enrollment.site_short_name !== null
-                          ? caseDetail.enrollment.site_short_name : notProvided}
+                      <Grid item xs={12}>
+                        <Grid container spacing={4}>
+                          <Grid item xs={6}>
+                            <span className={classes.title}>Arm Treatment</span>
+                          </Grid>
+                          <Grid item xs={6} className={classes.content}>
+                            {' '}
+                            {arms.arm_drug
+                              ? arms.arm_drug : notProvided}
+                            {' '}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Grid container spacing={4}>
+                          <Grid item xs={6}>
+                            <span className={classes.title}>Arm Target</span>
+                          </Grid>
+                          <Grid item xs={6} className={classes.content}>
+                            {arms.arm_target
+                              ? arms.arm_target : notProvided}
+                          </Grid>
+                        </Grid>
                       </Grid>
                     </Grid>
-                  </Grid>
+                  ))}
                 </Grid>
               </Grid>
             </Grid>
@@ -451,7 +313,7 @@ Case :
 
         <div className={classes.tableDiv}>
           <div className={classes.tableTitle}>
-            <span className={classes.tableHeader}>AVAILABLE DATA</span>
+            <span className={classes.tableHeader}>Associated Files</span>
           </div>
           <Grid item xs={12}>
             <Grid container spacing={4}>
