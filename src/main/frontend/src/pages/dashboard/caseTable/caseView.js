@@ -224,6 +224,28 @@ const Cases = ({ classes, data }) => {
 
   bubbles = '';
 
+  const btnStyle = {
+    color: 'rgba(0, 0, 0,0.26)',
+    boxShadow: 'none',
+    backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    padding: '6px 16px',
+    fontSize: '0.875rem',
+    minWidth: '64px',
+    boxSizing: 'border-box',
+    transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    lineHeight: '1.75',
+    fontWeight: '500',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    borderRadius: '4px',
+    textTransform: 'uppercase',
+  };
+
+  const divStyle = {
+    position: 'absolute',
+    marginTop: '-47px',
+    marginLeft: '30px',
+  };
+
   return (
     <>
       <div className={classes.chips}>
@@ -240,6 +262,14 @@ const Cases = ({ classes, data }) => {
             columns={columns(classes)}
             options={options(classes, dispatch)}
           />
+          <div style={divStyle}>
+            <button
+              type="button"
+              style={btnStyle}
+            >
+              SAVE TO MY CASES
+            </button>
+          </div>
         </Grid>
       </Grid>
 
