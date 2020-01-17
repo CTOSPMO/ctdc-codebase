@@ -24,13 +24,6 @@ const tableStyle = (ratio = 1) => ({
 
 const columns = (classes) => [
   {
-    name: 'clinical_trial_id',
-    label: 'Trial ID',
-    options: {
-      display: false,
-    },
-  },
-  {
     name: 'case_id',
     label: 'Case ID',
     options: {
@@ -53,7 +46,7 @@ const columns = (classes) => [
       customBodyRender: (value, tableMeta) => (
         <div className="mui_td" style={tableStyle(0.6)}>
 
-          <Link to={`/trial/${tableMeta.rowData[0]}`} className={classes.link}>{value}</Link>
+          <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
 
         </div>
       ),
@@ -64,7 +57,6 @@ const columns = (classes) => [
     label: 'Arm',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(2.3)}>
           {' '}
@@ -79,7 +71,6 @@ const columns = (classes) => [
     label: 'Arm Treatment',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(1)}>
           {' '}
@@ -94,7 +85,6 @@ const columns = (classes) => [
     label: 'Diagnosis',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(2)}>
           {' '}
@@ -109,7 +99,6 @@ const columns = (classes) => [
     label: 'Gender',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(0.5)}>
           {' '}
@@ -124,7 +113,6 @@ const columns = (classes) => [
     label: 'Race',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(0.5)}>
           {' '}
@@ -139,7 +127,6 @@ const columns = (classes) => [
     label: 'Ethnicity',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value) => (
         <div className="mui_td" style={tableStyle(0.5)}>
           {' '}
@@ -147,6 +134,13 @@ const columns = (classes) => [
           {' '}
         </div>
       ),
+    },
+  },
+  {
+    name: 'clinical_trial_id',
+    label: 'Trial ID',
+    options: {
+      display: false,
     },
   },
 ];
