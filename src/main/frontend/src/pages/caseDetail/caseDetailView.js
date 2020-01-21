@@ -125,7 +125,7 @@ const CaseDetail = ({ classes, data }) => {
           <div className={classes.logo}>
             <img
               src={icon}
-              alt="ICDC case detail header logo"
+              alt="CTDC case detail header logo"
             />
 
           </div>

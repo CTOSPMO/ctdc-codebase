@@ -76,7 +76,7 @@ const AboutMenu = ({ classes }) => {
             <NavLink
               className={classes.link}
               activeStyle={{ color: 'white' }}
-              to="/steeringCommittee"
+              to="/steering-committee"
             >
                Steering Committee
             </NavLink>
@@ -92,7 +92,7 @@ const AboutMenu = ({ classes }) => {
               activeStyle={{ color: 'white' }}
               to="/model"
             >
-               ICDC Data & Model
+               CTDC Data & Model
             </NavLink>
             <NavLink
               className={classes.link}
@@ -111,9 +111,9 @@ const AboutMenu = ({ classes }) => {
             <NavLink
               className={classes.link}
               activeStyle={{ color: 'white' }}
-              to="/submit"
+              to="/request-access"
             >
-               Submitting Data
+               Request Access
             </NavLink>
 
           </div>

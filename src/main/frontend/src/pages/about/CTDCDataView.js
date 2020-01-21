@@ -2,14 +2,14 @@ import React from 'react';
 import { withStyles, Link } from '@material-ui/core';
 import Stats from '../../components/Stats/AllStatsController';
 import Header from '../../components/About/HeaderView';
-import l9dg from '../../assets/about/Photo-About_ICDC_model.jpg';
+import l9dg from '../../assets/about/About_CTDC_Model.png';
 import Body from '../../components/About/BodyView';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 
-const ICDCData = ({ classes }) => (
+const CTDCData = ({ classes }) => (
   <>
     <Stats />
-    <Header title="ICDC Data" />
+    <Header title="CTDC Data" />
     <Body data={{
       img: l9dg,
       body: (
@@ -121,4 +121,4 @@ const styles = () => ({
 });
 
 
-export default withStyles(styles, { withTheme: true })(ICDCData);
+export default withStyles(styles, { withTheme: true })(CTDCData);
