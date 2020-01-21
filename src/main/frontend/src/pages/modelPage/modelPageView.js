@@ -7,7 +7,7 @@ import {
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import Stats from '../../components/Stats/AllStatsController';
 import Header from '../../components/About/HeaderView';
-import l9dg from '../../assets/about/Photo-About_ICDC_model.jpg';
+import l9dg from '../../assets/about/About_CTDC_Model.png';
 import CenterIcon from '../../assets/about/Model-Buttons-Center.svg';
 import ZoomInIcon from '../../assets/about/Model-Buttons-ZoomIn.svg';
 import ZoomOutIcon from '../../assets/about/Model-Buttons-ZoomOut.svg';

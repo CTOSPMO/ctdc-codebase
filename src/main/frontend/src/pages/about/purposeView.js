@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles, Link } from '@material-ui/core';
 import Stats from '../../components/Stats/AllStatsController';
 import Header from '../../components/About/HeaderView';
-import l9dg from '../../assets/about/Photo-About_Purpose.jpg';
+import l9dg from '../../assets/about/About_Purpose.png';
 import Body from '../../components/About/BodyView';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 

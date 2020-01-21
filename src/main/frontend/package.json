@@ -1,6 +1,6 @@
 {
   "homepage": ".",
-  "name": "icdc-frontend",
+  "name": "ctdc-frontend",
   "version": "0.1.0",
   "dependencies": {
     "@babel/core": "7.2.2",

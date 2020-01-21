@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
-import nihLogo from '../../assets/header/icdc_nih_logo.svg';
+import nihLogo from '../../assets/header/icdc_ctdc.svg';
 // import icdcLogo from '../../assets/header/icdc_logo_white.svg';
 // import cancergraphic400 from '../../assets/header/Canine400.png';
 import cancergraphic800 from '../../assets/header/easter800.png';
@@ -24,7 +24,7 @@ const Header = ({ classes }) => (
         <img
           className={classes.nihLogoImg}
           src={nihLogo}
-          alt="NCI ICDC Logo - Integrated Canine Data Commons"
+          alt="NCI CTDC Logo - Clinical Trials Data Commons"
         />
       </Link>
       {/* <img

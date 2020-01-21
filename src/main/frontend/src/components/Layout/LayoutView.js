@@ -19,11 +19,11 @@ import SelectedFiles from '../../pages/selectedFiles/selectedFilesController';
 import Home from '../../pages/landing/landingController';
 import CRDCView from '../../pages/about/CRDCView';
 import developerView from '../../pages/about/developerView';
-import ICDCDataView from '../../pages/about/ICDCDataView';
+import CTDCDataView from '../../pages/about/CTDCDataView';
 import purposeView from '../../pages/about/purposeView';
 import steeringCommiteeView from '../../pages/about/steeringCommitteeView';
 import supportView from '../../pages/about/supportView';
-import submitingData from '../../pages/about/submitDataView';
+import requestAccess from '../../pages/about/requestAccessView';
 import Trials from '../../pages/trials/controller';
 import TrialDetail from '../../pages/trialDetail/controller';
 
@@ -59,12 +59,12 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
             <Route path="/purpose" component={purposeView} />
-            <Route path="/steeringCommittee" component={steeringCommiteeView} />
+            <Route path="/steering-committee" component={steeringCommiteeView} />
             <Route path="/crdc" component={CRDCView} />
-            <Route path="/icdcData" component={ICDCDataView} />
+            <Route path="/icdcData" component={CTDCDataView} />
             <Route path="/developers" component={developerView} />
             <Route path="/support" component={supportView} />
-            <Route path="/submit" component={submitingData} />
+            <Route path="/request-access" component={requestAccess} />
 
 
             <Route component={Error} />

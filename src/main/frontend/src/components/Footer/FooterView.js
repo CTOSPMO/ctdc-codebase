@@ -36,7 +36,7 @@ const Footer = ({ classes, data }) => {
                 weight="bold"
                 className={cn(classes.footerText, classes.listHeader)}
               >
-              About ICDC
+              About CTDC
               </Typography>
             </li>
             <li>
@@ -62,7 +62,7 @@ const Footer = ({ classes, data }) => {
             </li>
             <li>
               <Typography className={classes.footerText}>
-                <a href="mailto:icdchelpdesk@nih.gov" target="icdc">Contact Us</a>
+                <a href="mailto:icdchelpdesk@nih.gov" target="ctdc">Contact Us</a>
               </Typography>
             </li>
           </ul>
@@ -80,7 +80,7 @@ const Footer = ({ classes, data }) => {
             <li>
               <Typography className={classes.footerText}>
                 <Link className={classes.link} to="/model">
-              ICDC Data & Model
+              CTDC Data & Model
                 </Link>
               </Typography>
             </li>
@@ -121,7 +121,7 @@ const Footer = ({ classes, data }) => {
             </li>
             <li>
               <Typography className={classes.footerText}>
-                <a title="link to NCI Policies" href="http://www.cancer.gov/global/web/policies" target="icdc-nci">
+                <a title="link to NCI Policies" href="http://www.cancer.gov/global/web/policies" target="ctdc-nci">
                  Policies
                 </a>
               </Typography>
@@ -179,25 +179,25 @@ Accessibility
       <div className={cn(classes.footerRow, classes.contentJustifyCenter)}>
         <div className={cn(classes.nciLinks, classes.contentJustifyCenter)}>
           <Typography>
-            <a target="icdc-external" href="https://www.hhs.gov">
+            <a target="ctdc-external" href="https://www.hhs.gov">
             U.S. Department of Health and Human Services
             </a>
             <span className={classes.ext}>&nbsp;|&nbsp;</span>
           </Typography>
           <Typography>
-            <a target="icdc-external" href="https://www.nih.gov">
+            <a target="ctdc-external" href="https://www.nih.gov">
             National Institutes of Health
             </a>
             <span className={classes.ext}>&nbsp;|&nbsp;</span>
           </Typography>
           <Typography>
-            <a target="icdc-external" href="https://www.cancer.gov">
+            <a target="ctdc-external" href="https://www.cancer.gov">
             National Cancer Institute
             </a>
             <span className={classes.ext}>&nbsp;|&nbsp;</span>
           </Typography>
           <Typography>
-            <a target="icdc-external" href="https://www.usa.gov">
+            <a target="ctdc-external" href="https://www.usa.gov">
             USA.gov
               <span
                 className={classes.ext}

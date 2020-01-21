@@ -198,7 +198,7 @@ const CasesView = ({ classes, data, study }) => {
           <div className={classes.logo}>
             <img
               src="https://img.icons8.com/dusk/64/000000/4-circle.png"
-              alt="ICDC case detail header logo"
+              alt="CTDC case detail header logo"
             />
 
           </div>
