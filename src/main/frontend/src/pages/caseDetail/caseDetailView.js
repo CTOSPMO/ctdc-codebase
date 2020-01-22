@@ -248,7 +248,7 @@ Case :
             <Grid item lg={5} md={5} sm={12} xs={12} className={classes.detailContainerRight}>
               <Grid container spacing={32} direction="column">
                 <Grid item xs={12}>
-                  <span className={classes.detailContainerHeader}>STUDY</span>
+                  <span className={classes.detailContainerHeader}>TRIAL</span>
                 </Grid>
 
                 <Grid container spacing={4} className={classes.detailContainerItems}>
