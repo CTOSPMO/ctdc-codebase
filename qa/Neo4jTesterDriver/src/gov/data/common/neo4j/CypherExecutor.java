@@ -30,46 +30,44 @@ import com.google.gson.JsonParser;
 public class CypherExecutor {
 
 	 
-	 
+	private List<String>  messages = new ArrayList<String>();
+	
 	 public void run(String uri,String user,String password,String cypher,String output) {
 		
 		
 		 List<String>  excelData = new ArrayList<String>();
 		 // execution cypher query 
-		 excelData =  executeCypher(uri,user,password,cypher);
+		 excelData =  executeCypher(uri,user,password,cypher,output);
 		 
-		 // check if excelData size large then 0, otherwise empty data
-		 if(excelData.size()>0) {
-			 // export the data
-			 export(excelData , output);
-		 }else {
-			 StringBuilder errorMessage = new StringBuilder();
-			 errorMessage.append("Neo4j_URL:");
-			 errorMessage.append(uri);
-			 errorMessage.append("User_name:");
-			 errorMessage.append(user);
-			 errorMessage.append("PWD:");
-			 errorMessage.append(password);
-			 errorMessage.append("Cypher:");
-			 errorMessage.append(cypher);
-			 errorMessage.append("Output:");
-			 errorMessage.append(output);
-			 
-			 exportError(errorMessage.toString(),output);
-		 }
+		 messages.add("Neo4j_URL:");
+		 messages.add(uri);
+		 messages.add("User_name:");
+		 messages.add(user);
+		 messages.add("PWD:");
+		 messages.add(password);
+		 messages.add("Cypher:");
+		 messages.add(cypher);
+		 messages.add("Output:");
+		 messages.add(output);
+	
+		export(excelData , output);
 		
 	 }
 	 
 	 
-	 public List<String>  executeCypher(String uri,String user,String password,String cypher) {
-		 
+	 @SuppressWarnings("finally")
+	public List<String>  executeCypher(String uri,String user,String password,String cypher,String outputFile) {
+		
 		 Gson gson = new Gson();
-		 // Neo4j driver
+		// function's return value, list of records in json string format
+		List<String>  output = new ArrayList<String>();
+	 try {
+			 // Neo4j driver
 		 Driver driver = (Driver) GraphDatabase.driver( uri, AuthTokens.basic( user, password ) );
-		 // function's return value, list of records in json string format
-		 List<String>  output = new ArrayList<String>();
-		 try ( Session session = driver.session() )
-	        {
+	
+		 
+		 Session session = driver.session();
+	        
 			 // execute the transactions
 			 output = session.writeTransaction( new TransactionWork<List<String> >()
 	            {
@@ -90,20 +88,22 @@ public class CypherExecutor {
 	                    return cypherOutput;
 	                }
 	            } );
+			 
+		 	 driver.close();
+		 	 return output;
 	        }catch(Exception e ) {
 	        	System.out.print(e.getMessage());
+	        	
+	        	messages.add(e.getMessage());
+	        
+	        }finally{
+	    		 return output;
 	        }
 		 
-		 driver.close();
-		 return output;
 	 }
 	
 	
-	 public void exportError(String errorMessage,String output) {
-		 
-		 
-		 
-	 }
+
 	 
 	 public void export(List<String> data, String output) {
 		 
@@ -118,63 +118,81 @@ public class CypherExecutor {
 		 
 		 // create header row
 		 Row header = sheet.createRow(0);
-		 
-		 // create header
-		 // Parser first record as Json Object
-		 JsonElement headerJsonTree = jsonParser.parse(data.get(0));
-		 JsonObject headerJsonObject = headerJsonTree.getAsJsonObject();
-		 
-		 // Get a collection-view of the records
-		 Set<Map.Entry<String,JsonElement>> setHeaderDate = headerJsonObject.entrySet();
-		 int headerIndex = 0;
-		 
-		// Iterate the collection-view of the records
-		 for(Map.Entry<String, JsonElement> m : setHeaderDate) {
-				 System.out.println("Header :  "+m.getKey());
-				 
-				 // create cell
-				 Cell headerCell = header.createCell(headerIndex);
-				 
-				 // fill cell with key value 
-				 headerCell.setCellValue(m.getKey());
-				 headerIndex++;
-		 }
-
-		 
-		 // write record into excel
-		 int rowIndex = 0;
-		 for(String str : data) {
-			System.out.println("Data STR:  "+str);
-			rowIndex++;
-			
-			// Create row 
-			Row row = sheet.createRow(rowIndex);
-			
-			//  Parse a record
-			JsonElement jsonTree = jsonParser.parse(str);
-			
-			// make sure it is  a Json Object
-			if(jsonTree.isJsonObject()) {
-				
-				// Parser as Json Object
-				JsonObject jsonObject = jsonTree.getAsJsonObject();
-				 
-				 // Get a collection-view of the records
-				 Set<Map.Entry<String,JsonElement>> setDate = jsonObject.entrySet();
-				 int recordIndex = 0 ;
-				 
-				 // Iterate the collection-view of the records
-				 for(Map.Entry<String, JsonElement> m : setDate) {
+		 if(null!=data && data.size()>0) {
+			 
+			// create header
+			 // Parser first record as Json Object
+			 JsonElement headerJsonTree = jsonParser.parse(data.get(0));
+			 JsonObject headerJsonObject = headerJsonTree.getAsJsonObject();
+			 
+			 // Get a collection-view of the records
+			 Set<Map.Entry<String,JsonElement>> setHeaderDate = headerJsonObject.entrySet();
+			 int headerIndex = 0;
+			 
+			// Iterate the collection-view of the records
+			 for(Map.Entry<String, JsonElement> m : setHeaderDate) {
+					 System.out.println("Header :  "+m.getKey());
 					 
-					// create cell
-					 Cell cell = row.createCell(recordIndex);
-					 // fill cell with  value 
-					 cell.setCellValue(m.getValue().toString().replace("\"", ""));
-					 recordIndex++;
-				 }
-			 };
-			
+					 // create cell
+					 Cell headerCell = header.createCell(headerIndex);
+					 
+					 // fill cell with key value 
+					 headerCell.setCellValue(m.getKey());
+					 headerIndex++;
+			 }
+
+			 
+			 // write record into excel
+			 int rowIndex = 0;
+			 for(String str : data) {
+				System.out.println("Data STR:  "+str);
+				rowIndex++;
+				
+				// Create row 
+				Row row = sheet.createRow(rowIndex);
+				
+				//  Parse a record
+				JsonElement jsonTree = jsonParser.parse(str);
+				
+				// make sure it is  a Json Object
+				if(jsonTree.isJsonObject()) {
+					
+					// Parser as Json Object
+					JsonObject jsonObject = jsonTree.getAsJsonObject();
+					 
+					 // Get a collection-view of the records
+					 Set<Map.Entry<String,JsonElement>> setDate = jsonObject.entrySet();
+					 int recordIndex = 0 ;
+					 
+					 // Iterate the collection-view of the records
+					 for(Map.Entry<String, JsonElement> m : setDate) {
+						 
+						// create cell
+						 Cell cell = row.createCell(recordIndex);
+						 // fill cell with  value 
+						 cell.setCellValue(m.getValue().toString().replace("\"", ""));
+						 recordIndex++;
+					 }
+				 };
+				
+			 }
+			 
+			 
 		 }
+		 
+		 
+		 
+		 // given sheet name
+		 Sheet infoSheet = workbook.createSheet("Message");
+		 // create header row
+		 int messageIndex = 0 ;
+		 for(String message : messages) {
+			 Row row = infoSheet.createRow(messageIndex);
+			 Cell cell = row.createCell(0);
+			 cell.setCellValue(message.toString().replace("\"", ""));
+			 messageIndex++;
+		 }
+		
 		 
 		// Save as file
 		FileOutputStream outputStream;
