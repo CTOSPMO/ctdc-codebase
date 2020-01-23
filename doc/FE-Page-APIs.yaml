@@ -5,7 +5,7 @@ tickets:
       number: "CTDC-61"
       link: "https://tracker.nci.nih.gov/browse/CTDC-61"
       type: "User story"
-compents:
+components:
     items:
       -
         name : "summarizes"
@@ -39,7 +39,7 @@ tickets:
       type: "User story"
 
 
-compents:
+components:
     items:
       - 
          name : "filter cate : Trial Id"
@@ -267,7 +267,7 @@ tickets:
       type: "User story"
  
 graphql : ""
-compents:
+components:
     
     items:
       -
@@ -332,7 +332,7 @@ tickets:
       type: "User story"
 
 
-compents:
+components:
     items:
       -
         name : "Page Details"
@@ -388,7 +388,7 @@ tickets:
       type: "User story"
 
 
-compents:
+components:
 
     items:
       -
@@ -457,7 +457,7 @@ tickets:
       number: "CTDC-43"
       link: "https://tracker.nci.nih.gov/browse/CTDC-43"
       type: "User story"
-compents:
+components:
     items:
       -
         name : "my cases table"
