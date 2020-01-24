@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import {
   Grid,
@@ -12,7 +11,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
-import { customSorting } from '../../utils/dashboardUtilFunctions';
 import cn from '../../utils/classNameConcat';
 import icon from '../../assets/icons/Icon-StudiesDetail.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
@@ -67,16 +65,16 @@ const options = (classes) => ({
 
 
 const TrialView = ({ classes, data }) => {
-
-
-  // initDashboardStatus will be used in dispatch to 
-  // make sure dashboard data has be loaded first. 
+  // initDashboardStatus will be used in dispatch to
+  // make sure dashboard data has be loaded first.
   const initDashboardStatus = () => (dispatch) => Promise.resolve(
     dispatch(fetchDataForDashboardDataTable()),
   );
 
+  const trialData = data.clinicalTrialByTrialId[0];
+
   const dispatch = useDispatch();
-  const redirectTo = (trial) => {
+  const redirectTo = () => {
     dispatch(initDashboardStatus()).then(() => {
       dispatch(singleCheckBox([{
         groupName: 'Trial Code',
@@ -88,8 +86,6 @@ const TrialView = ({ classes, data }) => {
   };
 
 
-
-  const trialData = data.clinicalTrialByTrialId[0];
   const stat = {
     numberOfCases: data.caseCountByTrialId,
     numberOfTrials: 1,
@@ -163,9 +159,9 @@ const TrialView = ({ classes, data }) => {
         <div className={classes.detailContainer}>
 
           <Grid container spacing={8}>
-            <Grid item lg={12} md={12} sm={12} xs={12} >
+            <Grid item lg={12} md={12} sm={12} xs={12}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
-               <Grid item xs={12}>
+                <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
 
                 </Grid>
@@ -177,7 +173,7 @@ const TrialView = ({ classes, data }) => {
                       {' '}
                     </span>
                   </div>
-  
+
                 </Grid>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Description</span>
@@ -202,7 +198,7 @@ const TrialView = ({ classes, data }) => {
                   <Grid item xs={12} spacing={0} className={classes.content}>
                     {trialData.clinical_trial_id}
                   </Grid>
-                   <Grid item xs={12} className={classes.detailContainerItem}>
+                  <Grid item xs={12} className={classes.detailContainerItem}>
                     <span className={classes.title}> Trial Type:</span>
                   </Grid>
                   <Grid item xs={12} spacing={0} className={classes.content}>
@@ -220,7 +216,7 @@ const TrialView = ({ classes, data }) => {
                   <Grid item xs={12} className={classes.content}>
                     {trialData.principal_investigators}
                   </Grid>
-                 
+
                 </Grid>
               </Grid>
             </Grid>
@@ -239,10 +235,10 @@ const TrialView = ({ classes, data }) => {
               <Grid item xs={12}>
                 <Typography>
                   <MUIDataTable
-                  data={data.clinicalTrialArmByTrialId}
-                  columns={columns}
-                  options={options(classes)}
-                />
+                    data={data.clinicalTrialArmByTrialId}
+                    columns={columns}
+                    options={options(classes)}
+                  />
                 </Typography>
               </Grid>
               <Grid item xs={8}>

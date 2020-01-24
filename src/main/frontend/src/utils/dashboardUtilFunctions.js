@@ -1,4 +1,3 @@
-/* eslint-disable */
 import uuid from 'uuid';
 
 export const COLORS = [
@@ -144,7 +143,7 @@ export function getSunburstDataFromDashboardData(data) {
 // getWidegtDataFromDT
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
-  let d = data.reduce((accumulator, currentValue) => {
+  data.reduce((accumulator, currentValue) => {
     if (accumulator.has(currentValue[widgetName.toString()])) {
       accumulator.set(
         currentValue[widgetName.toString()],
@@ -154,11 +153,10 @@ export function getDonutDataFromDashboardData(data, widgetName) {
       accumulator.set(currentValue[widgetName.toString()], [currentValue.case_id]);
     }
     return accumulator;
-  }, new Map())
-
-  d.forEach(
-    (value, key) => { 
-      output.push({ item: key, cases: [...new Set(value)].length }); },
+  }, new Map()).forEach(
+    (value, key) => {
+      output.push({ item: key, cases: [...new Set(value)].length });
+    },
   );
   return output;
 }

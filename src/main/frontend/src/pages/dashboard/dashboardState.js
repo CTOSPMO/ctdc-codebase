@@ -26,6 +26,7 @@ export const initialState = {
     },
     checkbox: {
       data: [],
+      defaultPanel: false,
     },
     datatable: {
       filters: [],
@@ -139,6 +140,7 @@ export default function dashboardReducer(state = initialState, action) {
         },
         checkbox: {
           data: updatedCheckboxData,
+          defaultPanel: action.payload[0].groupName,
         },
         datatable: {
           ...state.datatable,
