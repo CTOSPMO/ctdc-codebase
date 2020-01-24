@@ -1,3 +1,4 @@
+/* eslint-disable */
 import uuid from 'uuid';
 
 export const COLORS = [
@@ -143,17 +144,22 @@ export function getSunburstDataFromDashboardData(data) {
 // getWidegtDataFromDT
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
-  data.reduce((accumulator, currentValue) => {
+  let d = data.reduce((accumulator, currentValue) => {
     if (accumulator.has(currentValue[widgetName.toString()])) {
       accumulator.set(
         currentValue[widgetName.toString()],
-        accumulator.get(currentValue[widgetName.toString()]) + 1,
+        accumulator.get(currentValue[widgetName.toString()]).concat(currentValue.case_id),
       );
     } else {
-      accumulator.set(currentValue[widgetName.toString()], 1);
+      accumulator.set(currentValue[widgetName.toString()], [currentValue.case_id]);
     }
     return accumulator;
-  }, new Map()).forEach((value, key) => { output.push({ item: key, cases: value }); });
+  }, new Map())
+
+  d.forEach(
+    (value, key) => { 
+      output.push({ item: key, cases: [...new Set(value)].length }); },
+  );
   return output;
 }
 
@@ -272,7 +278,7 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
         const item = el;
 
         // init item's value of number of cases to zero
-        item.cases = 0;
+        item.cases = [];
         // get filters that are not in this checkbox group
         const filtersNotInThisCheckboxGroup = filters.filter(
           (f) => (f.groupName !== checkbox.groupName),
@@ -287,18 +293,18 @@ export const getCheckBoxData = (data, allCheckBoxs, activeCheckBoxs, filters) =>
             // value in the array
             if (Array.isArray(d[checkbox.datafield])) {
               if (d[checkbox.datafield].includes(fName)) {
-                item.cases += 1;
+                item.cases.push(d.case_id);
               }
             }
             // Str compare
             if (d[checkbox.datafield] === fName) {
-              item.cases += 1;
+              item.cases.push(d.case_id);
             }
           } else if (item.name === NOT_PROVIDED) { // No such attribute
-            item.cases += 1;
+            item.cases.push(d.case_id);
           }
         });
-
+        item.cases = [...new Set(item.cases)].length;
         // update check status
         item.isChecked = false;
         filters.forEach((filter) => {

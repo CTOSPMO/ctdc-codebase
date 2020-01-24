@@ -79,9 +79,9 @@ const TrialView = ({ classes, data }) => {
   const redirectTo = (trial) => {
     dispatch(initDashboardStatus()).then(() => {
       dispatch(singleCheckBox([{
-        groupName: 'Trial ID',
-        name: trialData.clinical_trial_id,
-        datafield: 'clinical_trial_id',
+        groupName: 'Trial Code',
+        name: trialData.clinical_trial_designation,
+        datafield: 'clinical_trial_code',
         isChecked: true,
       }]));
     });
