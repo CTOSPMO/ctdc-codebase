@@ -19,15 +19,24 @@ const FacetPanel = (classes) => {
   const sideBarContent = useSelector((state) => (
     state.dashboard
     && state.dashboard.checkbox
-    && state.dashboard.checkbox.data
-      ? state.dashboard.checkbox.data : []));
+      ? state.dashboard.checkbox : {
+        data: [],
+        defaultPanel: false,
+      }));
+
   // redux use actions
   const dispatch = useDispatch();
 
   const [expanded, setExpanded] = React.useState(false);
 
+  React.useEffect(() => {
+    if (!expanded || !(expanded === `${sideBarContent.defaultPanel}false` || expanded !== false)) {
+      setExpanded(sideBarContent.defaultPanel);
+    }
+  });
+
   const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false);
+    setExpanded(isExpanded ? panel : `${panel}false`);
   };
 
   const handleToggle = (value) => () => {
@@ -43,7 +52,7 @@ const FacetPanel = (classes) => {
 
   return (
     <>
-      {sideBarContent.map((sideBarItem) => {
+      {sideBarContent.data.map((sideBarItem) => {
         if (sideBarItem.show) {
           return (
             <>
