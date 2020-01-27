@@ -16,18 +16,15 @@ import { toggleCheckBox } from '../../../pages/dashboard/dashboardState';
 
 const FacetPanel = (classes) => {
   // data from store
-  let sideBarContent = useSelector((state) => (
+  const sideBarContent = useSelector((state) => (
     state.dashboard
     && state.dashboard.checkbox
     && state.dashboard.checkbox
-      ? state.dashboard.checkbox : null));
+      ? state.dashboard.checkbox : {
+        data: [],
+        defaultPanel: false,
+      }));
 
-  if (sideBarContent === null) {
-    sideBarContent = {
-      data: [],
-      defaultPanel: false,
-    };
-  }
   // redux use actions
   const dispatch = useDispatch();
 
