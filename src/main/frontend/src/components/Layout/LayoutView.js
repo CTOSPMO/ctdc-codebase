@@ -26,6 +26,7 @@ import supportView from '../../pages/about/supportView';
 import requestAccess from '../../pages/about/requestAccessView';
 import Trials from '../../pages/trials/controller';
 import TrialDetail from '../../pages/trialDetail/controller';
+import YAMLbuildtime from '../../pages/yml-at-buildtime/yml-at-buildtime';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
@@ -65,7 +66,7 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route path="/developers" component={developerView} />
             <Route path="/support" component={supportView} />
             <Route path="/request-access" component={requestAccess} />
-
+            <Route path="/yml" component={YAMLbuildtime} />
 
             <Route component={Error} />
           </Switch>
