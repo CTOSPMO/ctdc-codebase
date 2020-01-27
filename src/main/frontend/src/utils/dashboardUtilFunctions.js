@@ -57,10 +57,10 @@ export const mappingCheckBoxToDataTable = [
     group: 'Ethnicity', field: 'ethnicity', api: 'casesCountBaseOnEthnicity', datafield: 'ethnicity', show: true,
   },
   {
-    group: 'Associated File Type', field: 'file_types', api: 'casesCountBaseOnFileType', datafield: 'file_types', show: true,
+    group: 'Associated File Type', field: 'file_type', api: 'casesCountBaseOnFileType', datafield: 'file_types', show: true,
   },
   {
-    group: 'Associated File Format', field: 'file_formats', api: 'casesCountBaseOnFileFormat', datafield: 'file_formats', show: true,
+    group: 'Associated File Format', field: 'file_format', api: 'casesCountBaseOnFileFormat', datafield: 'file_formats', show: true,
   },
 
 
