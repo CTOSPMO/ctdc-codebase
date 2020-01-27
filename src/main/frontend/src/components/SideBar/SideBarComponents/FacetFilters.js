@@ -19,7 +19,6 @@ const FacetPanel = (classes) => {
   const sideBarContent = useSelector((state) => (
     state.dashboard
     && state.dashboard.checkbox
-    && state.dashboard.checkbox
       ? state.dashboard.checkbox : {
         data: [],
         defaultPanel: false,
