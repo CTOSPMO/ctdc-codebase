@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Grid,
@@ -5,14 +6,13 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-import imgAbout from '../../assets/landing/LP_About.png';
-import imgProgram from '../../assets/landing/LP_Program.png';
-import imgStudy from '../../assets/landing/LP_Studies.png';
-import imgSubmit from '../../assets/landing/LP_Submit.png';
+import imgAbout from '../../assets/landing/About-image.jpg';
+import imgTrial from '../../assets/landing/Trials-image.jpg';
+import imgAccess from '../../assets/landing/RequestAccess-LP.jpg';
 import icon from '../../assets/landing/LP_ReadMore.svg';
 import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
 import lbg from '../../assets/landing/LP-Background.1400x1600.jpg';
-import l9dg from '../../assets/landing/LP_Cases.png';
+import l9dg from '../../assets/landing/Cases-LP.jpg';
 import { Button } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
 import starImg from '../../assets/LP_FLARE.2.png';
@@ -142,24 +142,24 @@ between human and canine cancers.
         <div className={classes.contentLeft}>
           <div className={classes.about}>
             <div className={classes.aboutImageSection}>
-              <img src={imgAbout} className={classes.aboutImage} alt="ICDC about" />
+              <img src={imgAbout} className={classes.aboutImage} alt="CTDC about" />
             </div>
-            <div className={classes.icdcWords}>
-                About the Integrated Canine Data Commons (ICDC)
+            <div className={classes.CTDCWords}>
+                About the Clinical Trials Data Commons (CTDC)
             </div>
             <div className={classes.aboutContent}>
                 NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
                 the Frederick National Laboratory for Cancer Research (FNLCR) to
-                build the Integrated Canine Data Commons (ICDC), a cloud-based repository
-                of canine cancer data. ICDC was established to further research
+                build the Integrated Canine Data Commons (CTDC), a cloud-based repository
+                of canine cancer data. CTDC was established to further research
                 on human cancers by enabling comparative
-                analysis with canine cancer. The data in the ICDC is sourced
+                analysis with canine cancer. The data in the CTDC is sourced
                 from multiple different programs and projects; all focused on
                 the canine subjects.
             </div>
             <div className={classes.aboutButtonSection}>
               <div className={classes.aboutButtonLeft}>
-                <img src={iconAbout} className={classes.iconAbout} alt="ICDC about icon" />
+                <img src={iconAbout} className={classes.iconAbout} alt="CTDC about icon" />
               </div>
               <div className={classes.aboutButtonRight}>
                 <Link to="/purpose" className={classes.aboutButton}>FULL ARTICLE</Link>
@@ -171,16 +171,16 @@ between human and canine cancers.
           <div className={classes.contentRightTop}>
             <div className={classes.program}>
               <div>
-                <img className={classes.image} src={imgProgram} alt="ICDC program " />
+                <img className={classes.image} src={imgTrial} alt="CTDC program " />
               </div>
               <div className={classes.content}>
-                <div className={classes.contentHeader}> Programs</div>
-                <div className={classes.contentMessage}>Discover the programs in ICDC</div>
+                <div className={classes.contentHeader}> Trials</div>
+                <div className={classes.contentMessage}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</div>
 
               </div>
               <div className={classes.blueButton}>
                 <div className={classes.blueButtonLeft}>
-                  <img className={classes.icon} src={icon} alt="ICDC about " />
+                  <img className={classes.icon} src={icon} alt="CTDC about " />
                   {' '}
                 </div>
                 <div className={classes.blueButtonRight}>
@@ -190,16 +190,16 @@ between human and canine cancers.
             </div>
             <div className={classes.studies}>
               <div>
-                <img className={classes.image} src={imgStudy} alt="ICDC studies " />
+                <img className={classes.image} src={imgAccess} alt="CTDC Request ACCESS " />
               </div>
               <div className={classes.content}>
-                <div className={classes.contentHeader}> Studies</div>
-                <div className={classes.contentMessage}>Browse the studies within ICDC</div>
+                <div className={classes.contentHeader}> REQUEST ACCESS</div>
+                <div className={classes.contentMessage}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</div>
 
               </div>
               <div className={classes.blueButton}>
                 <div className={classes.blueButtonLeft}>
-                  <img className={classes.icon} src={icon} alt="ICDC about " />
+                  <img className={classes.icon} src={icon} alt="CTDC about " />
                   {' '}
                 </div>
                 <div className={classes.blueButtonRight}>
@@ -207,40 +207,19 @@ between human and canine cancers.
                 </div>
               </div>
             </div>
-            <div className={classes.submit}>
-              <div>
-                <img className={classes.image} src={imgSubmit} alt="ICDC submit " />
-              </div>
-              <div className={classes.content}>
-
-                <div className={classes.contentHeader}> Submit Data</div>
-                <div className={classes.contentMessage}>
-Interested in contributing data to ICDC ?
-                </div>
-
-              </div>
-              <div className={classes.blueButton}>
-                <div className={classes.blueButtonLeft}>
-                  <img className={classes.icon} src={icon} alt="ICDC about " />
-                  {' '}
-                </div>
-                <div className={classes.blueButtonRight}>
-                  <Link to="/submit" className={classes.blueButton}>READ MORE</Link>
-                </div>
-              </div>
-            </div>
+           
           </div>
           <div className={classes.contentRightBottom}>
             <div className={classes.cases}>
               <div className={classes.greyContentHeader}> Cases</div>
               <div className={classes.greyContent}>
 Search all the Cases and build cohorts from all the
-Programs/Studies within the ICDC. The data files from
+Programs/Studies within the CTDC. The data files from
  these cohorts can then be analyzed in the Cloud Resources.
               </div>
               <div className={classes.greybuttonSection}>
                 <div className={classes.blueButtonLeft}>
-                  <img className={classes.greyIcon} src={icon} alt="ICDC about " />
+                  <img className={classes.greyIcon} src={icon} alt="CTDC about " />
                   {' '}
                 </div>
                 <div className={classes.blueButtonRight}>
@@ -347,18 +326,22 @@ const styles = (theme) => ({
   aboutImage: {
     width: '300px',
     height: '240px',
+    padding: '10px',
   },
   aboutImageSection: {
     height: '240px',
   },
-  icdcWords: {
+  CTDCWords: {
     height: '193px',
-    background: 'rgb(57,192,240,0.3)',
+    background: '#0B2731',
     color: '#FFFFFF',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    lineHeight: '27px',
-    padding: '35px',
+    fontSize: '26px',
+    textTransform: 'uppercase',
+    lineHeight: '29px',
+    padding: '36px 75px 26px 26px',
+    fontFamily: 'Oswald',
+
+
   },
   landingContainer: {
     alignItems: 'center',
@@ -371,22 +354,53 @@ const styles = (theme) => ({
   },
   about: {
     width: '300px',
+    backgroundColor: '#20506A',
   },
   image: {
-    width: '197px',
-    height: '244px',
+    width: '293px',
+    height: '247px',
   },
   aboutContent: {
-    background: '#fff',
+    background: '#20506A',
     width: '300px',
     padding: '30px 30px 30px 30px',
-    color: '#010101',
+    color: '#fff',
     fontFamily: '"Open Sans"',
     fontSize: '14px',
     lineHeight: '22px',
   },
+  aboutButtonSection: {
+    background: '#20506A',
+    height: '67px',
+  },
+  imgIconAbout: {
+    width: '49px',
+  },
+  aboutButtonLeft: {
+    float: 'left',
+    background: '#C53B27',
+    height: '45px',
+    width: '48px',
+  },
+  aboutButtonRight: {
+    background: '#894439',
+    float: 'left',
+    height: '45px',
+    width: '132px',
+  },
+  aboutButton: {
+    color: '#ffffff',
+    textDecoration: 'none',
+    textTransform: 'uppercase',
+    fontSize: '12px',
+    fontWeight: '600',
+    lineHeight: '45px',
+    paddingLeft: '20px',
+    boxShadow: 'none',
+  },
+
   content: {
-    width: '197px',
+    width: '100%',
     background: '#fff',
     height: '120px',
     paddingLeft: '30px',
@@ -402,66 +416,26 @@ const styles = (theme) => ({
     padding: '15px 0',
   },
   contentMessage: {
-    height: '33px',
     width: '125px',
     color: '#010101',
-    fontFamily: '"Open Sans"',
-    fontSize: '14px',
+    fontFamily: 'Lato',
+    fontSize: '15pt',
     lineHeight: '20px',
   },
-  aboutButtonSection: {
-    background: '#fff',
-    height: '67px',
-  },
-  imgIconAbout: {
-    width: '49px',
-  },
-  aboutButtonLeft: {
-    float: 'left',
-    background: '#CB8311',
-    height: '45px',
-    width: '48px',
-  },
-  aboutButtonRight: {
-    background: '#A97212',
-    float: 'left',
-    height: '45px',
-    width: '132px',
-  },
-  aboutButton: {
-    color: '#ffffff',
-    textDecoration: 'none',
-    textTransform: 'uppercase',
-    fontSize: '12px',
-    fontWeight: '600',
-    lineHeight: '45px',
-    paddingLeft: '20px',
-    boxShadow: 'none',
-  },
-  contentRight: {
-
-  },
-  contentRightTop: {
-
-  },
+ 
   program: {
     float: 'left',
     padding: '0 10px 10px 0px',
   },
-  button: {
 
-  },
   studies: {
     float: 'left',
     padding: '0 10px 10px 0px',
   },
-  submit: {
-    float: 'left',
-    padding: '0 10px 10px 0px',
-  },
+
   contentRightBottom: {
     float: 'left',
-    width: '610px',
+    width: '597px',
     background: '#fff',
     backgroundImage: `url(${l9dg})`,
     backgroundRepeat: 'no-repeat',
