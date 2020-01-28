@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, withStyles } from '@material-ui/core';
 
 const AboutBody = ({ classes, data }) => {
+  // const content = data.content ? data.content : [{ item: '' }];
+  // console.log('content');
   console.log(data.content);
   return (
     <div className={classes.container}>
@@ -10,11 +12,14 @@ const AboutBody = ({ classes, data }) => {
           <img className={classes.img} src={data.img} alt="about" />
         </Grid>
         <Grid item lg={9} md={9} sm={12} xs={12} className={classes.rightSection}>
-          {/* {data.content.map(({ para }) => (
-            <span className={classes.text}>
-              {para.item}
-            </span>
-          ))} */}
+          {data.content ? data.content.map((para) => (
+            <>
+              <div className={classes.text}>
+                {para.item}
+              </div>
+              <br />
+            </>
+          )) : ''}
         </Grid>
       </Grid>
     </div>
@@ -31,8 +36,8 @@ const styles = () => ({
     maxWidth: '1440px',
   },
   text: {
-    height: '476px',
-    width: '675px',
+    // height: '476px',
+    // width: '675px',
     color: '#000000',
     fontFamily: '"Open Sans"',
     fontSize: '15px',
@@ -64,5 +69,11 @@ const styles = () => ({
   },
 });
 
+AboutBody.defaultProps = {
+  classes: {},
+  data: {
+    content: [],
+  },
+};
 
 export default withStyles(styles)(AboutBody);
