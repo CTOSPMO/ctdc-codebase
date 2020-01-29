@@ -11,7 +11,7 @@ import imgTrial from '../../assets/landing/Trials-image.jpg';
 import imgAccess from '../../assets/landing/RequestAccess-LP.jpg';
 import icon from '../../assets/landing/LP_ReadMore.svg';
 import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
-import lbg from '../../assets/landing/LP-Background.1400x1600.jpg';
+import texturebg from '../../assets/landing/BackgroundTexture-LP.jpg'
 import l9dg from '../../assets/landing/Cases-LP.jpg';
 import { Button } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
@@ -138,7 +138,10 @@ between human and canine cancers.
           </div>
         </Grid>
       </Grid>
-      <Grid container spacing={16} direction="row" className={classes.landingContainer}>
+      </div>
+      <div className={classes.container}>
+      <div className={classes.texture}>
+        <Grid container spacing={16} direction="row" className={classes.landingContainer}>
         <div className={classes.contentLeft}>
           <div className={classes.about}>
             <div className={classes.aboutImageSection}>
@@ -230,27 +233,23 @@ Programs/Studies within the CTDC. The data files from
           </div>
         </div>
       </Grid>
+      </div>
+    
     </div>
   </div>
 );
 const styles = (theme) => ({
-  page: {
-    background: '#5E8CA5',
-    backgroundImage: `url(${lbg})`,
-    backgroundRepeat: 'no-repeat',
+  texture: {
     backgroundSize: 'cover',
+    backgroundImage: `url(${texturebg})`,
+    backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed',
+    padding: '80px 0 80px 0',
   },
   container: {
-    paddingTop: '10px',
     fontFamily: 'Raleway, sans-serif',
-    paddingRight: '32px',
     margin: '0 auto',
-    paddingLeft: '32px',
-    paddingBottom: '90px',
-    '@media (min-width: 1200px)': {
-      width: '1200px',
-    },
+    
   },
   headerTitle: {
     paddingTop: '180px',
