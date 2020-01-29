@@ -68,6 +68,11 @@ export const DASHBOARD_QUERY = gql`{
         file_formats
         files{
            uuid
+           file_name
+           file_type
+           file_description
+           file_format
+           file_size
         }
      }
 }`;
