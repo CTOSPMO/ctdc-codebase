@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import axios from 'axios';
-import YAMLData1 from './My-YAML-Content.yaml';
+import YAMLData from '../../content/prod/aboutPagesContent.yaml';
 import l9dg from '../../assets/about/About_Purpose.png';
 import Body from './BodyView';
 import Header from '../../components/About/HeaderView';
@@ -13,9 +13,15 @@ const YAMLbuildtime = () => {
 
 
   useEffect(async () => {
-    const result = await axios(YAMLData1);
-    const yamlData2 = yaml.safeLoad(result.data);
-    const supportObj = yamlData2.find(({ page }) => page === '/purpose');
+    let resultData = [];
+    try {
+      const result = await axios.get('http://foo.bar/');
+      resultData = yaml.safeLoad(result.data);
+    } catch (error) {
+      const result = await axios(YAMLData);
+      resultData = yaml.safeLoad(result.data);
+    }
+    const supportObj = resultData.find(({ page }) => page === '/purpose');
     setData(supportObj);
   }, []);
 
