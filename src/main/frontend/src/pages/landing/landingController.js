@@ -37,7 +37,7 @@ const LandingController = ({ classes }) => (
        </Grid>
         <Grid container spacing={16} direction="row" className={cn(classes.paddingTop30, classes.paddingLeft50)}>
             <div className={classes.redButtonSection}>
-                <Link to="/cases" className={classes.redButton}>Exploring</Link>
+                <Link to="/cases" className={classes.redButton}>Explore</Link>
             </div>
       </Grid>
     </div>
@@ -67,7 +67,7 @@ const LandingController = ({ classes }) => (
                 <img src={iconAbout} className={classes.iconAbout} alt="CTDC about icon" />
               </div>
               <div className={classes.aboutButtonRight}>
-                <Link to="/purpose" className={classes.aboutButton}>FULL ARTICLE</Link>
+                <Link to="/purpose" className={classes.aboutButton}>READ MORE</Link>
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ Programs/Studies within the CTDC. The data files from
                   {' '}
                 </div>
                 <div className={classes.blueButtonRight}>
-                  <Link to="/cases" className={classes.greybutton}>READ MORE</Link>
+                  <Link to="/cases" className={classes.greybutton}>Explore</Link>
                 </div>
               </div>
             </div>
