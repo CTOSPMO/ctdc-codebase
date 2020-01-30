@@ -9,7 +9,7 @@
             analysis with canine cancer. The data in the ICDC is sourced
             from multiple different programs and projects; all focused on
             the canine subjects.The data is harmonized into an integrated data model and then made 
-            available to the research community **[Cloud Resources](https://datascience.cancer.gov/data-commons/cloud-resources)**
+            available to the research community $$[Cloud Resources](https://datascience.cancer.gov/data-commons/cloud-resources)$$
             The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative
             from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT).
             Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s
@@ -40,47 +40,51 @@
        - institution: 	North Carolina State University
        - affliation: External
        - subcommitee: DGAB
-- page: '/purpose2'
-  title: "Purpose"
+- page: '/crdc'
+  title: "Cancer Research Data Commons (CRDC) and Analysis"
   content:
-    - item: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
+    - paragraph: $$[The Cancer Research DataCommons](https://datascience.cancer.gov/data-commons)$$ is an initiative from NCI’s Center for Biomedical
+        Informatics & Information Technology ( $$[CBIIT](https://datascience.cancer.gov/)$$). CBIIT’s vision for the project consists of a 
+        virtual, expandable infrastructure that provides secure access to many different data types across scientific domains, 
+        allowing users to analyze, share, and store results, leveraging the storage and elastic compute, or ability to easily scale resources, of the 
+        cloud. The ability to combine diverse data types and perform cross-domain analysis of large data sets can lead to new discoveries in cancer prevention, 
+        treatment and diagnosis, and supports the goals of precision medicine and the Cancer Moonshot℠.
+    - paragraph: 'CLOUD RESOURCES:'
+    - paragraph: The CRDC has three Cloud Resourcesoutbounnd web site icon options (
+        $$[Seven Bridges Cancer Genomics Cloud ](http://www.cancergenomicscloud.org/)$$,$$[ISB Cancer Genomics Cloud ](https://isb-cgc.appspot.com/)$$, $$[Terra ](https://terra.bio/)$$),
+        each providing analysis platforms for the community to use when working with Data Commons data.
+    - paragraph: These cloud-based platforms eliminate the need for researchers to download and store extremely large data sets by allowing them to bring 
+        analysis tools to the data in the cloud, instead of the traditional process of bringing the data to the tools on local hardware. The Cloud Resources 
+        also provide access to on-demand computational capacity to analyze these data. The Cloud Resources allow users to run best practice tools and pipelines 
+        already implemented or upload their own data or analysis methods to workspaces.
+    - paragraph: All three Cloud Resources provide support for data access through a web-based user interface in addition to programmatic access to analytic 
+       tools and workflows, and the capability of sharing results with collaborators. Each Cloud Resource is continually developing new functionality to improve 
+       the user experience and add new tools for researchers.
+    - paragraph: SEVEN BRIDGES CANCER GENOMICS CLOUD (SBG) is hosted on Amazon Web Services and has a rich user interface that allows researchers to find data of 
+       interest and combine it with their own private data. Data can be analyzed using more than 200 preinstalled, curated bioinformatics tools and workflows. 
+       Researchers can also extend the functionality of the platform by adding their own data and tools via an intuitive software development kit.
+    - paragraph: INSTITUTE FOR SYSTEMS BIOLOGY CANCER GENOMICS CLOUD (ISB-CGC) leveraging many aspects of the Google Cloud Platform, allows scientists to 
+       interactively define and compare cohorts, examine underlying molecular data for specific genes and pathways, and share insights with collaborators. 
+       For computational users, Application Program Interfaces (APIs) and Google Cloud Platform (GCP) resources such as BigQuery and Google Pipeline service, 
+       allow complex queries from R or Python scripts, or Dockerized workflows to run on data available in the Google Cloud Storage.
+    - paragraph: BROAD INSTITUTE TERRA is an open, standards-based platform for performing production-scale data analysis in the cloud. Built on the Google 
+       Cloud Platform, Terra empowers analysts, tool developers, and production managers to run large-scale analysis and to share results with collaborators. 
+       Users can upload their own analysis methods and data to workspaces or run the Broad’s best practice tools and pipelines.
+    - paragraph: '$$#FROM ICDC TO CLOUD RESOURCES:#$$'
+    - paragraph: 'FROM ICDC TO CLOUD RESOURCES:'
+
+
+- page: '/crdc1'
+  title: "Cancer Research Data Commons (CRDC) and Analysis"
+  content:
+    - paragraph: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
             the Frederick National Laboratory for Cancer Research (FNLCR) to
             build the integrated Canine Data Commons (ICDC), a cloud-based repository
             of canine cancer data. ICDC was established to further research
-            on human cancers by enabling comparative
-            analysis with canine cancer. The data in the ICDC is sourced
-            from multiple different programs and projects; all focused on
-            the canine subjects.
-    - item: The data is harmonized into an integrated data model and then made 
-            available to the research community.
-            The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative
-            from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT).
-            Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s
-    - item: Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is
-            focused on software engineering and data handling.  The Applied and Developmental
-            Research Directorate (ADRD) is managing the ICDC Steering Committee and providing
-            one of the data sources for the ICDC. Finally, there is also an ICDC Steering
-            Committee (composed of external members, FNLCR and NCI staff) that provides advice
-            to DCTD on the ICDC.
-- page: '/purpose2'
+- page: '/purpose3'
   title: "Purpose"
   content:
-    - item: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
+    - paragraph: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
             the Frederick National Laboratory for Cancer Research (FNLCR) to
             build the integrated Canine Data Commons (ICDC), a cloud-based repository
             of canine cancer data. ICDC was established to further research
-            on human cancers by enabling comparative
-            analysis with canine cancer. The data in the ICDC is sourced
-            from multiple different programs and projects; all focused on
-            the canine subjects.
-    - item: The data is harmonized into an integrated data model and then made 
-            available to the research community.
-            The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative
-            from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT).
-            Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s
-    - item: Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is
-            focused on software engineering and data handling.  The Applied and Developmental
-            Research Directorate (ADRD) is managing the ICDC Steering Committee and providing
-            one of the data sources for the ICDC. Finally, there is also an ICDC Steering
-            Committee (composed of external members, FNLCR and NCI staff) that provides advice
-            to DCTD on the ICDC.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, withStyles, Link } from '@material-ui/core';
-import AboutHeader from '../../components/About/HeaderView';
+import AboutHeader from './HeaderView';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 
 const AboutBody = ({ classes, data }) => (
@@ -17,7 +17,7 @@ const AboutBody = ({ classes, data }) => (
               <div className={classes.text}>
                 { paragraphObj.paragraph.split('$$').map((splitedParagraph) => (
                 // Checking for regex ()[] pattern
-                  (splitedParagraph != null && (/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) ? (
+                  (splitedParagraph != null && ((/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) || (/\((.+)\)\[(.+)\]/g.test(splitedParagraph))) ? (
                     <>
                       <Link
                         title="Cloud Resources."
