@@ -9,7 +9,13 @@
             analysis with canine cancer. The data in the ICDC is sourced
             from multiple different programs and projects; all focused on
             the canine subjects.The data is harmonized into an integrated data model and then made 
-            available to the research community.
+            available to the research community <Link
+            title="Cloud Resources."
+            target="_blank"
+            rel="noreferrer"
+            href="https://datascience.cancer.gov/data-commons/cloud-resources"
+            color="inherit"
+            className={classes.link}>Cloud Resources</Link>.
             The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative
             from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT).
             Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s

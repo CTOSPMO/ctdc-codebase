@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid, withStyles } from '@material-ui/core';
+import { Grid, withStyles, Link } from '@material-ui/core';
+import externalIcon from '../../assets/about/About-ExternalLink.svg';
 
 const AboutBody = ({ classes, data }) => {
   // const content = data.content ? data.content : [{ item: '' }];
@@ -15,7 +16,27 @@ const AboutBody = ({ classes, data }) => {
           {data.content ? data.content.map((para) => (
             <>
               <div className={classes.text}>
-                {para.item}
+                { para.item.split('**').map((item) => (
+                  (item != null && (/\[(.+)\]\((.+)\)/g.test(item)) ? (
+                    <>
+                      <Link
+                        title="Cloud Resources."
+                        target="_blank"
+                        rel="noreferrer"
+                        href={item.match(/\((.*)\)/).pop()}
+                        color="inherit"
+                        className={classes.link}
+                      >
+                        {item.match(/\[(.*)\]/).pop()}
+                      </Link>
+                      <img
+                        src={externalIcon}
+                        alt="outbounnd web site icon"
+                        className={classes.linkIcon}
+                      />
+                    </>
+                  ) : item
+                  )))}
               </div>
               <br />
             </>
@@ -43,12 +64,6 @@ const styles = () => ({
     fontSize: '15px',
     lineHeight: '22px',
   },
-  link: {
-    color: '#0296C9',
-    '&:hover': {
-      color: '#0296C9',
-    },
-  },
   title: {
     color: '#0B3556',
     textTransform: 'uppercase',
@@ -66,6 +81,17 @@ const styles = () => ({
   },
   img: {
     width: '100%',
+  },
+  linkIcon: {
+    width: '20px',
+    verticalAlign: 'sub',
+    margin: '0px 0px 0px 2px',
+  },
+  link: {
+    color: '#0296C9',
+    '&:hover': {
+      color: '#0296C9',
+    },
   },
 });
 
