@@ -3,8 +3,7 @@ import yaml from 'js-yaml';
 import axios from 'axios';
 import YAMLData from '../../content/prod/aboutPagesContent.yaml';
 import l9dg from '../../assets/about/About_Purpose.png';
-import Body from './BodyView';
-import Header from '../../components/About/HeaderView';
+import AboutBody from './BodyView';
 import Stats from '../../components/Stats/AllStatsController';
 
 const ABOUT_CONTENT_URL = process.env.REACT_APP_ABOUT_CONTENT_URL;
@@ -30,10 +29,11 @@ const YAMLbuildtime = () => {
   return (
     <>
       <Stats />
-      <Header title={data1.title} />
-      <Body data={{
+      <AboutBody data={{
         img: l9dg,
+        title: data1.title,
         content: data1.content,
+        table: data1.table,
       }}
       />
     </>

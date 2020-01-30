@@ -1,7 +1,7 @@
 - page: '/purpose'
   title: "Purpose"
   content:
-    - item: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
+    - paragraph: NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
             the Frederick National Laboratory for Cancer Research (FNLCR) to
             build the integrated Canine Data Commons (ICDC), a cloud-based repository
             of canine cancer data. ICDC was established to further research
@@ -13,12 +13,33 @@
             The ICDC is part of the Cancer Research Data Commons (CRDC), an initiative
             from NCI’s Center for Biomedical Informatics and Information Technology (CBIIT).
             Bioinformatic analysis of the ICDC data is accomplished using the CRDC’s
-    - item: Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is
+    - paragraph: Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is
             focused on software engineering and data handling.  The Applied and Developmental
             Research Directorate (ADRD) is managing the ICDC Steering Committee and providing
             one of the data sources for the ICDC. Finally, there is also an ICDC Steering
             Committee (composed of external members, FNLCR and NCI staff) that provides advice
             to DCTD on the ICDC.
+  table: 
+     - row:
+       - name: Matthew Breen
+       - institution: 	North Carolina State University
+       - affliation: External
+       - subcommitee: DGAB
+     - row:
+       - name: Matthew Breen
+       - institution: 	North Carolina State University
+       - affliation: External
+       - subcommitee: DGAB
+     - row:
+       - name: Matthew Breen
+       - institution: 	North Carolina State University
+       - affliation: External
+       - subcommitee: DGAB
+     - row:
+       - name: Matthew Breen
+       - institution: 	North Carolina State University
+       - affliation: External
+       - subcommitee: DGAB
 - page: '/purpose2'
   title: "Purpose"
   content:

@@ -1,33 +1,33 @@
 import React from 'react';
 import { Grid, withStyles, Link } from '@material-ui/core';
+import AboutHeader from '../../components/About/HeaderView';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 
-const AboutBody = ({ classes, data }) => {
-  // const content = data.content ? data.content : [{ item: '' }];
-  // console.log('content');
-  console.log(data.content);
-  return (
+const AboutBody = ({ classes, data }) => (
+  <>
+    <AboutHeader title={data.title} />
     <div className={classes.container}>
       <Grid container spacing={16} direction="row" className={classes.aboutSection}>
         <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSection}>
           <img className={classes.img} src={data.img} alt="about" />
         </Grid>
         <Grid item lg={9} md={9} sm={12} xs={12} className={classes.rightSection}>
-          {data.content ? data.content.map((para) => (
+          {data.content ? data.content.map((paragraphObj) => (
             <>
               <div className={classes.text}>
-                { para.item.split('**').map((item) => (
-                  (item != null && (/\[(.+)\]\((.+)\)/g.test(item)) ? (
+                { paragraphObj.paragraph.split('**').map((splitedParagraph) => (
+                // Checking for regex ()[] pattern
+                  (splitedParagraph != null && (/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) ? (
                     <>
                       <Link
                         title="Cloud Resources."
                         target="_blank"
                         rel="noreferrer"
-                        href={item.match(/\((.*)\)/).pop()}
+                        href={splitedParagraph.match(/\((.*)\)/).pop()}
                         color="inherit"
                         className={classes.link}
                       >
-                        {item.match(/\[(.*)\]/).pop()}
+                        {splitedParagraph.match(/\[(.*)\]/).pop()}
                       </Link>
                       <img
                         src={externalIcon}
@@ -35,17 +35,46 @@ const AboutBody = ({ classes, data }) => {
                         className={classes.linkIcon}
                       />
                     </>
-                  ) : item
+                  ) : splitedParagraph
                   )))}
               </div>
               <br />
             </>
           )) : ''}
+          { data.table && (
+          <div className={classes.tableDiv}>
+            <table className={classes.table}>
+              <thead className={classes.tableHeader}>
+                <tr className={classes.tableBodyRow}>
+                  <th className={classes.headerCell} aria-label="Index" />
+                  <th className={classes.headerCell}>Name</th>
+                  <th className={classes.headerCell}>Institution</th>
+                  <th className={classes.headerCell}>Affiliation</th>
+                  <th className={classes.headerCell}>SubCommitee(s)</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                { data.table.map((rowObj, index) => (
+                  <>
+                    <tr className={classes.tableBodyRow}>
+                      <td className={classes.tableCell}>{index + 1}</td>
+                      <td className={classes.tableCell}>{rowObj.row[0].name}</td>
+                      <td className={classes.tableCell}>{rowObj.row[1].institution}</td>
+                      <td className={classes.tableCell}>{rowObj.row[2].affliation}</td>
+                      <td className={classes.tableCell}>{rowObj.row[3].subcommitee}</td>
+                    </tr>
+                  </>
+                )) }
+              </tbody>
+            </table>
+          </div>
+          )}
         </Grid>
       </Grid>
     </div>
-  );
-};
+  </>
+);
 
 const styles = () => ({
   container: {
@@ -92,6 +121,47 @@ const styles = () => ({
     '&:hover': {
       color: '#0296C9',
     },
+  },
+  tableDiv: {
+    marginTop: '45px',
+  },
+  table: {
+    borderSpacing: '0',
+    borderCollapse: 'collapse',
+    fontSize: '12px',
+    fontWeight: 'bold',
+    letterSpacing: '0.025em',
+    lineHeight: '30px',
+    textAlign: 'left',
+    width: '100%',
+  },
+  tableHeader: {
+    fontFamily: 'Raleway',
+    color: '#194563',
+    textTransform: 'uppercase',
+
+  },
+  tableBodyRow: {
+    borderSpacing: '0',
+    borderCollapse: 'collapse',
+    '&:nth-child(even)': {
+      color: '#3B607D',
+    },
+    '&:nth-child(odd)': {
+      color: '#3E7AAA',
+    },
+  },
+  tableCell: {
+    fontFamily: '"Open Sans"',
+    fontSize: '14px',
+    padding: '8px 15px 8px 0px',
+    borderBottom: '0.66px solid #087CA5',
+  },
+  headerCell: {
+    borderBottom: '4px solid #087CA5',
+    borderSpacing: '0',
+    borderCollapse: 'collapse',
+    fontWeight: 'bolder',
   },
 });
 
