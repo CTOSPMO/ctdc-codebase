@@ -23,7 +23,7 @@ const AboutBody = ({ classes, data }) => (
                     return (
                       <>
                         <Link
-                          title="Cloud Resources."
+                          title={splitedParagraph.match(/\[(.*)\]/).pop()}
                           target="_blank"
                           rel="noreferrer"
                           href={splitedParagraph.match(/\((.*)\)/).pop()}
