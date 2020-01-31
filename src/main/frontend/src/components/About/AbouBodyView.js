@@ -1,10 +1,12 @@
 import React from 'react';
 import { Grid, withStyles, Link } from '@material-ui/core';
 import AboutHeader from './HeaderView';
+import Stats from '../Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 
 const AboutBody = ({ classes, data }) => (
   <>
+    <Stats />
     <AboutHeader title={data.title} />
     <div className={classes.container}>
       <Grid container spacing={16} direction="row" className={classes.aboutSection}>
@@ -15,28 +17,37 @@ const AboutBody = ({ classes, data }) => (
           {data.content ? data.content.map((paragraphObj) => (
             <>
               <div className={classes.text}>
-                { paragraphObj.paragraph.split('$$').map((splitedParagraph) => (
-                // Checking for regex ()[] pattern
-                  (splitedParagraph != null && ((/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) || (/\((.+)\)\[(.+)\]/g.test(splitedParagraph))) ? (
-                    <>
-                      <Link
-                        title="Cloud Resources."
-                        target="_blank"
-                        rel="noreferrer"
-                        href={splitedParagraph.match(/\((.*)\)/).pop()}
-                        color="inherit"
-                        className={classes.link}
-                      >
-                        {splitedParagraph.match(/\[(.*)\]/).pop()}
-                      </Link>
-                      <img
-                        src={externalIcon}
-                        alt="outbounnd web site icon"
-                        className={classes.linkIcon}
-                      />
-                    </>
-                  ) : splitedParagraph
-                  )))}
+                { paragraphObj.paragraph.split('$$').map((splitedParagraph) => {
+                  // Checking for regex ()[] pattern
+                  if (splitedParagraph != null && ((/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) || (/\((.+)\)\[(.+)\]/g.test(splitedParagraph)))) {
+                    return (
+                      <>
+                        <Link
+                          title="Cloud Resources."
+                          target="_blank"
+                          rel="noreferrer"
+                          href={splitedParagraph.match(/\((.*)\)/).pop()}
+                          color="inherit"
+                          className={classes.link}
+                        >
+                          {splitedParagraph.match(/\[(.*)\]/).pop()}
+                        </Link>
+                        <img
+                          src={externalIcon}
+                          alt="outbounnd web site icon"
+                          className={classes.linkIcon}
+                        />
+                      </>
+                    );
+                  }
+                  if (splitedParagraph != null && (/#(.*)#/.test(splitedParagraph))) {
+                    return (<div className={classes.title}>{splitedParagraph.match(/#(.*)#/).pop()}</div>);
+                  }
+                  if (splitedParagraph != null && (/\*(.*)\*/.test(splitedParagraph))) {
+                    return (<span className={classes.title}>{splitedParagraph.match(/\*(.*)\*/).pop()}</span>);
+                  }
+                  return splitedParagraph;
+                })}
               </div>
               <br />
             </>

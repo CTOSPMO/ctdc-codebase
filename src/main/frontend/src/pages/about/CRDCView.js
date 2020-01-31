@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import yaml from 'js-yaml';
 import axios from 'axios';
 import YAMLData from '../../content/prod/aboutPagesContent.yaml';
-import l9dg from '../../assets/about/About_CRDC.png';
+import stockImg from '../../assets/about/About_CRDC.png';
 import AboutBody from '../../components/About/AbouBodyView';
-import Stats from '../../components/Stats/AllStatsController';
 
 const ABOUT_CONTENT_URL = process.env.REACT_APP_ABOUT_CONTENT_URL;
 
 
-const YAMLbuildtime = () => {
-  const [data1, setData] = useState([]);
+const CRDCView = () => {
+  const [data, setData] = useState([]);
 
 
   useEffect(async () => {
@@ -28,15 +27,14 @@ const YAMLbuildtime = () => {
 
   return (
     <>
-      <Stats />
       <AboutBody data={{
-        img: l9dg,
-        title: data1.title,
-        content: data1.content,
-        table: data1.table,
+        img: stockImg,
+        title: data.title,
+        content: data.content,
+        table: data.table,
       }}
       />
     </>
   );
 };
-export default YAMLbuildtime;
+export default CRDCView;
