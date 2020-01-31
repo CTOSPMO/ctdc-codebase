@@ -16,7 +16,7 @@ const black = 'black';
 
 const lightenRate = 7.5;
 const darkenRate = 15;
-const tableHeaderBorder = '#004c73 3px solid';
+const tableHeaderBorder = '#4B619A 3px solid';
 const tableHeaderFontColor = '#194563';
 const tableFontFamily = "'Raleway', sans-serif";
 
@@ -260,6 +260,9 @@ export default {
         fontStyle: 'normal',
         fontSize: '11pt',
         fontWeight: 'bold',
+        '&:first-child': {
+          paddingLeft: '30px',
+        },
       },
       sortActive: {
         color: tableHeaderFontColor,
