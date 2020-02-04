@@ -3,6 +3,7 @@ import { Grid, withStyles, Link } from '@material-ui/core';
 import AboutHeader from './HeaderView';
 import Stats from '../Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
+import submissionGuide from '../../assets/footer/ICDC_DGAB_Guidelines.pdf';
 
 const AboutBody = ({ classes, data }) => (
   <>
@@ -40,11 +41,21 @@ const AboutBody = ({ classes, data }) => (
                       </>
                     );
                   }
+                  // For sub headings
                   if (splitedParagraph != null && (/#(.*)#/.test(splitedParagraph))) {
                     return (<div className={classes.title}>{splitedParagraph.match(/#(.*)#/).pop()}</div>);
                   }
+                  // For bolding inline words
                   if (splitedParagraph != null && (/\*(.*)\*/.test(splitedParagraph))) {
                     return (<span className={classes.title}>{splitedParagraph.match(/\*(.*)\*/).pop()}</span>);
+                  }
+                  // For downloading Submission PDF
+                  if (splitedParagraph != null && (/{(.*)}/.test(splitedParagraph))) {
+                    return (
+                      <Link target="_blank" className={classes.link} href={submissionGuide}>
+                        {splitedParagraph.match(/{(.*)}/).pop()}
+                      </Link>
+                    );
                   }
                   return splitedParagraph;
                 })}
@@ -106,7 +117,6 @@ const styles = () => ({
   },
   title: {
     color: '#0B3556',
-    textTransform: 'uppercase',
     fontWeight: 'bold',
   },
   rightSection: {
