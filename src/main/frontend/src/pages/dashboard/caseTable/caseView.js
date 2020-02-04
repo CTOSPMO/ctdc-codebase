@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   Grid,
   withStyles,
@@ -21,173 +21,6 @@ const tableStyle = (ratio = 1) => ({
 }
 );
 
-
-const columns = (classes) => [
-  {
-    name: 'case_id',
-    label: 'Case ID',
-    options: {
-      filter: false,
-      sortDirection: 'asc',
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(0.8)}>
-          {' '}
-          <Link to={`/case/${value}`} className={classes.link}>{value}</Link>
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'clinical_trial_code',
-    label: 'Trial Code',
-    options: {
-      filter: false,
-      customBodyRender: (value, tableMeta) => (
-        <div className="mui_td" style={tableStyle(0.6)}>
-
-          <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
-
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'arm_id',
-    label: 'Arm',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(2.3)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'arm_drug',
-    label: 'Arm Treatment',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(1)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'disease',
-    label: 'Diagnosis',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(2)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'gender',
-    label: 'Gender',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(0.5)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'race',
-    label: 'Race',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(0.5)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'ethnicity',
-    label: 'Ethnicity',
-    options: {
-      filter: false,
-      customBodyRender: (value) => (
-        <div className="mui_td" style={tableStyle(0.5)}>
-          {' '}
-          {value}
-          {' '}
-        </div>
-      ),
-    },
-  },
-  {
-    name: 'clinical_trial_id',
-    label: 'Trial ID',
-    options: {
-      display: false,
-    },
-  },
-];
-
-
-let selectedCaseIds = [];
-
-function exportCases(dispatch) {
-  dispatch(fetchCasesAndFiles(selectedCaseIds));
-  selectedCaseIds = [];
-}
-
-
-const options = (classes, dispatch) => ({
-  selectableRows: true,
-  search: false,
-  filter: false,
-  searchable: false,
-  print: false,
-  download: false,
-  viewColumns: false,
-  pagination: true,
-  customToolbarSelect: (selectedRows, displayData) => {
-    const selectedKeys = Object.keys(selectedRows.data).map((keyVlaue) => (
-      selectedRows.data[keyVlaue].index
-    ));
-    const selectedCaseId = selectedKeys.map((keyVlaue) => (
-      displayData[keyVlaue].data[0].props.children[1].props.children
-    ));
-    selectedCaseIds = selectedCaseId;
-    return '';
-  },
-  customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
-    <CustomFooter
-      text="SAVE TO MY CASES"
-      onClick={() => exportCases(dispatch)}
-      classes={classes}
-      count={count}
-      page={page}
-      rowsPerPage={rowsPerPage}
-      onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
-      // eslint-disable-next-line no-shadow
-      onChangePage={(_, page) => changePage(page)}
-    />
-  ),
-
-});
 
 const Cases = ({ classes, data }) => {
   const dispatch = useDispatch();
@@ -224,6 +57,197 @@ const Cases = ({ classes, data }) => {
 
   bubbles = '';
 
+
+  const saveButton = useRef(null);
+
+
+  useEffect(() => {
+    saveButton.current.disabled = true;
+    saveButton.current.style.color = 'rgb(0, 0, 0,0.26)';
+  });
+
+  const columns = [
+    {
+      name: 'case_id',
+      label: 'Case ID',
+      options: {
+        filter: false,
+        sortDirection: 'asc',
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(0.8)}>
+            {' '}
+            <Link to={`/case/${value}`} className={classes.link}>{value}</Link>
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'clinical_trial_code',
+      label: 'Trial Code',
+      options: {
+        filter: false,
+        customBodyRender: (value, tableMeta) => (
+          <div className="mui_td" style={tableStyle(0.6)}>
+
+            <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
+
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'arm_id',
+      label: 'Arm',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(2.3)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'arm_drug',
+      label: 'Arm Treatment',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(1)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'disease',
+      label: 'Diagnosis',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(2)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'gender',
+      label: 'Gender',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(0.5)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'race',
+      label: 'Race',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(0.5)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'ethnicity',
+      label: 'Ethnicity',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className="mui_td" style={tableStyle(0.5)}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'clinical_trial_id',
+      label: 'Trial ID',
+      options: {
+        display: false,
+      },
+    },
+  ];
+
+
+  let selectedCaseIds = [];
+
+  function exportCases() {
+    dispatch(fetchCasesAndFiles(selectedCaseIds));
+    selectedCaseIds = [];
+  }
+
+
+  function onRowsSelect(curr, allRowsSelected) {
+    // Change button status based on selection status
+    if (allRowsSelected.length === 0) {
+      saveButton.current.disabled = true;
+      saveButton.current.style.color = '#FFFFFF';
+      saveButton.current.style.backgroundColor = 'rgba(0, 0, 0, 0.12)';
+    } else {
+      saveButton.current.disabled = false;
+      saveButton.current.style.color = '#FFFFFF';
+      saveButton.current.style.backgroundColor = '#0B3556';
+    }
+  }
+
+
+  const options = () => ({
+    selectableRows: true,
+    search: false,
+    filter: false,
+    searchable: false,
+    print: false,
+    download: false,
+    viewColumns: false,
+    pagination: true,
+    onRowsSelect: (curr, allRowsSelected) => onRowsSelect(curr, allRowsSelected),
+    customToolbarSelect: (selectedRows, displayData) => {
+      const selectedKeys = Object.keys(selectedRows.data).map((keyVlaue) => (
+        selectedRows.data[keyVlaue].index
+      ));
+      const selectedCaseId = selectedKeys.map((keyVlaue) => (
+        displayData[keyVlaue].data[0].props.children[1].props.children
+      ));
+      selectedCaseIds = selectedCaseId;
+      return '';
+    },
+    customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
+      <CustomFooter
+        text="SAVE TO MY CASES"
+        onClick={() => exportCases(dispatch)}
+        classes={classes}
+        count={count}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
+      // eslint-disable-next-line no-shadow
+        onChangePage={(_, page) => changePage(page)}
+      />
+    ),
+
+  });
+
   return (
     <>
       <div className={classes.chips}>
@@ -237,10 +261,21 @@ const Cases = ({ classes, data }) => {
         <Grid item xs={12}>
           <MUIDataTable
             data={data}
-            columns={columns(classes)}
-            options={options(classes, dispatch)}
+            columns={columns}
+            options={options()}
           />
         </Grid>
+
+      </Grid>
+      <Grid item xs={12} className={classes.saveButtonDiv}>
+        <button
+          type="button"
+          ref={saveButton}
+          onClick={exportCases}
+          className={classes.saveButton}
+        >
+               SAVE TO MY CASES
+        </button>
       </Grid>
 
     </>
@@ -248,7 +283,27 @@ const Cases = ({ classes, data }) => {
 };
 
 const styles = () => ({
+  saveButtonDiv: {
+    position: 'absolute',
+    margin: '-50px 0 0 0',
+    paddingLeft: '25px',
+  },
+  saveButton: {
+    color: 'rgba(0, 0, 0, 0.26)',
+    boxShadow: 'none',
+    backgroundColor: 'rgba(0, 0, 0, 0.12)',
+    padding: '6px 16px',
+    fontSize: '0.875rem',
+    minWidth: '64px',
+    boxSizing: 'border-box',
+    transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+    lineHeight: '1.75',
+    fontWeight: '500',
+    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    borderRadius: '4px',
+    textTransform: 'uppercase',
 
+  },
   link: {
     color: '#DC762F',
     textDecoration: 'none',
