@@ -216,6 +216,14 @@ export default {
         boxShadow: 'none',
       },
     },
+    MUIDataTable: {
+      responsiveStacked: {
+        transform: 'rotateX(180deg)',
+      },
+      tableRoot: {
+        transform: 'rotateX(180deg)',
+      },
+    },
     MUIDataTableSelectCell: {
       fixedHeader: {
         position: 'relative',
