@@ -26,19 +26,19 @@ const CustomBreadcrumb = ({ classes, data }) => (
 
 const styles = (theme) => ({
   headerNav: {
-    paddingTop: '8px',
-    color: '#5e8ca5',
-    paddingBottom: '12px',
+    paddingTop: '0px',
+    color: '#3D9ACC',
   },
   headerNavLink: {
-    paddingLeft: '6px',
-    paddingRight: '6px',
+    paddingLeft: '3px',
+    paddingRight: '3px',
     textDecoration: 'none',
-    color: '#5e8ca5',
+    color: '#3D9ACC',
     textTransform: 'uppercase',
     fontFamily: theme.custom.fontFamilySans,
-    fontSize: '8pt',
+    fontSize: '10px',
     letterSpacing: '0.025em',
+    verticalAlign: 'text-top',
 
   },
 });

@@ -326,6 +326,7 @@ export default {
         backgroundColor: tableHeader,
       },
       titleText: {
+
         color: tableHeaderFontColor,
         fontSize: '25.2pt',
         fontFamily: tableFontFamily,
@@ -355,6 +356,11 @@ export default {
       container: {
         width: '100% !important',
 
+      },
+    },
+    MuiTablePagination: {
+      toolbar: {
+        textTransform: 'uppercase',
       },
     },
     MuiSwitch: {
