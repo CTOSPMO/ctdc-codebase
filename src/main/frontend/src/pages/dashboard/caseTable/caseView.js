@@ -207,7 +207,7 @@ const Cases = ({ classes, data }) => {
     } else {
       saveButton.current.disabled = false;
       saveButton.current.style.color = '#FFFFFF';
-      saveButton.current.style.backgroundColor = '#0B3556';
+      saveButton.current.style.backgroundColor = '#C53B27';
     }
   }
 
@@ -300,9 +300,8 @@ const styles = () => ({
     lineHeight: '1.75',
     fontWeight: '500',
     fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-    borderRadius: '4px',
+    borderRadius: '35px',
     textTransform: 'uppercase',
-
   },
   link: {
     color: '#DC762F',
