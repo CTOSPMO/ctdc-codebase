@@ -106,6 +106,15 @@ export const GET_CASE_DETAIL_DATA_QUERY = gql`
             }
             ethnicity
           }
+          filesOfCase(case_id:$case_id){
+        parent 
+        file_name 
+        file_type 
+        file_description 
+        file_format 
+        file_size 
+        md5sum 
+    }
       }`;
 
 
