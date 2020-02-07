@@ -126,8 +126,8 @@ const AboutMenu = ({ classes }) => {
 const styles = (theme) => ({
   logotype: {
     whiteSpace: 'nowrap',
-    color: '#FFFFFF',
-    fontFamily: 'Raleway',
+    color: theme.palette.primary.contrastText,
+    fontFamily: 'Lato',
     fontSize: '13px',
     fontWeight: '600',
     letterSpacing: '0.9px',
@@ -150,7 +150,7 @@ const styles = (theme) => ({
   link: {
     textDecoration: 'none',
     color: 'black',
-    fontFamily: 'Raleway',
+    fontFamily: 'Lato',
     fontSize: '13px',
     fontWeight: '600',
     lineSpacing: '1px',

@@ -5,9 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   AppBar,
   Button,
-  Divider,
-  Drawer,
-  IconButton,
+  // Divider,
+  // Drawer,
+  // IconButton,
   Toolbar,
   Tooltip,
   withStyles,
@@ -18,13 +18,13 @@ import {
 import classnames from 'classnames';
 // import { useTheme } from '../ThemeContext';
 import caseIcon from '../../assets/icons/Icon-MyCases.svg';
-import funnelIconBlue from '../../assets/icons/Icon-funnel-blue.svg';
+// import funnelIconBlue from '../../assets/icons/Icon-funnel-blue.svg';
 import funnelIconWhite from '../../assets/icons/Icon-funnel-white.svg';
 // import ProfileMenu from '../ProfileMenu/ProfileMenuView';
-import SideBarContent from '../SideBar/SideBarView';
+// import SideBarContent from '../SideBar/SideBarView';
 import { initCart } from '../../pages/selectedCases/selectedCasesState';
-import { toggleCheckBox } from '../../pages/dashboard/dashboardState';
-import { unselectFilters } from '../../utils/dashboardUtilFunctions';
+// import { toggleCheckBox } from '../../pages/dashboard/dashboardState';
+// import { unselectFilters } from '../../utils/dashboardUtilFunctions';
 import AboutMenu from './components/AboutMenu';
 
 const drawerWidth = 240;
@@ -81,10 +81,10 @@ const NavBar = ({
     return 0;
   });
 
-  const activeFilters = useSelector((state) => (
-    state.dashboard.datatable
-      && state.dashboard.datatable.filters
-      ? state.dashboard.datatable.filters : []));
+  // const activeFilters = useSelector((state) => (
+  //   state.dashboard.datatable
+  //     && state.dashboard.datatable.filters
+  //     ? state.dashboard.datatable.filters : []));
   return (
     <>
       <AppBar
@@ -170,7 +170,7 @@ const NavBar = ({
           {/* Start of Theme Switching Icon and logic */}
           <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
             <NavLink
-              className={classes.link}
+              className={classnames(classes.link, classes.myCasesLink)}
               to="/myCases"
             >
             My Cases
@@ -213,7 +213,7 @@ const NavBar = ({
 
         </Toolbar>
       </AppBar>
-      { (location.pathname === '/cases') && (
+      {/* { (location.pathname === '/cases') && (
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -250,7 +250,7 @@ const NavBar = ({
           <Divider />
           <SideBarContent />
         </Drawer>
-      )}
+      )} */}
     </>
   );
 };
@@ -372,8 +372,12 @@ const styles = (theme) => ({
   },
   link: {
     textDecoration: 'none',
-    color: 'white',
+    color: theme.palette.primary.contrastText,
+    fontFamily: 'Lato',
     fontSize: '13px',
+  },
+  myCasesLink: {
+    color: '#B91F40',
   },
   menuButton: {
     marginRight: theme.spacing.unit * 2,
@@ -456,6 +460,7 @@ const styles = (theme) => ({
   },
   badgeText: {
     height: '16px',
+    color: '#0E273A',
     minWidth: '16px',
     fontWeight: '600',
     letterSpacing: '0.8px',
