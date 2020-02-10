@@ -113,27 +113,26 @@ query casesInList($caseIds: [String!]!) {
 
   casesInList(case_ids: $caseIds) {
     case_id
-    study_code
-    study_type
-    breed
-    diagnosis
-    stage_of_disease
-    age
-    sex
-    neutered_status
+    clinical_trial_code
+    clinical_trial_id
+    arm_id
+    arm_drug
+    disease
+    gender
+    race
+    arm_target
+    ethnicity
 }
  filesOfCases(case_ids: $caseIds) {
-     case_id
-  parent
-  file_description
-  file_format
-  file_locations
-  file_name
-  file_size
-  file_status
-  file_type
-  md5sum
-  uuid
+      case_id
+    parent
+    file_name
+    file_type
+    file_description
+    file_format
+    file_size
+    md5sum
+    uuid
 }
 
 }`;

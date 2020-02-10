@@ -26,27 +26,33 @@ const columns = (classes) => [
     },
   },
   {
-    name: 'study_code',
-    label: 'Study Code',
+    name: 'clinical_trial_code',
+    label: 'Trial Code',
     options: {
       filter: false,
       sortDirection: 'asc',
-      customBodyRender: (value) => (
+      customBodyRender: (value, tableMeta) => (
         <div>
           {' '}
-          <Link to={`/study/${value}`} className={classes.link}>{value}</Link>
+          <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
           {' '}
         </div>
       ),
     },
   },
-  { name: 'study_type', label: 'Study Type' },
-  { name: 'breed', label: 'Breed' },
-  { name: 'diagnosis', label: 'Diagnosis' },
-  { name: 'stage_of_disease', label: 'Stage of Disease' },
-  { name: 'age', label: 'Age' },
-  { name: 'sex', label: 'Sex' },
-  { name: 'neutered_status', label: 'Neutered Status' },
+  { name: 'arm_id', label: 'Arm' },
+  { name: 'arm_drug', label: 'Arm Treatment' },
+  { name: 'disease', label: 'Diagnosis' },
+  { name: 'gender', label: 'Gender' },
+  { name: 'race', label: 'Race' },
+  { name: 'ethnicity', label: 'Ethnicity' },
+  {
+    name: 'clinical_trial_id',
+    label: 'Trial ID',
+    options: {
+      display: false,
+    },
+  },
 ];
 
 const options = (dispatch, cases) => ({
