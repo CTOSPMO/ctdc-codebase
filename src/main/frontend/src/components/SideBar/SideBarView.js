@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  withStyles, Divider, Drawer, IconButton, List, Button,
+  withStyles, Divider, Drawer, List, Button,
 } from '@material-ui/core';
 import FacetFilter from './SideBarComponents/FacetFilters';
-import funnelIconBlue from '../../assets/icons/Icon-funnel-blue.svg';
 import { toggleCheckBox } from '../../pages/dashboard/dashboardState';
 import { unselectFilters } from '../../utils/dashboardUtilFunctions';
 
@@ -88,15 +87,6 @@ const SideBarContent = ({ classes }) => {
           >
         Clear All
           </Button>
-        </div>
-        <div className={classes.floatRight}>
-          <IconButton classes={{ root: classes.iconCartButtonRoot }}>
-            <img
-              className={classes.funnelLogoImg}
-              src={funnelIconBlue}
-              alt="funnel_image"
-            />
-          </IconButton>
         </div>
       </div>
       <Divider />
