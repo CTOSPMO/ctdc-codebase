@@ -12,6 +12,9 @@ const warning = '#FFC260';
 const success = '#3CD4A0';
 const info = '#9013FE';
 const tableHeader = '#EEEEEE';
+const whisper = '#E7E5E5';
+const deepSkyBlue = '#3695A9';
+const lochmara = '#3478A5';
 const lightenRate = 7.5;
 const darkenRate = 15;
 const tableHeaderBorder = '#004c73 3px solid';
@@ -32,14 +35,14 @@ export default {
   },
   palette: {
     primary: {
-      main: navyBlue,
-      light: tinycolor(navyBlue)
+      main: whisper,
+      light: tinycolor(whisper)
         .lighten(lightenRate)
         .toHexString(),
-      dark: tinycolor(navyBlue)
+      dark: tinycolor(whisper)
         .darken(darkenRate)
         .toHexString(),
-      contrastText: '#FFFFFF',
+      contrastText: '#0E273A',
     },
 
     curiousBlue: {
@@ -48,6 +51,26 @@ export default {
         .lighten(lightenRate)
         .toHexString(),
       dark: tinycolor(curiousBlue)
+        .darken(darkenRate)
+        .toHexString(),
+      contrastText: '#FFFFFF',
+    },
+    deepSkyBlue: {
+      main: deepSkyBlue,
+      light: tinycolor(deepSkyBlue)
+        .lighten(lightenRate)
+        .toHexString(),
+      dark: tinycolor(deepSkyBlue)
+        .darken(darkenRate)
+        .toHexString(),
+      contrastText: '#FFFFFF',
+    },
+    lochmara: {
+      main: lochmara,
+      light: tinycolor(lochmara)
+        .lighten(lochmara)
+        .toHexString(),
+      dark: tinycolor(lochmara)
         .darken(darkenRate)
         .toHexString(),
       contrastText: '#FFFFFF',
