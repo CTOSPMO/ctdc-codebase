@@ -12,9 +12,9 @@ import footerBackground1800 from '../../assets/footer/footerBackground1800.png';
 
 const VERSION = process.env.REACT_APP_APPLICATION_VERSION;
 
-const Footer = ({ classes, data }) => {
+const Footer = ({ classes }) => {
   const location = useLocation();
-  const sideBarStatus = location.pathname === '/cases' ? data.isSidebarOpened : false;
+  const sideBarStatus = location.pathname === '/cases';
   return (
     <footer className={classnames({
       [classes.contentShift]: sideBarStatus,
