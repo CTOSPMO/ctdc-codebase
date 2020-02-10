@@ -12,59 +12,71 @@ import { useDispatch } from 'react-redux';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
-import icon from '../../assets/icons/Icon-StudiesDetail.svg';
+import icon from '../../assets/trial/Trials_Title_Bar.Icon.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
-
-const columns = [
-  { name: 'arm_id', label: 'Arm' },
-  {
-    name: 'arm_drug',
-    label: 'Arm Treatment',
-  },
-  {
-    name: 'arm_target',
-    label: 'Arm Target',
-  },
-  {
-    name: 'pubmed_id',
-    label: 'PubMed ID',
-  },
-  {
-    name: 'number_of_cases',
-    label: 'Cases',
-  },
-];
-
-const options = (classes) => ({
-  selectableRows: false,
-  search: false,
-  filter: false,
-  searchable: false,
-  print: false,
-  download: false,
-  viewColumns: false,
-  pagination: true,
-  customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
-    <TableFooter>
-      <TableRow>
-        <TablePagination
-          className={classes.root}
-          count={count}
-          page={page}
-          rowsPerPage={rowsPerPage}
-          onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
-          // eslint-disable-next-line no-shadow
-          onChangePage={(_, page) => changePage(page)}
-        />
-      </TableRow>
-    </TableFooter>
-  ),
-});
-
-
 const TrialView = ({ classes, data }) => {
+  const columns = [
+    {
+      name: 'arm_id',
+      label: 'Arm',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className={classes.tb}>
+            {value}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'arm_drug',
+      label: 'Arm Treatment',
+
+    },
+    {
+      name: 'arm_target',
+      label: 'Arm Target',
+    },
+    {
+      name: 'pubmed_id',
+      label: 'PubMed ID',
+    },
+    {
+      name: 'number_of_cases',
+      label: 'Cases',
+    },
+  ];
+
+
+  const options = {
+    selectableRows: false,
+    search: false,
+    filter: false,
+    searchable: false,
+    print: false,
+    download: false,
+    viewColumns: false,
+    pagination: true,
+    customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
+      <TableFooter>
+        <TableRow>
+          <TablePagination
+            className={classes.root}
+            count={count}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
+          // eslint-disable-next-line no-shadow
+            onChangePage={(_, page) => changePage(page)}
+          />
+        </TableRow>
+      </TableFooter>
+    ),
+  };
+
+
   // initDashboardStatus will be used in dispatch to
   // make sure dashboard data has be loaded first.
   const initDashboardStatus = () => (dispatch) => Promise.resolve(
@@ -94,9 +106,9 @@ const TrialView = ({ classes, data }) => {
 
 
   const breadCrumbJson = [{
-    name: 'Trials',
-    to: '',
-    isALink: false,
+    name: 'All Trials',
+    to: '/trials',
+    isALink: true,
   }];
 
 
@@ -116,8 +128,8 @@ const TrialView = ({ classes, data }) => {
             <div className={classes.headerMainTitle}>
               <span>
                 {' '}
+                 Trial :
                 <span>
-                    Trial :
                   {' '}
                   {' '}
                   {trialData.clinical_trial_designation}
@@ -159,7 +171,7 @@ const TrialView = ({ classes, data }) => {
         <div className={classes.detailContainer}>
 
           <Grid container spacing={8}>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
+            <Grid item lg={6} md={6} sm={12} xs={12}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
@@ -176,7 +188,22 @@ const TrialView = ({ classes, data }) => {
 
                 </Grid>
                 <Grid item xs={12}>
-                  <span className={classes.detailContainerHeader}>Description</span>
+                  <span className={classes.detailContainerHeader}>Trial ID</span>
+
+                </Grid>
+
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.content}>
+                      {' '}
+                      {trialData.clinical_trial_id}
+                      {' '}
+                    </span>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Trial Description</span>
 
                 </Grid>
 
@@ -188,38 +215,63 @@ const TrialView = ({ classes, data }) => {
                       {' '}
                     </span>
                   </div>
-                  <div><hr className={classes.hrLine} /></div>
                 </Grid>
 
-                <Grid container spacing={8} className={classes.detailContainerItems}>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}> Trial ID:</span>
-                  </Grid>
-                  <Grid item xs={12} spacing={0} className={classes.content}>
-                    {trialData.clinical_trial_id}
-                  </Grid>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}> Trial Type:</span>
-                  </Grid>
-                  <Grid item xs={12} spacing={0} className={classes.content}>
-                    {trialData.clinical_trial_type}
-                  </Grid>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}>  Lead Organization:</span>
-                  </Grid>
-                  <Grid item xs={12} spacing={0} className={classes.content}>
-                    {trialData.lead_organization}
-                  </Grid>
-                  <Grid item xs={12} className={classes.detailContainerItem}>
-                    <span className={classes.title}>Principal Investigators:</span>
-                  </Grid>
-                  <Grid item xs={12} className={classes.content}>
-                    {trialData.principal_investigators}
-                  </Grid>
 
-                </Grid>
               </Grid>
             </Grid>
+
+
+            <Grid item lg={6} md={6} sm={12} xs={12} className={classes.borderLeft}>
+              <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
+                <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Trial Type</span>
+
+                </Grid>
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.content}>
+                      {' '}
+                      {trialData.clinical_trial_type}
+                      {' '}
+                    </span>
+                  </div>
+
+                </Grid>
+                <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Lead Organization</span>
+
+                </Grid>
+
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.content}>
+                      {' '}
+                      {trialData.lead_organization}
+                      {' '}
+                    </span>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Principal Investigators</span>
+
+                </Grid>
+
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.content}>
+                      {' '}
+                      {trialData.principal_investigators}
+                      {' '}
+                    </span>
+                  </div>
+                </Grid>
+
+
+              </Grid>
+            </Grid>
+
 
           </Grid>
         </div>
@@ -237,7 +289,7 @@ const TrialView = ({ classes, data }) => {
                   <MUIDataTable
                     data={data.clinicalTrialArmByTrialId}
                     columns={columns}
-                    options={options(classes)}
+                    options={options}
                   />
                 </Typography>
               </Grid>
@@ -254,12 +306,12 @@ const TrialView = ({ classes, data }) => {
 
 
 const styles = (theme) => ({
-  hrLine: {
-    width: '50px',
-    float: 'left',
-    marginTop: '30px',
-    border: '#81a6b9 2px solid',
-    background: '#81a6b9',
+  tb: {
+    paddingLeft: '25px',
+  },
+  borderLeft: {
+    borderLeft: '#81A6BA 1px solid',
+    paddingLeft: '25px !important',
   },
   paddingLeft8: {
     paddingLeft: '8px',
@@ -274,7 +326,8 @@ const styles = (theme) => ({
     paddingRight: '32px',
   },
   content: {
-    fontSize: '12px',
+    fontSize: '15px',
+    fontFamily: 'Raleway, sans-serif',
     lineHeight: '14px',
   },
   warning: {
@@ -296,7 +349,7 @@ const styles = (theme) => ({
   header: {
     paddingLeft: '21px',
     paddingRight: '21px',
-    borderBottom: '#81a6b9 4px solid',
+    borderBottom: '#4B619A 10px solid',
     height: '80px',
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
@@ -305,29 +358,37 @@ const styles = (theme) => ({
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
     float: 'left',
-    marginLeft: '110px',
+    marginLeft: '95px',
     width: 'calc(100% - 265px)',
   },
   headerMainTitle: {
-    fontFamily: theme.custom.fontFamilySans,
-    fontWeight: 'bold',
-    letterSpacing: '0.017em',
-    color: '#0296c9',
-    fontSize: '19px',
-    height: '12px',
-    lineHeight: '17px',
-    paddingLeft: '3px',
+    '& > span': {
+      fontWeight: '300',
+      letterSpacing: '0.017em',
+    },
+
+    '& > span > span': {
+      fontWeight: 'bold',
+      letterSpacing: '0.025em',
+    },
+    fontFamily: 'Lato',
+    letterSpacing: '0.025em',
+    color: '#415589 ',
+    fontSize: '24px',
+    lineHeight: '24px',
+    paddingLeft: '0px',
+
   },
   headerSubTitleCate: {
-    color: '#606061',
-    fontWeight: 'bold',
-    fontFamily: theme.custom.fontFamilyRaleway,
+    color: '#5F85A2',
+    fontWeight: '300',
+    fontFamily: 'Poppins',
     textTransform: 'uppercase',
     letterSpacing: '0.023em',
-    fontSize: '12px',
-    maxHeight: '35px',
+    fontSize: '15px',
     overflow: 'hidden',
-    paddingLeft: '3px',
+    lineHeight: '24px',
+    paddingLeft: '4px',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     paddingRight: '200px',
@@ -342,7 +403,7 @@ const styles = (theme) => ({
 
   },
   headerMSubTitle: {
-    paddingTop: '12px',
+    paddingTop: '5px',
   },
   headerButton: {
     fontFamily: theme.custom.fontFamilySans,
@@ -378,8 +439,8 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '-13px',
-    width: '100px',
+    marginTop: '-2px',
+    width: '80px',
   },
   detailContainer: {
     maxWidth: theme.custom.maxContentWidth,
@@ -397,9 +458,9 @@ const styles = (theme) => ({
   },
   detailContainerHeader: {
     textTransform: 'uppercase',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: 'Lato',
     fontSize: '17px',
-    letterSpacing: '0.017em',
+    letterSpacing: '0.025em',
     color: '#0296c9',
   },
   detailContainerBottom: {
@@ -436,7 +497,6 @@ const styles = (theme) => ({
   },
   tableHeader: {
     paddingLeft: '32px',
-    color: '#0296c9',
   },
   paddingTop12: {
     paddingTop: '12px',
@@ -488,10 +548,10 @@ const styles = (theme) => ({
     textTransform: 'uppercase',
   },
   tableTitle: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: 'Lato',
     fontSize: '17px',
-    letterSpacing: '0.017em',
-    color: '#ff17f15',
+    letterSpacing: '0.05em',
+    color: '#415589',
     paddingBottom: '20px',
   },
 

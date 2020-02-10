@@ -17,7 +17,7 @@ const black = 'black';
 const lochmara = '#3478A5';
 const lightenRate = 7.5;
 const darkenRate = 15;
-const tableHeaderBorder = '#004c73 3px solid';
+const tableHeaderBorder = '#4B619A 3px solid';
 const tableHeaderFontColor = '#194563';
 const tableFontFamily = "'Raleway', sans-serif";
 
@@ -289,6 +289,9 @@ export default {
         fontStyle: 'normal',
         fontSize: '11pt',
         fontWeight: 'bold',
+        '&:first-child': {
+          paddingLeft: '30px',
+        },
       },
       sortActive: {
         color: tableHeaderFontColor,
@@ -352,6 +355,7 @@ export default {
         backgroundColor: tableHeader,
       },
       titleText: {
+
         color: tableHeaderFontColor,
         fontSize: '25.2pt',
         fontFamily: tableFontFamily,
@@ -381,6 +385,11 @@ export default {
       container: {
         width: '100% !important',
 
+      },
+    },
+    MuiTablePagination: {
+      toolbar: {
+        textTransform: 'uppercase',
       },
     },
     MuiSwitch: {

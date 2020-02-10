@@ -12,7 +12,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import { useDispatch } from 'react-redux';
 import Stats from '../../components/Stats/AllStatsController';
 import { Typography } from '../../components/Wrappers/Wrappers';
-import icon from '../../assets/icons/Icon-StudiesDetail.svg';
+import icon from '../../assets/trial/Trials_Title_Bar.Icon.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 
 
@@ -40,7 +40,7 @@ const Trials = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta) => (
-          <div className="mui_td" style={{ width: '100px' }}>
+          <div className={classes.tb}>
             <Link className={classes.link} to={`/trial/${tableMeta.rowData[1]}`}>{value}</Link>
           </div>
         ),
@@ -57,7 +57,7 @@ const Trials = ({ classes, data }) => {
       label: 'Cases',
       options: {
         customBodyRender: (value, tableMeta) => (
-          <div className="mui_td">
+          <div>
             {' '}
             <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectTo(tableMeta.rowData[0])}>{value}</Link>
             {' '}
@@ -140,6 +140,9 @@ const Trials = ({ classes, data }) => {
 };
 
 const styles = (theme) => ({
+  tb: {
+    paddingLeft: '25px',
+  },
   link: {
     textDecoration: 'none',
     fontWeight: 'bold',
@@ -176,15 +179,15 @@ const styles = (theme) => ({
     background: '#eee',
     paddingLeft: '20px',
     paddingRight: '50px',
-    borderBottom: '#004c73 10px solid',
+    borderBottom: '#4B619A 10px solid',
     height: '120px',
     paddingTop: '35px',
   },
   headerMainTitle: {
-    fontFamily: theme.custom.fontFamilyRaleway,
-    fontWeight: '500',
+    fontFamily: 'Lato',
+    fontWeight: 'bold',
     letterSpacing: '0.025em',
-    color: '#0296c9',
+    color: '#4B619A',
     fontSize: '28px',
     position: 'absolute',
     marginTop: '14px',
