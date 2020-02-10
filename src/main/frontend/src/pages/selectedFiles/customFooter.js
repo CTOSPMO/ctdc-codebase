@@ -6,9 +6,6 @@ import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
-const defaultFooterStyles = {
-
-};
 
 const CustomFooter = ({
   classes,
@@ -46,4 +43,4 @@ const CustomFooter = ({
   </TableFooter>
 );
 
-export default withStyles(defaultFooterStyles, { withTheme: true })(CustomFooter);
+export default withStyles({}, { withTheme: true })(CustomFooter);
