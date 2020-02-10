@@ -18,18 +18,15 @@ const styles = (theme) => ({
   drawerAppBar: {
     height: '39px',
   },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
   drawerPaper: {
     width: drawerWidth,
-    marginTop: '200px',
+    marginTop: '184px',
     zIndex: '1201',
-    height: 'calc(100% - 200px)',
-  },
-  anchorLeft: {
-    top: '200px',
-    width: drawerWidth,
-    marginTop: '200px',
-    zIndex: '1201',
-    height: 'calc(100% - 200px)',
+    height: 'calc(100% - 184px)',
   },
   floatRight: {
     float: 'right',
@@ -70,7 +67,8 @@ const SideBarContent = ({ classes }) => {
       ? state.dashboard.datatable.filters : []));
   return (
     <Drawer
-      // variant="persistent"
+      variant="persistent"
+      className={classes.drawer}
       anchor="left"
       open={1}
       classes={{

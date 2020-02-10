@@ -141,7 +141,7 @@ export default {
       dark: tinycolor(black)
         .darken(darkenRate)
         .toHexString(),
-      contrastText: 'black',
+      contrastText: '#3478A5',
       lattice: '#E9F1F5',
     },
     warning: {
