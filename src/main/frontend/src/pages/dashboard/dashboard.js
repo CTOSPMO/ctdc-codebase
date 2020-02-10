@@ -60,7 +60,7 @@ const Dashboard = ({
                 </div>
               </div>
               <Collapse in={checked} className={classes.backgroundShawdowWidgets}>
-                <Grid container spacing={8}>
+                <Grid container spacing={16}>
                   <Grid item lg={4} md={6} sm={12} xs={12}>
                     <Widget
                       title="Trials and Arms"
