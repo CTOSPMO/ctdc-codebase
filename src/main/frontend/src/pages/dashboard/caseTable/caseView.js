@@ -250,15 +250,18 @@ const Cases = ({ classes, data }) => {
 const styles = () => ({
 
   link: {
-    color: '#DC762F',
+    color: '#DD401C',
     textDecoration: 'none',
     '&:hover': {
       textDecoration: 'underline',
     },
+    '&:visited': {
+      color: '#9F3D26',
+    },
   },
 
   caseTitle: {
-    color: '#194563',
+    color: '#C32F30',
     fontSize: '25.2pt',
     fontStyle: 'normal',
     fontFamily: 'Raleway',
@@ -299,7 +302,7 @@ const styles = () => ({
     lineHeight: '18px',
     fontSize: '10pt',
     color: '#fff',
-    backgroundColor: '#ff7f15',
+    backgroundColor: '#C53B27',
   },
 
 });
