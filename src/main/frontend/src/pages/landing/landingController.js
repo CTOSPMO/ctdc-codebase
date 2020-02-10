@@ -75,7 +75,7 @@ const LandingController = ({ classes }) => (
         <div className={classes.contentRight}>
           <div className={classes.contentRightTop}>
             <div className={classes.program}>
-              <div>
+              <div className={classes.programImg}>
                 <img className={classes.image} src={imgTrial} alt="CTDC  Trials" />
               </div>
               <div className={classes.content}>
@@ -94,7 +94,7 @@ const LandingController = ({ classes }) => (
               </div>
             </div>
             <div className={classes.studies}>
-              <div>
+              <div className={classes.programImg}>
                 <img className={classes.image} src={imgAccess} alt="CTDC Request ACCESS " />
               </div>
               <div className={classes.content}>
@@ -166,6 +166,9 @@ const styles = (theme) => ({
     lineHeight:'60px',
     textAlign:'center',
     margin:'0 auto',
+    letterSpacing: '0.050pt',
+    textTransform:'uppercase',
+    width: '869px',
   },
   redButtonSection:{
     margin:'0 auto -15px auto',
@@ -185,6 +188,7 @@ const styles = (theme) => ({
     textAlign:'center',
     textDecoration:'none',
     textTransform:'uppercase',
+    letterSpacing: '0.8px',
   },
   headerTitle: {
     paddingTop: '180px',
@@ -226,20 +230,18 @@ const styles = (theme) => ({
 
   aboutImage: {
     width: '300px',
-    height: '240px',
-    padding: '10px',
+    padding: '14px',
   },
   aboutImageSection: {
-    height: '240px',
   },
   CTDCWords: {
-    height: '193px',
+    height: '188px',
     background: '#0B2731',
     color: '#FFFFFF',
     fontSize: '26px',
     textTransform: 'uppercase',
     lineHeight: '29px',
-    padding: '36px 75px 26px 26px',
+    padding: '24px 75px 26px 26px',
     fontFamily: 'Oswald',
   },
   landingContainer: {
@@ -257,12 +259,12 @@ const styles = (theme) => ({
   },
   image: {
     width: '293px',
-    height: '247px',
+    height: '251px',
   },
   aboutContent: {
     background: '#20506A',
     width: '300px',
-    padding: '30px 30px 30px 30px',
+    padding: '30px 30px 32px 30px',
     color: '#fff',
     fontFamily: '"Open Sans"',
     fontSize: '14px',
@@ -270,7 +272,7 @@ const styles = (theme) => ({
   },
   aboutButtonSection: {
     background: '#20506A',
-    height: '67px',
+    height: '71px',
   },
   imgIconAbout: {
     width: '49px',
@@ -301,7 +303,6 @@ const styles = (theme) => ({
   content: {
     width: '100%',
     background: '#fff',
-    height: '135px',
     paddingLeft: '30px',
     paddingTop: '6px',
   },
@@ -311,7 +312,7 @@ const styles = (theme) => ({
     fontSize: '26px',
     fontWeight: '500',
     lineHeight: '27px',
-    padding: '15px 0',
+    padding: '10px 0',
     textTransform: 'uppercase',
   },
   contentContainer: {
@@ -321,16 +322,18 @@ const styles = (theme) => ({
     fontSize: '15px',
     lineHeight: '22px',
     paddingLeft:'2px',
+    paddingBottom: '10px',
   },
  
   program: {
     float: 'left',
-    padding: '0 10px 10px 0px',
+    padding: '0 10px 8px 0px',
   },
-
+  programImg: {
+    background: '#fff',
+  },
   studies: {
     float: 'left',
-    padding: '0 10px 10px 0px',
   },
 
   contentRightBottom: {
@@ -342,9 +345,9 @@ const styles = (theme) => ({
     backgroundSize: 'cover',
   },
   cases: {
-    height: '442px',
-    paddingLeft: '400px',
-    paddingTop: '40px',
+    height: '438px',
+    paddingLeft: '370px',
+    paddingTop: '70px',
   },
   greybuttonSection: {
     height: '46px',
@@ -371,6 +374,7 @@ const styles = (theme) => ({
     float: 'left',
     lineHeight: '47px',
     color: '#fff',
+    textTransform: 'uppercase',
   },
   greyContentHeader: {
     color: '#20506A',
@@ -392,7 +396,7 @@ const styles = (theme) => ({
   greyIcon: {
     width: '20px',
     marginTop: '15px',
-    marginLeft: '33px',
+    marginLeft: '28px',
   },
   greybutton: {
     padding: '15px 5px 0 0',

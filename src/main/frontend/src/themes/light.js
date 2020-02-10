@@ -391,10 +391,18 @@ export default {
       toolbar: {
         textTransform: 'uppercase',
       },
+      select: {
+        border: '2px #fff solid',
+      },
     },
     MuiSwitch: {
       bar: {
         backgroundColor: '#ABADB0',
+      },
+    },
+    MuiTableFooter: {
+      root: {
+        borderTop: '6px #E7E5E5 solid',
       },
     },
   },

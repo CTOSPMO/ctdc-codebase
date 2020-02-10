@@ -146,7 +146,7 @@ const styles = (theme) => ({
   link: {
     textDecoration: 'none',
     fontWeight: 'bold',
-    color: '#DC762F',
+    color: '#DD401C',
     '&:hover': {
       textDecoration: 'underline',
     },
@@ -192,6 +192,7 @@ const styles = (theme) => ({
     position: 'absolute',
     marginTop: '14px',
     lineHeight: '25px',
+    marginLeft: '-5px',
   },
 
   headerTitle: {
