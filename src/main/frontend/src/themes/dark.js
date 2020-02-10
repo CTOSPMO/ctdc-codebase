@@ -373,9 +373,22 @@ export default {
         boxShadow: 'none',
       },
     },
+    MuiTablePagination: {
+      toolbar: {
+        textTransform: 'uppercase',
+      },
+      select: {
+        border: '2px #fff solid',
+      },
+    },
     MuiIconButton: {
       root: {
         padding: '5px',
+      },
+    },
+    MuiTableFooter: {
+      root: {
+        borderTop: '6px #E7E5E5 solid',
       },
     },
   },
