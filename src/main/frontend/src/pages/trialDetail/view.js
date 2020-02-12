@@ -9,7 +9,6 @@ import MUIDataTable from 'mui-datatables';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import { Link } from 'react-router-dom';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
@@ -24,7 +23,7 @@ import {
   getStatDataFromDashboardData,
 } from '../../utils/dashboardUtilFunctions';
 import fileIcon from '../../assets/trial/Trials_File_Counter.Icon.svg';
-
+import { Link } from 'react-router-dom';
 
 
 const TrialView = ({ classes, data ,theme}) => {
@@ -87,10 +86,26 @@ const TrialView = ({ classes, data ,theme}) => {
     {
       name: 'pubmed_id',
       label: 'PubMed ID',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div >
+              <a className={classes.link} target="_blank" href={`https://www.ncbi.nlm.nih.gov/sites/m/pubmed/${value}`}>{value}</a>
+          </div>
+        ),
+      },
     },
     {
       name: 'number_of_cases',
       label: 'Cases',
+       options: {
+        filter: false,
+        customBodyRender: (value,tableMeta) => (
+          <div >
+             <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectToTrialArm(tableMeta.rowData[0]+"_"+tableMeta.rowData[1])}>{value}</Link>
+          </div>
+        ),
+      },
     },
   ];
 
@@ -147,6 +162,17 @@ const TrialView = ({ classes, data ,theme}) => {
     });
   };
 
+
+  const redirectToTrialArm = (TrialArm) => {
+    dispatch(initDashboardStatus()).then(() => {
+      dispatch(singleCheckBox([{
+        groupName: 'Trial Arm',
+        name: TrialArm,
+        datafield: 'trial_arm',
+        isChecked: true,
+      }]));
+    });
+  };
 
   const stat = {
     numberOfCases: data.caseCountByTrialId,
@@ -205,11 +231,9 @@ const TrialView = ({ classes, data ,theme}) => {
                 {' '}
                 <span className={classes.headerButtonLinkText}> View </span>
                 <span className={classes.headerButtonLinkNumber}>
-                  {' '}
-                  {' '}
+                 
                   {trialData.number_of_cases}
-                  {' '}
-                  {' '}
+                 
                 </span>
                 <span className={classes.headerButtonLinkText}>CASES</span>
               </Link>
@@ -220,14 +244,14 @@ const TrialView = ({ classes, data ,theme}) => {
 
         <div className={classes.detailContainer}>
 
-          <Grid container spacing={8}>
+          <Grid container spacing={5}>
             <Grid item lg={5} md={5} sm={12} xs={12}>
-              <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
+              <Grid container spacing={8} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
 
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} >
                   <div>
                     <span className={classes.content}>
                       {' '}
@@ -237,7 +261,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   </div>
 
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.paddingTop32}>
                   <span className={classes.detailContainerHeader}>Trial ID</span>
 
                 </Grid>
@@ -252,7 +276,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.paddingTop32}>
                   <span className={classes.detailContainerHeader}>Trial Description</span>
 
                 </Grid>
@@ -273,7 +297,7 @@ const TrialView = ({ classes, data ,theme}) => {
 
 
             <Grid item lg={4} md={4} sm={12} xs={12} className={classes.borderLeft}>
-              <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
+              <Grid container spacing={8} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Type</span>
 
@@ -288,7 +312,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   </div>
 
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.paddingTop32}>
                   <span className={classes.detailContainerHeader}>Lead Organization</span>
 
                 </Grid>
@@ -303,7 +327,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12}>
+                <Grid item xs={12}  className={classes.paddingTop32}>
                   <span className={classes.detailContainerHeader}>Principal Investigators</span>
 
                 </Grid>
@@ -402,13 +426,21 @@ const TrialView = ({ classes, data ,theme}) => {
 
 
 const styles = (theme) => ({
- 
+
   tb: {
     paddingLeft: '25px',
   },
   borderLeft: {
     borderLeft: '#81A6BA 1px solid',
     paddingLeft: '25px !important',
+  },
+   link: {
+    textDecoration: 'none',
+    fontWeight: 'bold',
+    color: '#DD401C',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   paddingLeft8: {
     paddingLeft: '8px',
@@ -455,7 +487,7 @@ const styles = (theme) => ({
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
     float: 'left',
-    marginLeft: '95px',
+    marginLeft: '90px',
     width: 'calc(100% - 265px)',
   },
   headerMainTitle: {
@@ -485,7 +517,7 @@ const styles = (theme) => ({
     fontSize: '15px',
     overflow: 'hidden',
     lineHeight: '24px',
-    paddingLeft: '4px',
+    paddingLeft: '2px',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     paddingRight: '200px',
@@ -511,6 +543,7 @@ const styles = (theme) => ({
     background: '#F6F4F4',
     paddingLeft: '10px',
     paddingRight: '10px',
+    marginRight: '-20px',
 
   },
   headerButtonLinkSpan: {
@@ -524,6 +557,7 @@ const styles = (theme) => ({
     fontFamily: theme.custom.fontFamilySans,
     color: '#0B3556',
     fontSize: '8pt',
+    textTransform: 'uppercase',
   },
   headerButtonLinkNumber: {
     fontFamily: theme.custom.fontFamilySans,
@@ -536,8 +570,8 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '-2px',
-    width: '80px',
+    marginTop: '-7px',
+    width: '83px',
   },
   detailContainer: {
     maxWidth: theme.custom.maxContentWidth,
@@ -609,7 +643,7 @@ const styles = (theme) => ({
     lineHeight: '14px',
     fontSize: '12px',
     fontWeight: 'bold',
-    color: '#DC762F',
+    color: '#c32c2e',
     '&:hover': {
       textDecoration: 'underline',
     },
@@ -665,6 +699,9 @@ const styles = (theme) => ({
   fontWeight: 'bolder',
   borderBottom: '#C53B27 solid 5px',
   marginLeft: '20px',
+ },
+ paddingTop32: {
+  paddingTop: '36px !important',
  },
 });
 
