@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -9,6 +8,7 @@ import MUIDataTable from 'mui-datatables';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
+import { Link } from 'react-router-dom';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
@@ -18,139 +18,58 @@ import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 import Widget from '../../components/Widgets/WidgetView';
 import CustomActiveDonut from '../../components/Widgets/PieCharts/CustomActiveDonut/CustomActiveDonutController';
 import {
- filterData,
+  filterData,
   getDonutDataFromDashboardData,
   getStatDataFromDashboardData,
 } from '../../utils/dashboardUtilFunctions';
 import fileIcon from '../../assets/trial/Trials_File_Counter.Icon.svg';
-import { Link } from 'react-router-dom';
 
 
-const TrialView = ({ classes, data ,theme}) => {
+const TrialView = ({ classes, data, theme }) => {
+  const trialData = data.clinicalTrialByTrialId[0];
 
- const trialData = data.clinicalTrialByTrialId[0];
+  const dispatch = useDispatch();
 
-
- const widgetData = useSelector((state) => (
+  const widgetData = useSelector((state) => (
     state.dashboard
       && state.dashboard.caseOverview
        && state.dashboard.caseOverview.data
       ? (
-       function(d){
-         return {
-          diagnosis:getDonutDataFromDashboardData(d, 'disease'),
-          file: getStatDataFromDashboardData(d,'file'),
-         }
-       }(state.dashboard.caseOverview.data.filter(
-           (d) => (filterData(d, 
+        function (d) {
+          return {
+            diagnosis: getDonutDataFromDashboardData(d, 'disease'),
+            file: getStatDataFromDashboardData(d, 'file'),
+          };
+        }(state.dashboard.caseOverview.data.filter(
+          (d) => (filterData(d,
             [{
-             groupName: "Trial Code", 
-             name: trialData.clinical_trial_designation, 
-             datafield: "clinical_trial_code", 
-             isChecked: true
-            }]
-            )
-           )
-          )
-       )
-      ) :
-      {
-       diagnosis: [],
-       file: 0,
+              groupName: 'Trial Code',
+              name: trialData.clinical_trial_designation,
+              datafield: 'clinical_trial_code',
+              isChecked: true,
+            }])
+          ),
+        ))
+      )
+      : {
+        diagnosis: [],
+        file: 0,
       }));
-
-
-
-  const columns = [
-    {
-      name: 'arm_id',
-      label: 'Arm',
-      options: {
-        filter: false,
-        customBodyRender: (value) => (
-          <div className={classes.tb}>
-            {value}
-          </div>
-        ),
-      },
-    },
-    {
-      name: 'arm_drug',
-      label: 'Arm Treatment',
-
-    },
-    {
-      name: 'arm_target',
-      label: 'Arm Target',
-    },
-    {
-      name: 'pubmed_id',
-      label: 'PubMed ID',
-      options: {
-        filter: false,
-        customBodyRender: (value) => (
-          <div >
-              <a className={classes.link} target="_blank" href={`https://www.ncbi.nlm.nih.gov/sites/m/pubmed/${value}`}>{value}</a>
-          </div>
-        ),
-      },
-    },
-    {
-      name: 'number_of_cases',
-      label: 'Cases',
-       options: {
-        filter: false,
-        customBodyRender: (value,tableMeta) => (
-          <div >
-             <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectToTrialArm(tableMeta.rowData[0]+"_"+tableMeta.rowData[1])}>{value}</Link>
-          </div>
-        ),
-      },
-    },
-  ];
-
-
-  const options = {
-    selectableRows: false,
-    search: false,
-    filter: false,
-    searchable: false,
-    print: false,
-    download: false,
-    viewColumns: false,
-    pagination: true,
-    customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
-      <TableFooter>
-        <TableRow>
-          <TablePagination
-            className={classes.root}
-            count={count}
-            page={page}
-            rowsPerPage={rowsPerPage}
-            onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
-          // eslint-disable-next-line no-shadow
-            onChangePage={(_, page) => changePage(page)}
-          />
-        </TableRow>
-      </TableFooter>
-    ),
-  };
 
 
   // initDashboardStatus will be used in dispatch to
   // make sure dashboard data has be loaded first.
-  const initDashboardStatus = () => (dispatch) => Promise.resolve(
+  const initDashboardStatus = () => () => Promise.resolve(
     dispatch(fetchDataForDashboardDataTable()),
   );
 
 
-   React.useEffect(() => {
-    // Update dashboard first 
-    dispatch(initDashboardStatus())
-  },[]);
-  
+  React.useEffect(() => {
+    // Update dashboard first
+    dispatch(initDashboardStatus());
+  }, []);
 
-  const dispatch = useDispatch();
+
   const redirectTo = () => {
     dispatch(initDashboardStatus()).then(() => {
       dispatch(singleCheckBox([{
@@ -186,6 +105,82 @@ const TrialView = ({ classes, data ,theme}) => {
     to: '/trials',
     isALink: true,
   }];
+
+
+  const columns = [
+    {
+      name: 'arm_id',
+      label: 'Arm',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div className={classes.tb}>
+            {value}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'arm_drug',
+      label: 'Arm Treatment',
+
+    },
+    {
+      name: 'arm_target',
+      label: 'Arm Target',
+    },
+    {
+      name: 'pubmed_id',
+      label: 'PubMed ID',
+      options: {
+        filter: false,
+        customBodyRender: (value) => (
+          <div>
+            <a rel="noopener noreferrer" className={classes.link} target="_blank" href={`https://www.ncbi.nlm.nih.gov/sites/m/pubmed/${value}`}>{value}</a>
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'number_of_cases',
+      label: 'Cases',
+      options: {
+        filter: false,
+        customBodyRender: (value, tableMeta) => (
+          <div>
+            <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectToTrialArm(`${tableMeta.rowData[0]}_${tableMeta.rowData[1]}`)}>{value}</Link>
+          </div>
+        ),
+      },
+    },
+  ];
+
+
+  const options = {
+    selectableRows: false,
+    search: false,
+    filter: false,
+    searchable: false,
+    print: false,
+    download: false,
+    viewColumns: false,
+    pagination: true,
+    customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
+      <TableFooter>
+        <TableRow>
+          <TablePagination
+            className={classes.root}
+            count={count}
+            page={page}
+            rowsPerPage={rowsPerPage}
+            onChangeRowsPerPage={(event) => changeRowsPerPage(event.target.value)}
+          // eslint-disable-next-line no-shadow
+            onChangePage={(_, page) => changePage(page)}
+          />
+        </TableRow>
+      </TableFooter>
+    ),
+  };
 
 
   return (
@@ -231,9 +226,9 @@ const TrialView = ({ classes, data ,theme}) => {
                 {' '}
                 <span className={classes.headerButtonLinkText}> View </span>
                 <span className={classes.headerButtonLinkNumber}>
-                 
+
                   {trialData.number_of_cases}
-                 
+
                 </span>
                 <span className={classes.headerButtonLinkText}>CASES</span>
               </Link>
@@ -251,7 +246,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   <span className={classes.detailContainerHeader}>Trial Name</span>
 
                 </Grid>
-                <Grid item xs={12} >
+                <Grid item xs={12}>
                   <div>
                     <span className={classes.content}>
                       {' '}
@@ -327,7 +322,7 @@ const TrialView = ({ classes, data ,theme}) => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12}  className={classes.paddingTop32}>
+                <Grid item xs={12} className={classes.paddingTop32}>
                   <span className={classes.detailContainerHeader}>Principal Investigators</span>
 
                 </Grid>
@@ -350,27 +345,27 @@ const TrialView = ({ classes, data ,theme}) => {
             <Grid item lg={3} md={3} sm={12} xs={12} className={classes.borderLeft}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
-                   <Widget
-                      title="Diagnosis"
-                      upperTitle
-                      bodyClass={classes.fullHeightBody}
-                      className={classes.card}
-                      color="lochmara"
-                      customBackGround
-                    >
-                      <CustomActiveDonut
-                        data={widgetData.diagnosis}
-                        width={400}
-                        height={225}
-                        innerRadius={50}
-                        outerRadius={75}
-                        cx="50%"
-                        cy="50%"
-                        textColor={theme.palette.widgetBackground.contrastText}
-                      />
-                    </Widget>
+                  <Widget
+                    title="Diagnosis"
+                    upperTitle
+                    bodyClass={classes.fullHeightBody}
+                    className={classes.card}
+                    color="lochmara"
+                    customBackGround
+                  >
+                    <CustomActiveDonut
+                      data={widgetData.diagnosis}
+                      width={400}
+                      height={225}
+                      innerRadius={50}
+                      outerRadius={75}
+                      cx="50%"
+                      cy="50%"
+                      textColor={theme.palette.widgetBackground.contrastText}
+                    />
+                  </Widget>
                 </Grid>
-        
+
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Number of files </span>
 
@@ -379,15 +374,13 @@ const TrialView = ({ classes, data ,theme}) => {
                 <Grid item xs={12}>
                   <div>
                     <span className={classes.fileIcon}>
-                     <img src={fileIcon}/>
+                      <img src={fileIcon} alt="file icon" />
                     </span>
                     <span className={classes.fileContent}>
-                     {widgetData.file}
+                      {widgetData.file}
                     </span>
                   </div>
                 </Grid>
-
-         
 
 
               </Grid>
@@ -434,7 +427,7 @@ const styles = (theme) => ({
     borderLeft: '#81A6BA 1px solid',
     paddingLeft: '25px !important',
   },
-   link: {
+  link: {
     textDecoration: 'none',
     fontWeight: 'bold',
     color: '#DD401C',
@@ -685,24 +678,24 @@ const styles = (theme) => ({
     color: '#415589',
     paddingBottom: '20px',
   },
-  fileIcon:{
-  '& img' :{
-   width:'50%',
-  }
- },
- fileContent:{
-  paddingBottom: '11px',
-  lineHeight: '100px',
-  verticalAlign: 'top',
-  fontSize: '50px',
-  color: '#C53B27',
-  fontWeight: 'bolder',
-  borderBottom: '#C53B27 solid 5px',
-  marginLeft: '20px',
- },
- paddingTop32: {
-  paddingTop: '36px !important',
- },
+  fileIcon: {
+    '& img': {
+      width: '50%',
+    },
+  },
+  fileContent: {
+    paddingBottom: '11px',
+    lineHeight: '100px',
+    verticalAlign: 'top',
+    fontSize: '50px',
+    color: '#C53B27',
+    fontWeight: 'bolder',
+    borderBottom: '#C53B27 solid 5px',
+    marginLeft: '20px',
+  },
+  paddingTop32: {
+    paddingTop: '36px !important',
+  },
 });
 
 export default withStyles(styles, { withTheme: true })(TrialView);

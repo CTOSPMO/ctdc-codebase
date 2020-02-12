@@ -52,6 +52,7 @@ const Dashboard = ({
                       track: classes.track,
                       checked: classes.checked,
                     }}
+                    className={classes.customSwitch}
                     disableRipple
                     onChange={() => {
                       themeChanger.toggleTheme();
@@ -247,6 +248,9 @@ const styles = (theme) => ({
   floatLeft: {
     float: 'left',
   },
+  customSwitch: {
+    marginTop: '45px',
+  },
   customButton: {
     borderRadius: '0 0 18px 18px',
     minHeight: '20px',
@@ -256,6 +260,7 @@ const styles = (theme) => ({
     backgroundColor: '#566672',
     marginRight: '4px',
     fontFamily: theme.custom.fontFamilySans,
+    marginTop: '45px',
     '&:hover': {
       backgroundColor: '#566672',
     },
