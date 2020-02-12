@@ -23,10 +23,9 @@ const styles = (theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
-    marginTop: '184px',
-    zIndex: '1201',
-    height: 'calc(100% - 544px)',
-    marginBotton: '360px',
+    bottom: '360px',
+    background: 'transparent',
+    top: '187px',
   },
   floatRight: {
     float: 'right',

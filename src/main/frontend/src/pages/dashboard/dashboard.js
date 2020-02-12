@@ -26,13 +26,14 @@ const Dashboard = ({
       <div>
         <Stats />
         <div>
-          <div className={classes.sideBar}>
-            <SideBar />
-          </div>
+
           <div className={classnames({
             [classes.contentShift]: true,
           }, classes.content)}
           >
+            <div className={classes.sideBar}>
+              <SideBar />
+            </div>
             <div className={classes.widgetsContainer}>
               <div className={classes.widgetsCollapse}>
                 <div className={classes.floatLeft} />
