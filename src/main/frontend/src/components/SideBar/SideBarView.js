@@ -25,7 +25,8 @@ const styles = (theme) => ({
     width: drawerWidth,
     marginTop: '184px',
     zIndex: '1201',
-    height: 'calc(100% - 184px)',
+    height: 'calc(100% - 544px)',
+    marginBotton: '360px',
   },
   floatRight: {
     float: 'right',
