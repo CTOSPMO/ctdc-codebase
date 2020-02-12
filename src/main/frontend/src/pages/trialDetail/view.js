@@ -1,4 +1,6 @@
+/* eslint-disable */
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   Grid,
   withStyles,
@@ -8,15 +10,58 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import cn from '../../utils/classNameConcat';
 import icon from '../../assets/trial/Trials_Title_Bar.Icon.svg';
 import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
+import Widget from '../../components/Widgets/WidgetView';
+import CustomActiveDonut from '../../components/Widgets/PieCharts/CustomActiveDonut/CustomActiveDonutController';
+import {
+ filterData,
+  getDonutDataFromDashboardData,
+  getStatDataFromDashboardData,
+} from '../../utils/dashboardUtilFunctions';
+import fileIcon from '../../assets/trial/Trials_File_Counter.Icon.svg';
 
-const TrialView = ({ classes, data }) => {
+
+
+const TrialView = ({ classes, data ,theme}) => {
+
+ const trialData = data.clinicalTrialByTrialId[0];
+
+
+ const widgetData = useSelector((state) => (
+    state.dashboard
+      && state.dashboard.caseOverview
+       && state.dashboard.caseOverview.data
+      ? (
+       function(d){
+         return {
+          diagnosis:getDonutDataFromDashboardData(d, 'disease'),
+          file: getStatDataFromDashboardData(d,'file'),
+         }
+       }(state.dashboard.caseOverview.data.filter(
+           (d) => (filterData(d, 
+            [{
+             groupName: "Trial Code", 
+             name: trialData.clinical_trial_designation, 
+             datafield: "clinical_trial_code", 
+             isChecked: true
+            }]
+            )
+           )
+          )
+       )
+      ) :
+      {
+       diagnosis: [],
+       file: 0,
+      }));
+
+
+
   const columns = [
     {
       name: 'arm_id',
@@ -83,7 +128,12 @@ const TrialView = ({ classes, data }) => {
     dispatch(fetchDataForDashboardDataTable()),
   );
 
-  const trialData = data.clinicalTrialByTrialId[0];
+
+   React.useEffect(() => {
+    // Update dashboard first 
+    dispatch(initDashboardStatus())
+  },[]);
+  
 
   const dispatch = useDispatch();
   const redirectTo = () => {
@@ -171,7 +221,7 @@ const TrialView = ({ classes, data }) => {
         <div className={classes.detailContainer}>
 
           <Grid container spacing={8}>
-            <Grid item lg={6} md={6} sm={12} xs={12}>
+            <Grid item lg={5} md={5} sm={12} xs={12}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
@@ -222,7 +272,7 @@ const TrialView = ({ classes, data }) => {
             </Grid>
 
 
-            <Grid item lg={6} md={6} sm={12} xs={12} className={classes.borderLeft}>
+            <Grid item lg={4} md={4} sm={12} xs={12} className={classes.borderLeft}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Type</span>
@@ -273,6 +323,52 @@ const TrialView = ({ classes, data }) => {
             </Grid>
 
 
+            <Grid item lg={3} md={3} sm={12} xs={12} className={classes.borderLeft}>
+              <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
+                <Grid item xs={12}>
+                   <Widget
+                      title="Diagnosis"
+                      upperTitle
+                      bodyClass={classes.fullHeightBody}
+                      className={classes.card}
+                      color="lochmara"
+                      customBackGround
+                    >
+                      <CustomActiveDonut
+                        data={widgetData.diagnosis}
+                        width={400}
+                        height={225}
+                        innerRadius={50}
+                        outerRadius={75}
+                        cx="50%"
+                        cy="50%"
+                        textColor={theme.palette.widgetBackground.contrastText}
+                      />
+                    </Widget>
+                </Grid>
+        
+                <Grid item xs={12}>
+                  <span className={classes.detailContainerHeader}>Number of files </span>
+
+                </Grid>
+
+                <Grid item xs={12}>
+                  <div>
+                    <span className={classes.fileIcon}>
+                     <img src={fileIcon}/>
+                    </span>
+                    <span className={classes.fileContent}>
+                     {widgetData.file}
+                    </span>
+                  </div>
+                </Grid>
+
+         
+
+
+              </Grid>
+            </Grid>
+
           </Grid>
         </div>
       </div>
@@ -306,6 +402,7 @@ const TrialView = ({ classes, data }) => {
 
 
 const styles = (theme) => ({
+ 
   tb: {
     paddingLeft: '25px',
   },
@@ -554,7 +651,21 @@ const styles = (theme) => ({
     color: '#415589',
     paddingBottom: '20px',
   },
-
+  fileIcon:{
+  '& img' :{
+   width:'50%',
+  }
+ },
+ fileContent:{
+  paddingBottom: '11px',
+  lineHeight: '100px',
+  verticalAlign: 'top',
+  fontSize: '50px',
+  color: '#C53B27',
+  fontWeight: 'bolder',
+  borderBottom: '#C53B27 solid 5px',
+  marginLeft: '20px',
+ },
 });
 
 export default withStyles(styles, { withTheme: true })(TrialView);
