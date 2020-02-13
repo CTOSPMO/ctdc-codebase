@@ -250,34 +250,35 @@ const Cases = ({ classes, data }) => {
 
   return (
     <>
-      <div className={classes.chips}>
-        {bubbles}
-      </div>
+      <div id="table_cases">
+        <div className={classes.chips}>
+          {bubbles}
+        </div>
 
-      <Grid container>
-        <Grid item xs={12} className={classes.caseTitle}>
+        <Grid container>
+          <Grid item xs={12} className={classes.caseTitle}>
            Cases
-        </Grid>
-        <Grid item xs={12}>
-          <MUIDataTable
-            data={data}
-            columns={columns}
-            options={options()}
-          />
-        </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <MUIDataTable
+              data={data}
+              columns={columns}
+              options={options()}
+            />
+          </Grid>
 
-      </Grid>
-      <Grid item xs={12} className={classes.saveButtonDiv}>
-        <button
-          type="button"
-          ref={saveButton}
-          onClick={exportCases}
-          className={classes.saveButton}
-        >
+        </Grid>
+        <Grid item xs={12} className={classes.saveButtonDiv}>
+          <button
+            type="button"
+            ref={saveButton}
+            onClick={exportCases}
+            className={classes.saveButton}
+          >
                SAVE TO MY CASES
-        </button>
-      </Grid>
-
+          </button>
+        </Grid>
+      </div>
     </>
   );
 };

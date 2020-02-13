@@ -389,7 +389,7 @@ const TrialView = ({ classes, data, theme }) => {
           </Grid>
         </div>
       </div>
-      <div className={classes.tableContainer}>
+      <div id="table_trial_detail" className={classes.tableContainer}>
 
         <div className={classes.tableDiv}>
           <div className={classes.tableTitle}>

@@ -9,7 +9,7 @@ const AboutBody = ({ classes, data }) => (
   <>
     <Stats />
     <AboutHeader title={data.title} />
-    <div className={classes.container}>
+    <div id="about_body" className={classes.container}>
       <Grid container spacing={16} direction="row" className={classes.aboutSection}>
         <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSection}>
           <img className={classes.img} src={data.img} alt="about" />

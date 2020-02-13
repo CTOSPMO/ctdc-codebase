@@ -12,19 +12,11 @@ import {
   Tooltip,
   withStyles,
 } from '@material-ui/core';
-// import {
-//   ColorLens as ColorLensIcon,
-// } from '@material-ui/icons';
 import classnames from 'classnames';
 // import { useTheme } from '../ThemeContext';
 import caseIcon from '../../assets/icons/Icon-MyCases.svg';
-// import funnelIconBlue from '../../assets/icons/Icon-funnel-blue.svg';
-import funnelIconWhite from '../../assets/icons/Icon-funnel-white.svg';
-// import ProfileMenu from '../ProfileMenu/ProfileMenuView';
-// import SideBarContent from '../SideBar/SideBarView';
+
 import { initCart } from '../../pages/selectedCases/selectedCasesState';
-// import { toggleCheckBox } from '../../pages/dashboard/dashboardState';
-// import { unselectFilters } from '../../utils/dashboardUtilFunctions';
 import AboutMenu from './components/AboutMenu';
 
 const drawerWidth = 240;
@@ -33,7 +25,7 @@ const drawerWidth = 240;
 const BACKEND_GETUSERINFO_API = process.env.REACT_APP_BACKEND_GETUSERINFO_API;
 
 const NavBar = ({
-  classes, isSidebarOpened, toggleSidebar, location,
+  classes, isSidebarOpened,
 }) => {
   // const theme = useTheme();
   const [authState, setAuthState] = React.useState({
@@ -97,30 +89,10 @@ const NavBar = ({
         <Toolbar className={classes.toolbar}>
 
           {/* Sidebar button */}
-          <div>
-            { (location.pathname === '/cases') && (
-            <Button
-              variant="h6"
-              weight="medium"
-              aria-label="open drawer"
-              onClick={toggleSidebar}
-              edge="start"
-              className={classnames(classes.menuButton, classes.logotype, {
-                [classes.hide]: isSidebarOpened,
-              })}
-              classes={{ root: classes.iconButtonRoot }}
-            >
-              <img
-                className={classes.funnelLogoImg}
-                src={funnelIconWhite}
-                alt="cart_logo"
-              />
-            </Button>
-            )}
-          </div>
+
           {/* End Sidebar button */}
-          <div className={classes.buttonContainer}>
-            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+          <div id="navbar" className={classes.buttonContainer}>
+            <Button id="button_navbar_home" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -129,7 +101,7 @@ const NavBar = ({
               home
               </NavLink>
             </Button>
-            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+            <Button id="button_navbar_trials" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -140,7 +112,7 @@ const NavBar = ({
 
             </Button>
 
-            <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+            <Button id="button_navbar_cases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -168,7 +140,7 @@ const NavBar = ({
             </Tooltip>
           </IconButton> */}
           {/* Start of Theme Switching Icon and logic */}
-          <Button disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
+          <Button id="button_navbar_mycases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
             <NavLink
               className={classnames(classes.link, classes.myCasesLink)}
               to="/myCases"

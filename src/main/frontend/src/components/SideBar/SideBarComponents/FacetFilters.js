@@ -62,8 +62,8 @@ const FacetPanel = (classes) => {
               >
                 <ExpansionPanelSummary
                   expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1bh-content"
-                  id="panel1bh-header"
+                  aria-controls={sideBarItem.groupName}
+                  id={sideBarItem.groupName}
                   classes={{ root: classes.expansionPanelSummaryRoot }}
                 >
                   <ListItemText primary={sideBarItem.groupName} />
@@ -78,7 +78,7 @@ const FacetPanel = (classes) => {
               }
               return (
                 <ListItem button onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}`)} className={classes.nested}>
-                  <Checkbox checked={checkboxItem.isChecked} tabIndex={-1} disableRipple color="primary" />
+                  <Checkbox id={`checkbox_${sideBarItem.groupName}_${checkboxItem.name}`} checked={checkboxItem.isChecked} tabIndex={-1} disableRipple color="primary" />
                   <ListItemText primary={`${checkboxItem.name}  (${checkboxItem.cases})`} />
                 </ListItem>
               );

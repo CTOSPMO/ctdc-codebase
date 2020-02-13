@@ -19,6 +19,7 @@ const AboutMenu = ({ classes }) => {
   return (
     <>
       <Button
+        id="button_navbar_about"
         variant="h6"
         weight="medium"
         aria-controls="simple-menu"
