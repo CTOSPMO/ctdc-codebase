@@ -120,7 +120,7 @@ const Trials = ({ classes, data }) => {
           </div>
 
 
-          <div className={classes.tableDiv}>
+          <div id="table_trials" className={classes.tableDiv}>
             <Grid container>
               <Grid item xs={12}>
                 <MUIDataTable

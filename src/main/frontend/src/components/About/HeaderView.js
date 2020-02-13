@@ -5,7 +5,7 @@ const AboutHeader = ({ classes, title }) => (
   <div className={classes.container}>
     <div className={classes.header}>
       <div className={classes.slope} />
-      <div className={classes.slope2}><span className={classes.slope2Text}>{title}</span></div>
+      <div id="about_title" className={classes.slope2}><span className={classes.slope2Text}>{title}</span></div>
     </div>
   </div>
 );

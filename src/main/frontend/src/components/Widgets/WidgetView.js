@@ -21,7 +21,7 @@ const Widget = ({
 }) => (
   <div className={classes.widgetWrapper}>
     <Paper className={classnames(classes.paper,{[classes.customBackGround]:customBackGround})} classes={{ root: classes.widgetRoot }}>
-      <div className={classes.widgetHeader}>
+      <div id={title} className={classes.widgetHeader}>
         {props.header ? (
           props.header
         ) : (

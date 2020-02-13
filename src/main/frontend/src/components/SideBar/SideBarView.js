@@ -77,6 +77,7 @@ const SideBarContent = ({ classes }) => {
       <div className={classes.drawerAppBar}>
         <div className={classes.floatLeft}>
           <Button
+            id="button_sidebar_clear_all_filters"
             variant="outlined"
             disabled={activeFilters.length === 0}
             onCl

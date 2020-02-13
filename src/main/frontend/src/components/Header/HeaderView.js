@@ -18,7 +18,7 @@ import cancergraphic2000 from '../../assets/header/easter2000.png';
  */
 
 const Header = ({ classes }) => (
-  <div className={classes.headerBar}>
+  <div id="header" className={classes.headerBar}>
     <div className={classes.nihLogoContainer}>
       <Link to="/home">
         <img

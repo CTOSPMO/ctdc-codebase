@@ -16,9 +16,11 @@ const Footer = ({ classes }) => {
   const location = useLocation();
   const sideBarStatus = location.pathname === '/cases';
   return (
-    <footer className={classnames({
-      [classes.contentShift]: sideBarStatus,
-    }, classes.footerComponent)}
+    <footer
+      id="footer"
+      className={classnames({
+        [classes.contentShift]: sideBarStatus,
+      }, classes.footerComponent)}
     >
       <div className={classes.footerRow}>
         <div className={

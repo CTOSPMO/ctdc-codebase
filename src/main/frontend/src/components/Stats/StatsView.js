@@ -15,7 +15,7 @@ const StatsView = ({ classes, data }) => (
   <Grid container class={classes.statsContainer}>
     <Grid item xs={12}>
       <Paper className={classes.paper}>
-        <div container className={classes.statsMaxWidth}>
+        <div id="stats_bar" container className={classes.statsMaxWidth}>
           <div className={classes.statsGroup}>
             <div className={classes.statsIcon}>
               <img
@@ -32,7 +32,7 @@ const StatsView = ({ classes, data }) => (
                   {' '}
                 </Typography>
               </div>
-              <div className={classes.floatRight}>
+              <div id="trials_count" className={classes.floatRight}>
                 <Typography color="primary" weight="bold">
                   {data.numberOfTrials ? data.numberOfTrials : 0}
                 </Typography>
@@ -55,7 +55,7 @@ const StatsView = ({ classes, data }) => (
                   {' '}
                 </Typography>
               </div>
-              <div className={classes.floatRight}>
+              <div id="cases_count" className={classes.floatRight}>
                 <Typography color="primary" weight="bold">
                   {data.numberOfCases ? data.numberOfCases : 0}
                 </Typography>
@@ -79,7 +79,7 @@ const StatsView = ({ classes, data }) => (
                   {' '}
                 </Typography>
               </div>
-              <div className={classes.floatRight}>
+              <div id="files_count" className={classes.floatRight}>
                 <Typography weight="bold" color="primary">
                   {data.numberOfFiles ? data.numberOfFiles : 0}
                 </Typography>

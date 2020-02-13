@@ -309,7 +309,7 @@ Case :
           </Grid>
         </div>
       </div>
-      <div className={classes.tableContainer}>
+      <div id="table_case_detail" className={classes.tableContainer}>
 
         <div className={classes.tableDiv}>
           <div className={classes.tableTitle}>
