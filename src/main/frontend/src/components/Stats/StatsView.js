@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import {
   Grid,
@@ -93,6 +94,11 @@ const StatsView = ({ classes, data }) => (
 );
 
 const styles = (theme) => ({
+  statsContainer: {
+        position: 'fixed',
+        width: '100%',
+        zIndex: '999',
+  },
   card: {
     minHeight: '100%',
     display: 'flex',

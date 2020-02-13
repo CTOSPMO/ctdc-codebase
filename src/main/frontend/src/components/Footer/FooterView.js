@@ -250,8 +250,8 @@ Accessibility
 
 const styles = (theme) => ({
   contentShift: {
-    width: `calc(100vw - ${theme.custom.drawerWidth})`,
-    marginLeft: `${theme.custom.drawerWidth} !important`,
+    width: '100%',
+    zIndex: '1202',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
