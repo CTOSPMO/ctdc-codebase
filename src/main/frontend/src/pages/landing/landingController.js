@@ -5,7 +5,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
 import imgAbout from '../../assets/landing/About-image.jpg';
 import imgTrial from '../../assets/landing/Trials-image.jpg';
 import imgAccess from '../../assets/landing/RequestAccess-LP.jpg';
@@ -14,11 +13,9 @@ import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
 import texturebg from '../../assets/landing/BackgroundTexture-LP.jpg'
 import l9dg from '../../assets/landing/Cases-LP.jpg';
 import herobg from '../../assets/landing/tmp.jpg';
-import { Button } from '../../components/Wrappers/Wrappers';
+import InteractiveHero  from '../../components/InteractiveHero/InteractiveHero';
 import cn from '../../utils/classNameConcat';
-import starImg from '../../assets/LP_FLARE.2.png';
-import dogImg from '../../assets/landing/dog-bubble.png';
-import humanImg from '../../assets/landing/human-bubble.png';
+
 
 const LandingController = ({ classes }) => (
   <div className={classes.page}>
@@ -26,6 +23,7 @@ const LandingController = ({ classes }) => (
      <div className={classes.hero}>
       <Grid container spacing={16} direction="row">
          <img className={classes.heroImage} src={herobg} alt="CTDC about " />
+         <InteractiveHero />
        </Grid>
         </div>
     </div>
