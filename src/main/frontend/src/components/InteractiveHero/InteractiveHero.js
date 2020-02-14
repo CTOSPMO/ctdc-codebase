@@ -1,79 +1,122 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import cn from '../../utils/classNameConcat';
+import CaseIcon from '../../assets/trial/Trials_Title_Bar.Icon.svg';
+import icon from '../../assets/icons/Icon-CaseDetail.svg';
 
+
+const dialSize = 180;
+const dialLineWidth = 12;
 
 const InteractiveHero = ({ classes }) => (
-  <div className={classes.wrapper}>
-    <div className={cn(classes.dialContainer, classes.container1)}>
-      <div className={classes.wedge} />
+  <>
+    <div className={classes.logo1}>
+      <img
+        src={CaseIcon}
+        alt="CTDC case detail header logo"
+      />
+
     </div>
-    <div className={cn(classes.dialContainer, classes.container2)}>
-      <div className={classes.wedge} />
+    <div className={classes.radialWrapper}>
+      <div className={cn(classes.radialSection, classes.radialRightSection)}>
+        <div className={classes.wedge} />
+      </div>
+      <div className={cn(classes.radialSection, classes.radialLeftSection)}>
+        <div className={classes.wedge} />
+      </div>
+      <div className={cn(classes.marker, classes.start)} />
+      <div className={cn(classes.end, classes.marker)} />
     </div>
-    <div className={cn(classes.marker, classes.start)} />
-    <div className={cn(classes.marker, classes.end)} />
-  </div>
+    <div className={classes.logo2}>
+      <img
+        src={CaseIcon}
+        alt="CTDC case detail header logo"
+      />
+
+    </div>
+    <div className={classes.logo3}>
+      <img
+        src={CaseIcon}
+        alt="CTDC case detail header logo"
+      />
+
+    </div>
+  </>
 );
 
-const styles = () => ({
-  wrapper: {
+const styles = (theme) => ({
+  radialWrapper: {
     position: 'absolute',
-    width: '4em',
-    height: '4em',
-    left: 'calc(50% - 2em)',
+    width: dialSize,
+    height: dialSize,
+    marginTop: '180px',
+    left: `calc(50% - ${dialSize}px)`,
+    // padding: `calc((${theme.upCustom.header.heightLg} - 20px) / 2) 16px`,
+
+    transform: 'rotateZ(225deg)',
+    // Inner content
+    '&:after': {
+      content: '""',
+      background: `url(${icon})`,
+      borderRadius: '50%',
+      width: dialSize - (dialLineWidth * 2),
+      height: dialSize - (dialLineWidth * 2),
+      position: 'absolute',
+      top: dialLineWidth,
+      left: dialLineWidth,
+      transform: 'rotateZ(-225deg)',
+    },
   },
-  dialContainer: {
+  radialSection: {
     position: 'absolute',
     top: '0',
     bottom: '0',
     overflow: 'hidden',
-    width: '2em',
+    width: dialSize / 2,
   },
   wedge: {
-    background: 'red',
-    height: '4em',
-    width: '2em',
+    background: theme.palette.primary.main,
+    height: dialSize,
+    width: dialSize / 2,
+    transition: 'all 1s linear',
   },
-  container1: {
-    left: '2em',
+  radialLeftSection: {
+    left: '0',
     '& $wedge': {
-      borderRadius: '0 4em 4em 0',
+      borderRadius: `${dialSize}px 0 0 ${dialSize}px`,
+      transform: 'rotateZ(0deg)',
+      transformOrigin: `${dialSize / 2} ${dialSize / 2}`,
+    },
+  },
+  radialRightSection: {
+    left: dialSize / 2,
+    '& $wedge': {
+      borderRadius: `0 ${dialSize}px ${dialSize}px 0`,
       left: '0',
+      transform: 'rotateZ(-90deg)',
       transformOrigin: '0 50%',
     },
   },
-  //   .container1 .wedge {
-  //     animation: rotate-bg-1 4s infinite linear,
-  //     border-radius: 0 4em 4em 0,
-  //     left: 0,
-  //     transform-origin: 0 50%,
-  //   }
-  container2: {
-    left: '0',
-    '& $wedge': {
-      borderRadius: '4em 0 0 4em',
-      left: '0',
-      transformOrigin: '2em 2em',
-    },
-  },
-  //   .container2 .wedge {
-  //     animation: rotate-bg-2 4s infinite linear,
-  //     border-radius: 4em 0 0 4em,
-  //     transform-origin: 2em 2em,
-  //   }
-  marker: {
-    background: 'green',
-    borderRadius: '50%',
-    height: '0.5em',
-    width: '0.5em',
+  logo1: {
+    left: `calc(50% - ${dialSize}px)`,
     position: 'absolute',
-    top: '0',
-    left: 'calc(50% - 0.25em)',
+    float: 'left',
+    marginTop: '-2px',
+    width: '100px',
   },
-  end: {
-    // animation: rotate-marker 4s infinite linear;
-    transformOrigin: '50% 2em',
+  logo2: {
+    left: `calc(70% - ${dialSize}px)`,
+    position: 'absolute',
+    float: 'left',
+    marginTop: '180px',
+    width: '100px',
+  },
+  logo3: {
+    marginTop: '450px',
+    left: `calc(50% - ${dialSize}px)`,
+    position: 'absolute',
+    float: 'left',
+    width: '100px',
   },
 });
 
