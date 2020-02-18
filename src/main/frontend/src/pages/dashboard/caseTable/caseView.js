@@ -12,14 +12,14 @@ import { toggleCheckBox } from '../dashboardState';
 import { fetchCasesAndFiles } from '../../selectedCases/selectedCasesState';
 
 
-const tableStyle = (ratio = 1) => ({
-  width: (((document.documentElement.clientWidth * 0.6) / 10) * ratio),
-  overflow: 'hidden',
-  wordBreak: 'break-word',
-  maxWidth: (((document.documentElement.clientWidth * 0.6) / 10) * ratio),
-  minWidth: '160px',
-}
-);
+// const tableStyle = (ratio = 1) => ({
+//   width: ((((document.documentElement.clientWidth - 280) * 0.6) / 10) * ratio),
+//   overflow: 'hidden',
+//   wordBreak: 'break-word',
+//   maxWidth: ((((document.documentElement.clientWidth - 280) * 0.6) / 10) * ratio),
+//   minWidth: '100px',
+// }
+// );
 
 
 const Cases = ({ classes, data }) => {
@@ -74,7 +74,7 @@ const Cases = ({ classes, data }) => {
         filter: false,
         sortDirection: 'asc',
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(0.8)}>
+          <div className="mui_td">
             {' '}
             <Link to={`/case/${value}`} className={classes.link}>{value}</Link>
             {' '}
@@ -88,7 +88,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta) => (
-          <div className="mui_td" style={tableStyle(0.6)}>
+          <div className="mui_td">
 
             <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
 
@@ -102,7 +102,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(2.3)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}
@@ -116,7 +116,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(1)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}
@@ -130,7 +130,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(2)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}
@@ -144,7 +144,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(0.5)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}
@@ -158,7 +158,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(0.5)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}
@@ -172,7 +172,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td" style={tableStyle(0.5)}>
+          <div className="mui_td">
             {' '}
             {value}
             {' '}

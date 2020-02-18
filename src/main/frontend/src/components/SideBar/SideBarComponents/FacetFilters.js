@@ -37,6 +37,8 @@ const FacetPanel = (classes) => {
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : `${panel}false`);
+
+    // set height of filters.
   };
 
   const handleToggle = (value) => () => {

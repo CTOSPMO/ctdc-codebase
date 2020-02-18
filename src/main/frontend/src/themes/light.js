@@ -210,6 +210,9 @@ export default {
     MuiListItemText: {
       root: {
         padding: '0 8px',
+        '&:first-child': {
+          wordBreak: 'break-word',
+        },
       },
     },
     MuiListItem: {
