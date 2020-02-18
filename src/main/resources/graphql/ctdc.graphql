@@ -13,6 +13,7 @@ type assignment_report {
   step_at_assignment: Int
   assignment_logic: String
   assignment_outcome: String
+  treatment_outcome: String
   specimen: specimen @relation(name:"of_specimen", direction:OUT)
   variant_report: variant_report @relation(name:"of_variant_report", direction:OUT)
   arms: [arm] @relation(name:"of_arm", direction:OUT)
@@ -30,8 +31,11 @@ type case {
   ctep_subcategory: String
   meddra_code: String
   prior_drugs: String
+  extent_of_disease: String
+  ecog_performance_status: Int
   specimens: [specimen] @relation(name:"of_case", direction:IN)
   arms: [arm] @relation(name:"of_arm", direction:OUT)
+  metastatic_sites: [metastatic_site] @relation(name:"met_site_of", direction:IN)
 }
 
 type clinical_trial {
@@ -73,6 +77,7 @@ type delins_variant {
   alternative: String
   transcript_id: String
   transcript_hgvs: String
+  genomic_hgvs: String
   oncomine_variant_class: String
   variant_classification: String
   amino_acid_change: String
@@ -128,6 +133,7 @@ type indel_variant {
   alternative: String
   transcript_id: String
   transcript_hgvs: String
+  genomic_hgvs: String
   oncomine_variant_class: String
   variant_classification: String
   amino_acid_change: String
@@ -136,6 +142,12 @@ type indel_variant {
 
 type indel_variant_of {
   allele_frequency: Float
+}
+
+type metastatic_site {
+  met_site_id: String
+  metastatic_site_name: String
+  cases: [case] @relation(name:"met_site_of", direction:OUT)
 }
 
 type nucleic_acid {
@@ -165,6 +177,7 @@ type snv_variant {
   alternative: String
   transcript_id: String
   transcript_hgvs: String
+  genomic_hgvs: String
   oncomine_variant_class: String
   variant_classification: String
   amino_acid_change: String
