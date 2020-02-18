@@ -1,48 +1,26 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
+import cn from '../../utils/classNameConcat';
 import icon from '../../assets/icons/Icon-CaseDetail.svg';
-import HorseShoe from './HorseShoe';
-import casesActive from '../../assets/landing/animation/casesActiveIcon.png';
-import casesInActive from '../../assets/landing/animation/casesInActiveIcon.png';
-import filesActive from '../../assets/landing/animation/filesActive.png';
-import filesInActive from '../../assets/landing/animation/filesInActive.png';
-import trialsActive from '../../assets/landing/animation/trialsActive.png';
-import trialsInActive from '../../assets/landing/animation/trialsInActive.png';
-
 
 const dialSize = 180;
 const dialLineWidth = 12;
 
-const CircularIcon = ({ isActive, regularImage, activeImage }) => (
+
+const HorseShoe = ({ classes, transformAngle }) => (
   <>
-    <img alt="icon" src={isActive ? activeImage : regularImage} />
+    <div style={{ transform: `rotateZ(${transformAngle}deg)` }} className={classes.radialWrapper}>
+      <div className={cn(classes.radialSection, classes.radialRightSection)}>
+        <div className={classes.wedge} />
+      </div>
+      <div className={cn(classes.radialSection, classes.radialLeftSection)}>
+        <div className={classes.wedge} />
+      </div>
+      <div className={cn(classes.marker, classes.start)} />
+      <div className={cn(classes.end, classes.marker)} />
+    </div>
   </>
 );
-
-
-const InteractiveHero = ({ classes }) => {
-  const [activeState, setActiveState] = React.useState({
-    isActive: 'cases',
-    transformAngle: 225,
-  });
-
-  return (
-    <>
-      <div className={classes.logo1} onMouseEnter={() => { setActiveState({ isActive: 'cases', transformAngle: 225 }); }}>
-        <CircularIcon isActive={activeState.isActive === 'cases'} regularImage={casesInActive} activeImage={casesActive} />
-      </div>
-      <HorseShoe transformAngle={activeState.transformAngle} />
-
-      <div className={classes.logo2} onMouseEnter={() => { setActiveState({ isActive: 'trails', transformAngle: 315 }); }}>
-        <CircularIcon isActive={activeState.isActive === 'trails'} regularImage={trialsInActive} activeImage={trialsActive} />
-
-      </div>
-      <div className={classes.logo3} onMouseEnter={() => { setActiveState({ isActive: 'files', transformAngle: 45 }); }}>
-        <CircularIcon isActive={activeState.isActive === 'files'} regularImage={filesInActive} activeImage={filesActive} />
-      </div>
-    </>
-  );
-};
 
 const styles = (theme) => ({
   radialWrapper: {
@@ -53,7 +31,7 @@ const styles = (theme) => ({
     left: `calc(50% - ${dialSize}px)`,
     // padding: `calc((${theme.upCustom.header.heightLg} - 20px) / 2) 16px`,
 
-    transform: 'rotateZ(225deg)',
+    // transform: 'rotateZ(225deg)',
     // Inner content
     '&:after': {
       content: '""',
@@ -121,4 +99,4 @@ const styles = (theme) => ({
 });
 
 
-export default withStyles(styles)(InteractiveHero);
+export default withStyles(styles)(HorseShoe);
