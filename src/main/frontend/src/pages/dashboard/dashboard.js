@@ -251,7 +251,7 @@ const styles = (theme) => ({
     float: 'left',
   },
   customSwitch: {
-    marginTop: '45px',
+    marginTop: '5px',
   },
   customButton: {
     borderRadius: '0 0 18px 18px',
@@ -262,7 +262,7 @@ const styles = (theme) => ({
     backgroundColor: '#566672',
     marginRight: '4px',
     fontFamily: theme.custom.fontFamilySans,
-    marginTop: '45px',
+    marginTop: '-4px',
     '&:hover': {
       backgroundColor: '#566672',
     },

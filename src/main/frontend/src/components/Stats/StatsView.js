@@ -98,6 +98,7 @@ const styles = (theme) => ({
         position: 'fixed',
         width: '100%',
         zIndex: '999',
+        top: '140px',
   },
   card: {
     minHeight: '100%',

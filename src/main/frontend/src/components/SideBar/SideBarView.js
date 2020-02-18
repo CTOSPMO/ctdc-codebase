@@ -28,7 +28,6 @@ const styles = (theme) => ({
     position: 'relative',
     float: 'left',
     overflowY: 'auto',
-    marginTop: '48px',
 
   },
   floatRight: {
