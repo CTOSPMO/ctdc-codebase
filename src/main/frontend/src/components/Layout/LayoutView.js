@@ -17,13 +17,7 @@ import table from '../../pages/table/tableView';
 import SelectedCases from '../../pages/selectedCases/selectedCasesController';
 import SelectedFiles from '../../pages/selectedFiles/selectedFilesController';
 import Home from '../../pages/landing/landingController';
-import CRDCView from '../../pages/about/CRDCView';
-import developerView from '../../pages/about/developerView';
-import CTDCDataView from '../../pages/about/CTDCDataView';
-import purposeView from '../../pages/about/purposeView';
-import steeringCommiteeView from '../../pages/about/steeringCommitteeView';
-import supportView from '../../pages/about/supportView';
-import requestAccess from '../../pages/about/requestAccessView';
+import aboutView from '../../pages/about/aboutView';
 import Trials from '../../pages/trials/controller';
 import TrialDetail from '../../pages/trialDetail/controller';
 
@@ -58,13 +52,13 @@ const Layout = ({ classes, isSidebarOpened }) => (
 
             <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
-            <Route path="/purpose" component={purposeView} />
-            <Route path="/steering-committee" component={steeringCommiteeView} />
-            <Route path="/crdc" component={CRDCView} />
-            <Route path="/icdcData" component={CTDCDataView} />
-            <Route path="/developers" component={developerView} />
-            <Route path="/support" component={supportView} />
-            <Route path="/request-access" component={requestAccess} />
+            <Route path="/purpose" component={aboutView} />
+            <Route path="/steeringCommittee" component={aboutView} />
+            <Route path="/crdc" component={aboutView} />
+            <Route path="/icdcData" component={aboutView} />
+            <Route path="/developers" component={aboutView} />
+            <Route path="/support" component={aboutView} />
+            <Route path="/request-access" component={aboutView} />
 
             <Route component={Error} />
           </Switch>
