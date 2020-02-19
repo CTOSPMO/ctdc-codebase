@@ -18,7 +18,7 @@ const lochmara = '#3478A5';
 const lightenRate = 7.5;
 const darkenRate = 15;
 const tableHeaderBorder = '#4B619A 3px solid';
-const tableHeaderFontColor = '#194563';
+const tableHeaderFontColor = '#004c73';
 const tableFontFamily = "'Raleway', sans-serif";
 const black = 'black';
 
@@ -293,10 +293,10 @@ export default {
       root: {
         '&:nth-child(even)': {
           backgroundColor: '#f5f5f5',
-          color: '#1c2023',
+          color: '#004c73',
         },
         '&:nth-child(odd)': {
-          color: '#1c2023',
+          color: '#004c73',
         },
       },
     },
