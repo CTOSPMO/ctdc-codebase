@@ -22,10 +22,13 @@ const styles = (theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
-    bottom: '360px',
-    background: 'transparent',
-    top: '187px',
+    width: '240px',
+    height: 'auto',
+    zIndex: '90',
+    position: 'relative',
+    float: 'left',
+    overflowY: 'auto',
+
   },
   floatRight: {
     float: 'right',
