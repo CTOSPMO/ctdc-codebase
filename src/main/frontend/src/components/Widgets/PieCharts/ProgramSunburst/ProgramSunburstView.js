@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Sunburst, LabelSeries } from 'react-vis';
-
+import { withStyles } from '@material-ui/core';
 
 // const LABEL_STYLE = {
 //   fontSize: '10px',
@@ -34,77 +34,120 @@ function updateData(d, keyPath) {
   return data;
 }
 
-export default class ProgramSunburst extends PureComponent {
+
+const styles = () => ({
+  title: {
+    color: 'rgb(52, 120, 165)',
+    fontSize: '12px',
+    maxWidth: '1440px',
+    fontFamily: 'Raleway',
+    lineHeight: '20px',
+    fontWeight: '600',
+    paddingLeft: '28px',
+    height: '20px',
+  },
+});
+
+
+class ProgramSunburst extends PureComponent {
   constructor(props) {
     super(props);
     const { data } = this.props;
     this.state = {
       widgetData: data,
-      finalValue: false,
+      size: data.children[0].size,
+      title: data.children[0].title,
+      caseSize: data.children[0].caseSize,
     };
   }
 
 
   render() {
-    const { finalValue, widgetData } = this.state;
     const {
-      width, height, data, textColor,
+      caseSize, size, widgetData, title,
+    } = this.state;
+    const {
+      width, height, data, textColor, classes,
     } = this.props;
     if (data.key !== widgetData.key) {
       this.setState({
         widgetData: data,
-        finalValue: false,
+        size,
+        title,
+        caseSize,
       });
     }
 
     return (
-      <Sunburst
-        id={widgetData.key}
-        hideRootNode
-        animation
-        colorType="literal"
-        data={widgetData}
-        height={height}
-        width={width}
-        style={{
-          stroke: '#ddd',
-          strokeOpacity: 0.3,
-          strokeWidth: '0.5',
-        }}
-        onValueMouseOver={(node) => {
-          const path = getKeyPath(node).reverse();
-          const pathAsMap = path.reduce((res, row) => {
-            res[row.toString()] = true;
-            return res;
-          }, {});
-          const wdata = updateData(widgetData, pathAsMap);
-          this.setState({
-            finalValue: node.title,
-            widgetData: wdata,
-          });
-        }}
-        onValueMouseOut={() => {
-          this.setState({
-            finalValue: false,
-            widgetData: updateData(widgetData, false),
-          });
-        }}
-      >
-        {finalValue && (
-        <LabelSeries data={[{
-          x: 0,
-          y: 0,
-          label: finalValue,
-          style: {
-            fontSize: '10px',
-            textAnchor: 'middle',
-            fill: textColor,
-            fontFamily: '"Open Sans", sans-serif',
-          },
-        }]}
-        />
-        )}
-      </Sunburst>
+      <>
+        <div className={classes.title}>
+          {title}
+        </div>
+        <Sunburst
+          id={widgetData.key}
+          hideRootNode
+          animation
+          colorType="literal"
+          data={widgetData}
+          height={height}
+          width={width}
+          style={{
+            stroke: '#ddd',
+            strokeOpacity: 0.3,
+            strokeWidth: '0.5',
+          }}
+          onValueMouseOver={(node) => {
+            const path = getKeyPath(node).reverse();
+            const pathAsMap = path.reduce((res, row) => {
+              res[row.toString()] = true;
+              return res;
+            }, {});
+            const wdata = updateData(widgetData, pathAsMap);
+            this.setState({
+              size: node.size,
+              widgetData: wdata,
+              title: node.title,
+              caseSize: node.size || node.caseSize,
+            });
+          }}
+          onValueMouseOut={() => {
+            this.setState({
+              caseSize: false,
+              size: false,
+              title: '',
+              widgetData: updateData(widgetData, false),
+            });
+          }}
+        >
+          {caseSize && (
+          <LabelSeries data={[{
+            x: 0,
+            y: 0,
+            label: caseSize,
+            style: {
+              fontSize: '12px',
+              textAnchor: 'middle',
+              fill: textColor,
+              fontFamily: '"Open Sans", sans-serif',
+            },
+          }, {
+            x: 0,
+            y: 1,
+            label: 'Cases',
+            style: {
+              fontSize: '12px',
+              textAnchor: 'middle',
+              fill: textColor,
+              fontFamily: '"Open Sans", sans-serif',
+            },
+          }]}
+          />
+          )}
+        </Sunburst>
+      </>
     );
   }
 }
+
+
+export default withStyles(styles)(ProgramSunburst);
