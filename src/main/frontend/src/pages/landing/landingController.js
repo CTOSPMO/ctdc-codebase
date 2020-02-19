@@ -141,6 +141,9 @@ Programs/Studies within the CTDC. The data files from
   </div>
 );
 const styles = (theme) => ({
+  page: {
+    marginTop: '-47px',
+  },
   heroImage:{
     width:'100%',
     height: '100%',
