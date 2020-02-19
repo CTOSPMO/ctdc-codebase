@@ -18,7 +18,7 @@ const lochmara = '#3478A5';
 const lightenRate = 7.5;
 const darkenRate = 15;
 const tableHeaderBorder = '#4B619A 3px solid';
-const tableHeaderFontColor = '#194563';
+const tableHeaderFontColor = '#004c73';
 const tableFontFamily = "'Raleway', sans-serif";
 
 export default {
@@ -288,7 +288,7 @@ export default {
         backgroundColor: tableHeader,
         textDecoration: 'underline',
         fontFamily: tableFontFamily,
-        letterSpacing: '0.025em',
+        letterSpacing: '0.06em',
         fontStyle: 'normal',
         fontSize: '11pt',
         fontWeight: 'bold',
@@ -314,11 +314,11 @@ export default {
     MUIDataTableBodyRow: {
       root: {
         '&:nth-child(even)': {
-          color: '#223d4c',
+          color: '#004c73',
           background: '#f5f5f5 !important',
         },
         '&:nth-child(odd)': {
-          color: '#223d4c !important',
+          color: '#004c73 !important',
 
         },
       },

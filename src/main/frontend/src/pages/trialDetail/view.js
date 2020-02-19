@@ -241,10 +241,9 @@ const TrialView = ({ classes, data, theme }) => {
 
           <Grid container spacing={5}>
             <Grid item lg={5} md={5} sm={12} xs={12}>
-              <Grid container spacing={8} direction="row" className={classes.detailContainerLeft}>
+              <Grid container spacing={4} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
-
                 </Grid>
                 <Grid item xs={12}>
                   <div>
@@ -292,7 +291,7 @@ const TrialView = ({ classes, data, theme }) => {
 
 
             <Grid item lg={4} md={4} sm={12} xs={12} className={classes.borderLeft}>
-              <Grid container spacing={8} direction="row" className={classes.detailContainerLeft}>
+              <Grid container spacing={4} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Type</span>
 
@@ -344,7 +343,7 @@ const TrialView = ({ classes, data, theme }) => {
 
             <Grid item lg={3} md={3} sm={12} xs={12} className={classes.borderLeft}>
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
-                <Grid item xs={12}>
+                <Grid item xs={12} className={classes.marginTopN37}>
                   <Widget
                     title="Diagnosis"
                     upperTitle
@@ -672,10 +671,11 @@ const styles = (theme) => ({
     textTransform: 'uppercase',
   },
   tableTitle: {
+    textTransform: 'uppercase',
     fontFamily: 'Lato',
     fontSize: '17px',
-    letterSpacing: '0.05em',
-    color: '#415589',
+    letterSpacing: '0.025em',
+    color: '#0296c9',
     paddingBottom: '20px',
   },
   fileIcon: {
@@ -687,14 +687,19 @@ const styles = (theme) => ({
     paddingBottom: '11px',
     lineHeight: '100px',
     verticalAlign: 'top',
-    fontSize: '50px',
+    fontSize: '33px',
     color: '#C53B27',
-    fontWeight: 'bolder',
-    borderBottom: '#C53B27 solid 5px',
-    marginLeft: '20px',
+    fontWeight: 'bold',
+    borderBottom: '#C53B27 solid 6px',
+    marginLeft: '40px',
+    fontFamily: 'Oswald',
+
   },
   paddingTop32: {
     paddingTop: '36px !important',
+  },
+  marginTopN37: {
+    marginTop: '-37px',
   },
 });
 

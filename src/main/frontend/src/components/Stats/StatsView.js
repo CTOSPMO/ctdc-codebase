@@ -109,6 +109,7 @@ const styles = (theme) => ({
     // textAlign: 'center',
     background: theme.palette.deepSkyBlue.main,
     boxShadow: 'none',
+    borderRadius: '0',
   },
   statsGroup: {
     padding: '13px 48px 12px 48px',
