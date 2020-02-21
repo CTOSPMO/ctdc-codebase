@@ -1,100 +1,63 @@
+/* eslint-disable */
+
 import React from 'react';
 import { withStyles } from '@material-ui/core';
+import {
+  PieChart, Pie, Sector, Cell,
+} from 'recharts';
 import cn from '../../utils/classNameConcat';
-import icon from '../../assets/icons/Icon-CaseDetail.svg';
+import icon from '../../assets/landing/animation/CTDCButton.png';
 
 const dialSize = 180;
 const dialLineWidth = 12;
-
+const data = [
+  { name: 'Group A', value: 400 },
+];
 
 const HorseShoe = ({ classes, transformAngle }) => (
   <>
-    <div style={{ transform: `rotateZ(${transformAngle}deg)` }} className={classes.radialWrapper}>
-      <div className={cn(classes.radialSection, classes.radialRightSection)}>
-        <div className={classes.wedge} />
-      </div>
-      <div className={cn(classes.radialSection, classes.radialLeftSection)}>
-        <div className={classes.wedge} />
-      </div>
-      <div className={cn(classes.marker, classes.start)} />
-      <div className={cn(classes.end, classes.marker)} />
-    </div>
-  </>
+  <div style={{ transform: `rotateZ(${transformAngle}deg)` }} className={classes.radialWrapper}>
+  <PieChart width={160} height={160} >
+  <Pie
+    data={data}
+    cx={80}
+    cy={80}
+    startAngle={45}
+    endAngle={-225}
+    innerRadius={60}
+    outerRadius={75}
+    fill="#E7E5E5"
+    paddingAngle={1}
+    dataKey="value"
+  >
+    {/* {
+      data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+    } */}
+    {/* <div>Ajay</div> */}
+  </Pie>
+</PieChart>
+</div>
+<div className={classes.radialWrapper1} >
+  <img src={icon}></img>
+</div>
+</>
 );
 
-const styles = (theme) => ({
-  radialWrapper: {
+const styles = () => ({
+  radialWrapper:{
     position: 'absolute',
     width: dialSize,
     height: dialSize,
     marginTop: '180px',
-    left: `calc(50% - ${dialSize}px)`,
-    // padding: `calc((${theme.upCustom.header.heightLg} - 20px) / 2) 16px`,
+  },
+  radialWrapper1: {
+    width: '120px',
+    height: '120px',
+    position: 'absolute',
+    float: 'left',
+    marginTop: '206px',
+    left: '24px',
 
-    // transform: 'rotateZ(225deg)',
-    // Inner content
-    '&:after': {
-      content: '""',
-      background: `url(${icon})`,
-      borderRadius: '50%',
-      width: dialSize - (dialLineWidth * 2),
-      height: dialSize - (dialLineWidth * 2),
-      position: 'absolute',
-      top: dialLineWidth,
-      left: dialLineWidth,
-      transform: 'rotateZ(-225deg)',
-    },
-  },
-  radialSection: {
-    position: 'absolute',
-    top: '0',
-    bottom: '0',
-    overflow: 'hidden',
-    width: dialSize / 2,
-  },
-  wedge: {
-    background: theme.palette.primary.main,
-    height: dialSize,
-    width: dialSize / 2,
-    transition: 'all 1s linear',
-  },
-  radialLeftSection: {
-    left: '0',
-    '& $wedge': {
-      borderRadius: `${dialSize}px 0 0 ${dialSize}px`,
-      transform: 'rotateZ(0deg)',
-      transformOrigin: `${dialSize / 2} ${dialSize / 2}`,
-    },
-  },
-  radialRightSection: {
-    left: dialSize / 2,
-    '& $wedge': {
-      borderRadius: `0 ${dialSize}px ${dialSize}px 0`,
-      left: '0',
-      transform: 'rotateZ(-90deg)',
-      transformOrigin: '0 50%',
-    },
-  },
-  logo1: {
-    left: `calc(50% - ${dialSize}px)`,
-    position: 'absolute',
-    float: 'left',
-    marginTop: '-2px',
-    width: '100px',
-  },
-  logo2: {
-    left: `calc(70% - ${dialSize}px)`,
-    position: 'absolute',
-    float: 'left',
-    marginTop: '180px',
-    width: '100px',
-  },
-  logo3: {
-    marginTop: '450px',
-    left: `calc(50% - ${dialSize}px)`,
-    position: 'absolute',
-    float: 'left',
-    width: '100px',
   },
 });
 

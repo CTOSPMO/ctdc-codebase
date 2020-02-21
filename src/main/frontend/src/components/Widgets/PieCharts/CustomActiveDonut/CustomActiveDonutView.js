@@ -39,6 +39,13 @@ const renderActiveShape = (props) => {
   // const ex = mx + (cos >= 0 ? 1 : -1) * 20;
   // const ey = my;
   // const textAnchor = cos >= 0 ? 'start' : 'end';
+  console.log('hello');
+
+  console.log(cx);
+  console.log(cy);
+  console.log(innerRadius);
+  console.log(outerRadius);
+
   return (
     <g>
       <text y={9} fill={textColor} fontSize="12px" fontWeight="600" fontFamily="Raleway">{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}....` : payload.name}</text>
