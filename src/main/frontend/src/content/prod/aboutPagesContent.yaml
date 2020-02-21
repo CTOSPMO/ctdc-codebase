@@ -77,7 +77,7 @@
     - paragraph: "Projects need not be complete to start the request. Indeed, working with the ICDC before defining your data 
        collection processes can be beneficial, as the ICDC can help advise on best practices that will enable more 
        efficient and effective submission of the data. "
-    - paragraph: "$$#EXPECTATIONS OF DATA:#$$'
+    - paragraph: "$$#EXPECTATIONS OF DATA:#$$"
     - paragraph: "Once a project is accepted into the ICDC, the ICDC Data Team will work with the submitter to review the data 
        (i.e., by looking at data structure, data values, and data quality, as well as identifying any standards). The 
        review in turn leads to a submission plan between ICDC and the submitter. "
@@ -133,4 +133,4 @@
         properties are available for inspection and querying beyond those presented on the front-end. "
     - paragraph: "Additionally, the ICDC Data Model serves as a template for similar initiatives and data structures, 
         including graph-based database schemas. The model will continue to evolve as data needs are further discerned. "
-    - paragraph: "The tool used to generate this visual may be sourced on Github at: https://github.com/CBIIT/icdc-model-tool'
+    - paragraph: "The tool used to generate this visual may be sourced on Github at: https://github.com/CBIIT/icdc-model-tool"
