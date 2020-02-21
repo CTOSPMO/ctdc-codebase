@@ -1,10 +1,10 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-const HorseShoe = ({ classes, transformAngle }) => (
+const HorseShoe = ({ classes, transformedHorseShoe }) => (
   <>
     <div className={classes.radialWrapper}>
-      <img alt="CTDC horse Shoe" src={transformAngle} />
+      <img alt="CTDC horse Shoe" src={transformedHorseShoe} />
     </div>
   </>
 );

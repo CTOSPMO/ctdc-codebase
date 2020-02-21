@@ -1,8 +1,5 @@
-/* eslint-disable */
-
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import icon from '../../assets/icons/Icon-CaseDetail.svg';
 import HorseShoe from './HorseShoe';
 import ActiveCases from '../../assets/landing/animation/activeCases.svg';
 import InActiveCases from '../../assets/landing/animation/InActiveCases.svg';
@@ -15,57 +12,53 @@ import FacingDown from '../../assets/landing/animation/Dial_facing_down.svg';
 import FacingUp from '../../assets/landing/animation/Dial_facing_up.svg';
 import FacingRight from '../../assets/landing/animation/Dial_facing_right.svg';
 
-const dialSize = 180;
-const dialLineWidth = 12;
-
-
 const InteractiveHero = ({ classes }) => {
   const [activeState, setActiveState] = React.useState({
     isActive: 'cases',
-    transformAngle: FacingUp,
+    transformedHorseShoe: FacingUp,
   });
 
   return (
     <div className={classes.animationWrapper}>
-      <div className={classes.logo1} onMouseEnter={() => { setActiveState({ isActive: 'cases', transformAngle: FacingUp}); }}>
+      <div className={classes.casesIcon} onMouseEnter={() => { setActiveState({ isActive: 'cases', transformedHorseShoe: FacingUp }); }}>
         <CircularIcon isActive={activeState.isActive === 'cases'} InactiveImage={InActiveCases} activeImage={ActiveCases} />
       </div>
-      <HorseShoe transformAngle={activeState.transformAngle}/>
+      <HorseShoe transformedHorseShoe={activeState.transformedHorseShoe} />
 
-      <div className={classes.logo2} onMouseEnter={() => { setActiveState({ isActive: 'trails',transformAngle: FacingRight }); }}>
+      <div className={classes.trialsIcon} onMouseEnter={() => { setActiveState({ isActive: 'trails', transformedHorseShoe: FacingRight }); }}>
         <CircularIcon isActive={activeState.isActive === 'trails'} InactiveImage={InActiveTrials} activeImage={ActiveTrials} />
       </div>
-      <div className={classes.logo3} onMouseEnter={() => { setActiveState({ isActive: 'files', transformAngle: FacingDown }); }}>
+      <div className={classes.filesIcon} onMouseEnter={() => { setActiveState({ isActive: 'files', transformedHorseShoe: FacingDown }); }}>
         <CircularIcon isActive={activeState.isActive === 'files'} InactiveImage={InActiveFiles} activeImage={ActiveFiles} />
       </div>
     </div>
   );
 };
 
-const styles = (theme) => ({
-  animationWrapper:{
-    left: `calc(70%)`,
+const styles = () => ({
+  animationWrapper: {
+    left: 'calc(70%)',
     position: 'absolute',
   },
-  logo1: {
+  casesIcon: {
     position: 'absolute',
     float: 'left',
     marginTop: '50px',
     width: '100px',
     left: '40px',
   },
-  logo2: {
-    left:'220px',
+  trialsIcon: {
+    left: '220px',
     position: 'absolute',
     float: 'left',
     marginTop: '220px',
     width: '100px',
   },
-  logo3: {
+  filesIcon: {
     marginTop: '400px',
     position: 'absolute',
     float: 'left',
-    left: '40px'
+    left: '40px',
   },
 });
 
