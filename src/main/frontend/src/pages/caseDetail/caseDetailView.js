@@ -87,7 +87,7 @@ const CaseDetail = ({ classes, data }) => {
       }]));
     });
   };
-  
+
   const stat = {
     numberOfTrials: 1,
     numberOfCases: 1,
