@@ -37,8 +37,14 @@ const InteractiveHero = ({ classes }) => {
 
 const styles = () => ({
   animationWrapper: {
-    left: 'calc(70%)',
+    left: '0px',
     position: 'absolute',
+    '@media (min-width: 800px)': {
+      left: 'calc(60%)',
+    },
+    '@media (min-width: 1100px)': {
+      left: 'calc(70%)',
+    },
   },
   casesIcon: {
     position: 'absolute',
