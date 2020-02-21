@@ -17,7 +17,7 @@ import table from '../../pages/table/tableView';
 import SelectedCases from '../../pages/selectedCases/selectedCasesController';
 import SelectedFiles from '../../pages/selectedFiles/selectedFilesController';
 import Home from '../../pages/landing/landingController';
-import aboutView from '../../pages/about/aboutView';
+import About from '../../pages/about/aboutController';
 import Trials from '../../pages/trials/controller';
 import TrialDetail from '../../pages/trialDetail/controller';
 
@@ -52,13 +52,13 @@ const Layout = ({ classes, isSidebarOpened }) => (
 
             <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
-            <Route path="/purpose" component={aboutView} />
-            <Route path="/steeringCommittee" component={aboutView} />
-            <Route path="/crdc" component={aboutView} />
-            <Route path="/icdcData" component={aboutView} />
-            <Route path="/developers" component={aboutView} />
-            <Route path="/support" component={aboutView} />
-            <Route path="/request-access" component={aboutView} />
+            <Route path="/purpose" component={About} />
+            <Route path="/steeringCommittee" component={About} />
+            <Route path="/crdc" component={About} />
+            <Route path="/icdcData" component={About} />
+            <Route path="/developers" component={About} />
+            <Route path="/support" component={About} />
+            <Route path="/request-access" component={About} />
 
             <Route component={Error} />
           </Switch>
