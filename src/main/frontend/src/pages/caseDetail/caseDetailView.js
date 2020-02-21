@@ -89,11 +89,9 @@ const CaseDetail = ({ classes, data }) => {
   };
 
   const stat = {
-    numberOfStudies: 1,
+    numberOfTrials: 1,
     numberOfCases: 1,
-    numberOfSamples: data.sampleCountOfCase,
-    numberOfFiles: data.fileCountOfCase,
-    numberOfBiospecimenAliquots: data.aliquotCountOfCase,
+    numberOfFiles: data.filesOfCase.length,
   };
   const caseDetail = data.caseDetailByCaseId[0];
 
