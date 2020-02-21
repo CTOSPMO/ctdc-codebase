@@ -5,7 +5,6 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import styled, { keyframes } from 'styled-components';
 import imgAbout from '../../assets/landing/About-image.jpg';
 import imgTrial from '../../assets/landing/Trials-image.jpg';
 import imgAccess from '../../assets/landing/RequestAccess-LP.jpg';
@@ -13,19 +12,25 @@ import icon from '../../assets/landing/LP_ReadMore.svg';
 import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
 import texturebg from '../../assets/landing/BackgroundTexture-LP.jpg'
 import l9dg from '../../assets/landing/Cases-LP.jpg';
-import herobg from '../../assets/landing/tmp.jpg';
-import { Button } from '../../components/Wrappers/Wrappers';
+import herobg800 from '../../assets/landing/heroGraphic/heroGraphic800.png';
+import herobg1000 from '../../assets/landing/heroGraphic/heroGraphic1000.png';
+import herobg1200 from '../../assets/landing/heroGraphic/heroGraphic1200.png';
+import herobg1400 from '../../assets/landing/heroGraphic/heroGraphic1400.png';
+import herobg1600 from '../../assets/landing/heroGraphic/heroGraphic1600.png';
+import herobg1800 from '../../assets/landing/heroGraphic/heroGraphic1800.png';
+import herobg2000 from '../../assets/landing/heroGraphic/heroGraphic2000.png';
+
+import InteractiveHero  from '../../components/InteractiveHero/InteractiveHero';
 import cn from '../../utils/classNameConcat';
-import starImg from '../../assets/LP_FLARE.2.png';
-import dogImg from '../../assets/landing/dog-bubble.png';
-import humanImg from '../../assets/landing/human-bubble.png';
+
 
 const LandingController = ({ classes }) => (
   <div className={classes.page}>
     <div className={classes.container}>
      <div className={classes.hero}>
       <Grid container spacing={16} direction="row">
-         <img className={classes.heroImage} src={herobg} alt="CTDC about " />
+         <div className={classes.heroImage} />
+         <InteractiveHero />
        </Grid>
         </div>
     </div>
@@ -146,7 +151,40 @@ const styles = (theme) => ({
   },
   heroImage:{
     width:'100%',
-    height: '100%',
+    height: '600px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '100% 100%',
+    background: `url(${herobg800})`,
+    '@media (min-width: 1000px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg1000})`,
+    },
+    '@media (min-width: 1200px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg1200})`,
+    },
+    '@media (min-width: 1400px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg1400})`,
+    },
+    '@media (min-width: 1600px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg1600})`,
+    },
+    '@media (min-width: 1800px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg1800})`,
+    },
+    '@media (min-width: 2000px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${herobg2000})`,
+    },
   },
   texture: {
     backgroundSize: 'cover',
