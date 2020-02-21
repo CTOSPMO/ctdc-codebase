@@ -39,12 +39,6 @@ const renderActiveShape = (props) => {
   // const ex = mx + (cos >= 0 ? 1 : -1) * 20;
   // const ey = my;
   // const textAnchor = cos >= 0 ? 'start' : 'end';
-  console.log('hello');
-
-  console.log(cx);
-  console.log(cy);
-  console.log(innerRadius);
-  console.log(outerRadius);
 
   return (
     <g>

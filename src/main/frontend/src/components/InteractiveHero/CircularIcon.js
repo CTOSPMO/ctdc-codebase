@@ -11,8 +11,8 @@ const CircularIcon = ({
 
 const styles = () => ({
   image: {
-    height: '140px',
-    width: '140px',
+    height: '120px',
+    width: '120px',
   },
 });
 export default withStyles(styles)(CircularIcon);
