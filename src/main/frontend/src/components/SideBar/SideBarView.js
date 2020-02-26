@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   withStyles, Divider, Drawer, List, Button,
 } from '@material-ui/core';
+import cn from '../../utils/classNameConcat';
 import FacetFilter from './SideBarComponents/FacetFilters';
 import { toggleCheckBox } from '../../pages/dashboard/dashboardState';
 import { unselectFilters } from '../../utils/dashboardUtilFunctions';
@@ -32,11 +33,19 @@ const styles = (theme) => ({
   },
   floatRight: {
     float: 'right',
+    marginTop: '6px',
+    marginRight: '12px',
   },
   floatLeft: {
     float: 'left',
-    marginTop: '6px',
-    marginLeft: '10px',
+  },
+  filterTitle: {
+    marginTop: '8px',
+    marginLeft: '35px',
+    color: theme.palette.lochmara.main,
+    fontFamily: 'Lato',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   funnelLogoImg: {
     width: '20px',
@@ -51,13 +60,20 @@ const styles = (theme) => ({
     minHeight: '20px',
     fontSize: 9,
     textTransform: 'none',
-    color: 'black',
+    color: theme.palette.lochmara.main,
     marginLeft: '16px',
     fontFamily: theme.custom.fontFamilySans,
     '&:hover': {
       backgroundColor: '#566672',
       color: 'white',
     },
+  },
+  listRoot: {
+    paddingTop: 0,
+    paddingBottom: 1,
+  },
+  dividerRoot: {
+    backgroundColor: '#B0CFE1',
   },
 });
 
@@ -78,7 +94,8 @@ const SideBarContent = ({ classes }) => {
       }}
     >
       <div className={classes.drawerAppBar}>
-        <div className={classes.floatLeft}>
+        <div className={cn(classes.floatLeft, classes.filterTitle)}> Filter Cases</div>
+        <div className={classes.floatRight}>
           <Button
             id="button_sidebar_clear_all_filters"
             variant="outlined"
@@ -93,8 +110,8 @@ const SideBarContent = ({ classes }) => {
           </Button>
         </div>
       </div>
-      <Divider />
-      <List component="nav" aria-label="main mailbox folders">
+      <Divider classes={{ root: classes.dividerRoot }} />
+      <List component="nav" aria-label="main mailbox folders" classes={{ root: classes.listRoot }}>
         <FacetFilter />
       </List>
     </Drawer>

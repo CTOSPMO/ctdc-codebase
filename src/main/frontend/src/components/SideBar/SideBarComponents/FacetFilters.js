@@ -10,7 +10,7 @@ import {
   ExpansionPanelSummary,
   withStyles,
 } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { toggleCheckBox } from '../../../pages/dashboard/dashboardState';
 
 
@@ -63,7 +63,7 @@ const FacetPanel = (classes) => {
                 onChange={handleChange(sideBarItem.groupName)}
               >
                 <ExpansionPanelSummary
-                  expandIcon={<ExpandMoreIcon />}
+                  expandIcon={<ArrowDropDownIcon style={{ fill: '#3695A9' }} />}
                   aria-controls={sideBarItem.groupName}
                   id={sideBarItem.groupName}
                   classes={{ root: classes.expansionPanelSummaryRoot }}
@@ -80,7 +80,7 @@ const FacetPanel = (classes) => {
               }
               return (
                 <ListItem button onClick={handleToggle(`${checkboxItem.name}$$${sideBarItem.groupName}$$${sideBarItem.datafield}$$${checkboxItem.isChecked}`)} className={classes.nested}>
-                  <Checkbox id={`checkbox_${sideBarItem.groupName}_${checkboxItem.name}`} checked={checkboxItem.isChecked} tabIndex={-1} disableRipple color="primary" />
+                  <Checkbox id={`checkbox_${sideBarItem.groupName}_${checkboxItem.name}`} checked={checkboxItem.isChecked} tabIndex={-1} disableRipple color="secondary" />
                   <ListItemText primary={`${checkboxItem.name}  (${checkboxItem.cases})`} />
                 </ListItem>
               );
