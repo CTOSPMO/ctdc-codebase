@@ -384,12 +384,6 @@ export default {
         padding: '5px',
       },
     },
-    MuiGrid: {
-      container: {
-        width: '100% !important',
-
-      },
-    },
     MuiTablePagination: {
       toolbar: {
         textTransform: 'uppercase',

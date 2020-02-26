@@ -39,6 +39,9 @@ const styles = () => ({
   animationWrapper: {
     left: '0px',
     position: 'absolute',
+    '@media (min-width: 700px)': {
+      left: 'calc(50%)',
+    },
     '@media (min-width: 800px)': {
       left: 'calc(60%)',
     },

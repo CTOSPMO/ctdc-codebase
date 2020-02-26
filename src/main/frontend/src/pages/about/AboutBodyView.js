@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, withStyles, Link } from '@material-ui/core';
-import AboutHeader from './aboutHeaderView';
+import AboutHeader from './AboutHeaderView';
 import Stats from '../../components/Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 import submissionGuide from '../../assets/footer/ICDC_DGAB_Guidelines.pdf';
