@@ -99,20 +99,26 @@ export function getSunburstDataFromDashboardData(data) {
     widgetData.map((trial) => {
       if (trial.title === d.clinical_trial_code) { // program exist
         existTrial = true;
+        // eslint-disable-next-line no-param-reassign
+        trial.caseSize += 1;
         trial.children.map((arm) => {
           const armID = arm;
-          if (armID.title === d.arm_id) { // arm exist
+          if (armID.title === `${trial.title} : ${d.arm_id}`) { // arm exist
             existArm = true;
             armID.size += 1;
+            armID.caseSize += 1;
           }
           return armID;
         }); // end find arm
         if (!existArm) { // new arm
           trial.children.push({
-            title: d.arm_id,
+            title: `${trial.title} : ${d.arm_id}`,
             color: COLORS_LEVEL_2[trial.children.length % COLORS_LEVEL_2.length],
             size: 1,
+            caseSize: 1,
           });
+          // eslint-disable-next-line no-param-reassign
+          trial.caseSize += 1;
         }
       }
       return trial;
@@ -122,10 +128,12 @@ export function getSunburstDataFromDashboardData(data) {
       widgetData.push({
         title: d.clinical_trial_code,
         color: COLORS[parseInt(colorIndex, 10)],
+        caseSize: 0,
         children: [{
-          title: d.arm_id,
+          title: `${d.clinical_trial_code} : ${d.arm_id}`,
           color: COLORS[parseInt(colorIndex, 10)],
           size: 1,
+          caseSize: 1,
         }],
       });
       colorIndex += 1;
