@@ -99,6 +99,7 @@ export function getSunburstDataFromDashboardData(data) {
     widgetData.map((trial) => {
       if (trial.title === d.clinical_trial_code) { // program exist
         existTrial = true;
+        // eslint-disable-next-line no-param-reassign
         trial.caseSize += 1;
         trial.children.map((arm) => {
           const armID = arm;
@@ -116,6 +117,7 @@ export function getSunburstDataFromDashboardData(data) {
             size: 1,
             caseSize: 1,
           });
+          // eslint-disable-next-line no-param-reassign
           trial.caseSize += 1;
         }
       }
