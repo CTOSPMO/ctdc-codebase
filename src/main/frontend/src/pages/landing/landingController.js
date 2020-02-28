@@ -328,7 +328,7 @@ const styles = (theme) => ({
   aboutTitle: {
     background: '#0B2731',
     color: '#FFFFFF',
-    fontSize: '15px',
+    fontSize: '20px',
     textTransform: 'uppercase',
     fontFamily: 'Oswald',
     marginLeft: '-8px',
@@ -342,7 +342,7 @@ const styles = (theme) => ({
        fontSize:'1em',
     },
     '@media (min-width: 1400px)': {
-        fontSize:'1.25em',
+        fontSize:'1.5em',
     },
     '@media (min-width: 1600px)': {
          fontSize:'1.5em',
