@@ -8,7 +8,7 @@ import developerImg from '../../assets/about/About_Developers.png';
 import requestImg from '../../assets/about/About_RequestAccess.png';
 import committeeImg from '../../assets/about/Photo-About_SteeringCommittee.jpg';
 import supportImg from '../../assets/about/About_Support.png';
-import AboutBody from './aboutBodyView';
+import AboutBody from './AboutBodyView';
 
 const ABOUT_CONTENT_URL = process.env.REACT_APP_ABOUT_CONTENT_URL;
 

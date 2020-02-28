@@ -372,11 +372,6 @@ export default {
         backgroundColor: '#ABADB0',
       },
     },
-    MuiGrid: {
-      container: {
-        width: '100% !important',
-      },
-    },
     MuiPaper: {
       elevation4: {
         boxShadow: 'none',
