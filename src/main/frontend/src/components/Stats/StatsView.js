@@ -129,6 +129,7 @@ const styles = (theme) => ({
     float: 'left',
     width: '28px',
     height: '28px',
+    marginTop: '-4px',
   },
   floatLeft: {
     float: 'left',

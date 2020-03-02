@@ -28,7 +28,7 @@ const renderActiveShape = (props) => {
   // const RADIAN = Math.PI / 180;
   const {
     cx, cy, innerRadius, outerRadius, startAngle, endAngle,
-    fill, payload, value, textColor,
+    fill, payload, value, textColor, fontSize,
   } = props;
   // const sin = Math.sin(-RADIAN * midAngle);
   // const cos = Math.cos(-RADIAN * midAngle);
@@ -42,7 +42,7 @@ const renderActiveShape = (props) => {
 
   return (
     <g>
-      <text y={9} fill={textColor} fontSize="12px" fontWeight="600" fontFamily="Raleway">{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}....` : payload.name}</text>
+      <text y={9} fill={textColor} fontSize={fontSize || '12px'} fontWeight="600" fontFamily="Raleway">{String(payload.name).length > 30 ? `${String(payload.name).substr(0, 30)}....` : payload.name}</text>
       <text x={cx} y={cy} dy={0} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="500" fontFamily="Open Sans">{`${value}`}</text>
       <text x={cx} y={cy} dy={12} textAnchor="middle" fill={textColor} fontSize="12px" fontWeight="500" fontFamily="Open Sans">Cases</text>
       <Sector

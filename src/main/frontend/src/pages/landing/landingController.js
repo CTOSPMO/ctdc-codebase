@@ -5,6 +5,7 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
 import imgAbout from '../../assets/landing/About-image.jpg';
 import imgTrial from '../../assets/landing/Trials-image.jpg';
 import imgAccess from '../../assets/landing/RequestAccess-LP.jpg';
@@ -12,6 +13,12 @@ import icon from '../../assets/landing/LP_ReadMore.svg';
 import iconAbout from '../../assets/landing/LP_About_Fullarticle.Arrow.svg';
 import texturebg from '../../assets/landing/BackgroundTexture-LP.jpg'
 import l9dg from '../../assets/landing/Cases-LP.jpg';
+import herobg from '../../assets/landing/tmp.jpg';
+import { Button } from '../../components/Wrappers/Wrappers';
+import cn from '../../utils/classNameConcat';
+import starImg from '../../assets/LP_FLARE.2.png';
+import dogImg from '../../assets/landing/dog-bubble.png';
+import humanImg from '../../assets/landing/human-bubble.png';
 import herobg800 from '../../assets/landing/heroGraphic/heroGraphic800.png';
 import herobg1000 from '../../assets/landing/heroGraphic/heroGraphic1000.png';
 import herobg1200 from '../../assets/landing/heroGraphic/heroGraphic1200.png';
@@ -19,46 +26,42 @@ import herobg1400 from '../../assets/landing/heroGraphic/heroGraphic1400.png';
 import herobg1600 from '../../assets/landing/heroGraphic/heroGraphic1600.png';
 import herobg1800 from '../../assets/landing/heroGraphic/heroGraphic1800.png';
 import herobg2000 from '../../assets/landing/heroGraphic/heroGraphic2000.png';
-
-import InteractiveHero  from '../../components/InteractiveHero/InteractiveHero';
-import cn from '../../utils/classNameConcat';
-
+import InteractiveHero from '../../components/InteractiveHero/InteractiveHero';
 
 const LandingController = ({ classes }) => (
   <div className={classes.page}>
-   
-      <div className={classes.hero}>
-        <Grid container spacing={16} direction="row" className={classes.container}>
-           <div className={classes.heroImage} />
-           <div className={classes.heroInteractive}>
-            <InteractiveHero />
-          </div>
-         </Grid>
-      </div>
-
-      <Grid container spacing={16} direction="row" className={cn(classes.container,classes.paddingTop5)}>
+    <div className={classes.hero}>
+      <Grid container spacing={16} direction="row" className={classes.container}>
+        <div className={classes.heroImage} />
+        <div className={classes.heroInteractive}>
+          <InteractiveHero />
+        </div>
+      </Grid>
+    </div>
+    <div className={classes.container}>
+      <Grid container spacing={16} direction="row" className={cn(classes.paddingTop30, classes.paddingLeft50)}>
          <div className={classes.bannerTexture}>
                  Exploring, analyzing, and understanding the data from human cancer trials
          </div>
        </Grid>
-        <Grid container spacing={16} direction="row" className={cn(classes.container,classes.paddingTop5)}>
+        <Grid container spacing={16} direction="row" className={cn(classes.paddingTop30, classes.paddingLeft50)}>
             <div className={classes.redButtonSection}>
                 <Link to="/cases" className={classes.redButton}>Explore</Link>
             </div>
       </Grid>
-
-      <div className={classes.paper}>
-      <Grid container  spacing={16} className={cn(classes.container,classes.about)}>
-           <Grid item xs={12} md={3} >
-              <div className={classes.aboutTitle}>
+    </div>
+      <div className={classes.container}>
+      <div className={classes.texture}>
+        <Grid container spacing={16} direction="row" className={classes.landingContainer}>
+        <div className={classes.contentLeft}>
+          <div className={classes.about}>
+            <div className={classes.aboutImageSection}>
+              <img src={imgAbout} className={classes.aboutImage} alt="CTDC about" />
+            </div>
+            <div className={classes.CTDCWords}>
                 About the Clinical Trials Data Commons (CTDC)
-              </div>
-            </Grid>
-            <Grid item xs={12} md={6} className={classes.aboutImageSection}>
-               <img src={imgAbout} className={classes.aboutImage} alt="CTDC about" />
-            </Grid>
-            <Grid item xs={12} md={3}  className={classes.aboutContent}>
-               <div className={classes.texture}>
+            </div>
+            <div className={classes.aboutContent}>
                 NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
                 the Frederick National Laboratory for Cancer Research (FNLCR) to
                 build the Integrated Canine Data Commons (CTDC), a cloud-based repository
@@ -67,25 +70,26 @@ const LandingController = ({ classes }) => (
                 analysis with canine cancer. The data in the CTDC is sourced
                 from multiple different programs and projects; all focused on
                 the canine subjects.
-                </div>
-                 <div className={classes.aboutButtonSection}>
-                  <div className={classes.aboutButtonLeft}>
-                    <img src={iconAbout} className={classes.iconAbout} alt="CTDC about icon" />
-                  </div>
-                  <div className={classes.aboutButtonRight}>
-                    <Link to="/purpose" className={classes.aboutButton}>READ MORE</Link>
-                  </div>
-                </div>
-            </Grid>
-      </Grid>
-      <Grid container  spacing={16} direction="row" className={classes.container}>
-        <Grid item xs={12} md={3} className={classes.program}>
+            </div>
+            <div className={classes.aboutButtonSection}>
+              <div className={classes.aboutButtonLeft}>
+                <img src={iconAbout} className={classes.iconAbout} alt="CTDC about icon" />
+              </div>
+              <div className={classes.aboutButtonRight}>
+                <Link to="/purpose" className={classes.aboutButton}>READ MORE</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={classes.contentRight}>
+          <div className={classes.contentRightTop}>
+            <div className={classes.program}>
               <div className={classes.programImg}>
                 <img className={classes.image} src={imgTrial} alt="CTDC  Trials" />
               </div>
               <div className={classes.content}>
                 <div className={classes.contentHeader}> Trials</div>
-                <div className={classes.contentContainer}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiumdod tempor</div>
+                <div className={classes.contentContainer}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</div>
 
               </div>
               <div className={classes.blueButton}>
@@ -94,50 +98,55 @@ const LandingController = ({ classes }) => (
                   {' '}
                 </div>
                 <div className={classes.blueButtonRight}>
-                  <Link to="/programs" className={classes.blueButtonText}>READ MORE</Link>
+                  <Link to="/programs" className={classes.blueButton}>READ MORE</Link>
                 </div>
               </div>
-            </Grid>
-            <Grid item xs={12}  md={3} className={classes.studies}>
-                    <div className={classes.programImg}>
-                      <img className={classes.image} src={imgAccess} alt="CTDC Request ACCESS " />
-                    </div>
-                    <div className={classes.content}>
-                      <div className={classes.contentHeader}> REQUEST ACCESS</div>
-                      <div className={classes.contentContainer}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiumdod tempor</div>
+            </div>
+            <div className={classes.studies}>
+              <div className={classes.programImg}>
+                <img className={classes.image} src={imgAccess} alt="CTDC Request ACCESS " />
+              </div>
+              <div className={classes.content}>
+                <div className={classes.contentHeader}> REQUEST ACCESS</div>
+                <div className={classes.contentContainer}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</div>
 
-                    </div>
-                    <div className={classes.blueButton}>
-                      <div className={classes.blueButtonLeft}>
-                        <img className={classes.icon} src={icon} alt="CTDC about " />
-                        {' '}
-                      </div>
-                      <div className={classes.blueButtonRight}>
-                        <Link to="/studies" className={classes.blueButtonText}>READ MORE</Link>
-                      </div>
-                    </div>
-            </Grid>
-            <Grid item xs={12} md={6} className={classes.casesSection}>
-                  <div className={classes.casesText}>
-                        <div className={classes.greyContentHeader}> Cases</div>
-                        <div className={classes.greyContent}>
-                          Search all the Cases and build cohorts from all the
-                          Programs/Studies within the CTDC. The data files from
-                           these cohorts can then be analyzed in the Cloud Resources.
-                        </div>
-                        <div className={classes.greybuttonSection}>
-                          <div className={classes.blueButtonLeft}>
-                            <img className={classes.greyIcon} src={icon} alt="CTDC about " />
-                            {' '}
-                          </div>
-                          <div className={classes.blueButtonRight}>
-                            <Link to="/cases" className={classes.greybutton}>Explore</Link>
-                          </div>
-                        </div>
-                      </div>
-            </Grid>
-          </Grid>
+              </div>
+              <div className={classes.blueButton}>
+                <div className={classes.blueButtonLeft}>
+                  <img className={classes.icon} src={icon} alt="CTDC about " />
+                  {' '}
+                </div>
+                <div className={classes.blueButtonRight}>
+                  <Link to="/studies" className={classes.blueButton}>READ MORE</Link>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+          <div className={classes.contentRightBottom}>
+            <div className={classes.cases}>
+              <div className={classes.greyContentHeader}> Cases</div>
+              <div className={classes.greyContent}>
+Search all the Cases and build cohorts from all the
+Programs/Studies within the CTDC. The data files from
+ these cohorts can then be analyzed in the Cloud Resources.
+              </div>
+              <div className={classes.greybuttonSection}>
+                <div className={classes.blueButtonLeft}>
+                  <img className={classes.greyIcon} src={icon} alt="CTDC about " />
+                  {' '}
+                </div>
+                <div className={classes.blueButtonRight}>
+                  <Link to="/cases" className={classes.greybutton}>Explore</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Grid>
       </div>
+    
+    </div>
   </div>
 );
 const styles = (theme) => ({
@@ -145,17 +154,17 @@ const styles = (theme) => ({
     marginTop: '-47px',
   },
   heroInteractive: {
-  '@media (max-width: 400px)': {
+    '@media (max-width: 400px)': {
       display: 'none',
     },
   },
-  heroImage:{
-    width:'100%',
+  heroImage: {
+    width: '100%',
     height: '600px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '100% 100%',
     background: `url(${herobg800})`,
-     '@media (max-width: 400px)': {
+    '@media (max-width: 400px)': {
       backgroundRepeat: 'no-repeat',
       backgroundSize: '100%',
       height: '200px',
@@ -192,17 +201,17 @@ const styles = (theme) => ({
       background: `url(${herobg2000})`,
     },
   },
-  paper: {
+  texture: {
     backgroundSize: 'cover',
     backgroundImage: `url(${texturebg})`,
     backgroundRepeat: 'no-repeat',
     backgroundAttachment: 'fixed',
-    padding: '80px 15px',
+    padding: '120px 0 80px 0',
   },
   container: {
     fontFamily: 'Raleway, sans-serif',
     margin: '0 auto',
-    width: '100%',
+    
   },
 
   bannerTexture:{
@@ -210,28 +219,12 @@ const styles = (theme) => ({
     fontFamily:'Raleway',
     fontSize:'19px',
     fontWeight:'600',
+    lineHeight:'60px',
     textAlign:'center',
     margin:'0 auto',
     letterSpacing: '0.050pt',
     textTransform:'uppercase',
-    width: '100%',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-    },
-    '@media (min-width: 1400px)': {
-        fontSize:'1.25em',
-    },
-    '@media (min-width: 1600px)': {
-         fontSize:'1.5em',
-        
-    },
-    '@media (min-width: 1800px)': {
-        fontSize:'1.75em',
-        
-    },
-    '@media (min-width: 2000px)': {
-        fontSize:'2em',
-    },
+    width: '869px',
   },
   redButtonSection:{
     margin:'0 auto -15px auto',
@@ -240,26 +233,6 @@ const styles = (theme) => ({
     height:'47px',
     borderRadius:'50px',
     textAlign:'center',
-    '@media (min-width: 1200px)': {
-       height:'44px',
-       width:'179px',
-    },
-    '@media (min-width: 1400px)': {
-        height:'55px',
-        width:'179px',
-    },
-    '@media (min-width: 1600px)': {
-        height:'66px',
-        width:'225px',
-    },
-    '@media (min-width: 1800px)': {
-         height:'75px',
-         width:'270px',
-    },
-    '@media (min-width: 2000px)': {
-         height:'82px',
-         width:'315px',
-    },
   },
   redButton:{
     height:'13px',
@@ -272,26 +245,6 @@ const styles = (theme) => ({
     textDecoration:'none',
     textTransform:'uppercase',
     letterSpacing: '0.8px',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-       lineHeight:'44px',
-    },
-    '@media (min-width: 1400px)': {
-        fontSize:'1.25em',
-        lineHeight:'55px',
-    },
-    '@media (min-width: 1600px)': {
-         fontSize:'1.5em',
-        lineHeight:'66px',
-    },
-    '@media (min-width: 1800px)': {
-        fontSize:'1.75em',
-        lineHeight:'75px',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize:'2em',
-        lineHeight:'85px',
-    },
   },
   headerTitle: {
     paddingTop: '180px',
@@ -302,6 +255,10 @@ const styles = (theme) => ({
     fontSize: '40px',
     fontWeight: 'bold',
     lineHeight: '40px',
+
+  },
+  paddingLeft50: {
+    paddingLeft: '50px',
   },
   headerContent: {
     height: '98px',
@@ -314,168 +271,79 @@ const styles = (theme) => ({
     marginBottom: '40px',
   },
 
-  
+  iconAbout: {
+    height: '17px',
+    width: '9px',
+    marginTop: '15px',
+    marginLeft: '20px',
+  },
+  icon: {
+    width: '20px',
+    marginTop: '13px',
+    marginLeft: '23px',
+  },
 
 
   aboutImage: {
-    padding: '5px',
-    height: '100%',
-    width: '100%',
+    width: '300px',
+    padding: '14px',
   },
   aboutImageSection: {
-    
   },
-  aboutTitle: {
+  CTDCWords: {
+    height: '188px',
     background: '#0B2731',
     color: '#FFFFFF',
-    fontSize: '20px',
+    fontSize: '26px',
     textTransform: 'uppercase',
+    lineHeight: '29px',
+    padding: '24px 75px 26px 26px',
     fontFamily: 'Oswald',
-    marginLeft: '-8px',
-    marginTop: '10%',
-    position: 'absolute',
-    width: '32%',
-    padding: '2% 14% 2% 8%',
-    minHeight: '80px',
-    minWidth: '300px',
-   '@media (min-width: 1200px)': {
-       fontSize:'1em',
-    },
-    '@media (min-width: 1400px)': {
-        fontSize:'1.5em',
-    },
-    '@media (min-width: 1600px)': {
-         fontSize:'1.5em',
-    },
-    '@media (min-width: 1800px)': {
-        fontSize:'1.75em',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize:'2em',
-    },
   },
   landingContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100% !important'
+    paddingLeft: '15px',
   },
   contentLeft: {
     float: 'left',
     paddingRight: '10px',
   },
   about: {
+    width: '300px',
     backgroundColor: '#20506A',
-    width: '100% !important',
-    marginBottom: '15px',
   },
   image: {
-    width: '100%',
+    width: '293px',
+    height: '251px',
   },
   aboutContent: {
     background: '#20506A',
+    width: '300px',
+    padding: '30px 30px 32px 30px',
     color: '#fff',
     fontFamily: '"Open Sans"',
-  },
-  texture: {
-    fontSize: '15px',
-    padding: '10% 5%',
-    lineHeight: '18px',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-       lineHeight: '20px',
-    },
-    '@media (min-width: 1400px)': {
-         fontSize:'1.15em',
-         lineHeight: '25px',
-    },
-   
-    '@media (min-width: 1600px)': {
-         fontSize:'1.35em',
-         lineHeight: '28px',
-    },
-
-     '@media (min-width: 1800px)': {
-         fontSize:'1.5em',
-         lineHeight: '31px',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize:'1.65em',
-        lineHeight: '35px',
-    },
+    fontSize: '14px',
+    lineHeight: '22px',
   },
   aboutButtonSection: {
     background: '#20506A',
     height: '71px',
-    paddingLeft: '5%',
   },
   imgIconAbout: {
     width: '49px',
   },
-
-  iconAbout: {
-    width: '9px',
-    height: '17px',
-    marginTop: '12px',
-    marginLeft: '18px',
-    '@media (min-width: 1200px)': {
-        height: '17px',
-        marginTop: '12px',
-        marginLeft: '18px',
-    },
-    '@media (min-width: 1400px)': {
-          marginTop: '11px',
-          marginLeft: '16px',
-    },
-    '@media (min-width: 1600px)': {
-        marginTop: '14px',
-          marginLeft: '18px',
-    },
-
-    '@media (min-width: 2000px)': {
-         marginTop: '15px',
-          marginLeft: '19px',
-    },
-  },
-
   aboutButtonLeft: {
     float: 'left',
     background: '#C53B27',
-    height: '40px',
-    width: '40px',
-    '@media (min-width: 1200px)': {
-         height: '40px',
-          width: '40px',
-    },
-   
-    '@media (min-width: 1600px)': {
-          height: '45px',
-          width: '45px',
-    },
-
-    '@media (min-width: 2000px)': {
-         height: '50px',
-        width: '50px',
-    },
+    height: '45px',
+    width: '48px',
   },
   aboutButtonRight: {
     background: '#894439',
     float: 'left',
-    height: '40px',
+    height: '45px',
     width: '132px',
-    '@media (min-width: 1200px)': {
-         height: '40px',
-          width: '132px',
-    },
-
-    '@media (min-width: 1600px)': {
-          height: '45px',
-          width: '160px',
-    },
-
-    '@media (min-width: 2000px)': {
-         height: '50px',
-         width: '180px',
-    },
   },
   aboutButton: {
     color: '#ffffff',
@@ -483,23 +351,9 @@ const styles = (theme) => ({
     textTransform: 'uppercase',
     fontSize: '12px',
     fontWeight: '600',
-    lineHeight: '40px',
+    lineHeight: '45px',
     paddingLeft: '20px',
     boxShadow: 'none',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-       lineHeight:'40px',
-    },
-
-    '@media (min-width: 1600px)': {
-        fontSize:'1.15em',
-        lineHeight:'45px',       
-    },
-   
-    '@media (min-width: 2000px)': {
-        fontSize:'1.3em',
-        lineHeight:'50px',    
-    },
   },
 
   content: {
@@ -511,248 +365,115 @@ const styles = (theme) => ({
   contentHeader: {
     color: '#20506A',
     fontFamily: 'Oswald',
-    fontSize: '25px',
+    fontSize: '26px',
     fontWeight: '500',
     lineHeight: '27px',
     padding: '10px 0',
     textTransform: 'uppercase',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-       lineHeight:'28px',
-    },
-
-    '@media (min-width: 1600px)': {
-        fontSize:'1.5em',
-        lineHeight:'35px',       
-    },
-   
-    '@media (min-width: 2000px)': {
-        fontSize:'2em',
-        lineHeight:'40px',    
-    },
   },
   contentContainer: {
+    width: '215px',
     color: '#010101',
     fontFamily: 'Lato',
     fontSize: '15px',
+    lineHeight: '22px',
     paddingLeft:'2px',
-    paddingBottom: '2%',
-    paddingRight: '2%',
-    '@media (min-width: 1200px)': {
-       fontSize:'1em',
-    },
-    '@media (min-width: 1600px)': {
-        fontSize:'1.3em',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize:'1.6em',
-    },
+    paddingBottom: '10px',
   },
  
   program: {
-    paddingLeft: '0px !important',
+    float: 'left',
+    padding: '0 10px 8px 0px',
   },
   programImg: {
     background: '#fff',
   },
   studies: {
-     paddingLeft: '0px !important',
+    float: 'left',
   },
 
-  casesSection: {
-    marginTop: '9px',
-    marginBottom: '9px',
+  contentRightBottom: {
+    float: 'left',
+    width: '597px',
+    background: '#fff',
     backgroundImage: `url(${l9dg})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    minHeight: '230px',
-    '@media (max-width: 768px)': {
-      minHeight: '430px',
-      backgroundSize: '100% 100%',
-    },
-
   },
-  casesText:{
-    marginLeft: '60%',
-    marginTop: '15px',
-     '@media (max-width: 700px)': {
-       marginLeft: '40%',
-       marginTop: '15px',
-       paddingLeft:'5px',
-     
-    },
-
+  cases: {
+    height: '438px',
+    paddingLeft: '370px',
+    paddingTop: '70px',
   },
   greybuttonSection: {
-    height: '40px',
-    width: '150px',
+    height: '46px',
+    width: '176px',
     backgroundColor: '#20506A',
     marginTop: '20px',
-    '@media (min-width: 1200px)': {
-       width: '176px',
-       height: '45px',
-    },
-    '@media (min-width: 1600px)': {
-        width: '180px',
-        height: '45px',
-    },
-    '@media (min-width: 2000px)': {
-       width: '186px',
-       height: '45px',
-    },
+
   },
-
-  icon: {
-    width: '20px',
-    marginTop: '13px',
-    marginLeft: '28px',
-     '@media (min-width: 1200px)': {
-       width: '20px',
-       marginLeft: '28px',
-    },
-    '@media (min-width: 1600px)': {
-        width: '22.5px',
-        marginTop: '14px',
-    },
-    '@media (min-width: 2000px)': {
-        width: '25px',
-         marginTop: '15px',
-    },
-  },
-
-
   blueButton: {
-    background: '#5396AA',
     height: '45px',
-     '@media (min-width: 1200px)': {
-       height: '45px',
-    },
-    '@media (min-width: 1600px)': {
-        height: '50px',
-    },
-    '@media (min-width: 2000px)': {
-        height: '55px',
-    },
-  },
-  blueButtonText:{
+    background: '#5396AA',
+    color: '#FFFFFF',
     fontFamily: 'Raleway',
     fontSize: '12px',
     fontWeight: '600',
-    color: '#FFFFFF',
+    lineHeight: '25px',
     paddingLeft: '8px',
-    lineHeight: '45px',
     textDecoration: 'none',
-     '@media (min-width: 1200px)': {
-       fontSize: '15px',
-       lineHeight: '45px',
-    },
-    '@media (min-width: 1600px)': {
-        fontSize: '18px',
-        lineHeight: '50px',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize: '20px',
-        lineHeight: '55px',
-    },
   },
   blueButtonLeft: {
     float: 'left',
   },
   blueButtonRight: {
     float: 'left',
+    lineHeight: '47px',
     color: '#fff',
+    textTransform: 'uppercase',
   },
   greyContentHeader: {
     color: '#20506A',
     fontFamily: 'Oswald',
+    fontSize: '31px',
     fontWeight: '500',
-    fontSize: '25px',
-    lineHeight: '25px',
-    padding: '25px 0px 10px 0',
+    lineHeight: '32px',
+    padding: '15px 0',
     textTransform: 'uppercase',
-    '@media (min-width: 1200px)': {
-        fontSize: '32px',
-        lineHeight: '32px',
-    },
-    '@media (min-width: 1600px)': {
-        fontSize: '45px',
-        lineHeight: '45px',
-    },
-    '@media (min-width: 2000px)': {
-        fontSize: '50px',
-        lineHeight: '50px',
-    },
   },
   greyContent: {
-    width: '90%',
+    height: '143px',
+    width: '166px',
     color: '#010101',
     fontFamily: 'Lato',
     fontSize: '15px',
-    lineHeight: '18px',
-    '@media (min-width: 1200px)': {
-       fontSize: '1em',
-       lineHeight: '18px',
-    },
-    '@media (min-width: 1600px)': {
-         fontSize: '1.3em',
-        lineHeight: '28px',
-    },
-    '@media (min-width: 2000px)': {
-         fontSize: '1.6em',
-         lineHeight: '32px',
-    },
+    lineHeight: '22px',
   },
   greyIcon: {
     width: '20px',
-    marginTop: '11px',
+    marginTop: '15px',
     marginLeft: '28px',
-     '@media (min-width: 1200px)': {
-       width: '20px',
-       marginTop: '15px',
-    },
-    '@media (min-width: 1600px)': {
-        width: '22.5px',
-        marginTop: '12px',
-    },
-    '@media (min-width: 2000px)': {
-        width: '25px',
-         marginTop: '10px',
-    },
   },
   greybutton: {
-
+    padding: '15px 5px 0 0',
+    height: '9px',
     width: '71px',
     color: '#FFFFFF',
     fontFamily: 'Raleway',
     fontSize: '12px',
     fontWeight: '600',
+    lineHeight: '19.31px',
     textDecoration: 'none',
     marginLeft: '8px',
     '&:hover': {
       color: '#ffffff',
     },
-    lineHeight: '40px',
-
-    '@media (min-width: 1200px)': {
-        fontSize: '15px',
-        lineHeight: '45px',
-    },
-    '@media (min-width: 1600px)': {
-
-        fontSize: '18px',
-        lineHeight: '45px',
-    },
-    '@media (min-width: 2000px)': {
-
-        fontSize: '20px',
-        lineHeight: '45px',
-    },
   },
   paddingBottom50: {
     paddingBottom: '50px',
   },
-  paddingTop5: {
-    padding: '3% 2% 0 2%',
+  paddingTop30: {
+    paddingTop: '30px',
   },
   animationContainer: {
     position: 'relative',
