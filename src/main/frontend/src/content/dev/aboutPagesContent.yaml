@@ -57,7 +57,7 @@
     - paragraph: "http://XYZ.cancer.gov/v1/REST"
     - paragraph: "The CTDC metadata is open to the public and will not require authentication to the system. However, some clinical data and all Data Files are not public so require permission."
     - paragraph: "Users can query the CTDC data via Graphical User Interface (GUI) or APIs. The GUI provides users a distilled set of parameters (faceted querying) they can use to explore the CTDC data. The APIs provide access to the full collection of parameters as seen in the $$[CTDC Data Model](https://github.com/CBIIT/icdc-codebase)$$"
-- paragraph: "These APIs are provided “as is”; there are no warranties or conditions arising out of usage of these services. "
+    - paragraph: "These APIs are provided “as is”; there are no warranties or conditions arising out of usage of these services. "
     - paragraph: "$$#GITHUB:#$$"
     - paragraph: "As a resource for the public and cancer research, $$[The CTDC GitHub repo](https://github.com/CBIIT/ctdc-codebase)$$ is available for research,
         usage, forking, and pull requests. The codebase is intended for sharing and building frameworks for related initiatives 
