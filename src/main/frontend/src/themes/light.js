@@ -272,6 +272,9 @@ export default {
       },
       checkboxRoot: {
         color: 'inherit',
+        '&$checked': {
+          color: '#3695A9',
+        },
       },
 
     },
