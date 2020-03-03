@@ -297,7 +297,9 @@ const styles = (theme) => ({
     lineHeight: '1.42857143',
     margin: '0',
     '-webkit-font-smoothing': 'antialiased',
-    background: theme.custom.footorBackground,
+    backgroundRepeat: 'repeat-y',
+    backgroundSize: '100%',
+    background: `url(${footerBackground800})`,
     color: theme.palette.text.footerText,
     padding: '24px 35px 64px 35px',
     '& ul': {
@@ -328,11 +330,6 @@ const styles = (theme) => ({
         cursor: 'pointer',
         textDecoration: 'underline',
       },
-    },
-    '@media (min-width: 800px)': {
-      backgroundRepeat: 'repeat-y',
-      backgroundSize: '100%',
-      background: `url(${footerBackground800})`,
     },
     '@media (min-width: 1200px)': {
       backgroundRepeat: 'repeat-y',
