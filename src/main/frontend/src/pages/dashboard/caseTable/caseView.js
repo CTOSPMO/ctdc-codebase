@@ -207,7 +207,9 @@ const Cases = ({ classes, data }) => {
   function exportCases() {
     // Find the newly added cases by comparing
     // existing caseIds and selectedCaseIds
-    const uniqueCases = selectedCaseIds.filter((e) => !caseIds.find((a) => e === a.case_id)).length;
+    const uniqueCases = caseIds !== null ? selectedCaseIds.filter(
+      (e) => !caseIds.find((a) => e === a.case_id),
+    ).length : selectedCaseIds.length;
     if (uniqueCases > 0) {
       openSnack(uniqueCases);
     }
@@ -216,7 +218,6 @@ const Cases = ({ classes, data }) => {
   }
 
   function onRowsSelect(curr, allRowsSelected) {
-    // Change button status based on selection status
     if (allRowsSelected.length === 0) {
       saveButton.current.disabled = true;
       saveButton.current.style.color = '#FFFFFF';
