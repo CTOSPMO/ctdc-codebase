@@ -10,7 +10,6 @@ import TablePagination from '@material-ui/core/TablePagination';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import icon from '../../assets/icons/Icon-CaseDetail.svg';
-import cn from '../../utils/classNameConcat';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
 function formatBytes(bytes, decimals = 2) {
@@ -97,48 +96,20 @@ const CaseDetail = ({ classes, data }) => {
             />
 
           </div>
-
-          {(caseDetail.patient_first_name === '' || caseDetail.patient_first_name === null)
-             && !(caseDetail.enrollment && caseDetail.enrollment.initials !== '' && caseDetail.enrollment.initials !== null)
-            ? (
-              <div className={classes.headerTitle}>
-                <div className={cn(classes.headerMainTitle, classes.marginTop23)}>
-                  <span>
-                    <span>
-                      {' '}
+          <div className={classes.headerTitle}>
+            <div className={classes.headerMainTitle}>
 Case :
-                      {' '}
-                      {' '}
-                      {caseDetail.case_id}
-                    </span>
-                  </span>
-                </div>
-
-                <CustomBreadcrumb data={breadCrumbJson} />
-              </div>
-            )
-
-            : (
-              <div className={classes.headerTitle}>
-                <div className={classes.headerMainTitle}>
-                  <span className={classes.headerMainTitleOne}>
-                    {' '}
-Case :
-                    <span className={classes.headerMainTitleTwo}>
-                      {' '}
-                      {' '}
-                      {caseDetail.case_id}
-                    </span>
-                  </span>
-                </div>
-                <div className={classes.breadCrumb}>
-                  {' '}
-                  <CustomBreadcrumb data={breadCrumbJson} />
-                </div>
-              </div>
-            )}
-
-
+              <span className={classes.headerMainTitleTwo}>
+                {' '}
+                {' '}
+                {caseDetail.case_id}
+              </span>
+            </div>
+            <div className={classes.breadCrumb}>
+              {' '}
+              <CustomBreadcrumb data={breadCrumbJson} />
+            </div>
+          </div>
         </div>
 
 
@@ -353,19 +324,16 @@ const styles = (theme) => ({
   },
   headerMainTitle: {
     fontFamily: 'Lato',
-    letterSpacing: '0.025em',
     color: '#931D1D',
     fontSize: '24px',
     lineHeight: '24px',
     paddingLeft: '0px',
-  },
-  headerMainTitleOne: {
     fontWeight: '300',
     letterSpacing: '0.017em',
-  },
-  headerMainTitleTwo: {
-    fontWeight: 'bold',
-    letterSpacing: '0.025em',
+    '& $headerMainTitleTwo': {
+      fontWeight: 'bold',
+      letterSpacing: '0.025em',
+    },
   },
   headerMSubTitle: {
     paddingTop: '8px',
