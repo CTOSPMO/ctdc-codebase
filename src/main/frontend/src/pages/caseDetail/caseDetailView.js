@@ -335,6 +335,9 @@ const styles = (theme) => ({
       letterSpacing: '0.025em',
     },
   },
+  headerMainTitleTwo: {
+
+  },
   headerMSubTitle: {
     paddingTop: '8px',
   },
