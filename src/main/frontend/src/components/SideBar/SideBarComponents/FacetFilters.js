@@ -15,6 +15,22 @@ import CheckBoxBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { toggleCheckBox } from '../../../pages/dashboard/dashboardState';
 
+const CustomExpansionPanelSummary = withStyles({
+  root: {
+    marginBottom: -1,
+    minHeight: 48,
+    '&$expanded': {
+      minHeight: 48,
+    },
+  },
+  content: {
+    '&$expanded': {
+      margin: '12px 0',
+    },
+  },
+  expanded: {},
+})(ExpansionPanelSummary);
+
 
 const FacetPanel = ({ classes }) => {
   // data from store
@@ -66,16 +82,15 @@ const FacetPanel = ({ classes }) => {
                 className={classes.expansion}
                 classes={{ root: classes.expansion }}
               >
-                <ExpansionPanelSummary
+                <CustomExpansionPanelSummary
                   expandIcon={<ArrowDropDownIcon style={{ fill: '#3695A9' }} />}
                   aria-controls={sideBarItem.groupName}
                   id={sideBarItem.groupName}
-                  classes={{ root: classes.expnd }}
                 >
                   {/* <ListItemText primary={sideBarItem.groupName} /> */}
                   <div className={classes.panelSummaryText}>{sideBarItem.groupName}</div>
 
-                </ExpansionPanelSummary>
+                </CustomExpansionPanelSummary>
 
                 <ExpansionPanelDetails>
                   <List component="div" disablePadding dense>
@@ -123,14 +138,10 @@ const FacetPanel = ({ classes }) => {
 const styles = () => ({
   expansion: {
     boxShadow: 'none',
+    margin: 'auto',
     position: 'initial',
     '&:before': {
       position: 'initial',
-    },
-  },
-  expnd: {
-    '&$expanded': {
-      margin: 'auto',
     },
   },
   dividerRoot: {
