@@ -121,10 +121,10 @@ Case :
             : (
               <div className={classes.headerTitle}>
                 <div className={classes.headerMainTitle}>
-                  <span>
+                  <span className={classes.headerMainTitleOne}>
                     {' '}
 Case :
-                    <span>
+                    <span className={classes.headerMainTitleTwo}>
                       {' '}
                       {' '}
                       {caseDetail.case_id}
@@ -352,22 +352,20 @@ const styles = (theme) => ({
     paddingLeft: '3px',
   },
   headerMainTitle: {
-    '& > span': {
-      fontWeight: '300',
-      letterSpacing: '0.017em',
-    },
-
-    '& > span > span': {
-      fontWeight: 'bold',
-      letterSpacing: '0.025em',
-    },
     fontFamily: 'Lato',
     letterSpacing: '0.025em',
     color: '#931D1D',
     fontSize: '24px',
     lineHeight: '24px',
     paddingLeft: '0px',
-
+  },
+  headerMainTitleOne: {
+    fontWeight: '300',
+    letterSpacing: '0.017em',
+  },
+  headerMainTitleTwo: {
+    fontWeight: 'bold',
+    letterSpacing: '0.025em',
   },
   headerMSubTitle: {
     paddingTop: '8px',
