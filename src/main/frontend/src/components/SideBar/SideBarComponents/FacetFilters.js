@@ -25,7 +25,7 @@ const CustomExpansionPanelSummary = withStyles({
   },
   content: {
     '&$expanded': {
-      margin: '12px 0',
+      margin: '16px 0',
     },
   },
   expanded: {},
@@ -79,8 +79,8 @@ const FacetPanel = ({ classes }) => {
               <ExpansionPanel
                 expanded={expanded === sideBarItem.groupName}
                 onChange={handleChange(sideBarItem.groupName)}
-                className={classes.expansion}
-                classes={{ root: classes.expansion }}
+                // className={classes.expansion}
+                classes={{ root: classes.expansionPanelRoot }}
               >
                 <CustomExpansionPanelSummary
                   expandIcon={<ArrowDropDownIcon style={{ fill: '#3695A9' }} />}
@@ -92,7 +92,7 @@ const FacetPanel = ({ classes }) => {
 
                 </CustomExpansionPanelSummary>
 
-                <ExpansionPanelDetails>
+                <ExpansionPanelDetails classes={{ root: classes.expansionPanelDetailsRoot }}>
                   <List component="div" disablePadding dense>
                     {
             sideBarItem.checkboxItems.map((checkboxItem) => {
@@ -136,7 +136,7 @@ const FacetPanel = ({ classes }) => {
 
 
 const styles = () => ({
-  expansion: {
+  expansionPanelRoot: {
     boxShadow: 'none',
     margin: 'auto',
     position: 'initial',
@@ -167,6 +167,9 @@ const styles = () => ({
   },
   listItemGutters: {
     padding: '8px 0px 8px 30px',
+  },
+  expansionPanelDetailsRoot: {
+    paddingBottom: '8px',
   },
 });
 
