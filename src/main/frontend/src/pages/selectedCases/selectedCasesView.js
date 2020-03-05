@@ -54,6 +54,23 @@ const columns = (classes) => [
       display: false,
     },
   },
+  {
+    name: 'remove_label',
+    options: {
+      filter: false,
+      sort: false,
+      customHeadRender: () => (
+        <th className={classes.tableheadRemove}>
+          <span
+            role="button"
+            className={classes.removeLabel}
+          >
+          REMOVE
+          </span>
+        </th>
+      ),
+    },
+  },
 ];
 
 
@@ -211,6 +228,24 @@ const styles = (theme) => ({
     marginLeft: '3%',
     marginRight: '3%',
     paddingBottom: '20px',
+  },
+  removeLabel: {
+    cursor: 'text',
+  },
+  tableheadRemove: {
+    cursor: 'text',
+    top: '0px',
+    left: '0px',
+    zIndex: 100,
+    position: 'sticky',
+    fontSize: '9pt',
+    borderTop: '#4B619A 3px solid',
+    fontStyle: 'normal',
+    fontFamily: theme.custom.fontFamilySans,
+    color: '#0296C9',
+    borderBottom: '#4B619A 3px solid',
+    letterSpacing: '0.014em',
+    backgroundColor: '#ffffff',
   },
 });
 
