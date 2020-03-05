@@ -30,7 +30,7 @@ const InteractiveHero = ({ classes, statsData }) => {
         <div className={classes.casesSVG}>
           <svg height="100" width="100">
             <path stroke="white" strokeWidth="1" fill="none" d="M0 50 l 30 -30  l 95 0 " />
-            <circle id="pointA" strokeWidth="1" stroke="white" cx="97" cy="20" r="2" />
+            <circle id="casesPoint" strokeWidth="1" stroke="white" cx="97" cy="20" r="2" />
           </svg>
         </div>
         <div className={classes.casesText}>
@@ -50,7 +50,7 @@ Cases
         <div className={classes.trialsSVG}>
           <svg height="100" width="100">
             <path stroke="white" strokeWidth="1" fill="none" d="M0 0 l 25 25  l 50 0 " />
-            <circle id="pointA" strokeWidth="1" stroke="white" cx="75" cy="25" r="2" />
+            <circle id="trialsPoint" strokeWidth="1" stroke="white" cx="75" cy="25" r="2" />
           </svg>
         </div>
         <div className={classes.trialsText}>
@@ -68,7 +68,7 @@ Cases
         <div className={classes.filesSVG}>
           <svg height="100" width="100">
             <path stroke="white" strokeWidth="1" fill="none" d="M0 50 l 30 -30  l 95 0 " />
-            <circle id="pointA" strokeWidth="1" stroke="white" cx="97" cy="20" r="2" />
+            <circle id="filesPoint" strokeWidth="1" stroke="white" cx="97" cy="20" r="2" />
           </svg>
         </div>
         <div className={classes.filesText}>
