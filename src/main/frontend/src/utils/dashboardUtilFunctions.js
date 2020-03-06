@@ -151,9 +151,6 @@ export function getSunburstDataFromDashboardData(data) {
 // getWidegtDataFromDT
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
-  if (widgetName === 'file_formats') {
-    console.log(1);
-  }
   data.reduce((accumulator, currentValue) => {
     let targetAttrs = currentValue[widgetName.toString()];
 
