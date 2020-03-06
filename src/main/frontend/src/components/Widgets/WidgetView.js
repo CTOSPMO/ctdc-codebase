@@ -17,6 +17,7 @@ const Widget = ({
   className,
   header,
   customBackGround,
+  titleClass,
   ...props
 }) => (
   <div className={classes.widgetWrapper}>
@@ -26,7 +27,7 @@ const Widget = ({
           props.header
         ) : (
           <>
-            <Typography size="md" weight="bold" family="Raleway" color={color}>
+            <Typography className={titleClass} size="md" weight="bold" family="Raleway" color={color}>
               {title}
             </Typography>
           </>

@@ -26,6 +26,12 @@ class selectedFilesView extends Component {
     this.downloadButton.current.style.color = 'rgb(0, 0, 0,0.26)';
   }
 
+  static getDerivedStateFromProps(nextProps) {
+    return {
+      data: nextProps.data,
+    };
+  }
+
 
   onRowsSelect(curr, allRowsSelected) {
     // Change button status based on selection status
@@ -36,7 +42,7 @@ class selectedFilesView extends Component {
     } else {
       this.downloadButton.current.disabled = false;
       this.downloadButton.current.style.color = '#FFFFFF';
-      this.downloadButton.current.style.backgroundColor = '#0B3556';
+      this.downloadButton.current.style.backgroundColor = '#DE5227';
     }
   }
 
@@ -211,6 +217,7 @@ class selectedFilesView extends Component {
       fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
       borderRadius: '4px',
       textTransform: 'uppercase',
+      marginLeft: '-28px',
     };
 
     const divStyle = {
@@ -219,47 +226,46 @@ class selectedFilesView extends Component {
       marginLeft: '30px',
     };
     return (
-      <Grid container>
-        <Grid item xs={12}>
-          <div className={classes.header}>
-            <div className={classes.logo}>
-              <img
-                src={icon}
-                alt="ICDC case detail header logo"
-              />
+      <Grid>
+        <div className={classes.myFilesWrapper}>
+          <Grid item xs={12}>
+            <div className={classes.header}>
+              <div className={classes.logo}>
+                <img
+                  src={icon}
+                  alt="ICDC case detail header logo"
+                />
 
-            </div>
-            <div className={classes.headerTitle}>
-              <div className={classes.headerMainTitle}>
-                <span>
-                  <span>My Cases: Files</span>
-                </span>
+              </div>
+              <div className={classes.headerTitle}>
+                <div className={classes.headerMainTitle}>
+                  <span>
+                    <span>My Cases: Files</span>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        </Grid>
-        <Grid item xs={12}>
 
-          <div id="table_selected_files" className={classes.tableWrapper}>
-            <MUIDataTable
-              data={state.data}
-              columns={columns}
-              options={options()}
-              className={classes.tableStyle}
-            />
-            <div style={divStyle}>
-              <button
-                type="button"
-                style={btnStyle}
-                ref={this.downloadButton}
-                onClick={downloadJson}
-              >
+            <div id="table_selected_files" className={classes.tableWrapper}>
+              <MUIDataTable
+                data={state.data}
+                columns={columns}
+                options={options()}
+                className={classes.tableStyle}
+              />
+              <div style={divStyle}>
+                <button
+                  type="button"
+                  style={btnStyle}
+                  ref={this.downloadButton}
+                  onClick={downloadJson}
+                >
               download manifest
-              </button>
+                </button>
+              </div>
             </div>
-          </div>
-        </Grid>
-
+          </Grid>
+        </div>
       </Grid>
     );
   }
@@ -269,23 +275,15 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '14px',
+    marginTop: '-15px',
     width: '100px',
   },
   tableWrapper: {
-    borderBottomLeftRadius: '20px',
-    borderBottomRightRadius: '20px',
-    borderTopLeftRadius: '20px',
-    borderTopRightRadius: '20px',
-    paddingTop: '30px',
-    margin: 'auto auto 30px auto',
-    maxWidth: '1440px',
-    background: '#f3f3f4',
-    paddingBottom: '30px',
+    margin: 'auto 3% auto 3%',
+    maxWidth: '100%',
   },
   tableStyle: {
-    maxWidth: '1440px',
-    margin: '0 30px',
+    maxWidth: '100%',
   },
   customFooterStyle: {
     background: '#f3f3f4',
@@ -294,9 +292,9 @@ const styles = (theme) => ({
     fontFamily: theme.custom.fontFamilySans,
     fontWeight: 'bold',
     letterSpacing: '0.017em',
-    color: '#ff8a00',
-    fontSize: '25px',
-    lineHeight: '125px',
+    color: '#DE5227',
+    fontSize: '28px',
+    lineHeight: '84px',
     paddingLeft: '5px',
   },
   headerTitle: {
@@ -305,14 +303,23 @@ const styles = (theme) => ({
     float: 'left',
     marginLeft: '110px',
     paddingLeft: '3px',
+    marginBottom: '-30px',
   },
   header: {
-    paddingLeft: '32px',
     paddingRight: '32px',
-    borderBottom: '#81a6b9 4px solid',
-    height: '100px',
-    maxWidth: theme.custom.maxContentWidth,
-    margin: 'auto',
+    borderBottom: '#4B619A 10px solid',
+    height: '89px',
+    maxWidth: '100%',
+    marginLeft: '3%',
+    marginRight: '3%',
+  },
+  myFilesWrapper: {
+    border: '#DE5227 4px solid',
+    borderRadius: '35px',
+    margin: '80px',
+    marginLeft: '3%',
+    marginRight: '3%',
+    paddingBottom: '20px',
   },
 });
 export default withStyles(styles, { withTheme: true })(selectedFilesView);

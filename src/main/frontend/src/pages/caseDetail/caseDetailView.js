@@ -3,16 +3,14 @@ import {
   Grid,
   withStyles,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import MUIDataTable from 'mui-datatables';
 import TableFooter from '@material-ui/core/TableFooter';
 import TableRow from '@material-ui/core/TableRow';
 import TablePagination from '@material-ui/core/TablePagination';
-import { useDispatch } from 'react-redux';
 import StatsView from '../../components/Stats/StatsView';
 import { Typography } from '../../components/Wrappers/Wrappers';
 import icon from '../../assets/icons/Icon-CaseDetail.svg';
-import cn from '../../utils/classNameConcat';
-import { singleCheckBox, fetchDataForDashboardDataTable } from '../dashboard/dashboardState';
 import CustomBreadcrumb from '../../components/Breadcrumb/BreadcrumbView';
 
 function formatBytes(bytes, decimals = 2) {
@@ -72,22 +70,6 @@ const options = (classes) => ({
 
 
 const CaseDetail = ({ classes, data }) => {
-  const initDashboardStatus = () => (dispatch) => Promise.resolve(
-    dispatch(fetchDataForDashboardDataTable()),
-  );
-
-  const dispatch = useDispatch();
-  const redirectTo = (study) => {
-    dispatch(initDashboardStatus()).then(() => {
-      dispatch(singleCheckBox([{
-        groupName: 'Study',
-        name: study,
-        datafield: 'study_code',
-        isChecked: true,
-      }]));
-    });
-  };
-
   const stat = {
     numberOfTrials: 1,
     numberOfCases: 1,
@@ -98,22 +80,10 @@ const CaseDetail = ({ classes, data }) => {
   const notProvided = '';
 
   const breadCrumbJson = [{
-    name: 'ALL PROGRAMS',
-    to: '/programs',
-    isALink: true,
-  }, {
-    name: `${caseDetail.case_id} Detail`,
-    to: `/study/${caseDetail.case_id}`,
-    isALink: true,
-  }, {
-    name: `${caseDetail.case_id} CASES`,
+    name: 'ALL CASES',
     to: '/cases',
-    onClick: () => redirectTo(caseDetail.case_id),
     isALink: true,
-  }, {
-    name: caseDetail.case_id,
   }];
-
 
   return (
     <>
@@ -127,45 +97,20 @@ const CaseDetail = ({ classes, data }) => {
             />
 
           </div>
-
-          {(caseDetail.patient_first_name === '' || caseDetail.patient_first_name === null)
-             && !(caseDetail.enrollment && caseDetail.enrollment.initials !== '' && caseDetail.enrollment.initials !== null)
-            ? (
-              <div className={classes.headerTitle}>
-                <div className={cn(classes.headerMainTitle, classes.marginTop23)}>
-                  <span>
-                    <span>
-                      {' '}
+          <div className={classes.headerTitle}>
+            <div className={classes.headerMainTitle}>
 Case :
-                      {' '}
-                      {' '}
-                      {caseDetail.case_id}
-                    </span>
-                  </span>
-                </div>
-
-                <CustomBreadcrumb data={breadCrumbJson} />
-              </div>
-            )
-
-            : (
-              <div className={classes.headerTitle}>
-                <div className={classes.headerMainTitle}>
-                  <span>
-                    <span>
-                      {' '}
-Case :
-                      {' '}
-                      {' '}
-                      {caseDetail.case_id}
-                    </span>
-                  </span>
-                </div>
-                <CustomBreadcrumb data={breadCrumbJson} />
-              </div>
-            )}
-
-
+              <span className={classes.headerMainTitleTwo}>
+                {' '}
+                {' '}
+                {caseDetail.case_id}
+              </span>
+            </div>
+            <div className={classes.breadCrumb}>
+              {' '}
+              <CustomBreadcrumb data={breadCrumbJson} />
+            </div>
+          </div>
         </div>
 
 
@@ -173,9 +118,9 @@ Case :
 
           <Grid container spacing={4}>
 
-            <Grid item lg={3} md={3} sm={12} xs={12} className={classes.detailContainerLeft}>
+            <Grid item lg={6} md={6} sm={6} xs={12} className={classes.detailContainerLeft}>
               <Grid container spacing={32} direction="column">
-                <Grid item xs={12} pt={100}>
+                <Grid xs={12} pt={100}>
                   <span className={classes.detailContainerHeader}>DEMOGRAPHICS</span>
                 </Grid>
 
@@ -202,7 +147,7 @@ Case :
                     </Grid>
                   </Grid>
 
-                  <Grid item xs={12}>
+                  <Grid item xs={12} pt={100}>
                     <Grid container spacing={4}>
                       <Grid item xs={4}>
                         <span className={classes.title}>Ethnicity</span>
@@ -215,22 +160,16 @@ Case :
                   </Grid>
 
                 </Grid>
-              </Grid>
-            </Grid>
-
-
-            <Grid item lg={4} md={4} sm={12} xs={12} className={classes.detailContainerRight}>
-              <Grid container spacing={32} direction="column">
-                <Grid item xs={12}>
+                <Grid xs={12} className={classes.paddingTop}>
                   <span className={classes.detailContainerHeader}>DIAGNOSIS</span>
                 </Grid>
                 <Grid container spacing={4} className={classes.detailContainerItems}>
                   <Grid item xs={12}>
                     <Grid container spacing={4}>
-                      <Grid item xs={6}>
+                      <Grid item xs={4}>
                         <span className={classes.title}>Diagnosis</span>
                       </Grid>
-                      <Grid item xs={6} className={classes.content}>
+                      <Grid item xs={8} className={classes.content}>
                         {caseDetail.disease
                           ? caseDetail.disease : notProvided}
                         {' '}
@@ -238,14 +177,12 @@ Case :
                     </Grid>
                   </Grid>
                 </Grid>
-
               </Grid>
             </Grid>
 
-
-            <Grid item lg={5} md={5} sm={12} xs={12} className={classes.detailContainerRight}>
+            <Grid item lg={6} md={6} sm={6} xs={12} className={classes.detailContainerRight}>
               <Grid container spacing={32} direction="column">
-                <Grid item xs={12}>
+                <Grid xs={12} pt={100}>
                   <span className={classes.detailContainerHeader}>TRIAL</span>
                 </Grid>
 
@@ -257,13 +194,14 @@ Case :
                       </Grid>
                       <Grid item xs={6} className={classes.content}>
                         {caseDetail.clinical_trial_code
-                          ? caseDetail.clinical_trial_code : notProvided}
+                          ? <Link to={`/trial/${caseDetail.clinical_trial_code}`} className={classes.link}>{caseDetail.clinical_trial_code}</Link>
+                          : notProvided}
                       </Grid>
                     </Grid>
                   </Grid>
 
                   { caseDetail.arms.map((arms) => (
-                    <Grid container spacing={4} className={classes.detailContainerItems}>
+                    <Grid container spacing={4}>
                       <Grid item xs={12}>
                         <Grid container spacing={4}>
                           <Grid item xs={6}>
@@ -311,7 +249,7 @@ Case :
 
         <div className={classes.tableDiv}>
           <div className={classes.tableTitle}>
-            <span className={classes.tableHeader}>Associated Files</span>
+            <span className={classes.tableHeader}>ASSOCIATED FILES</span>
           </div>
           <Grid item xs={12}>
             <Grid container spacing={4}>
@@ -373,8 +311,8 @@ const styles = (theme) => ({
   header: {
     paddingLeft: '32px',
     paddingRight: '32px',
-    borderBottom: '#81a6b9 4px solid',
-    height: '80px',
+    borderBottom: '#7D7D7D 10px solid',
+    height: '88px',
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
   },
@@ -387,13 +325,20 @@ const styles = (theme) => ({
     paddingLeft: '3px',
   },
   headerMainTitle: {
-    fontFamily: theme.custom.fontFamilySans,
-    fontWeight: 'bold',
+    fontFamily: 'Lato',
+    color: '#931D1D',
+    fontSize: '24px',
+    lineHeight: '24px',
+    paddingLeft: '0px',
+    fontWeight: '300',
     letterSpacing: '0.017em',
-    color: '#ff8a00',
-    fontSize: '19px',
-    lineHeight: '18px',
-    paddingLeft: '5px',
+    '& $headerMainTitleTwo': {
+      fontWeight: 'bold',
+      letterSpacing: '0.025em',
+    },
+  },
+  headerMainTitleTwo: {
+
   },
   headerMSubTitle: {
     paddingTop: '8px',
@@ -430,7 +375,7 @@ const styles = (theme) => ({
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
     paddingTop: '12px',
-    paddingLeft: '60px',
+    paddingLeft: '40px',
     paddingRight: '32px',
     fontFamily: theme.custom.fontFamilySans,
     letterSpacing: '0.014em',
@@ -440,10 +385,11 @@ const styles = (theme) => ({
   },
   detailContainerHeader: {
     textTransform: 'uppercase',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: 'Lato',
     fontSize: '17px',
-    letterSpacing: '0.017em',
-    color: '#ff8a00',
+    letterSpacing: '0.025em',
+    color: '#0296C9',
+    paddingLeft: '16px',
   },
   detailContainerBottom: {
     borderTop: '#81a6b9 1px solid',
@@ -453,23 +399,28 @@ const styles = (theme) => ({
   detailContainerLeft: {
     padding: '35px 0px 0 2px !important',
     minHeight: '290px',
+    maxHeight: '158px',
+    overflowY: 'auto',
+    overflowX: 'hidden',
   },
   detailContainerRight: {
     padding: '35px 20px 0px 20px !important',
     minHeight: '290px',
-    borderLeft: '#81a6b9 1px solid',
+    maxHeight: '158px',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+    borderLeft: '#81A6BA 1px solid',
   },
   tableContainer: {
     background: '#f3f3f3',
   },
   tableHeader: {
     paddingLeft: '32px',
-    color: '#ff8a00',
   },
   tableDiv: {
-    padding: '31px 0px',
+    paddingTop: '31px',
     maxWidth: theme.custom.maxContentWidth,
-    margin: '10px auto',
+    margin: '40px auto auto auto',
   },
   headerButtonLink: {
     textDecoration: 'none',
@@ -502,11 +453,28 @@ const styles = (theme) => ({
     textTransform: 'uppercase',
   },
   tableTitle: {
-    fontFamily: theme.custom.fontFamilySans,
+    textTransform: 'uppercase',
+    fontFamily: 'Lato',
     fontSize: '17px',
-    letterSpacing: '0.017em',
-    color: '#ff17f15',
+    letterSpacing: '0.025em',
+    color: '#0296c9',
     paddingBottom: '20px',
+  },
+  breadCrumb: {
+    paddingTop: '5px',
+  },
+  paddingTop: {
+    paddingTop: '36px',
+  },
+  link: {
+    color: '#DD401C',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+    '&:visited': {
+      color: '#9F3D26',
+    },
   },
 });
 

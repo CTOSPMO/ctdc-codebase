@@ -140,38 +140,40 @@ const NavBar = ({
             </Tooltip>
           </IconButton> */}
           {/* Start of Theme Switching Icon and logic */}
-          <Button id="button_navbar_mycases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
-            <NavLink
-              className={classnames(classes.link, classes.myCasesLink)}
-              to="/myCases"
-            >
+          <div className={classes.myCasesPosition}>
+            <Button id="button_navbar_mycases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
+              <NavLink
+                className={classnames(classes.link, classes.myCasesLink)}
+                to="/myCases"
+              >
             My Cases
-              {/* <IconButton
+                {/* <IconButton
                 color="inherit"
                 aria-haspopup="true"
                 aria-controls="mail-menu"
                 className={classes.headerMenuButton}
                 classes={{ root: classes.iconButtonRoot }}
               > */}
-              {/* <Badge badgeContent={numberOfCases} max={99999}> */}
+                {/* <Badge badgeContent={numberOfCases} max={99999}> */}
 
-              <Tooltip title="Cases" placement="bottom-end">
-                <span className={classes.badge}>
-                  <img
-                    className={classes.cartLogoImg}
-                    src={caseIcon}
-                    alt="cart_logo"
-                  />
-                  <span className={classes.badgeText}>
-                    {numberOfCases}
+                <Tooltip title="Cases" placement="bottom-end">
+                  <span className={classes.badge}>
+                    <img
+                      className={classes.cartLogoImg}
+                      src={caseIcon}
+                      alt="cart_logo"
+                    />
+                    <span className={classes.badgeText}>
+                      {numberOfCases}
+                    </span>
                   </span>
-                </span>
-              </Tooltip>
+                </Tooltip>
 
-              {/* </Badge> */}
-              {/* </IconButton> */}
-            </NavLink>
-          </Button>
+                {/* </Badge> */}
+                {/* </IconButton> */}
+              </NavLink>
+            </Button>
+          </div>
           {/* Login button functionality on Navigation bar */}
 
           {/* {authState.isAuthorized ? (
@@ -229,6 +231,10 @@ const NavBar = ({
 
 
 const styles = (theme) => ({
+  myCasesPosition: {
+    position: 'absolute',
+    right: '20px',
+  },
   logotype: {
     whiteSpace: 'nowrap',
     color: '#FFFFFF',

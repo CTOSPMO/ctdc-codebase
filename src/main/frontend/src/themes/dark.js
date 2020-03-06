@@ -11,7 +11,7 @@ const cobolt = '#FBB35D';
 const warning = '#FFC260';
 const success = '#3CD4A0';
 const info = '#9013FE';
-const tableHeader = '#EEEEEE';
+const tableHeader = '#FFFFFF';
 const whisper = '#E7E5E5';
 const deepSkyBlue = '#3695A9';
 const lochmara = '#3478A5';
@@ -255,6 +255,9 @@ export default {
       },
       checkboxRoot: {
         color: 'inherit',
+        '&$checked': {
+          color: '#3695A9',
+        },
       },
 
     },
@@ -304,11 +307,11 @@ export default {
     MUIDataTableBodyRow: {
       root: {
         '&:nth-child(even)': {
-          backgroundColor: '#f5f5f5',
           color: '#004c73',
         },
         '&:nth-child(odd)': {
           color: '#004c73',
+          backgroundColor: '#f5f5f5',
         },
       },
     },
@@ -386,6 +389,7 @@ export default {
       },
       select: {
         border: '2px #fff solid',
+        background: '#fff',
       },
     },
     MuiIconButton: {

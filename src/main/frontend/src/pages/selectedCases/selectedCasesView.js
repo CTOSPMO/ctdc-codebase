@@ -54,6 +54,23 @@ const columns = (classes) => [
       display: false,
     },
   },
+  {
+    name: 'remove_label',
+    options: {
+      filter: false,
+      sort: false,
+      customHeadRender: () => (
+        <th className={classes.tableheadRemove}>
+          <span
+            role="button"
+            className={classes.removeLabel}
+          >
+          REMOVE
+          </span>
+        </th>
+      ),
+    },
+  },
 ];
 
 
@@ -108,35 +125,35 @@ const SelectedCasesView = ({ data, classes }) => {
   return (
     <>
       <Grid>
-        <Grid item xs={12}>
-          <div className={classes.header}>
-            <div className={classes.logo}>
-              <img
-                src={icon}
-                alt="ICDC case detail header logo"
-              />
+        <div className={classes.myCasesWrapper}>
+          <Grid item xs={12}>
+            <div className={classes.header}>
+              <div className={classes.logo}>
+                <img
+                  src={icon}
+                  alt="ICDC case detail header logo"
+                />
 
-            </div>
-            <div className={classes.headerTitle}>
-              <div className={classes.headerMainTitle}>
-                <span>
-                  <span>My Cases: Cases</span>
-                </span>
+              </div>
+              <div className={classes.headerTitle}>
+                <div className={classes.headerMainTitle}>
+                  <span>
+                    <span>My Cases: Cases</span>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-          <div />
-        </Grid>
-        <Grid item xs={12}>
-          <div id="table_selected_cases" className={classes.tableWrapper}>
-            <MUIDataTable
-              data={data}
-              columns={columns(classes)}
-              options={options(useDispatch(), data)}
-              className={classes.tableStyle}
-            />
-          </div>
-        </Grid>
+            <div />
+            <div id="table_selected_cases" className={classes.tableWrapper}>
+              <MUIDataTable
+                data={data}
+                columns={columns(classes)}
+                options={options(useDispatch(), data)}
+                className={classes.tableStyle}
+              />
+            </div>
+          </Grid>
+        </div>
       </Grid>
       <Snackbar
         open={snackbarState.open}
@@ -166,23 +183,15 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '14px',
+    marginTop: '-15px',
     width: '100px',
   },
   tableWrapper: {
-    borderBottomLeftRadius: '20px',
-    borderBottomRightRadius: '20px',
-    borderTopLeftRadius: '20px',
-    borderTopRightRadius: '20px',
-    paddingTop: '30px',
-    margin: '30px auto 30px auto',
-    maxWidth: '1440px',
-    background: '#f3f3f4',
-    paddingBottom: '30px',
+    margin: 'auto 3% auto 3%',
+    maxWidth: '100%',
   },
   tableStyle: {
-    maxWidth: '1440px',
-    margin: '0 30px',
+    maxWidth: '100%',
   },
   customFooterStyle: {
     background: '#f3f3f4',
@@ -191,9 +200,9 @@ const styles = (theme) => ({
     fontFamily: theme.custom.fontFamilySans,
     fontWeight: 'bold',
     letterSpacing: '0.017em',
-    color: '#ff8a00',
-    fontSize: '25px',
-    lineHeight: '125px',
+    color: '#DE5227',
+    fontSize: '28px',
+    lineHeight: '84px',
     paddingLeft: '5px',
   },
   headerTitle: {
@@ -202,14 +211,41 @@ const styles = (theme) => ({
     float: 'left',
     marginLeft: '110px',
     paddingLeft: '3px',
+    marginBottom: '-30px',
   },
   header: {
-    paddingLeft: '32px',
     paddingRight: '32px',
-    borderBottom: '#81a6b9 4px solid',
-    height: '100px',
-    maxWidth: theme.custom.maxContentWidth,
-    margin: 'auto',
+    borderBottom: '#4B619A 10px solid',
+    height: '89px',
+    maxWidth: '100%',
+    marginLeft: '3%',
+    marginRight: '3%',
+  },
+  myCasesWrapper: {
+    border: '#DE5227 4px solid',
+    borderRadius: '35px',
+    margin: '80px',
+    marginLeft: '3%',
+    marginRight: '3%',
+    paddingBottom: '20px',
+  },
+  removeLabel: {
+    cursor: 'text',
+  },
+  tableheadRemove: {
+    cursor: 'text',
+    top: '0px',
+    left: '0px',
+    zIndex: 100,
+    position: 'sticky',
+    fontSize: '9pt',
+    borderTop: '#4B619A 3px solid',
+    fontStyle: 'normal',
+    fontFamily: theme.custom.fontFamilySans,
+    color: '#0296C9',
+    borderBottom: '#4B619A 3px solid',
+    letterSpacing: '0.014em',
+    backgroundColor: '#ffffff',
   },
 });
 

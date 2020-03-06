@@ -98,7 +98,7 @@ const styles = (theme) => ({
         position: 'fixed',
         width: '100%',
         zIndex: '999',
-        top: '140px',
+        top: '139px',
   },
   card: {
     minHeight: '100%',
@@ -129,6 +129,7 @@ const styles = (theme) => ({
     float: 'left',
     width: '28px',
     height: '28px',
+    marginTop: '-4px',
   },
   floatLeft: {
     float: 'left',

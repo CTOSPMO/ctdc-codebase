@@ -240,7 +240,7 @@ const TrialView = ({ classes, data, theme }) => {
         <div className={classes.detailContainer}>
 
           <Grid container spacing={5}>
-            <Grid item lg={5} md={5} sm={12} xs={12}>
+            <Grid item className={classes.firstColumn} lg={false} md={false} sm={12} xs={12}>
               <Grid container spacing={4} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Name</span>
@@ -255,8 +255,10 @@ const TrialView = ({ classes, data, theme }) => {
                   </div>
 
                 </Grid>
-                <Grid item xs={12} className={classes.paddingTop32}>
-                  <span className={classes.detailContainerHeader}>Trial ID</span>
+                <Grid item lg={12} md={12} sm={12} xs={12} className={classes.paddingTop32}>
+                  <span className={classes.detailContainerHeader}>
+                    Trial ID
+                  </span>
 
                 </Grid>
 
@@ -290,7 +292,14 @@ const TrialView = ({ classes, data, theme }) => {
             </Grid>
 
 
-            <Grid item lg={4} md={4} sm={12} xs={12} className={classes.borderLeft}>
+            <Grid
+              item
+              lg={false}
+              md={false}
+              sm={12}
+              xs={12}
+              className={cn(classes.borderLeft, classes.secondColumn)}
+            >
               <Grid container spacing={4} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12}>
                   <span className={classes.detailContainerHeader}>Trial Type</span>
@@ -341,15 +350,24 @@ const TrialView = ({ classes, data, theme }) => {
             </Grid>
 
 
-            <Grid item lg={3} md={3} sm={12} xs={12} className={classes.borderLeft}>
+            <Grid
+              item
+              lg={false}
+              md={false}
+              sm={12}
+              xs={12}
+              className={cn(classes.borderLeft, classes.thirdColumn)}
+            >
               <Grid container spacing={16} direction="row" className={classes.detailContainerLeft}>
                 <Grid item xs={12} className={classes.marginTopN37}>
                   <Widget
+
                     title="Diagnosis"
                     upperTitle
                     bodyClass={classes.fullHeightBody}
                     className={classes.card}
-                    color="lochmara"
+                    color={theme.palette.dodgeBlue.main}
+                    titleClass={classes.widgetTitle}
                     customBackGround
                   >
                     <CustomActiveDonut
@@ -360,7 +378,7 @@ const TrialView = ({ classes, data, theme }) => {
                       outerRadius={75}
                       cx="50%"
                       cy="50%"
-                      textColor={theme.palette.widgetBackground.contrastText}
+                      fontSize="15px"
                     />
                   </Widget>
                 </Grid>
@@ -418,7 +436,21 @@ const TrialView = ({ classes, data, theme }) => {
 
 
 const styles = (theme) => ({
-
+  firstColumn: {
+    maxWidth: '45%',
+  },
+  secondColumn: {
+    maxWidth: '30%',
+  },
+  thirdColumn: {
+    maxWidth: '25%',
+  },
+  widgetTitle: {
+    color: '#0296c9',
+    textTransform: 'uppercase',
+    fontFamily: 'Lato !important',
+    fontWeight: '500 !important',
+  },
   tb: {
     paddingLeft: '25px',
   },
@@ -524,7 +556,7 @@ const styles = (theme) => ({
 
   },
   headerMSubTitle: {
-    paddingTop: '5px',
+    paddingTop: '3px',
   },
   headerButton: {
     fontFamily: theme.custom.fontFamilySans,

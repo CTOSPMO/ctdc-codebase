@@ -12,7 +12,7 @@ const cobolt = '#FBB35D';
 const warning = '#ff7f0b';
 const success = '#3CD4A0';
 const info = '#3f2b2f';
-const tableHeader = '#f5f5f5';
+const tableHeader = '#ffffff';
 const black = 'black';
 const lochmara = '#3478A5';
 const lightenRate = 7.5;
@@ -272,6 +272,9 @@ export default {
       },
       checkboxRoot: {
         color: 'inherit',
+        '&$checked': {
+          color: '#3695A9',
+        },
       },
 
     },
@@ -325,11 +328,10 @@ export default {
       root: {
         '&:nth-child(even)': {
           color: '#004c73',
-          background: '#f5f5f5 !important',
         },
         '&:nth-child(odd)': {
           color: '#004c73 !important',
-
+          background: '#f5f5f5 !important',
         },
       },
     },
@@ -400,6 +402,7 @@ export default {
       },
       select: {
         border: '2px #fff solid',
+        background: '#fff',
       },
     },
     MuiSwitch: {
