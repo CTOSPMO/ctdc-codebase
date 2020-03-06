@@ -194,7 +194,7 @@ Case :
                       </Grid>
                       <Grid item xs={6} className={classes.content}>
                         {caseDetail.clinical_trial_code
-                          ? <Link to={`/trial/${caseDetail.clinical_trial_code}`} className={classes.link}>{caseDetail.clinical_trial_code}</Link>
+                          ? <Link to={`/trial/${caseDetail.clinical_trial_id}`} className={classes.link}>{caseDetail.clinical_trial_code}</Link>
                           : notProvided}
                       </Grid>
                     </Grid>
