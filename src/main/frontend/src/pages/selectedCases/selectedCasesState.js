@@ -25,8 +25,7 @@ export const deleteCasesAction = (payload) => ({
 
 const deleteCases = (selectedCases, cases) => {
   if (!selectedCases || selectedCases.length === 0) return cases;
-
-  return cases.filter((caseDetail) => !selectedCases.includes(caseDetail.case_id));
+  return cases.filter((caseId) => !selectedCases.includes(caseId));
 };
 
 
@@ -72,11 +71,11 @@ export function receiveCases(casesIds) {
 export default function CARTReducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_CASES: {
-      const casesAfterDelete = deleteCases(action.payload, state.cases);
-      localStorage.setItem('userSelectedCases', JSON.stringify(casesAfterDelete));
+      const casesAfterDeletion = deleteCases(action.payload, state.cases);
+      localStorage.setItem('userSelectedCases', JSON.stringify(casesAfterDeletion));
       return {
         ...state,
-        cases: casesAfterDelete,
+        cases: casesAfterDeletion,
       };
     }
 
