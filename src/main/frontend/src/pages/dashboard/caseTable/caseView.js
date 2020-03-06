@@ -14,7 +14,7 @@ import { fetchCasesAndFiles } from '../../selectedCases/selectedCasesState';
 
 
 // const tableStyle = (ratio = 1) => ({
-//   width: ((((document.documentElement.clientWidth - 280) * 0.6) / 10) * ratio),
+//   : ((((document.documentElement.clientWidth - 280) * 0.6) / 10) * ratio),
 //   overflow: 'hidden',
 //   wordBreak: 'break-word',
 //   maxWidth: ((((document.documentElement.clientWidth - 280) * 0.6) / 10) * ratio),
@@ -87,7 +87,7 @@ const Cases = ({ classes, data }) => {
         filter: false,
         sortDirection: 'asc',
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell1}>
             {' '}
             <Link to={`/case/${value}`} className={classes.link}>{value}</Link>
             {' '}
@@ -101,7 +101,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta) => (
-          <div className="mui_td">
+          <div className={classes.tableCell2}>
 
             <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
 
@@ -115,7 +115,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell3}>
             {' '}
             {value}
             {' '}
@@ -129,7 +129,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell4}>
             {' '}
             {value}
             {' '}
@@ -143,7 +143,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell5}>
             {' '}
             {value}
             {' '}
@@ -157,7 +157,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell6}>
             {' '}
             {value}
             {' '}
@@ -171,7 +171,7 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell7}>
             {' '}
             {value}
             {' '}
@@ -185,19 +185,12 @@ const Cases = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className="mui_td">
+          <div className={classes.tableCell8}>
             {' '}
             {value}
             {' '}
           </div>
         ),
-      },
-    },
-    {
-      name: 'clinical_trial_id',
-      label: 'Trial ID',
-      options: {
-        display: false,
       },
     },
   ];
@@ -391,6 +384,62 @@ const styles = () => ({
     backgroundColor: '#C53B27',
   },
 
+  tableCell1: {
+    width: '105px',
+    maxWidth: '105px',
+    minWidth: '105px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell2: {
+    width: '105px',
+    maxWidth: '105px',
+    minWidth: '105px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell3: {
+    width: '58px',
+    maxWidth: '58px',
+    minWidth: '58px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell4: {
+    width: '200px',
+    maxWidth: '200px',
+    minWidth: '200px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell5: {
+    width: '495px',
+    maxWidth: '495px',
+    minWidth: '495px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell6: {
+    width: '80px',
+    maxWidth: '80px',
+    minWidth: '80px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell7: {
+    width: '272px',
+    maxWidth: '272px',
+    minWidth: '272px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
+  tableCell8: {
+    width: '211px',
+    maxWidth: '211px',
+    minWidth: '211px',
+    overflow: 'hidden',
+    wordBreak: 'break-word',
+  },
 });
 
 export default withStyles(styles, { withTheme: true })(Cases);
