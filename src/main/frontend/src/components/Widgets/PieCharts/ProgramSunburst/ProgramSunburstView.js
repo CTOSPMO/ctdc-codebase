@@ -110,14 +110,6 @@ class ProgramSunburst extends PureComponent {
               caseSize: node.size || node.caseSize,
             });
           }}
-          onValueMouseOut={() => {
-            this.setState({
-              caseSize: false,
-              size: false,
-              title: '',
-              widgetData: updateData(widgetData, false),
-            });
-          }}
         >
           {caseSize && (
           <LabelSeries data={[{
