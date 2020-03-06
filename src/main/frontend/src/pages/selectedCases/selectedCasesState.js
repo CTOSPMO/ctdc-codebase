@@ -83,7 +83,7 @@ export default function CARTReducer(state = initialState, action) {
       return {
         ...state,
         isError: false,
-        cases: JSON.parse(localStorage.getItem('userSelectedCases')),
+        cases: JSON.parse(localStorage.getItem('userSelectedCases')) || [],
       };
     }
 
@@ -98,7 +98,7 @@ export default function CARTReducer(state = initialState, action) {
           ),
         ) : previousStatCases;
 
-      localStorage.setItem('userSelectedCases', JSON.stringify(uniqueCases));
+      localStorage.setItem('userSelectedCases', JSON.stringify(uniqueCases) || []);
       return {
         ...state,
         isError: false,
