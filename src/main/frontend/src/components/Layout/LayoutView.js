@@ -18,8 +18,8 @@ import SelectedCases from '../../pages/selectedCases/selectedCasesController';
 import SelectedFiles from '../../pages/selectedFiles/selectedFilesController';
 import Home from '../../pages/landing/landingController';
 import About from '../../pages/about/aboutController';
-import Trials from '../../pages/trials/controller';
-import TrialDetail from '../../pages/trialDetail/controller';
+import Trials from '../../pages/trials/trialsController';
+import TrialDetail from '../../pages/trialDetail/trialDetailController';
 
 const ScrollToTop = () => {
   window.scrollTo(0, 0);
