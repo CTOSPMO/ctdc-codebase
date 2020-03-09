@@ -52,13 +52,6 @@ const Footer = ({ classes }) => {
             </li>
             <li>
               <Typography className={classes.footerText}>
-                <Link className={classes.link} to="/steeringCommittee">
-              Steering Committee
-                </Link>
-              </Typography>
-            </li>
-            <li>
-              <Typography className={classes.footerText}>
                 <Link className={classes.link} to="/crdc">
              CRDC
                 </Link>
@@ -331,14 +324,19 @@ const styles = (theme) => ({
         textDecoration: 'underline',
       },
     },
+    '@media (min-width: 800px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${footerBackground800})`,
+    },
     '@media (min-width: 1200px)': {
-      backgroundRepeat: 'repeat-y',
-      backgroundSize: '100%',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
       background: `url(${footerBackground1200})`,
     },
     '@media (min-width: 1600px)': {
-      backgroundRepeat: 'repeat-y',
-      backgroundSize: '100%',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
       background: `url(${footerBackground1800})`,
     },
   },
