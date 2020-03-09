@@ -117,8 +117,6 @@ export function getSunburstDataFromDashboardData(data) {
             size: 1,
             caseSize: 1,
           });
-          // eslint-disable-next-line no-param-reassign
-          trial.caseSize += 1;
         }
       }
       return trial;
@@ -128,7 +126,7 @@ export function getSunburstDataFromDashboardData(data) {
       widgetData.push({
         title: d.clinical_trial_code,
         color: COLORS[parseInt(colorIndex, 10)],
-        caseSize: 0,
+        caseSize: 1,
         children: [{
           title: `${d.clinical_trial_code} : ${d.arm_id}`,
           color: COLORS[parseInt(colorIndex, 10)],
