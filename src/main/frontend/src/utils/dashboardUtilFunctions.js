@@ -152,14 +152,26 @@ export function getSunburstDataFromDashboardData(data) {
 export function getDonutDataFromDashboardData(data, widgetName) {
   const output = [];
   data.reduce((accumulator, currentValue) => {
-    if (accumulator.has(currentValue[widgetName.toString()])) {
-      accumulator.set(
-        currentValue[widgetName.toString()],
-        accumulator.get(currentValue[widgetName.toString()]).concat(currentValue.case_id),
-      );
-    } else {
-      accumulator.set(currentValue[widgetName.toString()], [currentValue.case_id]);
+    let targetAttrs = currentValue[widgetName.toString()];
+
+    if (!(currentValue[widgetName.toString()] instanceof Array)) {
+      // if currentValue[widgetName.toString() is not an array , convert it into array
+      // instead of duplicate code to handle on object type "string" and "array",
+      // convert them all into array.
+      targetAttrs = [targetAttrs];
     }
+
+    targetAttrs.forEach((targetAttr) => {
+      if (accumulator.has(targetAttr)) {
+        accumulator.set(
+          targetAttr,
+          accumulator.get(targetAttr).concat(currentValue.case_id),
+        );
+      } else {
+        accumulator.set(targetAttr, [currentValue.case_id]);
+      }
+    });
+
     return accumulator;
   }, new Map()).forEach(
     (value, key) => {
