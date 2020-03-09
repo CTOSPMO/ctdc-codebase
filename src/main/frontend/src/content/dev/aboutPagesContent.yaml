@@ -68,7 +68,7 @@
 - page: '/support'
   title: "Support"
   content:
-    - paragraph: "If you have any questions, please contact us at $$#CTDCHelpDesk@mail.nih.gov#$$. "
+    - paragraph: "If you have any questions, please contact us at $$*CTDCHelpDesk@mail.nih.gov*$$. "
 - page: '/request-access'
   title: "Request Access"
   content:
