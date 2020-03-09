@@ -552,7 +552,7 @@ const styles = (theme) => ({
     fontFamily: theme.custom.fontFamilyRaleway,
     textTransform: 'uppercase',
     letterSpacing: '0.023em',
-    fontSize: '14pt',
+    fontSize: '14px',
 
   },
   headerMSubTitle: {

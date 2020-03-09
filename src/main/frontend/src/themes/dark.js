@@ -333,10 +333,10 @@ export default {
       },
       body: {
         color: 'inherit',
-        fontFamily: '"Open Sans", sans-serif',
+        fontFamily: '"Lato Regular","Open Sans", sans-serif',
         letterSpacing: '0.025em',
         fontStyle: 'normal',
-        fontSize: '10pt',
+        fontSize: '14px',
         fontWeight: 'bold',
         paddingLeft: '8px',
       },
