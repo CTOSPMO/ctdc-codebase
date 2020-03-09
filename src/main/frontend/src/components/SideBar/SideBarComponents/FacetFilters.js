@@ -135,7 +135,7 @@ const FacetPanel = ({ classes }) => {
 };
 
 
-const styles = () => ({
+const styles = (theme) => ({
   expansionPanelRoot: {
     boxShadow: 'none',
     margin: 'auto',
@@ -152,13 +152,13 @@ const styles = () => ({
   panelSummaryText: {
     marginLeft: '24px',
     color: '#194563',
-    fontFamily: 'Raleway',
+    fontFamily: theme.custom.fontFamily,
     fontSize: 16,
     fontWeight: 600,
   },
   panelDetailText: {
     color: '#004C73',
-    fontFamily: 'Open Sans',
+    fontFamily: theme.custom.fontFamily,
     fontSize: 12,
   },
   checkboxRoot: {

@@ -214,7 +214,7 @@ class selectedFilesView extends Component {
       transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
       lineHeight: '1.75',
       fontWeight: '500',
-      fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+      fontFamily: '"Lato Regular","Roboto", "Helvetica", "Arial", sans-serif',
       borderRadius: '4px',
       textTransform: 'uppercase',
       marginLeft: '-28px',
@@ -289,7 +289,7 @@ const styles = (theme) => ({
     background: '#f3f3f4',
   },
   headerMainTitle: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     fontWeight: 'bold',
     letterSpacing: '0.017em',
     color: '#DE5227',

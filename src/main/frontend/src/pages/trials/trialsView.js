@@ -169,7 +169,7 @@ const styles = (theme) => ({
     ...theme.mixins.toolbar,
   },
   root: {
-    fontFamily: '"Open Sans", sans-serif',
+    fontFamily: '"Lato Regular","Open Sans", sans-serif',
     fontSize: '9pt',
     letterSpacing: '0.025em',
     color: '#000',

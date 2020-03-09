@@ -241,7 +241,7 @@ const styles = (theme) => ({
     fontSize: '9pt',
     borderTop: '#4B619A 3px solid',
     fontStyle: 'normal',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     color: '#0296C9',
     borderBottom: '#4B619A 3px solid',
     letterSpacing: '0.014em',

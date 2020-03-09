@@ -98,11 +98,11 @@ const AboutBody = ({ classes, data }) => (
   </>
 );
 
-const styles = () => ({
+const styles = (theme) => ({
   container: {
     margin: '16px auto 16px auto',
     color: '#000000',
-    fontFamily: '"Open Sans"',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '15px',
     lineHeight: '22px',
     maxWidth: '1440px',
@@ -111,7 +111,7 @@ const styles = () => ({
     // height: '476px',
     // width: '675px',
     color: '#000000',
-    fontFamily: '"Open Sans"',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '15px',
     lineHeight: '22px',
   },
@@ -157,7 +157,7 @@ const styles = () => ({
     width: '100%',
   },
   tableHeader: {
-    fontFamily: 'Raleway',
+    fontFamily: theme.custom.fontFamily,
     color: '#194563',
     textTransform: 'uppercase',
 
@@ -173,7 +173,7 @@ const styles = () => ({
     },
   },
   tableCell: {
-    fontFamily: '"Open Sans"',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '14px',
     padding: '8px 15px 8px 0px',
     borderBottom: '0.66px solid #087CA5',
