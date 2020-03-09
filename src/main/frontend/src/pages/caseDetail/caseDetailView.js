@@ -282,7 +282,7 @@ const styles = (theme) => ({
   },
   container: {
     paddingTop: '50px',
-    fontFamily: 'Raleway, sans-serif',
+    fontFamily: theme.custom.fontFamily,
     paddingLeft: '32px',
     paddingRight: '32px',
   },
@@ -302,7 +302,7 @@ const styles = (theme) => ({
     ...theme.mixins.toolbar,
   },
   root: {
-    fontFamily: '"Open Sans", sans-serif',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '9px',
     letterSpacing: '0.025em',
     color: '#000',
@@ -377,7 +377,7 @@ const styles = (theme) => ({
     paddingTop: '12px',
     paddingLeft: '40px',
     paddingRight: '32px',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     letterSpacing: '0.014em',
     color: '#000000',
     size: '12px',

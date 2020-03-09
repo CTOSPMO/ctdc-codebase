@@ -474,13 +474,13 @@ const styles = (theme) => ({
   },
   container: {
     paddingTop: '50px',
-    fontFamily: 'Raleway, sans-serif',
+    fontFamily: theme.custom.fontFamily,
     paddingLeft: '32px',
     paddingRight: '32px',
   },
   content: {
     fontSize: '15px',
-    fontFamily: 'Raleway, sans-serif',
+    fontFamily: theme.custom.fontFamily,
     lineHeight: '14px',
   },
   warning: {
@@ -493,7 +493,7 @@ const styles = (theme) => ({
     ...theme.mixins.toolbar,
   },
   root: {
-    fontFamily: '"Open Sans", sans-serif',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '9px',
     letterSpacing: '0.025em',
     color: '#000',
@@ -559,7 +559,7 @@ const styles = (theme) => ({
     paddingTop: '3px',
   },
   headerButton: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     float: 'right',
     marginTop: '15px',
     width: '104px',
@@ -571,20 +571,20 @@ const styles = (theme) => ({
 
   },
   headerButtonLinkSpan: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     height: '50px',
     background: '#F5F3EE',
     width: '200px',
     fontSize: '8pt',
   },
   headerButtonLinkText: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     color: '#0B3556',
     fontSize: '8pt',
     textTransform: 'uppercase',
   },
   headerButtonLinkNumber: {
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     borderBottom: 'solid',
     lineHeight: '30px',
     paddingBottom: '3px',
@@ -603,7 +603,7 @@ const styles = (theme) => ({
     paddingTop: '30px',
     paddingLeft: '36px',
     paddingRight: '36px',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     letterSpacing: '0.014em',
     color: '#000000',
     size: '12px',
@@ -682,7 +682,7 @@ const styles = (theme) => ({
     color: '#ffffff',
     textTransform: 'uppercase',
     backgroundColor: '#ff8a00',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     '&:hover': {
       backgroundColor: '#ff8a00',
     },
@@ -696,7 +696,7 @@ const styles = (theme) => ({
   },
   title: {
     color: '#0296c9',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     fontSize: '12px',
     letterSpacing: '0.017em',
     fontWeight: '600',
