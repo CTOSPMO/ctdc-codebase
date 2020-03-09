@@ -134,3 +134,13 @@
     - paragraph: "Additionally, the ICDC Data Model serves as a template for similar initiatives and data structures, 
         including graph-based database schemas. The model will continue to evolve as data needs are further discerned. "
     - paragraph: "The tool used to generate this visual may be sourced on Github at: https://github.com/CBIIT/icdc-model-tool"
+- page: '/data-dictionary'
+  title: 'CTDC Data Dictionary '
+  content:
+    - paragraph: "$$#Introduction#$$"
+    - paragraph: "The CTDC conceptual data model consists of the following sixteen entities or node types. Nodes are connected by 
+          relationships (see Figure 1.0). Both node and relationship types may have associated attributes; these attributes are 
+          described in the Data Dictionary section."
+    - paragraph: "$$#CTDC Node Types:#$$"
+    - paragraph: "$$#CTDC Node Types:#$$"
+    - list: "hello"
