@@ -104,7 +104,7 @@ const styles = (theme) => ({
     textTransform: 'none',
     color: theme.palette.lochmara.main,
     marginLeft: '16px',
-    fontFamily: theme.custom.fontFamilySans,
+    fontFamily: theme.custom.fontFamily,
     '&:hover': {
       backgroundColor: '#566672',
       color: 'white',

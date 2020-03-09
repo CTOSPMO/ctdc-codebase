@@ -315,7 +315,7 @@ Case(s) successfully added to the My Cases list
   );
 };
 
-const styles = () => ({
+const styles = (theme) => ({
   saveButtonDiv: {
     position: 'absolute',
     margin: '-50px 0 0 0',
@@ -332,7 +332,7 @@ const styles = () => ({
     transition: 'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
     lineHeight: '1.75',
     fontWeight: '500',
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily: theme.custom.fontFamily,
     borderRadius: '35px',
     textTransform: 'uppercase',
   },
@@ -364,7 +364,7 @@ const styles = () => ({
   },
   chipRoot: {
     color: '#ffffff',
-    fontFamily: '"Open Sans", sans-serif',
+    fontFamily: theme.custom.fontFamily,
     letterSpacing: '0.075em',
     marginLeft: '10px',
     backgroundColor: '#9b9b9b',
@@ -377,7 +377,7 @@ const styles = () => ({
     },
   },
   root: {
-    fontFamily: '"Open Sans", sans-serif',
+    fontFamily: theme.custom.fontFamily,
     fontSize: '9pt',
     letterSpacing: '0.025em',
     color: '#000',

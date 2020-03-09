@@ -35,12 +35,12 @@ function updateData(d, keyPath) {
 }
 
 
-const styles = () => ({
+const styles = (theme) => ({
   title: {
     color: 'rgb(52, 120, 165)',
     fontSize: '12px',
     maxWidth: '1440px',
-    fontFamily: 'Raleway',
+    fontFamily: theme.custom.fontFamily,
     lineHeight: '20px',
     fontWeight: '600',
     paddingLeft: '28px',
@@ -120,7 +120,7 @@ class ProgramSunburst extends PureComponent {
               fontSize: '12px',
               textAnchor: 'middle',
               fill: textColor,
-              fontFamily: '"Open Sans", sans-serif',
+              fontFamily: '"Lato Regular","Open Sans", sans-serif',
             },
           }, {
             x: 0,
@@ -130,7 +130,7 @@ class ProgramSunburst extends PureComponent {
               fontSize: '12px',
               textAnchor: 'middle',
               fill: textColor,
-              fontFamily: '"Open Sans", sans-serif',
+              fontFamily: '"Lato Regular","Open Sans", sans-serif',
             },
           }]}
           />
