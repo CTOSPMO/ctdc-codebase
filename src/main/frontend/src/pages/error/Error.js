@@ -3,20 +3,18 @@ import { Link } from 'react-router-dom';
 import {
   Grid, Paper, Typography, withStyles,
 } from '@material-ui/core';
-import caninHelix from '../../assets/error/canine_helix.jpg';
 
 const Error = ({ classes }) => (
   <Grid container className={classes.container}>
     <Paper classes={{ root: classes.paperRoot }}>
-      <Typography variant="h2" fontWeight="bold" color="white" className={classes.errorCodeText}>404 Page Not Found</Typography>
-      <hr className={classes.divider} />
-      <img className={classes.dogHumanHelix} src={caninHelix} alt="caninHelix 404" />
+      <div className={classes.errorCodeText}>404</div>
+      <Typography variant="h3" fontWeight="bold" color="white">PAGE NOT FOUND</Typography>
       <div className={classes.errorTextRow}>
         <Typography variant="h6" color="white" className={classes.errorText}>
-The resource you are looking for is not at this URL. Please navigate to the CTDC&nbsp;
-          <Link to="/">Dashboard</Link>
+The page you are looking for does not exist or another error has occured. Go back or head&nbsp;
+          <Link to="/">home</Link>
           {' '}
-to access content.
+to choose another direction.
         </Typography>
       </div>
     </Paper>
@@ -26,11 +24,18 @@ to access content.
 const styles = (theme) => ({
   container: {
     display: 'flex',
+    background: '#bff5f0',
+    marginTop: '-49px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     top: 0,
     left: 0,
+  },
+  errorCodeText: {
+    fontSize: '10em',
+    color: 'white',
+    fontWeight: 'bold',
   },
   divider: {
     height: '1px',
@@ -38,6 +43,7 @@ const styles = (theme) => ({
   },
   paperRoot: {
     boxShadow: 'none',
+    background: '#bff5f0',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -50,6 +56,7 @@ const styles = (theme) => ({
   errorTextRow: {
     display: 'flex',
     flexDirection: 'column',
+    marginTop: 50,
     alignItems: 'center',
     width: 500,
   },

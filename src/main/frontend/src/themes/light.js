@@ -357,7 +357,7 @@ export default {
         fontFamily: '"Lato Regular","Open Sans", sans-serif',
         letterSpacing: '0.025em',
         fontStyle: 'normal',
-        fontSize: '14pt',
+        fontSize: '14px',
         fontWeight: 'bold',
         paddingLeft: '8px',
       },

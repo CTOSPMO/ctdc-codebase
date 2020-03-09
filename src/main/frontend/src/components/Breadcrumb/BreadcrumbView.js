@@ -32,7 +32,7 @@ const styles = (theme) => ({
   headerNavLink: {
     paddingLeft: '3px',
     paddingRight: '3px',
-    textDecoration: 'none',
+    textDecoration: 'underline',
     color: '#3D9ACC',
     textTransform: 'uppercase',
     fontFamily: theme.custom.fontFamilySans,
