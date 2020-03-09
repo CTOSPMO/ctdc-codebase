@@ -161,6 +161,8 @@ type nucleic_acid {
 
 type sequencing_assay {
   qc_result: String
+  experimental_method: String
+  platform: String
   nucleic_acid: nucleic_acid @relation(name:"of_nucleic_acid", direction:OUT)
   files: [file] @relation(name:"of_sequencing_assay", direction:IN)
   variant_reports: [variant_report] @relation(name:"of_sequencing_assay", direction:IN)
@@ -202,6 +204,7 @@ type variant_report {
   mapd: Float
   cellularity: Float
   torrent_variant_caller_version: String
+  reference_genome: String
   sequencing_assay: sequencing_assay @relation(name:"of_sequencing_assay", direction:OUT)
   snv_variants: [snv_variant] @relation(name:"snv_variant_of", direction:IN)
   delins_variants: [delins_variant] @relation(name:"delins_variant_of", direction:IN)
