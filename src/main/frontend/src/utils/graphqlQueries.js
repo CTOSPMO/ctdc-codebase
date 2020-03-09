@@ -83,6 +83,7 @@ export const GET_CASE_DETAIL_DATA_QUERY = gql`
           caseDetailByCaseId(case_id:$case_id){
             case_id
             clinical_trial_code
+            clinical_trial_id
             arm_id
             arm_drug
             disease

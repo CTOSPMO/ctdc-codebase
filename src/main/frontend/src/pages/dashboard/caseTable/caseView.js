@@ -193,6 +193,14 @@ const Cases = ({ classes, data }) => {
         ),
       },
     },
+    // This is to redirect clinical trial code to the page
+    {
+      name: 'clinical_trial_id',
+      label: 'clinical rial id',
+      options: {
+        display: false,
+      },
+    },
   ];
 
   let selectedCaseIds = [];
