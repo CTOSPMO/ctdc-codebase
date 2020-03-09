@@ -161,6 +161,8 @@ type nucleic_acid {
 
 type sequencing_assay {
   qc_result: String
+  experimental_method: String
+  platform: String
   nucleic_acid: nucleic_acid @relation(name:"of_nucleic_acid", direction:OUT)
   files: [file] @relation(name:"of_sequencing_assay", direction:IN)
   variant_reports: [variant_report] @relation(name:"of_sequencing_assay", direction:IN)
@@ -202,6 +204,7 @@ type variant_report {
   mapd: Float
   cellularity: Float
   torrent_variant_caller_version: String
+  reference_genome: String
   sequencing_assay: sequencing_assay @relation(name:"of_sequencing_assay", direction:OUT)
   snv_variants: [snv_variant] @relation(name:"snv_variant_of", direction:IN)
   delins_variants: [delins_variant] @relation(name:"delins_variant_of", direction:IN)
@@ -241,7 +244,6 @@ type CaseOverview{
   gender: String
   race: String
   arm_target: String
-  arms: [arm]
   ethnicity: String
   clinical_trial_id: String
   pubmed_id: String
@@ -249,6 +251,18 @@ type CaseOverview{
   file_types:[String]
   file_formats:[String]
   files: [file]
+}
+
+type CaseDetail{
+  case_id: String
+  clinical_trial_code: String
+  clinical_trial_id: String
+  disease: String
+  gender: String
+  race: String
+  ethnicity: String
+  trial_arm: String
+  arms: [arm]
 }
 
 type CaseInfo {
@@ -393,5 +407,5 @@ type QueryType {
 
 
   "case detail"
-  caseDetailByCaseId(case_id: String!): [CaseOverview] @cypher(statement:"MATCH (t:clinical_trial)<--(a:arm)<--(c:case  {case_id:$case_id}) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity,t.clinical_trial_designation as clinical_trial_code,COLLECT(DISTINCT(a)) AS arms",passThrough:true)
+  caseDetailByCaseId(case_id: String!): [CaseDetail] @cypher(statement:"MATCH (t:clinical_trial)<--(a:arm)<--(c:case  {case_id:$case_id}) WITH DISTINCT c AS c, t ,a  OPTIONAL MATCH (c)<-[*]-(f:file)  Return c.case_id  As case_id,c.disease As disease, c.gender As gender, c.race As race, c.ethnicity As ethnicity,t.clinical_trial_designation as clinical_trial_code, t.clinical_trial_id as clinical_trial_id, COLLECT(DISTINCT(a)) AS arms",passThrough:true)
 }
