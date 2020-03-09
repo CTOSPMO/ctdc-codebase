@@ -116,12 +116,8 @@ const SelectedCasesView = ({ data, classes }) => {
     },
 
     onRowsDelete: (rowsDeleted) => {
-      // dispatch(rowsDeleted.map(e=>(cases.)))
       if (rowsDeleted.data.length > 0) {
         openSnackBar(rowsDeleted.data.length, rowsDeleted, cases);
-        // return dispatch(deleteCasesAction(
-        //   rowsDeleted.data.map((row) => cases[row.dataIndex].case_id),
-        // ));
       }
       return true;
     },
