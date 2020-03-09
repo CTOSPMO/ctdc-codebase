@@ -75,17 +75,32 @@ const columns = (classes) => [
 
 
 const SelectedCasesView = ({ data, classes }) => {
+  const dispatch = useDispatch();
+
   const [snackbarState, setsnackbarState] = React.useState({
     open: false,
     value: 0,
+    rowsDeleted: null,
+    cases: null,
   });
-  function openSnackBar(value1) {
-    setsnackbarState({ open: true, value: value1 });
+  function openSnackBar(value, rowsDeleted, cases) {
+    setsnackbarState({
+      open: true, value, rowsDeleted, cases,
+    });
   }
   function closeSnackBar() {
     setsnackbarState({ open: false });
+    if (snackbarState.rowsDeleted
+        && snackbarState.rowsDeleted !== null
+        && snackbarState.rowsDeleted.data
+          && snackbarState.cases
+            && snackbarState.cases !== null) {
+      dispatch(deleteCasesAction(
+        snackbarState.rowsDeleted.data.map((row) => snackbarState.cases[row.dataIndex].case_id),
+      ));
+    }
   }
-  const options = (dispatch, cases) => ({
+  const options = (cases) => ({
     selectableRows: true,
     search: false,
     filter: false,
@@ -101,12 +116,8 @@ const SelectedCasesView = ({ data, classes }) => {
     },
 
     onRowsDelete: (rowsDeleted) => {
-      // dispatch(rowsDeleted.map(e=>(cases.)))
       if (rowsDeleted.data.length > 0) {
-        openSnackBar(rowsDeleted.data.length);
-        return dispatch(deleteCasesAction(
-          rowsDeleted.data.map((row) => cases[row.dataIndex].case_id),
-        ));
+        openSnackBar(rowsDeleted.data.length, rowsDeleted, cases);
       }
       return true;
     },
@@ -148,7 +159,7 @@ const SelectedCasesView = ({ data, classes }) => {
               <MUIDataTable
                 data={data}
                 columns={columns(classes)}
-                options={options(useDispatch(), data)}
+                options={options(data)}
                 className={classes.tableStyle}
               />
             </div>
@@ -158,7 +169,7 @@ const SelectedCasesView = ({ data, classes }) => {
       <Snackbar
         open={snackbarState.open}
         onClose={closeSnackBar}
-        autoHideDuration={3000}
+        autoHideDuration={1500}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         message={(
           <span>
