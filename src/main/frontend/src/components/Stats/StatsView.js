@@ -134,6 +134,7 @@ const styles = (theme) => ({
   floatLeft: {
     float: 'left',
     marginTop: '3px',
+    letterSpacing: '1px',
   },
   floatRight: {
     float: 'right',

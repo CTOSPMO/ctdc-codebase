@@ -406,7 +406,6 @@ const styles = (theme) => ({
     float: 'left',
     marginTop: '6px',
     marginLeft: '10px',
-    letterSpacing: '1px',
   },
   funnelLogoImg: {
     width: '20px',
