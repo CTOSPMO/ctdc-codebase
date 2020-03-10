@@ -26,7 +26,7 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold" size="sm" >
+                <Typography weight="bold" size="sm"  color="textWithBackground">
                       TRIALS:
                   {' '}
                   {' '}
@@ -49,7 +49,7 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold" size="sm">
+                <Typography weight="bold" size="sm" color="textWithBackground">
                       CASES:
                   {' '}
                   {' '}
@@ -73,7 +73,7 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold" size="sm">
+                <Typography weight="bold" size="sm" color="textWithBackground">
                       FILES:
                   {' '}
                   {' '}
