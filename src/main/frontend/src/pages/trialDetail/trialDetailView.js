@@ -527,7 +527,7 @@ const styles = (theme) => ({
     fontFamily: 'Lato',
     letterSpacing: '0.025em',
     color: '#415589 ',
-    fontSize: '24px',
+    fontSize: '20pt',
     lineHeight: '24px',
     paddingLeft: '0px',
 
@@ -594,8 +594,8 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '-7px',
-    width: '83px',
+    marginTop: '-6px',
+    width: '82px',
   },
   detailContainer: {
     maxWidth: theme.custom.maxContentWidth,

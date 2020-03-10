@@ -206,6 +206,7 @@ const styles = (theme) => ({
     marginLeft: '-13px',
     width: '82px',
     zIndex: '999',
+    filter: 'drop-shadow( 2px 2px 2px rgba(0, 0, 0, 0.2))',
   },
   tableContainer: {
     background: '#eee',
