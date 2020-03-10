@@ -10,7 +10,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
 import CustomFooter from './customFooter';
 import { toggleCheckBox } from '../dashboardState';
-import { fetchCasesAndFiles } from '../../selectedCases/selectedCasesState';
+import { receiveCases } from '../../selectedCases/selectedCasesState';
 
 
 // const tableStyle = (ratio = 1) => ({
@@ -214,7 +214,7 @@ const Cases = ({ classes, data }) => {
     if (uniqueCases > 0) {
       openSnack(uniqueCases);
     }
-    dispatch(fetchCasesAndFiles(selectedCaseIds));
+    dispatch(receiveCases(selectedCaseIds));
     selectedCaseIds = [];
   }
 

@@ -114,7 +114,7 @@ const TrialView = ({ classes, data, theme }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div className={classes.tb}>
+          <div className={classes.tableCell1}>
             {value}
           </div>
         ),
@@ -123,11 +123,28 @@ const TrialView = ({ classes, data, theme }) => {
     {
       name: 'arm_drug',
       label: 'Arm Treatment',
-
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell2}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
     },
     {
       name: 'arm_target',
       label: 'Arm Target',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell3}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
     },
     {
       name: 'pubmed_id',
@@ -135,7 +152,7 @@ const TrialView = ({ classes, data, theme }) => {
       options: {
         filter: false,
         customBodyRender: (value) => (
-          <div>
+          <div className={classes.tableCell4}>
             <a rel="noopener noreferrer" className={classes.link} target="_blank" href={`https://www.ncbi.nlm.nih.gov/sites/m/pubmed/${value}`}>{value}</a>
           </div>
         ),
@@ -147,7 +164,7 @@ const TrialView = ({ classes, data, theme }) => {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta) => (
-          <div>
+          <div className={classes.tableCell5}>
             <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectToTrialArm(`${tableMeta.rowData[0]}_${tableMeta.rowData[1]}`)}>{value}</Link>
           </div>
         ),
@@ -451,9 +468,6 @@ const styles = (theme) => ({
     fontFamily: 'Lato !important',
     fontWeight: '500 !important',
   },
-  tb: {
-    paddingLeft: '25px',
-  },
   borderLeft: {
     borderLeft: '#81A6BA 1px solid',
     paddingLeft: '25px !important',
@@ -552,7 +566,7 @@ const styles = (theme) => ({
     fontFamily: theme.custom.fontFamilyRaleway,
     textTransform: 'uppercase',
     letterSpacing: '0.023em',
-    fontSize: '14pt',
+    fontSize: '14px',
 
   },
   headerMSubTitle: {
@@ -732,6 +746,22 @@ const styles = (theme) => ({
   },
   marginTopN37: {
     marginTop: '-37px',
+  },
+  tableCell1: {
+    paddingLeft: '25px',
+    width: '200px',
+  },
+  tableCell2: {
+    width: '370px',
+  },
+  tableCell3: {
+    width: '370px',
+  },
+  tableCell4: {
+    width: '160px',
+  },
+  tableCell5: {
+    width: '160px',
   },
 });
 

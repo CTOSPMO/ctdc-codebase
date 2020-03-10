@@ -57,9 +57,6 @@ export const DASHBOARD_QUERY = gql`{
         gender
         race
         arm_target
-        arms{
-            arm_id
-        }
         ethnicity
         clinical_trial_id
         pubmed_id
@@ -84,12 +81,9 @@ export const GET_CASE_DETAIL_DATA_QUERY = gql`
             case_id
             clinical_trial_code
             clinical_trial_id
-            arm_id
-            arm_drug
             disease
             gender
             race
-            arm_target
             arms{
                 arm_id
                 arm_target
