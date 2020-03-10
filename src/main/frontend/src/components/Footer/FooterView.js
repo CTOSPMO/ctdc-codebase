@@ -59,7 +59,7 @@ const Footer = ({ classes }) => {
             </li>
             <li>
               <Typography className={classes.footerText}>
-                <a href="mailto:icdchelpdesk@nih.gov" target="ctdc">Contact Us</a>
+                <a href="mailto:CTDCHelpDesk@nih.gov" target="ctdc">Contact Us</a>
               </Typography>
             </li>
           </ul>
@@ -93,14 +93,6 @@ const Footer = ({ classes }) => {
               <Typography className={classes.footerText}>
                 <Link className={classes.link} to="/developers">
               Developers (APIs)
-                </Link>
-              </Typography>
-            </li>
-            <li>
-              <Typography className={classes.footerText}>
-                <Link className={classes.link} to="/submit">
-              Submission Guide
-
                 </Link>
               </Typography>
             </li>
