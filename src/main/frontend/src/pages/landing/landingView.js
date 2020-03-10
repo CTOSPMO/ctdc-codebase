@@ -36,7 +36,7 @@ const LandingController = ({ classes, statsData }) => (
     <div className={classes.container}>
       <Grid container spacing={16} direction="row" className={cn(classes.paddingTop30, classes.paddingLeft50)}>
         <div className={classes.bannerTexture}>
-                 Exploring, analyzing, and understanding the data from human cancer trials
+                 Exploring, analyzing, and understanding data from human cancer trials
         </div>
       </Grid>
       <Grid container spacing={16} direction="row" className={cn(classes.paddingTop30, classes.paddingLeft50)}>
@@ -54,17 +54,17 @@ const LandingController = ({ classes, statsData }) => (
                 <img src={imgAbout} className={classes.aboutImage} alt="CTDC about" />
               </div>
               <div className={classes.CTDCWords}>
-                About the Clinical Trials Data Commons (CTDC)
+                About the Clinical Trial Data Commons (CTDC)
               </div>
               <div className={classes.aboutContent}>
-                NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged
-                the Frederick National Laboratory for Cancer Research (FNLCR) to
-                build the Integrated Canine Data Commons (CTDC), a cloud-based repository
-                of canine cancer data. CTDC was established to further research
-                on human cancers by enabling comparative
-                analysis with canine cancer. The data in the CTDC is sourced
-                from multiple different programs and projects; all focused on
-                the canine subjects.
+              NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged the Frederick National
+               Laboratory for Cancer Research (FNLCR) to build the Clinical Trial Data Commons
+               (CTDC),a cloud-based repository of data from clinical trials sponsored by NCI.
+               CTDC has been established to allow researchers to search, explore and select data
+               across multiple clinical trials. Data in the CTDC is sourced from multiple different
+               programs and projects;
+               all are focused on human subjects.
+               the canine subjects.
               </div>
               <div className={classes.aboutButtonSection}>
                 <div className={classes.aboutButtonLeft}>
@@ -85,7 +85,7 @@ const LandingController = ({ classes, statsData }) => (
                 <div className={classes.content}>
                   <div className={classes.contentHeader}> Trials</div>
                   <div className={classes.contentContainer}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    View summaries of clinical trials within CTDC.
                   </div>
 
                 </div>
@@ -95,7 +95,7 @@ const LandingController = ({ classes, statsData }) => (
                     {' '}
                   </div>
                   <div className={classes.blueButtonRight}>
-                    <Link to="/programs" className={classes.blueButton}>READ MORE</Link>
+                    <Link to="/trials" className={classes.blueButton}>READ MORE</Link>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,8 @@ const LandingController = ({ classes, statsData }) => (
                 <div className={classes.content}>
                   <div className={classes.contentHeader}> REQUEST ACCESS</div>
                   <div className={classes.contentContainer}>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    Data and files in CTDC are not open access,
+                     they require users to have permission.
                   </div>
 
                 </div>
@@ -116,7 +117,7 @@ const LandingController = ({ classes, statsData }) => (
                     {' '}
                   </div>
                   <div className={classes.blueButtonRight}>
-                    <Link to="/studies" className={classes.blueButton}>READ MORE</Link>
+                    <Link to="/request-access" className={classes.blueButton}>READ MORE</Link>
                   </div>
                 </div>
               </div>
@@ -349,6 +350,7 @@ const styles = () => ({
     background: '#fff',
     paddingLeft: '30px',
     paddingTop: '6px',
+    minHeight: '130px',
   },
   contentHeader: {
     color: '#20506A',
