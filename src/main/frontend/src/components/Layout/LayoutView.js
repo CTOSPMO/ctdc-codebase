@@ -53,7 +53,6 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
             <Route path="/purpose" component={About} />
-            <Route path="/steeringCommittee" component={About} />
             <Route path="/crdc" component={About} />
             <Route path="/icdcData" component={About} />
             <Route path="/developers" component={About} />

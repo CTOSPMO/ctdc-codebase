@@ -1,23 +1,16 @@
-- page: '/steeringCommittee'
-  title: "John Draft for About"
-  content:
-    - paragraph: "The Clinical Trials Data Commons (CTDC) is a node in the NCI's Cancer Research Data Commons (CRDC) that contains clinical trials data from NCI's precision medicine inititative. The CTDC enables users to identify single cases or groups/cohorts of cases of interest using either a Graphical User Interface (GUI- this web application) or via APIs (REST or GraphQL). The associated data files can then be analyzed using the CRDC's Cloud Resources. Access to the data has tierred permissions. All users can view public data but data files and certain clinical data is only available to thos with appropriate permissions." 
-    - paragraph: "The Steering Committee has two sub-committees; Data Governance Advisory Board (DGAB) 
-        and the Best Practices Sub-Committee (BPSC)."
 - page: '/crdc'
   title: "Cancer Research Data Commons (CRDC) and Analysis"
   content:
     - paragraph: "$$#CRDC:#$$"
     - paragraph: "$$[The Cancer Research DataCommons](https://datascience.cancer.gov/data-commons)$$ is an initiative from NCI’s Center for Biomedical
-        Informatics & Information Technology ( $$[CBIIT](https://datascience.cancer.gov/)$$). CBIIT’s vision for the project consists of a 
+        Informatics & Information Technology ($$[CBIIT](https://datascience.cancer.gov/)$$). CBIIT’s vision for the project consists of a 
         virtual, expandable infrastructure that provides secure access to many different data types across scientific domains, 
         allowing users to analyze, share, and store results, leveraging the storage and elastic compute, or ability to easily scale resources, of the 
         cloud. The ability to combine diverse data types and perform cross-domain analysis of large data sets can lead to new discoveries in cancer prevention, 
         treatment and diagnosis, and supports the goals of precision medicine and the Cancer Moonshot℠."
     - paragraph: "Users can query the CTDC data via Graphical User Interface (GUI) or APIs. The GUI provides users a distilled set of parameters (faceted querying) they can use to explore the CTDC data. The APIs provide access to the full collection of parameters as seen in the $$[CTDC Data Model](https://github.com/CBIIT/ctdc-model)$$."
     - paragraph: "$$#ANALYSIS- THE CLOUD RESOURCES:#$$"
-    - paragraph: "The CRDC has three Cloud Resources (
-        $$[Seven Bridges Cancer Genomics Cloud ](http://www.cancergenomicscloud.org/)$$,$$[ISB Cancer Genomics Cloud ](https://isb-cgc.appspot.com/)$$, $$[Terra ](https://terra.bio/)$$),
+    - paragraph: "The CRDC has three Cloud Resources ($$[Seven Bridges Cancer Genomics Cloud](http://www.cancergenomicscloud.org/)$$,$$[ISB Cancer Genomics Cloud ](https://isb-cgc.appspot.com/)$$, $$[Terra ](https://terra.bio/)$$),
         each providing analysis platforms for the community to use when working with CRDC data."
     - paragraph: "These cloud-based platforms eliminate the need for researchers to download and store extremely large data sets by allowing them to bring
         analysis tools to the data in the cloud, instead of the traditional process of bringing the data to the tools on local hardware. The Cloud Resources 
@@ -52,18 +45,17 @@
 - page: "/developers"
   title: "Developers"
   content:
-    - paragraph: "The CTDC System features two read-only API’s that are available for public consumption: GraphQL and REST:"
-    - paragraph: "http://XYZ.cancer.gov/v1/graphql/"
-    - paragraph: "http://XYZ.cancer.gov/v1/REST"
+    - paragraph: "The CTDC System features a GraphQL API to enable querying of the entire data model."
+    - paragraph: "https://trialcommons-dev.cancer.gov/v1/graphql/"
     - paragraph: "The CTDC metadata is open to the public and will not require authentication to the system. However, some clinical data and all Data Files are not public so require permission."
-    - paragraph: "Users can query the CTDC data via Graphical User Interface (GUI) or APIs. The GUI provides users a distilled set of parameters (faceted querying) they can use to explore the CTDC data. The APIs provide access to the full collection of parameters as seen in the $$[CTDC Data Model](https://github.com/CBIIT/icdc-codebase)$$"
-    - paragraph: "These APIs are provided “as is”; there are no warranties or conditions arising out of usage of these services. "
+    - paragraph: "Users can query the CTDC data via Graphical User Interface (GUI) or API. The GUI provides users a distilled set of parameters (faceted querying) they can use to explore a subset of the CTDC data model. The API provide access to the full collection of parameters as seen in the $$[CTDC Data Model](https://github.com/CBIIT/icdc-codebase)$$."
+    - paragraph: "The API is provided “as is”; there are no warranties or conditions arising out of usage of these services. "
     - paragraph: "$$#GITHUB:#$$"
-    - paragraph: "As a resource for the public and cancer research, $$[The CTDC GitHub repo](https://github.com/CBIIT/ctdc-codebase)$$ is available for research,
+    - paragraph: "As a resource for the public and cancer research, $$[the CTDC GitHub repo](https://github.com/CBIIT/ctdc-codebase)$$ is available for research,
         usage, forking, and pull requests. The codebase is intended for sharing and building frameworks for related initiatives 
         and projects. The CTDC GitHub repo has documentation about how to access the system, including endpoints and recommendations for 
         tools and example queries. Both the project and documentation are currently maintained and updated. "
-    - paragraph: "CTDC is based on a Graph database, and features a GraphQL API (Java), a REST API (Java) and a React front-end (JavaScript). 
+    - paragraph: "CTDC is based on a Graph database, and features a GraphQL API (Java) and a React front-end (JavaScript). 
         Each tier in the application stack is designed to be modular and adaptable for a variety of use-cases and scenarios. "
 - page: '/support'
   title: "Support"
@@ -76,9 +68,6 @@
     - paragraph: "STEP 1: Request access through the NCTN Data Archive site."
     - paragraph: "STEP 2: Request access through dbGaP."
     - paragraph: "Once access has been granted, users will be able to view and work with the CTDC data files and clinical information in one of the Cancer Research Data Common’s analysis resources."
-    - paragraph: "Projects need not be complete to start the request. Indeed, working with the ICDC before defining your data 
-        collection processes can be beneficial, as the ICDC can help advise on best practices that will enable more 
-        efficient and effective submission of the data. "
     - paragraph: "$$#STEP 1:#$$"
     - paragraph: "Navigate to the $$[NCTN/NCORP Data Archive](https://nctn-data-archive.nci.nih.gov)$$ site. If you do not have an NCTN account, please create one. Once registered you will be able to request access to the trial of interest. It is suggested to use either the NCT Trial Number or the PubMed ID to search for the trial of interest- each trial in CTDC has an associated NCT Trail number and PubMed ID. A $$[PDF document](https://nctn-drupal8-prod.nci.nih.gov/sites/default/files/RequestPDF.pdf)$$ is available detailing the steps for both registration and access requesting."
     - paragraph: "$$#STEP 2:#$$"
@@ -93,7 +82,7 @@
         to the research community. The CTDC is part of the Cancer Research Data Commons (CRDC), an initiative from 
         NCI’s Center for Biomedical Informatics and Information Technology (CBIIT). Bioinformatic analysis of the 
         CTDC data is accomplished using the CRDC $$[Cloud Resources](https://datascience.cancer.gov/data-commons/cloud-resources)$$."
-    - paragraph: "Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is focused on software engineering 
+    - paragraph: "Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is focused on data science that includes software engineering 
         and data handling."
 - page: '/ctdc-data-model'
   title: 'CTDC Data Model'
@@ -122,7 +111,8 @@
         properties are available for inspection and querying beyond those presented on the front-end. "
     - paragraph: "Additionally, the CTDC Data Model serves as a template for similar initiatives and data structures, 
         including graph-based database schemas. The model will continue to evolve as data needs are further discerned. "
-    - paragraph: "The tool used to generate this visual may be sourced on Github at: https://github.com/CBIIT/icdc-model-tool"
+    - paragraph: "The tool used to generate this visual may be sourced on Github at: https://github.com/CBIIT/ctdc-model"
+    - paragraph: "The entire CTDC data model can be queried via API: https://trialcommons-dev.cancer.gov/v1/graphql/"
 - page: '/data-dictionary'
   title: 'CTDC Data Dictionary '
   content:
