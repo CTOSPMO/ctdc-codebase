@@ -264,11 +264,12 @@ class selectedFilesView extends Component {
         ));
 
         globalData = selectedFiles.map((obj) => ({
-          caseId: obj[0],
-          fileName: obj[1],
+          caseId: obj[0].props.children[1],
+          fileName: obj[1].props.children[1],
           uuid: obj[2],
           md5Sum: obj[3],
         }));
+
         return '';
       },
       customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
@@ -343,7 +344,7 @@ class selectedFilesView extends Component {
                   ref={this.downloadButton}
                   onClick={downloadJson}
                 >
-              download manifest
+                  download manifest
                 </button>
               </div>
             </div>
