@@ -209,7 +209,7 @@ const Cases = ({ classes, data }) => {
     // Find the newly added cases by comparing
     // existing caseIds and selectedCaseIds
     const uniqueCases = caseIds !== null ? selectedCaseIds.filter(
-      (e) => !caseIds.find((a) => e === a.case_id),
+      (e) => !caseIds.find((a) => e === a),
     ).length : selectedCaseIds.length;
     if (uniqueCases > 0) {
       openSnack(uniqueCases);
@@ -278,7 +278,7 @@ const Cases = ({ classes, data }) => {
           <span>
             {snackbarState.value}
             {' '}
-Case(s) successfully added to the My Cases list
+            Case(s) successfully added to the My Cases list
           </span>
 )}
       />
@@ -289,7 +289,7 @@ Case(s) successfully added to the My Cases list
 
         <Grid container>
           <Grid item xs={12} className={classes.caseTitle}>
-           Cases
+            Cases
           </Grid>
           <Grid item xs={12}>
             <MUIDataTable
@@ -307,7 +307,7 @@ Case(s) successfully added to the My Cases list
             onClick={exportCases}
             className={classes.saveButton}
           >
-               SAVE TO MY CASES
+            SAVE TO MY CASES
           </button>
         </Grid>
       </div>
