@@ -596,6 +596,7 @@ const styles = (theme) => ({
     float: 'left',
     marginTop: '-6px',
     width: '82px',
+    filter: 'drop-shadow( 2px 2px 2px rgba(0, 0, 0, 0.2))',
   },
   detailContainer: {
     maxWidth: theme.custom.maxContentWidth,
