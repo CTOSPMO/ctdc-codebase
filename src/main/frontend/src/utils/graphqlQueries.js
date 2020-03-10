@@ -184,3 +184,9 @@ export const STATS_QUERY = gql`{
   numberOfFiles
   }
   `;
+export const LANDING_QUERY = gql`{
+  numberOfCases
+  numberOfDiagnoses
+  numberOfFiles
+  }
+  `;
