@@ -241,7 +241,6 @@ const styles = (theme) => ({
     fontFamily: 'Raleway',
     fontSize: '11px',
     letterSpacing: '1.25px',
-    fontWeight: '800',
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
