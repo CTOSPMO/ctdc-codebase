@@ -277,12 +277,12 @@ const Cases = ({ classes, data }) => {
         autoHideDuration={3000}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={(
-          <div>
+          <div className={classes.snackBarMessage}>
             <span>
               <SuccessOutlinedIcon />
               {' '}
             </span>
-            <span className={classes.snackBarMessage}>
+            <span className={classes.snackBarText}>
               {snackbarState.value}
               {' '}
               Case(s) successfully added to the My Cases list
@@ -461,11 +461,11 @@ const styles = (theme) => ({
       backgroundColor: '#4CAF50',
       padding: '6px 80px 0px',
     },
-    '& > div > div > div': {
-      display: 'flex',
-    },
   },
   snackBarMessage: {
+    display: 'flex',
+  },
+  snackBarText: {
     paddingLeft: '10px',
   },
 });
