@@ -55,7 +55,7 @@ const InteractiveHero = ({ classes, statsData }) => {
         </div>
         <div className={classes.trialsText}>
         Number of Diagnoses in CTDC&nbsp;=&nbsp;~
-          {statsData.numberOfTrials}
+          {statsData.numberOfDiagnoses}
           +
         </div>
       </div>
