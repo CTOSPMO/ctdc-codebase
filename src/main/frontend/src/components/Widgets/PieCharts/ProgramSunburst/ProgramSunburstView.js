@@ -2,12 +2,6 @@ import React, { PureComponent } from 'react';
 import { Sunburst, LabelSeries } from 'react-vis';
 import { withStyles } from '@material-ui/core';
 
-// const LABEL_STYLE = {
-//   fontSize: '10px',
-//   textAnchor: 'middle',
-//   fill: 'white',
-//   fontFamily: '"Open Sans", sans-serif',
-// };
 
 function getKeyPath(node) {
   if (!node.parent) {
@@ -32,6 +26,25 @@ function updateData(d, keyPath) {
   };
 
   return data;
+}
+
+
+// find the caseSize of a given title
+function findCaseSizeOfTitle(data, title) {
+  if (data.title !== title) {
+    if (data.children) {
+      let match = 0;
+      data.children.forEach((d) => {
+        const res = findCaseSizeOfTitle(d, title);
+        if (res !== 0) {
+          match = res;
+        }
+      });
+      return match;
+    }
+    return 0;
+  }
+  return data.caseSize;
 }
 
 
@@ -69,14 +82,15 @@ class ProgramSunburst extends PureComponent {
     const {
       width, height, data, textColor, classes,
     } = this.props;
-    if (data.key !== widgetData.key) {
-      this.setState({
-        widgetData: data,
-        size,
-        title,
-        caseSize,
-      });
-    }
+    // update the caseSize  associated with title
+
+
+    this.setState({
+      widgetData: data,
+      size,
+      title,
+      caseSize: findCaseSizeOfTitle(data, title),
+    });
 
     return (
       <>

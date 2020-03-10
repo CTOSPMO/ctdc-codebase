@@ -19,7 +19,7 @@ const columns = (classes) => [
       filter: false,
       sortDirection: 'asc',
       customBodyRender: (value) => (
-        <div>
+        <div className={classes.tableCell1}>
           {' '}
           <Link to={`/case/${value}`} className={classes.link}>{value}</Link>
           {' '}
@@ -34,7 +34,7 @@ const columns = (classes) => [
       filter: false,
       sortDirection: 'asc',
       customBodyRender: (value, tableMeta) => (
-        <div>
+        <div className={classes.tableCell2}>
           {' '}
           <Link to={`/trial/${tableMeta.rowData[8]}`} className={classes.link}>{value}</Link>
           {' '}
@@ -42,12 +42,84 @@ const columns = (classes) => [
       ),
     },
   },
-  { name: 'arm_id', label: 'Arm' },
-  { name: 'arm_drug', label: 'Arm Treatment' },
-  { name: 'disease', label: 'Diagnosis' },
-  { name: 'gender', label: 'Gender' },
-  { name: 'race', label: 'Race' },
-  { name: 'ethnicity', label: 'Ethnicity' },
+  {
+    name: 'arm_id',
+    label: 'Arm',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell3}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
+  {
+    name: 'arm_drug',
+    label: 'Arm Treatment',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell4}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
+  {
+    name: 'disease',
+    label: 'Diagnosis',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell5}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
+  {
+    name: 'gender',
+    label: 'Gender',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell6}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
+  {
+    name: 'race',
+    label: 'Race',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell7}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
+  {
+    name: 'ethnicity',
+    label: 'Ethnicity',
+    options: {
+      customBodyRender: (value) => (
+        <div className={classes.tableCell8}>
+          {' '}
+          {value}
+          {' '}
+        </div>
+      ),
+    },
+  },
   {
     name: 'clinical_trial_id',
     label: 'Trial ID',
@@ -61,7 +133,7 @@ const columns = (classes) => [
       filter: false,
       sort: false,
       customHeadRender: () => (
-        <th className={classes.tableheadRemove}>
+        <th className={classes.tableCell9}>
           <span
             role="button"
             className={classes.removeLabel}
@@ -251,7 +323,7 @@ const styles = (theme) => ({
   removeLabel: {
     cursor: 'text',
   },
-  tableheadRemove: {
+  tableCell9: {
     cursor: 'text',
     top: '0px',
     left: '0px',
@@ -278,6 +350,43 @@ const styles = (theme) => ({
   snackBarMessage: {
     paddingLeft: '10px',
   },
+  tableCell1: {
+    width: '110px',
+    paddingLeft: '20px',
+    hyphens: 'auto',
+  },
+  tableCell2: {
+    width: '105px',
+    hyphens: 'auto',
+  },
+  tableCell3: {
+    width: '60px',
+    hyphens: 'auto',
+  },
+  tableCell4: {
+    width: '150px',
+    hyphens: 'auto',
+  },
+  tableCell5: {
+    width: '220px',
+    hyphens: 'auto',
+  },
+  tableCell6: {
+    width: '90px',
+    hyphens: 'auto',
+  },
+  tableCell7: {
+    width: '120px',
+    hyphens: 'auto',
+    wordBreak: 'break-word',
+
+  },
+  tableCell8: {
+    width: '100px',
+    hyphens: 'auto',
+    wordBreak: 'break-word',
+  },
+
 });
 
 export default withStyles(styles, { withTheme: true })(SelectedCasesView);
