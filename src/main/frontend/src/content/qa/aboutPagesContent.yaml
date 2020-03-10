@@ -96,7 +96,7 @@
     - paragraph: "The CTDC will adhere to $$[FAIR](https://www.go-fair.org/fair-principles/)$$ principles of data stewardship: Findable, Accessible, 
         Interoperable, and Reusable. Please credit the ICDC in your manuscript. When citing individual projects, 
         please refer to the attribution policies of the project when available. "
-    - paragraph: "$$#LICENCE#$$"
+    - paragraph: "$$#LICENSE#$$"
     - paragraph: "Data made available through the CTDC is for research purposes only. The CTDC provides researchers with 
         access to data from canine cancer studies to enable exploratory analysis that cannot be considered definitive for 
         outcomes. All data is publicly available. "
