@@ -175,7 +175,7 @@ const SelectedCasesView = ({ data, classes }) => {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={(
           <div>
-            <span className={classes.snackBarIcon}>
+            <span>
               <SuccessOutlinedIcon />
               {' '}
             </span>
@@ -274,8 +274,6 @@ const styles = (theme) => ({
     '& > div > div > div': {
       display: 'flex',
     },
-  },
-  snackBarIcon: {
   },
   snackBarMessage: {
     paddingLeft: '10px',

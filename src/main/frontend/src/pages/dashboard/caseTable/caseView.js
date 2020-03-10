@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MUIDataTable from 'mui-datatables';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
+import SuccessOutlinedIcon from '../../../utils/SuccessOutlined';
 import CustomFooter from './customFooter';
 import { toggleCheckBox } from '../dashboardState';
 import { receiveCases } from '../../selectedCases/selectedCasesState';
@@ -270,16 +271,23 @@ const Cases = ({ classes, data }) => {
   return (
     <>
       <Snackbar
+        className={classes.snackBar}
         open={snackbarState.open}
         onClose={closeSnack}
         autoHideDuration={3000}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={(
-          <span>
-            {snackbarState.value}
-            {' '}
-            Case(s) successfully added to the My Cases list
-          </span>
+          <div>
+            <span>
+              <SuccessOutlinedIcon />
+              {' '}
+            </span>
+            <span className={classes.snackBarMessage}>
+              {snackbarState.value}
+              {' '}
+              Case(s) successfully added to the My Cases list
+            </span>
+          </div>
 )}
       />
       <div id="table_cases">
@@ -447,6 +455,18 @@ const styles = (theme) => ({
     minWidth: '211px',
     overflow: 'hidden',
     wordBreak: 'break-word',
+  },
+  snackBar: {
+    '& > div': {
+      backgroundColor: '#4CAF50',
+      padding: '6px 80px 0px',
+    },
+    '& > div > div > div': {
+      display: 'flex',
+    },
+  },
+  snackBarMessage: {
+    paddingLeft: '10px',
   },
 });
 
