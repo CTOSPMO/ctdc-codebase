@@ -153,7 +153,7 @@ const styles = (theme) => ({
     color: 'black',
     fontFamily: 'Lato',
     fontSize: '13px',
-    fontWeight: '600',
+    fontWeight: '800',
     lineSpacing: '1px',
     display: 'block',
     marginTop: '13px',
