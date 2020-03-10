@@ -40,7 +40,7 @@ const Trials = ({ classes, data }) => {
       options: {
         filter: false,
         customBodyRender: (value, tableMeta) => (
-          <div className={classes.tb}>
+          <div className={classes.tableCell1}>
             <Link className={classes.link} to={`/trial/${tableMeta.rowData[1]}`}>{value}</Link>
           </div>
         ),
@@ -49,15 +49,48 @@ const Trials = ({ classes, data }) => {
     {
       name: 'clinical_trial_id',
       label: 'Trial ID',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell2}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
     },
-    { name: 'clinical_trial_short_name', label: 'Trial Name' },
-    { name: 'number_of_arms', label: 'Arms' },
+    {
+      name: 'clinical_trial_short_name',
+      label: 'Trial Name',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell3}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'number_of_arms',
+      label: 'Arms',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell4}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
     {
       name: 'number_of_cases',
       label: 'Cases',
       options: {
         customBodyRender: (value, tableMeta) => (
-          <div>
+          <div className={classes.tableCell5}>
             {' '}
             <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectTo(tableMeta.rowData[0])}>{value}</Link>
             {' '}
@@ -140,9 +173,7 @@ const Trials = ({ classes, data }) => {
 };
 
 const styles = (theme) => ({
-  tb: {
-    paddingLeft: '25px',
-  },
+
   link: {
     textDecoration: 'none',
     fontWeight: 'bold',
@@ -214,6 +245,22 @@ const styles = (theme) => ({
   },
   tableDiv: {
     margin: 'auto',
+  },
+  tableCell1: {
+    paddingLeft: '25px',
+    width: '230px',
+  },
+  tableCell2: {
+    width: '230px',
+  },
+  tableCell3: {
+    width: '530px',
+  },
+  tableCell4: {
+    width: '140px',
+  },
+  tableCell5: {
+    width: '140px',
   },
 });
 
