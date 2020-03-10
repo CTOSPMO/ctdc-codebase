@@ -129,17 +129,99 @@ class selectedFilesView extends Component {
 
     const columns = [
 
-      { name: 'case_id', label: 'Case ID', sortDirection: 'asc' },
-      { name: 'file_name', label: 'File Name', sortDirection: 'asc' },
-      { name: 'file_type', label: 'File Type' },
-      { name: 'parent', label: 'Association' },
-      { name: 'file_description', label: 'Description' },
-      { name: 'file_format', label: 'Format' },
+      {
+        name: 'case_id',
+        label: 'Case ID',
+        sortDirection: 'asc',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell1}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
+      {
+        name: 'file_name',
+        label: 'File Name',
+        sortDirection: 'asc',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell2}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
+      {
+        name: 'file_type',
+        label: 'File Type',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell3}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
+      {
+        name: 'parent',
+        label: 'Association',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell4}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
+      {
+        name: 'file_description',
+        label: 'Description',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell5}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
+      {
+        name: 'file_format',
+        label: 'Format',
+        options: {
+          customBodyRender: (value) => (
+            <div className={classes.tableCell6}>
+              {' '}
+              {value}
+              {' '}
+            </div>
+          ),
+        },
+      },
       {
         name: 'file_size',
         label: 'Size',
         options: {
-          customBodyRender: (bytes) => (formatBytes(bytes)),
+          customBodyRender(bytes) {
+            return (
+              <div className={classes.tableCell7}>
+                {' '}
+                {formatBytes(bytes)}
+                {' '}
+              </div>
+            );
+          },
         },
       },
       {
@@ -147,6 +229,7 @@ class selectedFilesView extends Component {
         label: 'UUID',
         options: {
           display: false,
+
         },
       },
       {
@@ -181,11 +264,12 @@ class selectedFilesView extends Component {
         ));
 
         globalData = selectedFiles.map((obj) => ({
-          caseId: obj[0],
-          fileName: obj[1],
+          caseId: obj[0].props.children[1],
+          fileName: obj[1].props.children[1],
           uuid: obj[2],
           md5Sum: obj[3],
         }));
+
         return '';
       },
       customFooter: (count, page, rowsPerPage, changeRowsPerPage, changePage) => (
@@ -260,7 +344,7 @@ class selectedFilesView extends Component {
                   ref={this.downloadButton}
                   onClick={downloadJson}
                 >
-              download manifest
+                  download manifest
                 </button>
               </div>
             </div>
@@ -320,6 +404,27 @@ const styles = (theme) => ({
     marginLeft: '3%',
     marginRight: '3%',
     paddingBottom: '20px',
+  },
+  tableCell1: {
+    width: '130px',
+  },
+  tableCell2: {
+    width: '300px',
+  },
+  tableCell3: {
+    width: '190px',
+  },
+  tableCell4: {
+    width: '170px',
+  },
+  tableCell5: {
+    width: '120px',
+  },
+  tableCell6: {
+    width: '80px',
+  },
+  tableCell7: {
+    width: '80px',
   },
 });
 export default withStyles(styles, { withTheme: true })(selectedFilesView);

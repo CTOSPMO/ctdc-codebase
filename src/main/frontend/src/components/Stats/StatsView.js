@@ -26,14 +26,14 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold">
+                <Typography weight="bold" size="sm"  color="textWithBackground">
                       TRIALS:
                   {' '}
                   {' '}
                 </Typography>
               </div>
               <div id="trials_count" className={classes.floatRight}>
-                <Typography color="primary" weight="bold">
+                <Typography color="primary" weight="bold" size="sm">
                   {data.numberOfTrials ? data.numberOfTrials : 0}
                 </Typography>
               </div>
@@ -49,14 +49,14 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold">
+                <Typography weight="bold" size="sm" color="textWithBackground">
                       CASES:
                   {' '}
                   {' '}
                 </Typography>
               </div>
               <div id="cases_count" className={classes.floatRight}>
-                <Typography color="primary" weight="bold">
+                <Typography color="primary" weight="bold" size="sm">
                   {data.numberOfCases ? data.numberOfCases : 0}
                 </Typography>
               </div>
@@ -73,14 +73,14 @@ const StatsView = ({ classes, data }) => (
             </div>
             <div className={classes.statsText}>
               <div className={classes.floatLeft}>
-                <Typography weight="bold">
+                <Typography weight="bold" size="sm" color="textWithBackground">
                       FILES:
                   {' '}
                   {' '}
                 </Typography>
               </div>
               <div id="files_count" className={classes.floatRight}>
-                <Typography weight="bold" color="primary">
+                <Typography weight="bold" color="primary" size="sm">
                   {data.numberOfFiles ? data.numberOfFiles : 0}
                 </Typography>
               </div>
@@ -133,10 +133,13 @@ const styles = (theme) => ({
   },
   floatLeft: {
     float: 'left',
+    marginTop: '3px',
+    letterSpacing: '1px',
   },
   floatRight: {
     float: 'right',
     marginLeft: '6px',
+    marginTop: '3px',
   },
   statsMaxWidth: {
     display: 'flex',

@@ -53,13 +53,12 @@ const Layout = ({ classes, isSidebarOpened }) => (
             <Route path="/trial/:id" component={TrialDetail} />
             <Route path="/case/:id" component={CaseDetail} />
             <Route path="/purpose" component={About} />
-            <Route path="/steeringCommittee" component={About} />
             <Route path="/crdc" component={About} />
             <Route path="/icdcData" component={About} />
             <Route path="/developers" component={About} />
             <Route path="/support" component={About} />
             <Route path="/request-access" component={About} />
-
+            <Route path="/data-dictionary" component={About} />
             <Route component={Error} />
           </Switch>
           <Footer data={{ isSidebarOpened }} />
