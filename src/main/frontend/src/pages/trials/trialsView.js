@@ -216,10 +216,9 @@ const styles = (theme) => ({
   },
   headerMainTitle: {
     fontFamily: 'Lato',
-    fontWeight: 'bold',
     letterSpacing: '0.025em',
     color: '#4B619A',
-    fontSize: '28px',
+    fontSize: '24pt',
     position: 'absolute',
     marginTop: '14px',
     lineHeight: '25px',
@@ -236,8 +235,9 @@ const styles = (theme) => ({
     position: 'absolute',
     float: 'left',
     marginLeft: '-13px',
-    width: '83px',
+    width: '82px',
     zIndex: '999',
+    filter: 'drop-shadow( 2px 2px 2px rgba(0, 0, 0, 0.2))',
   },
   tableContainer: {
     background: '#eee',
