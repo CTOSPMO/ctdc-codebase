@@ -25,23 +25,6 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 
-const columns = [
-
-  { name: 'file_name', label: 'File Name', sortDirection: 'asc' },
-  { name: 'file_type', label: 'File Type' },
-  { name: 'parent', label: 'Association' },
-  { name: 'file_description', label: 'Description' },
-  { name: 'file_format', label: 'Format' },
-  {
-    name: 'file_size',
-    label: 'Size',
-    options: {
-      customBodyRender: (bytes) => (formatBytes(bytes)),
-    },
-  },
-];
-
-
 const options = (classes) => ({
   selectableRows: false,
   search: false,
@@ -85,6 +68,91 @@ const CaseDetail = ({ classes, data }) => {
     isALink: true,
   }];
 
+
+  const columns = [
+
+    {
+      name: 'file_name',
+      label: 'File Name',
+      sortDirection: 'asc',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell1}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'file_type',
+      label: 'File Type',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell2}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'parent',
+      label: 'Association',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell3}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'file_description',
+      label: 'Description',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell4}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'file_format',
+      label: 'Format',
+      options: {
+        customBodyRender: (value) => (
+          <div className={classes.tableCell5}>
+            {' '}
+            {value}
+            {' '}
+          </div>
+        ),
+      },
+    },
+    {
+      name: 'file_size',
+      label: 'Size',
+      options: {
+        customBodyRender(bytes) {
+          return (
+            <div className={classes.tableCell6}>
+              {' '}
+              {formatBytes(bytes)}
+              {' '}
+            </div>
+          );
+        },
+      },
+    },
+  ];
   return (
     <>
       <StatsView data={stat} />
@@ -475,6 +543,25 @@ const styles = (theme) => ({
     '&:visited': {
       color: '#9F3D26',
     },
+  },
+  tableCell1: {
+    paddingLeft: '25px',
+    width: '440px',
+  },
+  tableCell2: {
+    width: '260px',
+  },
+  tableCell3: {
+    width: '220px',
+  },
+  tableCell4: {
+    width: '200px',
+  },
+  tableCell5: {
+    width: '110px',
+  },
+  tableCell6: {
+    width: '110px',
   },
 });
 
