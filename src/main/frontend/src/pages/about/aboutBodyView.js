@@ -5,98 +5,138 @@ import Stats from '../../components/Stats/AllStatsController';
 import externalIcon from '../../assets/about/About-ExternalLink.svg';
 import submissionGuide from '../../assets/footer/ICDC_DGAB_Guidelines.pdf';
 
-const AboutBody = ({ classes, data }) => (
-  <>
-    <Stats />
-    <AboutHeader title={data.title} />
-    <div id="about_body" className={classes.container}>
-      <Grid container spacing={16} direction="row" className={classes.aboutSection}>
-        <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSection}>
-          <img className={classes.img} src={data.img} alt="about" />
-        </Grid>
-        <Grid item lg={9} md={9} sm={12} xs={12} className={classes.rightSection}>
-          {data.content ? data.content.map((paragraphObj) => (
-            <>
-              <div className={classes.text}>
-                { paragraphObj.paragraph.split('$$').map((splitedParagraph) => {
+const AboutBody = ({ classes, data }) => {
+  function boldText(text) {
+    const boldedText = text.split('$$').map((splitedText) => {
+      if (splitedText != null && (/\*(.*)\*/.test(splitedText))) {
+        return (<span className={classes.title}>{splitedText.match(/\*(.*)\*/).pop()}</span>);
+      }
+      return splitedText;
+    });
+    return boldedText;
+  }
+  return (
+    <>
+      <Stats />
+      <AboutHeader title={data.title} />
+      <div id="about_body" className={classes.container}>
+        <Grid container spacing={16} direction="row" className={classes.aboutSection}>
+          <Grid item lg={3} md={3} sm={12} xs={12} className={classes.leftSection}>
+            <img className={classes.img} src={data.img} alt="about" />
+          </Grid>
+          <Grid item lg={9} md={9} sm={12} xs={12} className={classes.rightSection}>
+            {data.content ? data.content.map((contentObj) => (
+              <>
+                {/* Ordered List with Numbers logic */}
+                {contentObj.listWithNumbers && (
+                <div className={classes.text}>
+                  {/* Numbered ordered list */}
+                  <ol>
+                    { contentObj.listWithNumbers.map((listObj) => (
+                      listObj.listWithAlpahbets ? (
+                        // Alphetised sub ordered list
+                        <ol type="a">
+                          {/* bolding text if necessary */}
+                          { listObj.listWithAlpahbets.map((listObj1) => <li>{listObj1.includes('$$') ? boldText(listObj1) : listObj1}</li>)}
+                        </ol>
+                      ) : <li>{listObj.includes('$$') ? boldText(listObj) : listObj}</li>
+                    ))}
+                  </ol>
+                </div>
+                )}
+                {/* Ordered List with Alphabets logic */}
+                {contentObj.listWithAlpahbets && (
+                <div className={classes.text}>
+                  {/* Alphabetised ordered list */}
+                  <ol type="a">
+                    { contentObj.listWithAlpahbets.map((listObj) => <li>{listObj.includes('$$') ? boldText(listObj) : listObj}</li>)}
+                  </ol>
+                </div>
+                )}
+                {/* Paragraphs */}
+                {contentObj.paragraph && (
+                <div className={classes.text}>
+                  { contentObj.paragraph.split('$$').map((splitedParagraph) => {
                   // Checking for regex ()[] pattern
-                  if (splitedParagraph != null && ((/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) || (/\((.+)\)\[(.+)\]/g.test(splitedParagraph)))) {
-                    return (
-                      <>
-                        <Link
-                          title={splitedParagraph.match(/\[(.*)\]/).pop()}
-                          target="_blank"
-                          rel="noreferrer"
-                          href={splitedParagraph.match(/\((.*)\)/).pop()}
-                          color="inherit"
-                          className={classes.link}
-                        >
-                          {splitedParagraph.match(/\[(.*)\]/).pop()}
+                    if (splitedParagraph != null && ((/\[(.+)\]\((.+)\)/g.test(splitedParagraph)) || (/\((.+)\)\[(.+)\]/g.test(splitedParagraph)))) {
+                      return (
+                        <>
+                          <Link
+                            title={splitedParagraph.match(/\[(.*)\]/).pop()}
+                            target="_blank"
+                            rel="noreferrer"
+                            href={splitedParagraph.match(/\((.*)\)/).pop()}
+                            color="inherit"
+                            className={classes.link}
+                          >
+                            {splitedParagraph.match(/\[(.*)\]/).pop()}
+                          </Link>
+                          <img
+                            src={externalIcon}
+                            alt="outbounnd web site icon"
+                            className={classes.linkIcon}
+                          />
+                        </>
+                      );
+                    }
+                    // For sub headings
+                    if (splitedParagraph != null && (/#(.*)#/.test(splitedParagraph))) {
+                      return (<div className={classes.title}>{splitedParagraph.match(/#(.*)#/).pop()}</div>);
+                    }
+                    // For bolding inline words
+                    if (splitedParagraph != null && (/\*(.*)\*/.test(splitedParagraph))) {
+                      return (<span className={classes.title}>{splitedParagraph.match(/\*(.*)\*/).pop()}</span>);
+                    }
+                    // For downloading Submission PDF
+                    if (splitedParagraph != null && (/{(.*)}/.test(splitedParagraph))) {
+                      return (
+                        <Link target="_blank" className={classes.link} href={submissionGuide}>
+                          {splitedParagraph.match(/{(.*)}/).pop()}
                         </Link>
-                        <img
-                          src={externalIcon}
-                          alt="outbounnd web site icon"
-                          className={classes.linkIcon}
-                        />
-                      </>
-                    );
-                  }
-                  // For sub headings
-                  if (splitedParagraph != null && (/#(.*)#/.test(splitedParagraph))) {
-                    return (<div className={classes.title}>{splitedParagraph.match(/#(.*)#/).pop()}</div>);
-                  }
-                  // For bolding inline words
-                  if (splitedParagraph != null && (/\*(.*)\*/.test(splitedParagraph))) {
-                    return (<span className={classes.title}>{splitedParagraph.match(/\*(.*)\*/).pop()}</span>);
-                  }
-                  // For downloading Submission PDF
-                  if (splitedParagraph != null && (/{(.*)}/.test(splitedParagraph))) {
-                    return (
-                      <Link target="_blank" className={classes.link} href={submissionGuide}>
-                        {splitedParagraph.match(/{(.*)}/).pop()}
-                      </Link>
-                    );
-                  }
-                  return splitedParagraph;
-                })}
-              </div>
-              <br />
-            </>
-          )) : ''}
-          { data.table && (
-          <div className={classes.tableDiv}>
-            <table className={classes.table}>
-              <thead className={classes.tableHeader}>
-                <tr className={classes.tableBodyRow}>
-                  <th className={classes.headerCell} aria-label="Index" />
-                  <th className={classes.headerCell}>Name</th>
-                  <th className={classes.headerCell}>Institution</th>
-                  <th className={classes.headerCell}>Affiliation</th>
-                  <th className={classes.headerCell}>SubCommitee(s)</th>
-                </tr>
-              </thead>
-              <tbody>
+                      );
+                    }
+                    return splitedParagraph;
+                  })}
+                </div>
+                )}
 
-                { data.table.map((rowObj, index) => (
-                  <>
-                    <tr className={classes.tableBodyRow}>
-                      <td className={classes.tableCell}>{index + 1}</td>
-                      <td className={classes.tableCell}>{rowObj.row[0].name}</td>
-                      <td className={classes.tableCell}>{rowObj.row[1].institution}</td>
-                      <td className={classes.tableCell}>{rowObj.row[2].affliation}</td>
-                      <td className={classes.tableCell}>{rowObj.row[3].subcommitee}</td>
-                    </tr>
-                  </>
-                )) }
-              </tbody>
-            </table>
-          </div>
-          )}
+                {/* Table logic */}
+                {contentObj.table && (
+                <div className={classes.tableDiv}>
+                  <table className={classes.table}>
+                    <thead className={classes.tableHeader}>
+                      <tr className={classes.tableBodyRow}>
+                        <th className={classes.headerCell} aria-label="Index" />
+                        { contentObj.table[0].head.map((rowObj) => (
+                          <>
+                            <th className={classes.headerCell}>{rowObj}</th>
+                          </>
+                        )) }
+                      </tr>
+                    </thead>
+                    <tbody>
+                      { contentObj.table[1].body.map((rowObj, index) => (
+                        <>
+                          <tr className={classes.tableBodyRow}>
+                            <td className={classes.tableCell}>{index + 1}</td>
+                            {/* eslint-disable-next-line max-len */}
+                            { rowObj.row.map((rowValue) => <td className={classes.tableCell}>{rowValue}</td>)}
+                          </tr>
+                        </>
+                      )) }
+                    </tbody>
+                  </table>
+                </div>
+                )}
+                <br />
+              </>
+            )) : ''}
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
-  </>
-);
+      </div>
+    </>
+  );
+};
 
 const styles = (theme) => ({
   container: {
