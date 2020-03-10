@@ -4,6 +4,7 @@ import MUIDataTable from 'mui-custom-datatables';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import SuccessOutlinedIcon from '../../utils/SuccessOutlined';
 import icon from '../../assets/icons/Icon-MyCases.svg';
 import CustomFooter from './customFooter';
 import { deleteCasesAction } from './selectedCasesState';
@@ -137,7 +138,7 @@ const columns = (classes) => [
             role="button"
             className={classes.removeLabel}
           >
-          REMOVE
+            REMOVE
           </span>
         </th>
       ),
@@ -239,16 +240,23 @@ const SelectedCasesView = ({ data, classes }) => {
         </div>
       </Grid>
       <Snackbar
+        className={classes.snackBar}
         open={snackbarState.open}
         onClose={closeSnackBar}
         autoHideDuration={1500}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={(
-          <span>
-            {snackbarState.value}
-            {' '}
-Case(s) successfully removed from the My Cases list
-          </span>
+          <div className={classes.snackBarMessage}>
+            <span>
+              <SuccessOutlinedIcon />
+              {' '}
+            </span>
+            <span className={classes.snackBarText}>
+              {snackbarState.value}
+              {' '}
+              Case(s) successfully removed from the My Cases list
+            </span>
+          </div>
 )}
       />
     </>
@@ -329,6 +337,18 @@ const styles = (theme) => ({
     borderBottom: '#4B619A 3px solid',
     letterSpacing: '0.014em',
     backgroundColor: '#ffffff',
+  },
+  snackBar: {
+    '& > div': {
+      backgroundColor: '#4CAF50',
+      padding: '6px 80px 0px',
+    },
+  },
+  snackBarMessage: {
+    display: 'flex',
+  },
+  snackBarText: {
+    paddingLeft: '10px',
   },
   tableCell1: {
     width: '110px',
