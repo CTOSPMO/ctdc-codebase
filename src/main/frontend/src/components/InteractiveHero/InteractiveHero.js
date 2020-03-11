@@ -34,17 +34,17 @@ const InteractiveHero = ({ classes, statsData }) => {
           </svg>
         </div>
         <div className={classes.casesText}>
-Cases
+        Number of Subject Cases in CTDC&nbsp;=&nbsp;
           {statsData.numberOfCases}
         </div>
       </div>
       <HorseShoe transformedHorseShoe={activeState.transformedHorseShoe} />
 
-      <div className={classes.trialsIcon} onMouseEnter={() => { setActiveState({ isActive: 'trails', transformedHorseShoe: FacingRight }); }}>
-        <CircularIcon isActive={activeState.isActive === 'trails'} InactiveImage={InActiveTrials} activeImage={ActiveTrials} />
+      <div className={classes.trialsIcon} onMouseEnter={() => { setActiveState({ isActive: 'trials', transformedHorseShoe: FacingRight }); }}>
+        <CircularIcon isActive={activeState.isActive === 'trials'} InactiveImage={InActiveTrials} activeImage={ActiveTrials} />
       </div>
       <div className={classnames({
-        [classes.hide]: activeState.isActive !== 'trails',
+        [classes.hide]: activeState.isActive !== 'trials',
       })}
       >
         <div className={classes.trialsSVG}>
@@ -54,8 +54,9 @@ Cases
           </svg>
         </div>
         <div className={classes.trialsText}>
-      Trials
-          {statsData.numberOfTrials}
+        Number of Diagnoses in CTDC&nbsp;=&nbsp;~
+          {statsData.numberOfDiagnoses}
+          +
         </div>
       </div>
       <div className={classes.filesIcon} onMouseEnter={() => { setActiveState({ isActive: 'files', transformedHorseShoe: FacingDown }); }}>
@@ -72,7 +73,7 @@ Cases
           </svg>
         </div>
         <div className={classes.filesText}>
-      Files
+        Number of Files in CTDC&nbsp;=&nbsp;
           {statsData.numberOfFiles}
         </div>
       </div>
@@ -106,7 +107,7 @@ const styles = () => ({
     left: '180px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   casesText: {
@@ -117,7 +118,7 @@ const styles = () => ({
     left: '250px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   trialsIcon: {
@@ -134,7 +135,7 @@ const styles = () => ({
     left: '370px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   trialsText: {
@@ -145,7 +146,7 @@ const styles = () => ({
     left: '400px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   filesIcon: {
@@ -162,7 +163,7 @@ const styles = () => ({
     left: '180px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   filesText: {
@@ -173,7 +174,7 @@ const styles = () => ({
     left: '300px',
     color: '#FFFFFF',
     fontFamily: 'Oswald',
-    fontSize: 22,
+    fontSize: 16,
     fontWeight: 500,
   },
   hide: {

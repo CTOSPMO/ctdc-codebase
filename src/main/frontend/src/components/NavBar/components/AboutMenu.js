@@ -77,13 +77,6 @@ const AboutMenu = ({ classes }) => {
             <NavLink
               className={classes.link}
               activeStyle={{ color: 'white' }}
-              to="/steeringCommittee"
-            >
-               Steering Committee
-            </NavLink>
-            <NavLink
-              className={classes.link}
-              activeStyle={{ color: 'white' }}
               to="/crdc"
             >
                CRDC & Analysis
@@ -94,6 +87,13 @@ const AboutMenu = ({ classes }) => {
               to="/model"
             >
                CTDC Data & Model
+            </NavLink>
+            <NavLink
+              className={classes.link}
+              activeStyle={{ color: 'white' }}
+              to="/data-dictionary"
+            >
+                CTDC Data Dictionary
             </NavLink>
             <NavLink
               className={classes.link}
@@ -153,7 +153,7 @@ const styles = (theme) => ({
     color: 'black',
     fontFamily: 'Lato',
     fontSize: '13px',
-    fontWeight: '600',
+    fontWeight: '800',
     lineSpacing: '1px',
     display: 'block',
     marginTop: '13px',

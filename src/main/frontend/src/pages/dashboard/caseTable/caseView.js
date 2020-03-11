@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MUIDataTable from 'mui-datatables';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
+import SuccessOutlinedIcon from '../../../utils/SuccessOutlined';
 import CustomFooter from './customFooter';
 import { toggleCheckBox } from '../dashboardState';
 import { receiveCases } from '../../selectedCases/selectedCasesState';
@@ -209,7 +210,7 @@ const Cases = ({ classes, data }) => {
     // Find the newly added cases by comparing
     // existing caseIds and selectedCaseIds
     const uniqueCases = caseIds !== null ? selectedCaseIds.filter(
-      (e) => !caseIds.find((a) => e === a.case_id),
+      (e) => !caseIds.find((a) => e === a),
     ).length : selectedCaseIds.length;
     if (uniqueCases > 0) {
       openSnack(uniqueCases);
@@ -270,16 +271,23 @@ const Cases = ({ classes, data }) => {
   return (
     <>
       <Snackbar
+        className={classes.snackBar}
         open={snackbarState.open}
         onClose={closeSnack}
         autoHideDuration={3000}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         message={(
-          <span>
-            {snackbarState.value}
-            {' '}
-Case(s) successfully added to the My Cases list
-          </span>
+          <div className={classes.snackBarMessage}>
+            <span>
+              <SuccessOutlinedIcon />
+              {' '}
+            </span>
+            <span className={classes.snackBarText}>
+              {snackbarState.value}
+              {' '}
+              Case(s) successfully added to the My Cases list
+            </span>
+          </div>
 )}
       />
       <div id="table_cases">
@@ -289,7 +297,7 @@ Case(s) successfully added to the My Cases list
 
         <Grid container>
           <Grid item xs={12} className={classes.caseTitle}>
-           Cases
+            Cases
           </Grid>
           <Grid item xs={12}>
             <MUIDataTable
@@ -307,7 +315,7 @@ Case(s) successfully added to the My Cases list
             onClick={exportCases}
             className={classes.saveButton}
           >
-               SAVE TO MY CASES
+            SAVE TO MY CASES
           </button>
         </Grid>
       </div>
@@ -447,6 +455,18 @@ const styles = (theme) => ({
     minWidth: '211px',
     overflow: 'hidden',
     wordBreak: 'break-word',
+  },
+  snackBar: {
+    '& > div': {
+      backgroundColor: '#4CAF50',
+      padding: '6px 80px 0px',
+    },
+  },
+  snackBarMessage: {
+    display: 'flex',
+  },
+  snackBarText: {
+    paddingLeft: '10px',
   },
 });
 
