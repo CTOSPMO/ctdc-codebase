@@ -289,6 +289,9 @@ export default {
         fontStyle: 'normal',
         fontSize: '11pt',
         fontWeight: 'bold',
+        '&:first-child': {
+          paddingLeft: '30px',
+        },
       },
       sortActive: {
         color: tableHeaderFontColor,

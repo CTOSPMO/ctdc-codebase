@@ -296,6 +296,7 @@ export default {
     },
     MUIDataTableHeadCell: {
       fixedHeader: {
+        position: 'relative',
         borderTop: tableHeaderBorder,
         borderBottom: tableHeaderBorder,
         color: tableHeaderFontColor,
