@@ -101,7 +101,8 @@ const Trials = ({ classes, data }) => {
   ];
 
   const options = () => ({
-    selectableRows: false,
+    selectableRows: 'none',
+    responsive: 'stacked',
     search: false,
     filter: false,
     searchable: false,

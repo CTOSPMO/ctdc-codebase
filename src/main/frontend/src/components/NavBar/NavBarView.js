@@ -92,7 +92,7 @@ const NavBar = ({
 
           {/* End Sidebar button */}
           <div id="navbar" className={classes.buttonContainer}>
-            <Button id="button_navbar_home" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+            <Button id="button_navbar_home" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -101,7 +101,7 @@ const NavBar = ({
               home
               </NavLink>
             </Button>
-            <Button id="button_navbar_trials" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+            <Button id="button_navbar_trials" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -112,7 +112,7 @@ const NavBar = ({
 
             </Button>
 
-            <Button id="button_navbar_cases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
+            <Button id="button_navbar_cases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRoot }}>
               <NavLink
                 className={classes.link}
                 activeStyle={{ borderBottom: '2px solid  #39C0F0' }}
@@ -141,7 +141,7 @@ const NavBar = ({
           </IconButton> */}
           {/* Start of Theme Switching Icon and logic */}
           <div className={classes.myCasesPosition}>
-            <Button id="button_navbar_mycases" disableRipple variant="h6" weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
+            <Button id="button_navbar_mycases" disableRipple weight="medium" className={classes.logotype} classes={{ root: classes.buttonRootNoRightPadding }}>
               <NavLink
                 className={classnames(classes.link, classes.myCasesLink)}
                 to="/myCases"

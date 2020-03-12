@@ -233,7 +233,8 @@ const Cases = ({ classes, data }) => {
 
 
   const options = () => ({
-    selectableRows: true,
+    selectableRows: 'multiple',
+    responsive: 'stacked',
     search: false,
     filter: false,
     searchable: false,

@@ -23,13 +23,13 @@ import InteractiveHero from '../../components/InteractiveHero/InteractiveHero';
 import cn from '../../utils/classNameConcat';
 
 
-const LandingController = ({ classes, statsData }) => (
+const LandingController = ({ classes, heroData }) => (
   <div className={classes.page}>
     <div className={classes.container}>
       <div className={classes.hero}>
         <Grid container spacing={16} direction="row">
           <div className={classes.heroImage} />
-          <InteractiveHero statsData={statsData} />
+          <InteractiveHero heroData={heroData} />
         </Grid>
       </div>
     </div>

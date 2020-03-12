@@ -8,6 +8,7 @@ export default {
 
 export const typography = {
   fontFamily: "'Lato Regular','Open Sans', 'sans-serif'",
+  useNextVariants: true,
 };
 
 export const overrides = {

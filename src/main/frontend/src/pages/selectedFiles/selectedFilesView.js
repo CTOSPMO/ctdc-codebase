@@ -243,7 +243,8 @@ class selectedFilesView extends Component {
 
 
     const options = () => ({
-      selectableRows: true,
+      selectableRows: 'multiple',
+      responsive: 'stacked',
       search: false,
       filter: false,
       searchable: false,

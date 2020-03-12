@@ -12,7 +12,7 @@ import FilesIcon from '../../assets/icons/stats/stats-bar-files.svg';
 
 
 const StatsView = ({ classes, data }) => (
-  <Grid container class={classes.statsContainer}>
+  <Grid container>
     <Grid item xs={12}>
       <Paper className={classes.paper}>
         <div id="stats_bar" container className={classes.statsMaxWidth}>

@@ -174,7 +174,8 @@ const SelectedCasesView = ({ data, classes }) => {
     }
   }
   const options = (cases) => ({
-    selectableRows: true,
+    selectableRows: 'multiple',
+    responsive: 'stacked',
     search: false,
     filter: false,
     searchable: false,
