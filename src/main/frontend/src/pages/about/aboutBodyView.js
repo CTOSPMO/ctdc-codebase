@@ -205,12 +205,7 @@ const styles = (theme) => ({
   tableBodyRow: {
     borderSpacing: '0',
     borderCollapse: 'collapse',
-    '&:nth-child(even)': {
-      color: '#3B607D',
-    },
-    '&:nth-child(odd)': {
-      color: '#3E7AAA',
-    },
+    color: '#3E7AAA',
   },
   tableCell: {
     fontFamily: theme.custom.fontFamily,

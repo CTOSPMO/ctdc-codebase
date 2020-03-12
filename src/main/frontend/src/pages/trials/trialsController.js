@@ -7,7 +7,7 @@ import { TRIALS_QUERY } from '../../utils/graphqlQueries';
 
 const container = () => (
   <Query query={TRIALS_QUERY}>
-    {({ data, loading, error }) => (loading ? <CircularProgress /> : (error ? <Typography variant="headline" color="warning" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
+    {({ data, loading, error }) => (loading ? <CircularProgress /> : (error ? <Typography variant="headline" color="error" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
       : <View data={data} />
     ))}
   </Query>

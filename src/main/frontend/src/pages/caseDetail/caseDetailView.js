@@ -26,7 +26,8 @@ function formatBytes(bytes, decimals = 2) {
 
 
 const options = (classes) => ({
-  selectableRows: false,
+  selectableRows: 'none',
+  responsive: 'stacked',
   search: false,
   filter: false,
   searchable: false,

@@ -13,7 +13,7 @@ import FacingDown from '../../assets/landing/animation/Dial_facing_down.svg';
 import FacingUp from '../../assets/landing/animation/Dial_facing_up.svg';
 import FacingRight from '../../assets/landing/animation/Dial_facing_right.svg';
 
-const InteractiveHero = ({ classes, statsData }) => {
+const InteractiveHero = ({ classes, heroData }) => {
   const [activeState, setActiveState] = React.useState({
     isActive: 'cases',
     transformedHorseShoe: FacingUp,
@@ -35,7 +35,7 @@ const InteractiveHero = ({ classes, statsData }) => {
         </div>
         <div className={classes.casesText}>
         Number of Subject Cases in CTDC&nbsp;=&nbsp;
-          {statsData.numberOfCases}
+          {heroData ? heroData.numberOfCases : 'error'}
         </div>
       </div>
       <HorseShoe transformedHorseShoe={activeState.transformedHorseShoe} />
@@ -55,7 +55,7 @@ const InteractiveHero = ({ classes, statsData }) => {
         </div>
         <div className={classes.trialsText}>
         Number of Diagnoses in CTDC&nbsp;=&nbsp;~
-          {statsData.numberOfDiagnoses}
+          {heroData ? heroData.numberOfDiagnoses : 'error'}
           +
         </div>
       </div>
@@ -74,7 +74,7 @@ const InteractiveHero = ({ classes, statsData }) => {
         </div>
         <div className={classes.filesText}>
         Number of Files in CTDC&nbsp;=&nbsp;
-          {statsData.numberOfFiles}
+          {heroData ? heroData.numberOfFiles : 'error'}
         </div>
       </div>
     </div>
@@ -88,7 +88,10 @@ const styles = () => ({
     '@media (min-width: 800px)': {
       left: 'calc(50%)',
     },
-    '@media (min-width: 1100px)': {
+    '@media (min-width: 1200px)': {
+      left: 'calc(60%)',
+    },
+    '@media (min-width: 1600px)': {
       left: 'calc(70%)',
     },
   },

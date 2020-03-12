@@ -10,7 +10,7 @@ const TrialDetailContainer = ({ match }) => (
     {({ data, loading, error }) => (
       loading ? <CircularProgress />
         : (
-          error || !data || !data.clinicalTrialByTrialId[0] ? <Typography variant="headline" color="warning" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
+          error || !data || !data.clinicalTrialByTrialId[0] ? <Typography variant="headline" color="error" size="sm">{error && `An error has occurred in loading stats component: ${error}`}</Typography>
             : <TrialView data={data} />
         )
     )}

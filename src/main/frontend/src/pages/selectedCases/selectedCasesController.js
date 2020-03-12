@@ -22,7 +22,7 @@ const selectedCasesController = () => {
         loading ? <CircularProgress />
           : (
             error || !data
-              ? <Typography variant="headline" color="warning" size="sm">{error && `An error has occurred in loading CART : ${error}`}</Typography>
+              ? <Typography variant="headline" color="error" size="sm">{error && `An error has occurred in loading CART : ${error}`}</Typography>
               : <SelectedCasesView data={data.casesInList === null || data.casesInList === '' ? [] : data.casesInList} />
           )
       )}
