@@ -77,13 +77,12 @@
 - page: '/purpose'
   title: "Purpose"
   content:
-    - paragraph: "The data in the CTDC is sourced from multiple different programs and projects; 
-        all focused on human subjects. The data is harmonized into an integrated data model and then made available 
-        to the research community. The CTDC is part of the Cancer Research Data Commons (CRDC), an initiative from 
-        NCI’s Center for Biomedical Informatics and Information Technology (CBIIT). Bioinformatic analysis of the 
+    - paragraph: "The CTDC is part of the Cancer Research Data Commons (CRDC), an initiative from 
+        NCI’s Center for Biomedical Informatics and Information Technology (CBIIT). The CTDC is focused on providing access to data from NCI's Precision Medicine Initiative which has the goal to provide clinicians with new tools to select the therapies that can be used in a more individualized approach with patients. CTDC is providing the community with access to data from the National Cancer Institute-Molecular Analysis for Therapy Choice
+(NCI-MATCH) project whose primary goal is to determine the percentage of patients whose tumors have a complete or partial response to treatment. Patients are enrolled using criteria that includes tumor genetics. All the data in CTDC is sourced from human subjects."
+    - paragraph: "The data in CTDC has been harmonized into an integrated data model and then made available 
+        to the research community. Bioinformatic analysis of the 
         CTDC data is accomplished using the CRDC $$[Cloud Resources](https://datascience.cancer.gov/data-commons/cloud-resources)$$."
-    - paragraph: "Within the FNLCR, the Biomedical Informatics and Data Science (BIDS) Directorate is focused on data science that includes software engineering 
-        and data handling."
 - page: '/ctdc-data-model'
   title: 'CTDC Data Model'
   content:
