@@ -64,7 +64,6 @@ const LandingController = ({ classes, heroData }) => (
                across multiple clinical trials. Data in the CTDC is sourced from multiple different
                programs and projects;
                all are focused on human subjects.
-               the canine subjects.
               </div>
               <div className={classes.aboutButtonSection}>
                 <div className={classes.aboutButtonLeft}>
