@@ -77,7 +77,7 @@ const Cases = ({ classes, data }) => {
 
   useEffect(() => {
     saveButton.current.disabled = true;
-    saveButton.current.style.color = 'rgb(0, 0, 0,0.26)';
+    saveButton.current.style.backgroundColor = 'rgb(0, 0, 0,0.12)';
   });
 
   const columns = [
