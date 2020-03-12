@@ -310,6 +310,7 @@ const styles = (theme) => ({
     marginLeft: '110px',
     paddingLeft: '3px',
     marginBottom: '-30px',
+    position: 'absolute',
   },
   tableTitleWizard: {
     width: '400px',
