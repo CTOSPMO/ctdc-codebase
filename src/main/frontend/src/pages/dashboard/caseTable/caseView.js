@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MUIDataTable from 'mui-datatables';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
+import wizardIcon from '../../../assets/icons/MyCases-Wizard-Step1.svg';
 import SuccessOutlinedIcon from '../../../utils/SuccessOutlined';
 import CustomFooter from './customFooter';
 import { toggleCheckBox } from '../dashboardState';
@@ -295,9 +296,17 @@ const Cases = ({ classes, data }) => {
           {bubbles}
         </div>
 
-        <Grid container>
-          <Grid item xs={12} className={classes.caseTitle}>
+        <Grid container className={classes.tableTitle}>
+          <Grid item xs={12}>
+            <div className={classes.tableTitleText}>
             Cases
+            </div>
+            <div className={classes.tableTitleWizard}>
+              <img
+                src={wizardIcon}
+                alt="CTDC MyCases Wizard"
+              />
+            </div>
           </Grid>
           <Grid item xs={12}>
             <MUIDataTable
@@ -354,15 +363,21 @@ const styles = (theme) => ({
       color: '#9F3D26',
     },
   },
-
-  caseTitle: {
+  tableTitle: {
+    backgroundColor: '#f5f5f5',
+  },
+  tableTitleText: {
     color: '#C32F30',
     fontSize: '25.2pt',
     fontStyle: 'normal',
     fontFamily: 'Raleway',
     letterSpacing: '0.025em',
-    backgroundColor: '#f5f5f5',
     padding: '10px 32px 8px 28px',
+    position: 'absolute',
+  },
+  tableTitleWizard: {
+    width: '400px',
+    float: 'right',
   },
   chips: {
     position: 'absolute',
