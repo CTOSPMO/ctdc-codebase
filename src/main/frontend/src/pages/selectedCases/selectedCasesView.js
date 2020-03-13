@@ -5,6 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SuccessOutlinedIcon from '../../utils/SuccessOutlined';
+import wizardIcon from '../../assets/icons/MyCases-Wizard-Step2.svg';
 import icon from '../../assets/icons/Icon-MyCases.svg';
 import CustomFooter from './customFooter';
 import { deleteCasesAction } from './selectedCasesState';
@@ -227,6 +228,12 @@ const SelectedCasesView = ({ data, classes }) => {
                   </span>
                 </div>
               </div>
+              <div className={classes.tableTitleWizard}>
+                <img
+                  src={wizardIcon}
+                  alt="CTDC MyCases Wizard"
+                />
+              </div>
             </div>
             <div />
             <div id="table_selected_cases" className={classes.tableWrapper}>
@@ -304,9 +311,14 @@ const styles = (theme) => ({
     marginLeft: '110px',
     paddingLeft: '3px',
     marginBottom: '-30px',
+    position: 'absolute',
+  },
+  tableTitleWizard: {
+    width: '400px',
+    float: 'right',
+    paddingTop: '15px',
   },
   header: {
-    paddingRight: '32px',
     borderBottom: '#4B619A 10px solid',
     height: '89px',
     maxWidth: '100%',
