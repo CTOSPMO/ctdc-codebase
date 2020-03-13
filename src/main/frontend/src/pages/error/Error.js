@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import {
   Grid, Paper, Typography, withStyles,
 } from '@material-ui/core';
+import errorBG800 from '../../assets/error/errorBG800.png';
+import errorBG1200 from '../../assets/error/errorBG1200.png';
+import errorBG1600 from '../../assets/error/errorBG1600.png';
+import errorBG2000 from '../../assets/error/errorBG2000.png';
+
 
 const Error = ({ classes }) => (
   <Grid container className={classes.container}>
@@ -24,11 +29,31 @@ to choose another direction.
 const styles = (theme) => ({
   container: {
     display: 'flex',
-    background: '#e7edf4',
     marginTop: '-49px',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    background: '#e7edf4',
+    '@media (min-width: 800px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${errorBG800})`,
+    },
+    '@media (min-width: 1200px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${errorBG1200})`,
+    },
+    '@media (min-width: 1600px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${errorBG1600})`,
+    },
+    '@media (min-width: 2000px)': {
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: '100% 100%',
+      background: `url(${errorBG2000})`,
+    },
     top: 0,
     left: 0,
   },
@@ -42,6 +67,7 @@ const styles = (theme) => ({
     width: '800px',
   },
   paperRoot: {
+    borderTop: '4px solid #417d96',
     boxShadow: 'none',
     background: '#e7edf4',
     display: 'flex',
@@ -61,7 +87,7 @@ const styles = (theme) => ({
     width: 500,
   },
   errorText: {
-    color: 'rgb(0, 76, 115);',
+    color: 'rgb(0, 76, 115)',
   },
 });
 
