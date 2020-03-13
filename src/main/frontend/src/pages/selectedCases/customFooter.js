@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const defaultFooterStyles = {
   background: '#DE5227',
-  borderRadius: '20px',
+  borderRadius: '35px',
   fontSize: '15px',
   padding: '10px 40px 10px 40px',
   maxHeight: '42px',

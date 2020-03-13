@@ -281,8 +281,9 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '-15px',
-    width: '100px',
+    marginTop: '-8.9px',
+    width: '82px',
+    filter: 'drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))',
   },
   tableWrapper: {
     margin: 'auto 3% auto 3%',
@@ -299,15 +300,14 @@ const styles = (theme) => ({
     fontWeight: 'bold',
     letterSpacing: '0.017em',
     color: '#DE5227',
-    fontSize: '28px',
-    lineHeight: '84px',
-    paddingLeft: '5px',
+    fontSize: '20pt',
+    lineHeight: '75px',
   },
   headerTitle: {
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
     float: 'left',
-    marginLeft: '110px',
+    marginLeft: '85px',
     paddingLeft: '3px',
     marginBottom: '-30px',
     position: 'absolute',
@@ -315,11 +315,11 @@ const styles = (theme) => ({
   tableTitleWizard: {
     width: '400px',
     float: 'right',
-    paddingTop: '15px',
+    paddingTop: '8px',
   },
   header: {
     borderBottom: '#4B619A 10px solid',
-    height: '89px',
+    height: '77px',
     maxWidth: '100%',
     marginLeft: '3%',
     marginRight: '3%',
@@ -331,6 +331,7 @@ const styles = (theme) => ({
     marginLeft: '3%',
     marginRight: '3%',
     paddingBottom: '20px',
+    background: 'white',
   },
   removeLabel: {
     cursor: 'text',
