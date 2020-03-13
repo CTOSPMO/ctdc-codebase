@@ -59,7 +59,7 @@ const Footer = ({ classes }) => {
             </li>
             <li>
               <Typography className={classes.footerText}>
-                <a href="mailto:CTDCHelpDesk@nih.gov" target="ctdc">Contact Us</a>
+                <a href="mailto:CTDCHelpDesk@mail.nih.gov" target="ctdc">Contact Us</a>
               </Typography>
             </li>
           </ul>
