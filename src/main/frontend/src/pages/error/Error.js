@@ -13,11 +13,11 @@ const Error = ({ classes }) => (
   <Grid container className={classes.container}>
     <Paper classes={{ root: classes.paperRoot }}>
       <div className={classes.errorCodeText}>404</div>
-      <Typography variant="h4" fontWeight="bold" color="white">PAGE NOT FOUND</Typography>
+      <Typography className={classes.boldText}>PAGE NOT FOUND</Typography>
       <div className={classes.errorTextRow}>
-        <Typography variant="h6" color="white" className={classes.errorText}>
+        <Typography className={classes.errorText}>
 The page you are looking for does not exist or another error has occured. Go back or head&nbsp;
-          <Link to="/">home</Link>
+          <Link className={classes.link} to="/">home</Link>
           {' '}
 to choose another direction.
         </Typography>
@@ -79,6 +79,10 @@ const styles = (theme) => ({
     paddingRight: theme.spacing.unit * 6,
     maxWidth: 800,
   },
+  boldText: {
+    fontSize: '.9em',
+    fontWeight: 'bolder',
+  },
   errorTextRow: {
     display: 'flex',
     flexDirection: 'column',
@@ -88,6 +92,10 @@ const styles = (theme) => ({
   },
   errorText: {
     color: 'rgb(0, 76, 115)',
+  },
+  link: {
+    color: '#417d96',
+    textDecoration: 'underline',
   },
 });
 
