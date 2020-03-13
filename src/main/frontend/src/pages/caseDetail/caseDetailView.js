@@ -378,10 +378,10 @@ const styles = (theme) => ({
     background: '#f3f3f3',
   },
   header: {
-    paddingLeft: '32px',
+    paddingLeft: '23px',
     paddingRight: '32px',
     borderBottom: '#7D7D7D 10px solid',
-    height: '88px',
+    height: '80px',
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
   },
@@ -390,13 +390,13 @@ const styles = (theme) => ({
     maxWidth: theme.custom.maxContentWidth,
     margin: 'auto',
     float: 'left',
-    marginLeft: '110px',
-    paddingLeft: '3px',
+    marginLeft: '90px',
+    width: 'calc(100% - 265px)',
   },
   headerMainTitle: {
     fontFamily: 'Lato',
     color: '#931D1D',
-    fontSize: '24px',
+    fontSize: '20pt',
     lineHeight: '24px',
     paddingLeft: '0px',
     fontWeight: '300',
@@ -437,8 +437,9 @@ const styles = (theme) => ({
   logo: {
     position: 'absolute',
     float: 'left',
-    marginTop: '-14px',
-    width: '100px',
+    marginTop: '-6px',
+    width: '82px',
+    filter: 'drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.2))',
   },
   detailContainer: {
     maxWidth: theme.custom.maxContentWidth,
@@ -530,7 +531,7 @@ const styles = (theme) => ({
     paddingBottom: '20px',
   },
   breadCrumb: {
-    paddingTop: '5px',
+    paddingTop: '23px',
   },
   paddingTop: {
     paddingTop: '36px',
