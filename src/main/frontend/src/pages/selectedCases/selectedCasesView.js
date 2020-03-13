@@ -33,7 +33,6 @@ const columns = (classes) => [
     label: 'Trial Code',
     options: {
       filter: false,
-      sortDirection: 'asc',
       customBodyRender: (value, tableMeta) => (
         <div className={classes.tableCell2}>
           {' '}
