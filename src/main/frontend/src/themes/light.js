@@ -392,6 +392,12 @@ export default {
         letterSpacing: '0.025em',
         fontStyle: 'normal',
       },
+      iconButton: {
+        marginRight: '2.8%',
+        '@media (max-width: 1600px)': {
+          marginRight: '1.49%',
+        },
+      },
     },
     MuiIconButton: {
       root: {
