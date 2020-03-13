@@ -25,7 +25,7 @@ export default {
   custom: {
     maxContentWidth: '1440px',
     maxContent: 'white',
-    bodyBackGround: 'white',
+    bodyBackGround: '#f2f2f2',
     cardBackGround: '#f0f6f8',
     fontFamilySans: '"Open Sans", sans-serif',
     footorBackground: '#325068',
@@ -200,7 +200,7 @@ export default {
       footerText: 'white',
     },
     background: {
-      default: '#fafafa',
+      default: '#f2f2f2',
       light: '#F3F5FF',
     },
   },
