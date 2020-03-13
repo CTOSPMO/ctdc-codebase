@@ -6,6 +6,7 @@ import purposeImg from '../../assets/about/About_Purpose.png';
 import CRDCImg from '../../assets/about/About_CRDC.png';
 import developerImg from '../../assets/about/About_Developers.png';
 import requestImg from '../../assets/about/About_RequestAccess.png';
+import dataDictImg from '../../assets/about/About_Datadict.jpeg';
 import committeeImg from '../../assets/about/Photo-About_SteeringCommittee.jpg';
 import supportImg from '../../assets/about/About_Support.png';
 import AboutBody from './aboutBodyView';
@@ -49,6 +50,9 @@ const About = ({ match }) => {
           break;
         case '/support':
           supportObj.image = supportImg;
+          break;
+        case '/data-dictionary':
+          supportObj.image = dataDictImg;
           break;
         default:
           supportObj.image = purposeImg;
