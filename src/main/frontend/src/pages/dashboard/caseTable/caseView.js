@@ -228,7 +228,7 @@ const Cases = ({ classes, data }) => {
     } else {
       saveButton.current.disabled = false;
       saveButton.current.style.color = '#FFFFFF';
-      saveButton.current.style.backgroundColor = '#C53B27';
+      saveButton.current.style.backgroundColor = '#DF5226';
     }
   }
 
@@ -369,12 +369,13 @@ const styles = (theme) => ({
   },
   tableTitleText: {
     color: '#C32F30',
-    fontSize: '25.2pt',
+    fontSize: '20pt',
     fontStyle: 'normal',
     fontFamily: 'Raleway',
     letterSpacing: '0.025em',
     padding: '10px 32px 8px 28px',
     position: 'absolute',
+    height: '15px',
   },
   tableTitleWizard: {
     width: '400px',
