@@ -57,9 +57,6 @@ const LandingController = ({ classes, heroData }) => (
                 About the Clinical Trial Data Commons (CTDC)
               </div>
               <div className={classes.aboutContent}>
-              NCI's Division of Cancer Treatment and Diagnosis (DCTD) charged the Frederick National
-               Laboratory for Cancer Research (FNLCR) to build the Clinical Trial Data Commons
-               (CTDC),a cloud-based repository of data from clinical trials sponsored by NCI.
                CTDC has been established to allow researchers to search, explore and select data
                across multiple clinical trials. Data in the CTDC is sourced from multiple different
                programs and projects;
@@ -307,6 +304,7 @@ const styles = () => ({
   },
   aboutContent: {
     background: '#20506A',
+    minHeight: '372px',
     width: '300px',
     padding: '30px 30px 32px 30px',
     color: '#fff',
