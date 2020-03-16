@@ -58,9 +58,13 @@ const LandingController = ({ classes, heroData }) => (
               </div>
               <div className={classes.aboutContent}>
                CTDC has been established to allow researchers to search, explore and select data
-               across multiple clinical trials. Data in the CTDC is sourced from multiple different
-               programs and projects;
-               all are focused on human subjects.
+                across
+                clinical trials from the Precision Medicine Initiative. Data in the CTDC is sourced
+                from multiple different programs and projects; all are focused on human subjects
+                and the data files are access controlled. As part of the NCI's Cancer Research Data
+                Commons (CRDC),
+                user selected data files are available for analysis in the CRDC's Cloud Resources.
+
               </div>
               <div className={classes.aboutButtonSection}>
                 <div className={classes.aboutButtonLeft}>
