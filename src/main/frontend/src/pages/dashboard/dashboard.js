@@ -207,6 +207,7 @@ const Dashboard = ({
 
 const styles = (theme) => ({
   rightContent: {
+    maxWidth: 'calc(100% - 240px)',
   },
   content: {
     // padding: theme.spacing.unit * 3,
