@@ -6,7 +6,7 @@ import purposeImg from '../../assets/about/About_Purpose.png';
 import CRDCImg from '../../assets/about/About_CRDC.png';
 import developerImg from '../../assets/about/About_Developers.png';
 import requestImg from '../../assets/about/About_RequestAccess.png';
-import dataDictImg from '../../assets/about/About_Datadict.jpeg';
+import dataDictImg from '../../assets/about/About_DataDictionary.png';
 import committeeImg from '../../assets/about/Photo-About_SteeringCommittee.jpg';
 import supportImg from '../../assets/about/About_Support.png';
 import AboutBody from './aboutBodyView';
