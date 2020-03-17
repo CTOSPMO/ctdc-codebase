@@ -67,13 +67,13 @@
     - paragraph: "CTDC provides open access to baseline information on the cases present in CTDC. However, the detailed clinical information and associated sequencing data files for cases presented in the CTDC are not open access, they require users to have permission. Requesting permission is a two step process;."
     - paragraph: "STEP 1: Request access through the NCTN Data Archive site."
     - paragraph: "STEP 2: Request access through dbGaP."
-    - paragraph: "Once access has been granted, users will be able to view and work with the CTDC data files and clinical information in one of the Cancer Research Data Common’s analysis resources."
+    - paragraph: "Once access has been granted, users will be able to view and work with the CTDC data files and clinical information in one of the Cancer Research Data Common’s analysis resources. Currently the CTDC supports analysis via the SBG Cloud Resource ($$[Seven Bridges Cancer Genomics Cloud](http://www.cancergenomicscloud.org/)$$)."
     - paragraph: "$$#STEP 1:#$$"
     - paragraph: "Navigate to the $$[NCTN/NCORP Data Archive](https://nctn-data-archive.nci.nih.gov)$$ site. If you do not have an NCTN account, please create one. Once registered you will be able to request access to the trial of interest. It is suggested to use either the NCT Trial Number or the PubMed ID to search for the trial of interest- each trial in CTDC has an associated NCT Trial number and PubMed ID. A $$[PDF document](https://nctn-drupal8-prod.nci.nih.gov/sites/default/files/RequestPDF.pdf)$$ is available detailing the steps for both registration and access requesting."
     - paragraph: "$$#STEP 2:#$$"
     - paragraph: "Navigate to $$[dbGaP’s Authorized Access](https://dbgap.ncbi.nlm.nih.gov/aa/wga.cgi?page=login)$$ site and login. If you do not have a dbGaP account, please create one. 
         If a user is requesting access through a collaborator or their Principal Investigator (PI) who already has access, then the PI/collaborator can add the user as a “Downloader”.
-        If a user is requesting access as a PI, then they will need to create a new research project within dbGaP. The following information is useful to add the appropriate dataset to the dbGaP research project request; ARM Q is Study Accession ID is phs001926, ARM Z1D is Study Accession ID is phs001859."
+        If a user is requesting access as a PI, then they will need to create a new research project within dbGaP. The following information is useful to add the appropriate dataset to the dbGaP research project request; ARM Q Study Accession ID is phs001926, ARM Z1D Study Accession ID is phs001859."
 - page: '/purpose'
   title: "Purpose"
   content:
