@@ -154,6 +154,7 @@ export default function dashboardReducer(state = initialState, action) {
           caseCountByRace: getDonutDataFromDashboardData(tableData, 'race'),
           caseCountByEthnicity: getDonutDataFromDashboardData(tableData, 'ethnicity'),
           caseCountByFileFormat: getDonutDataFromDashboardData(tableData, 'file_formats'),
+          caseCountByPubmedId: getDonutDataFromDashboardData(tableData, 'pubmed_id'),
         },
       };
     }
@@ -191,6 +192,7 @@ export default function dashboardReducer(state = initialState, action) {
           caseCountByRace: getDonutDataFromDashboardData(tableData, 'race'),
           caseCountByEthnicity: getDonutDataFromDashboardData(tableData, 'ethnicity'),
           caseCountByFileFormat: getDonutDataFromDashboardData(tableData, 'file_formats'),
+          caseCountByPubmedId: getDonutDataFromDashboardData(tableData, 'pubmed_id'),
         },
       };
     }
@@ -229,6 +231,8 @@ export default function dashboardReducer(state = initialState, action) {
             caseCountByRace: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'race'),
             caseCountByEthnicity: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'ethnicity'),
             caseCountByFileFormat: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'file_formats'),
+            caseCountByPubmedId: getDonutDataFromDashboardData(action.payload.data.caseOverview, 'pubmed_id'),
+
           },
 
         } : { ...state };
