@@ -58,10 +58,7 @@ const styles = (theme) => ({
     left: 0,
   },
   errorCodeText: {
-    // fontSize: '10em',
-    // color: 'white',
-    // fontWeight: 'bold',
-    width: 220,
+    letterSpacing: 4,
     color: '#FFFFFF',
     fontFamily: 'Oswald',
     fontSize: 140,
@@ -87,8 +84,6 @@ const styles = (theme) => ({
     maxWidth: 800,
   },
   boldText: {
-    // fontSize: '.9em',
-    // fontWeight: 'bolder',
     color: '#204C5B',
     fontFamily: 'Raleway',
     fontSize: 19,
