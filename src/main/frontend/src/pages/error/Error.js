@@ -58,7 +58,7 @@ const styles = (theme) => ({
     left: 0,
   },
   errorCodeText: {
-    letterSpacing: 2,
+    letterSpacing: 4,
     color: '#FFFFFF',
     fontFamily: 'Oswald',
     fontSize: 140,
