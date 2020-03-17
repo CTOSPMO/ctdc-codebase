@@ -58,9 +58,16 @@ const styles = (theme) => ({
     left: 0,
   },
   errorCodeText: {
-    fontSize: '10em',
-    color: 'white',
-    fontWeight: 'bold',
+    // fontSize: '10em',
+    // color: 'white',
+    // fontWeight: 'bold',
+    width: 220,
+    color: '#FFFFFF',
+    fontFamily: 'Oswald',
+    fontSize: 140,
+    fontWeight: 500,
+    textAlign: 'center',
+    textShadow: '5px 3px rgba(0,0,0,0.11)',
   },
   divider: {
     height: '1px',
@@ -80,8 +87,13 @@ const styles = (theme) => ({
     maxWidth: 800,
   },
   boldText: {
-    fontSize: '.9em',
-    fontWeight: 'bolder',
+    // fontSize: '.9em',
+    // fontWeight: 'bolder',
+    color: '#204C5B',
+    fontFamily: 'Raleway',
+    fontSize: 19,
+    fontWeight: 600,
+    textAlign: 'center',
   },
   errorTextRow: {
     display: 'flex',
@@ -91,10 +103,14 @@ const styles = (theme) => ({
     width: 500,
   },
   errorText: {
-    color: 'rgb(0, 76, 115)',
+    color: '#417D96',
+    fontFamily: 'Lato',
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   link: {
-    color: '#417d96',
+    color: '#39C0F0',
     textDecoration: 'underline',
   },
 });
