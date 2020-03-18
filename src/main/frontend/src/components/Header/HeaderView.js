@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
-import nihLogo from '../../assets/header/icdc_ctdc.svg';
+import nihLogo from '../../assets/header/CTDC_Logo.svg';
 // import icdcLogo from '../../assets/header/icdc_logo_white.svg';
 // import cancergraphic400 from '../../assets/header/Canine400.png';
 import cancergraphic800 from '../../assets/header/easter800.png';
@@ -100,10 +100,8 @@ const styles = () => ({
     },
   },
   nihLogoImg: {
-    height: '54px',
     width: '463px',
     cursor: 'pointer',
-    marginLeft: '9px',
   },
   icdcLogoImg: {
     margin: '22px 35px auto',
