@@ -31,6 +31,9 @@ function updateData(d, keyPath) {
 
 // find the caseSize of a given title
 function findCaseSizeOfTitle(data, title) {
+  if (title === '') {
+    return data.caseSize;
+  }
   if (data.title !== title) {
     if (data.children) {
       let match = 0;
@@ -72,7 +75,7 @@ class ProgramSunburst extends PureComponent {
     this.state = {
       widgetData: data,
       size: data.children[0].size,
-      title: data.children[0].title,
+      title: '',
       caseSize: data.children[0].caseSize,
     };
   }
