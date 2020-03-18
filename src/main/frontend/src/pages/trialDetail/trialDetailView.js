@@ -113,9 +113,9 @@ const TrialView = ({ classes, data, theme }) => {
       label: 'Arm',
       options: {
         filter: false,
-        customBodyRender: (value) => (
+        customBodyRender: (value, tableMeta) => (
           <div className={classes.tableCell1}>
-            {value}
+            <Link className={classes.link} to={(location) => ({ ...location, pathname: '/cases' })} onClick={() => redirectToTrialArm(`${tableMeta.rowData[0]}_${tableMeta.rowData[1]}`)}>{value}</Link>
           </div>
         ),
       },
