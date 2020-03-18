@@ -172,7 +172,7 @@ const Dashboard = ({
                     </Grid>
                     <Grid item lg={4} md={6} sm={12} xs={12}>
                       <Widget
-                        title="File Format"
+                        title="Pubmed ID"
                         upperTitle
                         bodyClass={classes.fullHeightBody}
                         className={classes.card}
@@ -180,7 +180,7 @@ const Dashboard = ({
                         customBackGround
                       >
                         <CustomActiveDonut
-                          data={data.caseCountByFileFormat}
+                          data={data.caseCountByPubmedId}
                           width={400}
                           height={225}
                           innerRadius={50}
