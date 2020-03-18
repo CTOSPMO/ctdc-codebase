@@ -59,6 +59,9 @@ const styles = (theme) => ({
     paddingLeft: '28px',
     height: '20px',
   },
+  customWidget: {
+    marginTop: '-21px',
+  },
 });
 
 
@@ -94,62 +97,64 @@ class ProgramSunburst extends PureComponent {
 
     return (
       <>
-        <div className={classes.title}>
-          {title}
+        <div className={classes.customWidget}>
+          <div className={classes.title}>
+            {title}
+          </div>
+          <Sunburst
+            id={widgetData.key}
+            hideRootNode
+            animation
+            colorType="literal"
+            data={widgetData}
+            height={height}
+            width={width}
+            style={{
+              stroke: '#ddd',
+              strokeOpacity: 0.3,
+              strokeWidth: '0.5',
+            }}
+            onValueMouseOver={(node) => {
+              const path = getKeyPath(node).reverse();
+              const pathAsMap = path.reduce((res, row) => {
+                res[row.toString()] = true;
+                return res;
+              }, {});
+              const wdata = updateData(widgetData, pathAsMap);
+              this.setState({
+                size: node.size,
+                widgetData: wdata,
+                title: node.title,
+                caseSize: node.size || node.caseSize,
+              });
+            }}
+          >
+            {caseSize && (
+            <LabelSeries data={[{
+              x: 0,
+              y: 0,
+              label: caseSize,
+              style: {
+                fontSize: '12px',
+                textAnchor: 'middle',
+                fill: textColor,
+                fontFamily: '"Lato Regular","Open Sans", sans-serif',
+              },
+            }, {
+              x: 0,
+              y: 1,
+              label: 'Cases',
+              style: {
+                fontSize: '12px',
+                textAnchor: 'middle',
+                fill: textColor,
+                fontFamily: '"Lato Regular","Open Sans", sans-serif',
+              },
+            }]}
+            />
+            )}
+          </Sunburst>
         </div>
-        <Sunburst
-          id={widgetData.key}
-          hideRootNode
-          animation
-          colorType="literal"
-          data={widgetData}
-          height={height}
-          width={width}
-          style={{
-            stroke: '#ddd',
-            strokeOpacity: 0.3,
-            strokeWidth: '0.5',
-          }}
-          onValueMouseOver={(node) => {
-            const path = getKeyPath(node).reverse();
-            const pathAsMap = path.reduce((res, row) => {
-              res[row.toString()] = true;
-              return res;
-            }, {});
-            const wdata = updateData(widgetData, pathAsMap);
-            this.setState({
-              size: node.size,
-              widgetData: wdata,
-              title: node.title,
-              caseSize: node.size || node.caseSize,
-            });
-          }}
-        >
-          {caseSize && (
-          <LabelSeries data={[{
-            x: 0,
-            y: 0,
-            label: caseSize,
-            style: {
-              fontSize: '12px',
-              textAnchor: 'middle',
-              fill: textColor,
-              fontFamily: '"Lato Regular","Open Sans", sans-serif',
-            },
-          }, {
-            x: 0,
-            y: 1,
-            label: 'Cases',
-            style: {
-              fontSize: '12px',
-              textAnchor: 'middle',
-              fill: textColor,
-              fontFamily: '"Lato Regular","Open Sans", sans-serif',
-            },
-          }]}
-          />
-          )}
-        </Sunburst>
       </>
     );
   }
